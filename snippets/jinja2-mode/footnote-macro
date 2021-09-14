@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: footnote-macro
+# key: ftm
+# --
+{{ nb.footnote(${1:url}, start=${2:start_num}, unscroll=${3:true}) }}

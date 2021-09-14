@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: note-macro-murmur
+# key: mj
+# --
+{{ nb.murmurs(${1:mm?}, ${2:short=false?}) }}

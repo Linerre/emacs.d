@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: footnote-url-list
+# binding: C-c C-j
+# --
+{% set urls${1:url_num} = [
+   '${2:url_1}',$0
+   ]
+%}

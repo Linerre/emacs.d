@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: note-metadata
+# key: meta
+# --
+{% extends '${1:tempname}-base.j2' %}
+{% import 'notes-base.j2' as nb %}
+{% import 'vocab.j2' as vb %}
+{% import 'dicts/webster/base.j2' as mw %}
+{% import 'dicts/oxford/oald-lesscommon.j2' as oald %}
+${2:\{% include 'header.j2' %\} }

@@ -1,0 +1,29 @@
+# -*- mode: snippet -*-
+# name: mw-word-complete
+# key: mwd
+# --
+{% set word_${1:word_num} = {
+  'entry': '${2:word-entry}',
+  'syllables': '${3:syllables}',
+  'pos': '${4:pos}',
+  'pro': "${5:pro}",
+  'def': ['order': '', 'def': '${5:defiition}'],
+  {# 1 sentence example often included in defiition #}
+  'example-1s': '${6:example-1s}',
+  'recent': [
+    {'sentence': '$0', 'source': ''},
+  ],
+  '1st-use': '${7:1st-use}',
+  'etymology', '',
+  'history': '',
+  'did-you-know': '',
+  'morphs': {'mph-1': '', 'mph-2': ''},
+  'morphs-pro': {'pro1': "", 'pro2': ""},
+  {# grammar info often included in def #}
+  'grammar': '',
+  'multi-def-long': {'order': '', 'defs': []},
+  'multi-def-short': {
+    'order': '', 'syns': ['', ''],
+    'eg': '', 'src': ''},
+  }
+%}

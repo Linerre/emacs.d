@@ -1,0 +1,18 @@
+# -*- mode: snippet -*-
+# name: wm-word-compact
+# binding: C-c C-j
+# --
+{% set word_${1:word_num} = {
+  'entry': '${2:word-entry}',
+  'syllables': '${3:syllables}',
+  'pos': '${4:pos}',
+  'pro': "${5:pro}",
+  'def': {'order': '', 'def': '${5:defiition}'},
+  'example-1s': ["${6:example-1s}",]
+  'recent': [
+    {'sentence': '$0', 'source': ''},
+  ],
+  'morphs': ['mph-1', 'mph-2'],
+  'morphs-pro': ['pro1', 'pro2'],
+  }
+%}

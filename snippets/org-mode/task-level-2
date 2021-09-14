@@ -1,0 +1,12 @@
+# -*- mode: snippet -*-
+# name: task-headline-level-2
+# key: tk2
+# --
+** ${1: headline, C-c C-t if todo}
+    :PROPERTIES:
+    :calendar-id: zl37@nyu.edu
+    :END:
+    :org-gcal:
+      ${2: C-c . for active timestamp}
+      ${3:Event details; can be multiple lines or md style list}
+    :END:
