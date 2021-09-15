@@ -14,7 +14,7 @@
 (require 'init-lisp)
 (require 'init-python)
 (require 'init-web)
-(require 'init-rime)
+;(require 'init-rime)
 (require 'init-modeline)
 (require 'init-org)
 (require 'init-windows)
