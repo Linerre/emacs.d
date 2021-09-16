@@ -20,7 +20,7 @@
   (setq tmw (+ (* 24 60 60) (time-convert nil 'integer)))
   (insert (format-time-string "%Y-%m-%d %a" tmw)))
 
-(global-set-key (kbd "C-c s t") #'+insert-timestamp)
+(global-set-key (kbd "C-c t s") #'+insert-timestamp)
 (global-set-key (kbd "C-c t d") #'+insert-today-date-string)
 (global-set-key (kbd "C-c t m") #'+insert-tomorrow-date-string)
 
