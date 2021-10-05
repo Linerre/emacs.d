@@ -2,7 +2,12 @@
 ;;(require 'kaolin-themes)
 
 (straight-use-package 'kaolin-themes)
-(load-theme 'kaolin-light t)
+(straight-use-package
+ '(emacs-theme-gruvbox
+   :type git
+   :host github
+   :repo "greduan/emacs-theme-gruvbox"))
+
 
 
 ;; Disable tool bar, and scroll bar in gui
@@ -13,10 +18,12 @@
   (tool-bar-mode -1)
   (scroll-bar-mode -1)
   (menu-bar-mode -1)
+  (load-theme 'kaolin-light t)
   (add-to-list 'default-frame-alist
                '(font . "Courier-18")))
 
 (when (not (display-graphic-p))
+  ;;(load-theme 'gruvbox-light-soft t)
   (menu-bar-mode -1))
 
 (provide 'init-theme)
