@@ -90,6 +90,7 @@
 ;; so that short-anwser will work
 (fset 'yes-or-no-p 'y-or-n-p)
 
+
 ;; Instead of enabling a minor mode globally
 ;; hook it to several major modes
 (add-hook 'prog-mode-hook 'visual-line-mode)

@@ -1,7 +1,12 @@
 ;; -*- lexical-binding: t -*-
 ;; my functions for various purposes
 ;; Author: Errelin
-;; Last Change: Sat Sep  4 23:01:35 2021
+;; Last Change: Thu Sep 30 20:06:59 2021
+
+;; --------- VARIABLES --------
+(defconst *is-win* (string-equal system-type "windows-nt"))
+(defconst *is-mac* (string-equal system-type "darwin"))
+(defconst *is-linux* (string-equal system-type "gnu/linux"))
 
 ;; --------- TIME ----------
 (defun +insert-timestamp ()
