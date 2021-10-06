@@ -1,3 +1,5 @@
+;;; -*- lexical-binding: t -*-
+;;; Last Modified: Thu Oct  7 01:23:51 2021
 (straight-use-package 'gkroam)
 (add-hook 'org-mode-hook 'gkroam-mode)
 (setq gkroam-root-dir "~/projects/gkroam/org/")
