@@ -1,16 +1,11 @@
+;;; -*- lexical-binding: t -*-
 ;;; ----------------------- THEME ----------------------
-;;(require 'kaolin-themes)
+
 
 (straight-use-package 'kaolin-themes)
-(straight-use-package
- '(emacs-theme-gruvbox
-   :type git
-   :host github
-   :repo "greduan/emacs-theme-gruvbox"))
+(require 'fix-terminal-color-theme)
 
-
-
-;; Disable tool bar, and scroll bar in gui
+;; Disable tool bar, and scroll bar in GUI
 ;; Set font as well
 ;; Use display-graphic-p to detect gui(t) or tui(nil, text-only terminals, even running on DE)
 ;; Use window-system to detect OS type: nil->char-only terminals; w32->windows; ns->macOS (deprecated according to GNU Emacs Manual)
@@ -22,8 +17,9 @@
   (add-to-list 'default-frame-alist
                '(font . "Courier-18")))
 
+;; use terminal theme/font in TUI with minor fixes
 (when (not (display-graphic-p))
-  ;;(load-theme 'gruvbox-light-soft t)
+  (load-theme 'fix-terminal-color t)
   (menu-bar-mode -1))
 
 (provide 'init-theme)
