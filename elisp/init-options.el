@@ -83,7 +83,8 @@
  epa-pinentry-mode 'loopback
  custom-file (expand-file-name "custom.el" user-emacs-directory)
  ;; eldoc idle delay
- eldoc-idle-delay 1)
+ eldoc-idle-delay 1
+ debug-on-error t)
  ;;inhibit-compacting-font-caches t
 
 ;; set yes-or-no-p to use y-or-n-p
