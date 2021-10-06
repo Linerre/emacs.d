@@ -1,4 +1,6 @@
 ;; -*- lexical-binding: t -*-
+(straight-use-package 'org-roam)
+(straight-use-package 'ob-restclient)
 
 ;;(global-set-key (kbd "C-c l") 'org-store-link)
 (global-set-key (kbd "C-c l") 'org-link-store-props)
@@ -10,7 +12,7 @@
 ;;; 1) connect org agenda to google calendar
 ;;; 2) sync agenda on laptop to iOS google calendar
 ;; org-mode keys
-(setq org-agenda-files '("~/projects/gcal.org"))
+(setq org-agenda-files '("~/projects/org/cal.org"))
 ;;			 "~/projects/org/projects.org"
 ;;			 "~/projects/org/reminder.org"))
 
@@ -107,8 +109,28 @@
 
 (add-hook 'org-mode-hook 'yas-minor-mode)
 
-;;; ----------------- GKROAM ----------------
-;;(require 'init-gkroam)
+;;; ----------------- ROAM ----------------
+(setq
+ org-roam-v2-ack t
+
+ org-roam-directory
+ (let ((ord (expand-file-name "~/projects/org")))
+   (unless (file-directory-p ord) (make-directory ord))
+   ord))
+
+(with-eval-after-load "org-roam"
+  ;; https://www.orgroam.com/manual.html#Roam-Protocol
+  (global-set-key (kbd "C-x M-n l") 'org-roam-buffer-toggle)
+  (global-set-key (kbd "C-x M-n f") 'org-roam-node-find)
+  (global-set-key (kbd "C-x M-n g") 'org-roam-graph)
+  (global-set-key (kbd "C-x M-n i") 'org-roam-node-insert)
+  (global-set-key (kbd "C-x M-n c") 'org-roam-capture)
+  (global-set-key (kbd "C-x M-n s") 'org-roam-db-sync)
+
+  (org-roam-setup)
+  (require 'org-roam-protocol))
+
+(require 'org-roam)
 ;;; ------------------- ORG GCAL ---------------------
 ;;; Must use full path?
 (when (file-exists-p "~/.emacs.d/elisp/init-org-gcal.el")
