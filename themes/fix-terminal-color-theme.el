@@ -1,6 +1,6 @@
 ;;; --------------- lexical-binding: t -------------
 
-;; Minor fixes for terminals (e.g. Alacritty) to display the correct colors
+;; Minor fixes for terminals (e.g. Alacritty) to display the correct colors. Clean up later
 (deftheme fix-terminal-color
     "A minor fix to deal with alacritty's too yellow background issue.")
 

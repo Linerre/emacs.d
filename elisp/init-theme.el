@@ -3,7 +3,7 @@
 
 
 (straight-use-package 'kaolin-themes)
-(require 'fix-terminal-color-theme)
+(load-theme 'kaolin-light t)
 
 ;; Disable tool bar, and scroll bar in GUI
 ;; Set font as well
@@ -13,13 +13,13 @@
   (tool-bar-mode -1)
   (scroll-bar-mode -1)
   (menu-bar-mode -1)
-  (load-theme 'kaolin-light t)
+  ;;(load-theme 'kaolin-light t)
   (add-to-list 'default-frame-alist
                '(font . "Courier-18")))
 
 ;; use terminal theme/font in TUI with minor fixes
 (when (not (display-graphic-p))
-  (load-theme 'fix-terminal-color t)
+
   (menu-bar-mode -1))
 
 (provide 'init-theme)
