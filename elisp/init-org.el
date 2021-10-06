@@ -10,9 +10,9 @@
 ;;; 1) connect org agenda to google calendar
 ;;; 2) sync agenda on laptop to iOS google calendar
 ;; org-mode keys
-(setq org-agenda-files '("~/projects/gkroam/gcal.org"))
-;;			 "~/projects/gkroam/org/projects.org"
-;;			 "~/projects/gkroam/org/reminder.org"))
+(setq org-agenda-files '("~/projects/gcal.org"))
+;;			 "~/projects/org/projects.org"
+;;			 "~/projects/org/reminder.org"))
 
 
 ;; I don't want this becasue every time I change a state
@@ -52,54 +52,54 @@
 ;; inbox-tasks
 (add-to-list 'org-capture-templates
 	     '("t" "Inbox [TODO]" entry
-	       (file+headline "~/projects/gkroam/org/inbox.org" "Tasks")
+	       (file+headline "~/projects/org/inbox.org" "Tasks")
 	       "* TODO %? %^G" :kill-buffer t))
 
 ;; inbox-idea/note/thoughts
 (add-to-list 'org-capture-templates
 	     '("a" "Inbox [IDEA]" entry
-	       (file+headline "~/projects/gkroam/org/inbox.org" "Thoughts")
+	       (file+headline "~/projects/org/inbox.org" "Thoughts")
               "* IDEA %? \n%u" :kill-buffer t))
 
 ;; inbox-event
 (add-to-list 'org-capture-templates
      '("e" "Inbox [EVENTS]" entry
-	       (file+headline "~/projects/gkroam/org/inbox.org" "Events")
+	       (file+headline "~/projects/org/inbox.org" "Events")
                "* EVENT %? %U" :kill-buffer t))
 
 ;; inbox-note
 (add-to-list 'org-capture-templates
      '("n" "Inbox [NOTE]" entry
-       (file+headline "~/projects/gkroam/org/inbox.org" "Thoughts")
+       (file+headline "~/projects/org/inbox.org" "Thoughts")
        "* NOTE %? %^G" :kill-buffer t))
 
 ;; inbox-reading
 (add-to-list 'org-capture-templates '("r" "Reading"))
 (add-to-list 'org-capture-templates
      '("rb" "Readings [Book]" entry
-       (file+headline "~/projects/gkroam/org/readings.org" "Book")
+       (file+headline "~/projects/org/readings.org" "Book")
                "* TODO Title: %^{Title} \nSource: %^{Link} \n%u\n" :kill-buffer t))
 (add-to-list 'org-capture-templates
      '("ra" "Readings [Article]" entry
-       (file+headline "~/projects/gkroam/org/readings.org" "Article")
+       (file+headline "~/projects/org/readings.org" "Article")
                "* TODO [[%^{Link}][%^{Title}]] \n%u\n" :kill-buffer t))
 
 ;; reminder
 (add-to-list 'org-capture-templates
              '("T" "Tickler" entry
-      (file+headline "~/projects/gkroam/org/reminder.org" "Tickler")
+      (file+headline "~/projects/org/reminder.org" "Tickler")
               "* TODO %? %^G" :kill-buffer t))
 
 (add-to-list 'org-capture-templates
              '("b" "Billing" plain
-               (file+function "~/projects/gkroam/org/bills.org" find-month-tree)
+               (file+function "~/projects/org/bills.org" find-month-tree)
                " | %U | %^{Type} | %^{Detail} | %^{Amount} |" :kill-buffer t))
 
-(setq org-refile-targets '(("~/projects/gkroam/org/inbox.org" :maxlevel . 3)
-                           ("~/projects/gkroam/org/reminder.org" :level . 1)
-                           ("~/projects/gkroam/org/projects.org" :maxlevel . 2)
-		   ("~/projects/gkroam/org/readings.org" :maxlevel . 1)
-		   ("~/projects/gkroam/org/barn.org" :maxlevel . 5)))
+(setq org-refile-targets '(("~/projects/org/inbox.org" :maxlevel . 3)
+                           ("~/projects/org/reminder.org" :level . 1)
+                           ("~/projects/org/projects.org" :maxlevel . 2)
+		   ("~/projects/org/readings.org" :maxlevel . 1)
+		   ("~/projects/org/barn.org" :maxlevel . 5)))
 
 
 (setq org-refile-use-outline-path 'file
@@ -108,7 +108,7 @@
 (add-hook 'org-mode-hook 'yas-minor-mode)
 
 ;;; ----------------- GKROAM ----------------
-(require 'init-gkroam)
+;;(require 'init-gkroam)
 ;;; ------------------- ORG GCAL ---------------------
 ;;; Must use full path?
 (when (file-exists-p "~/.emacs.d/elisp/init-org-gcal.el")

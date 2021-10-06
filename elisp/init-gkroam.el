@@ -2,6 +2,7 @@
 ;;; Last Modified: Thu Oct  7 01:23:51 2021
 (straight-use-package 'gkroam)
 (add-hook 'org-mode-hook 'gkroam-mode)
+;; gkroam-root-dir must be "~/projects/gkroam/org/"?
 (setq gkroam-root-dir "~/projects/gkroam/")
 (setq gkroam-prettify-page-p t
       gkroam-show-brackets-p nil
