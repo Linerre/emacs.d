@@ -12,6 +12,9 @@ request/
 org-gcal/
 init-org-gcal.el
 projects
+# ignore roam db for now
+org-roam.db
+.org-id-locations
 
 # ignore macOS stuff
 .DS_Store
