@@ -106,8 +106,12 @@
 
 (setq org-refile-use-outline-path 'file
       org-log-refile t)
+(with-eval-after-load 'org
+  (add-hook 'org-mode-hook 'yas-minor-mode)
+  (add-hook 'org-mode-hook 'visual-line-mode)
+  (org-indent-mode t))
 
-(add-hook 'org-mode-hook 'yas-minor-mode)
+
 
 ;;; ----------------- ROAM ----------------
 (setq
@@ -150,5 +154,6 @@
    (sqlite . t)
    (latex . t)
    (emacs-lisp . t)))
+
 
 (provide 'init-org)
