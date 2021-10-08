@@ -12,5 +12,4 @@
 ;; see https://github.com/raxod502/straight.el#getting-started
 (setq package-enable-at-startup nil)
 (require 'init-straight)
-(require 'init-package)
 (require 'init-options)
