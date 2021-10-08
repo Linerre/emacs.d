@@ -1,7 +1,7 @@
-;; -*- lexical-binding: t -*-
+;; -*- lexical-binding: t -*-;
 ;; my functions for various purposes
-;; Author: Errelin
-;; Last Change: Thu Sep 30 20:06:59 2021
+;; Author: Errenil
+;; Last Change: Sat Oct  9 00:36:00 2021
 
 ;; --------- VARIABLES --------
 (defconst *is-win* (string-equal system-type "windows-nt"))
@@ -24,6 +24,12 @@
   (interactive)
   (setq tmw (+ (* 24 60 60) (time-convert nil 'integer)))
   (insert (format-time-string "%Y-%m-%d %a" tmw)))
+
+;; -------------------- LEXICAL ------------------
+(defun lexical-binding ()
+  (interactive)
+  (goto-char (point-min))
+  (insert ";;; -*- lexical-binding: t -*-"))
 
 (global-set-key (kbd "C-c t s") #'+insert-timestamp)
 (global-set-key (kbd "C-c t d") #'+insert-today-date-string)
