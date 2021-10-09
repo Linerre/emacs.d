@@ -39,7 +39,7 @@
    '("w" . other-window)
    '("W" . window-swap-states)
    '("o" . delete-other-windows)
-   '("s" . split-window-right)
+   '("=" . split-window-right)
    '("-" . split-window-below)
    ;; high frequency commands
    '("$" . +change-theme)
