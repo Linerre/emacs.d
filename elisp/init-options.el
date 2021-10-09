@@ -88,7 +88,6 @@
  ;;inhibit-compacting-font-caches t
 
 ;; set yes-or-no-p to use y-or-n-p
-;; so that short-anwser will work
 (fset 'yes-or-no-p 'y-or-n-p)
 
 
