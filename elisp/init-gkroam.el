@@ -1,6 +1,7 @@
 ;;; -*- lexical-binding: t -*-
-;;; Last Modified: Thu Oct  7 01:23:51 2021
-(straight-use-package 'gkroam)
+;;; Last Modified: Sun Oct 10 01:07:46 2021
+;;; Commentary:
+;;; I switched back to org-roam; deprecated
 (add-hook 'org-mode-hook 'gkroam-mode)
 ;; gkroam-root-dir must be "~/projects/gkroam/org/"?
 (setq gkroam-root-dir "~/projects/gkroam/")
