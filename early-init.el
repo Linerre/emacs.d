@@ -1,15 +1,16 @@
-;;; early-init.el -*- lexical-binding: t -*-
+;;; early-init.el
+;;; Commentary:
 
-;;; Modularized initialization
-;;; Author: Errelin
-;;; Last Change:
+;;; Borrowed from Purcell's config
+;; Emacs 27+ loads this file before (normally) calling
+;; `package-initialize'.  We use this file to suppress that automatic
+;; behaviour so that startup is consistent across Emacs versions.
 
-;;; Modules stored in the "elisp" directory
-(add-to-list 'load-path (expand-file-name "elisp" user-emacs-directory))
-(add-to-list 'load-path (expand-file-name "themes" user-emacs-directory))
-(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+;;; Code:
 
-;; see https://github.com/raxod502/straight.el#getting-started
 (setq package-enable-at-startup nil)
-(require 'init-straight)
-(require 'init-options)
+
+;; So we can detect this having been loaded
+(provide 'early-init)
+
+;;; early-init.el ends
