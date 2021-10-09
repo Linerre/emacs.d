@@ -2,7 +2,7 @@
 ;;; -------------- STRAIGHT.EL -------------------
 ;;; see https://github.com/raxod502/straight.el#getting-started
 
-
+(setq package-enable-at-startup nil)
 (setq straight-vc-git-default-clone-depth 1)
 
 (defvar bootstrap-version)
