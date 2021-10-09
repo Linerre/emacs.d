@@ -1,7 +1,7 @@
 ;;; -*- lexical-binding: t -*-
 ;; https://github.com/DogLooksGood/dogEmacs/blob/b97c232eda8b2f27be5aba987af3a703782d0469/elisp/init-modal-qwerty.el
 
-(straight-use-package '(meow :type git :host github :repo "DogLooksGood/meow"))
+;;(straight-use-package '(meow :type git :host github :repo "DogLooksGood/meow"))
 
 (require 'meow)
 

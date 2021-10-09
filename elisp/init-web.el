@@ -3,9 +3,6 @@
 ;;; Author: Errelin
 ;;; Last Change:
 
-(straight-use-package 'jinja2-mode)
-(straight-use-package 'emmet-mode)
-
 (add-hook 'mhtml-mode-hook 'jinja2-mode)
 (add-hook 'mhtml-mode-hook 'emmet-mode)
 (add-hook 'jinja2-mode-hook 'emmet-mode)

@@ -8,6 +8,8 @@
    (unless (file-directory-p ord) (make-directory ord))
    ord))
 
+(add-hook 'org-mode-hook 'org-roam-mode)
+
 (with-eval-after-load "org-roam"
   ;; https://www.orgroam.com/manual.html#Roam-Protocol
   (global-set-key (kbd "C-x M-n l") 'org-roam-buffer-toggle)

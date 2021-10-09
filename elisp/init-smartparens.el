@@ -1,8 +1,6 @@
 ;; -*- lexical-binding: t -*-
 ;; smart parens
 
-(straight-use-package 'smartparens)
-
 ;; (setq sp-autowrap-region nil)
 (autoload #'smartparens-mode "smartparens" nil t)
 

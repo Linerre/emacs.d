@@ -1,12 +1,11 @@
 ;;; -*- lexical-binding: t -*-
 
-(straight-use-package 'flymake)
-(straight-use-package 'eglot)
+;;; Commentary:
 ;; see https://github.com/joaotavora/eglot/issues/518#issuecomment-664858272
 ;; project.el is a dependency for eglot
 ;; The current workaround is to load-library project manully
-(straight-use-package 'project)
-(load-library "project")
+
+;;(load-library "project")
 
 ;;; flymake
 (autoload #'flymake-mode "flymake" nil t)
@@ -24,6 +23,7 @@
  eglot-ignored-server-capabilites '(:documentHighlightProvider))
 
 (autoload #'eglot-ensure "eglot" nil t)
+;; TODO: python3 needs to be installed by nix
 (with-eval-after-load "eglot"
   (add-to-list 'eglot-server-programs
                '(python-mode "/Users/errelin/Library/Python/3.9/bin/pyls"))

@@ -2,7 +2,7 @@
 ;;; ----------------------- THEME ----------------------
 
 
-(straight-use-package 'kaolin-themes)
+(require 'kaolin-themes)
 (load-theme 'kaolin-light t)
 
 ;; Disable tool bar, and scroll bar in GUI

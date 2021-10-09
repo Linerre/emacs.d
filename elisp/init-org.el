@@ -1,6 +1,4 @@
 ;; -*- lexical-binding: t -*-
-(straight-use-package 'org-roam)
-(straight-use-package 'ob-restclient)
 
 ;;(global-set-key (kbd "C-c l") 'org-store-link)
 (global-set-key (kbd "C-c l") 'org-link-store-props)

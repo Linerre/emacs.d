@@ -1,8 +1,5 @@
 ;;; -*- lexical-binding: t -*-
 
-;;(straight-use-package 'diff-hl)
-(straight-use-package 'magit)
-;;(straight-use-package 'smerge-mode)
 
 ;;; magit
 

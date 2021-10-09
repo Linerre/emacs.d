@@ -1,11 +1,6 @@
 
 ;;; -*- lexical-binding: t -*-
 ;;; ------------------- COMPLETION  -----------------------
-
-(straight-use-package 'selectrum)
-(straight-use-package 'company)
-(straight-use-package 'yasnippet)
-
 ;; use snippet when there is one, otherwise, company
 (defun +complete-or-snippet ()
   (interactive)

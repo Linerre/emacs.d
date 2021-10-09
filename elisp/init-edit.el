@@ -1,9 +1,6 @@
 ;;; settings for daily editting: keymaps and more
 ;;; Author: Errelin
-;;; Last Change:
-
-(straight-use-package 'which-key)
-(which-key-mode)
+;;; Last Change: Sun Oct 10 01:04:01 2021
 
 ;;; kill buffer
 (global-set-key (kbd "C-x k") 'kill-this-buffer)
@@ -35,11 +32,13 @@
 
 ;; other modules related to editting experience
 (require 'init-windows)
+(require 'which-key)
+(which-key-mode)
 
 ;; it's good but when I switch between desktops it inserts
 ;; parens weirdly ... ONLY appears in TUI
 ;; due to "scroll alternate screen" option in terminal.app
-(if (display-graphic-p)
+(when (or (display-graphic-p *is-linux*))
     (require 'init-smartparens))
 
 (provide 'init-edit)
