@@ -44,5 +44,5 @@
 
 
 
-(provide 'init-package)
+(provide 'init-packages)
 ;;; init-package ends here
