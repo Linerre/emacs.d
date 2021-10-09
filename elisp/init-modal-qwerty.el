@@ -31,6 +31,8 @@
    '("?" . meow-cheatsheet)
    ;; high frequency keybindings
    '("e" . "C-x C-e")
+   '("s" . "C-x C-s")
+   '("F" . "C-h")
    '(")" . "C-)")
    '("}" . "C-}")
    '("." . "M-.")
@@ -61,7 +63,11 @@
    '("P" . pass)
    '("R" . org-roam-mode)
    '("A" . org-agenda)
-   '("D" . docker))
+   '("D" . docker)
+   ;; org
+   '("U" . "C-u C-u")
+   '("C" . "C-c C-c")
+   '("X" . "C-c C-x"))
   (meow-normal-define-key
    '("0" . meow-expand-0)
    '("9" . meow-expand-9)
