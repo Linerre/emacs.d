@@ -1,5 +1,4 @@
-;; Mode line -*- lexical-binding: t; -*-
-
+;; Mode Line  -*- lexical-binding: t; -*-
 ;; Useful resources for making your own modeline:
 ;; 1. Elisp Manual:
 ;;   - https://www.gnu.org/software/emacs/manual/html_node/elisp/Mode-Line-Data.html

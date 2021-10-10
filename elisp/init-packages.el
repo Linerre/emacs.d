@@ -13,6 +13,8 @@
 ;; Initialize package.el unless this already done
 (unless (bound-and-true-p package--initialized)
   (package-initialize))
+;;(when (memq window-system '(pc ns x))
+;;  (exec-path-from-shell-initialize))
 
 (unless package-archive-contents
   (package-refresh-contents))
@@ -21,6 +23,7 @@
   '(company
     eglot
     emmet-mode
+    exec-path-from-shell
     flycheck
 
     highlight-defined
@@ -41,7 +44,6 @@
 (dolist (p packages-list)
   (unless (package-installed-p p)
     (package-install p)))
-
 
 
 (provide 'init-packages)

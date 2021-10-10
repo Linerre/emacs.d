@@ -8,7 +8,7 @@
    (unless (file-directory-p ord) (make-directory ord))
    ord))
 
-(add-hook 'org-mode-hook 'org-roam-mode)
+;(add-hook 'org-mode-hook 'org-roam-mode)
 
 (with-eval-after-load "org-roam"
   ;; https://www.orgroam.com/manual.html#Roam-Protocol
