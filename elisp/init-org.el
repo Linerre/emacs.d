@@ -109,8 +109,8 @@
   (add-hook 'org-mode-hook 'visual-line-mode)
   (org-indent-mode t))
 
-;(unless *is-win*
-;  (require 'init-org-roam))
+(unless *is-win*
+  (require 'init-org-roam))
 
 ;;; ------------------- ORG GCAL ---------------------
 ;;; Must use full path?
