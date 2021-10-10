@@ -38,7 +38,7 @@
 ;; it's good but when I switch between desktops it inserts
 ;; parens weirdly ... ONLY appears in TUI
 ;; due to "scroll alternate screen" option in terminal.app
-(when (or (display-graphic-p *is-linux*))
+(when (or (display-graphic-p) *is-linux*)
     (require 'init-smartparens))
 
 (provide 'init-edit)
