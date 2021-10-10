@@ -14,7 +14,7 @@
 
 (setq yas-prompt-functions '(yas-ido-prompt yas-x-prompt yas-completing-prompt))
 
-(autoload #'yas-minor-mode "yasnippet")
+(autoload 'yas-minor-mode "yasnippet")
 (add-hook 'prog-mode-hook 'yas-minor-mode)
 (with-eval-after-load "yasnippet"
   (let ((inhibit-message t))
