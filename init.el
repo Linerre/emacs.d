@@ -15,6 +15,7 @@
 (require 'init-options)
 (require 'init-utils)
 (require 'init-packages)
+(require 'init-theme)
 (require 'init-modal-qwerty)
 (require 'init-edit)
 (require 'init-completion)
@@ -25,5 +26,4 @@
 (require 'init-web)
 (require 'init-modeline)
 (require 'init-org)
-(require 'init-theme)
 (require 'init-server)
