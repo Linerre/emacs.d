@@ -1,14 +1,14 @@
 ;; -*- lexical-binding: t -*-;
-;; my functions for various purposes
+;; My functions for various purposes
 ;; Author: Errenil
 ;; Last Change: Sat Oct  9 00:36:00 2021
 
-;; --------- VARIABLES --------
+;;  VARIABLES
 (defconst *is-win* (string-equal system-type "windows-nt"))
 (defconst *is-mac* (string-equal system-type "darwin"))
 (defconst *is-linux* (string-equal system-type "gnu/linux"))
 
-;; --------- TIME ----------
+;; TIME FUNCS 
 (defun +insert-timestamp ()
   "Insert timestamp of the current point in time."
   (interactive)
@@ -25,7 +25,7 @@
   (setq tmw (+ (* 24 60 60) (time-convert nil 'integer)))
   (insert (format-time-string "%Y-%m-%d %a" tmw)))
 
-;; -------------------- LEXICAL ------------------
+;; LEXICAL
 (defun lexical-binding ()
   (interactive)
   (goto-char (point-min))
