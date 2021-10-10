@@ -12,12 +12,12 @@
 
 (with-eval-after-load "org-roam"
   ;; https://www.orgroam.com/manual.html#Roam-Protocol
-  (global-set-key (kbd "C-x M-n l") 'org-roam-buffer-toggle)
-  (global-set-key (kbd "C-x M-n f") 'org-roam-node-find)
-  (global-set-key (kbd "C-x M-n g") 'org-roam-graph)
-  (global-set-key (kbd "C-x M-n i") 'org-roam-node-insert)
-  (global-set-key (kbd "C-x M-n c") 'org-roam-capture)
-  (global-set-key (kbd "C-x M-n s") 'org-roam-db-sync)
+  (global-set-key (kbd "C-x n l") 'org-roam-buffer-toggle)
+  (global-set-key (kbd "C-x n f") 'org-roam-node-find)
+  (global-set-key (kbd "C-x n g") 'org-roam-graph)
+  (global-set-key (kbd "C-x n i") 'org-roam-node-insert)
+  (global-set-key (kbd "C-x n c") 'org-roam-capture)
+  (global-set-key (kbd "C-x n s") 'org-roam-db-sync)
 
   (org-roam-setup)
   (require 'org-roam-protocol))
