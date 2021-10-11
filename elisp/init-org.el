@@ -6,13 +6,13 @@
 (global-set-key (kbd "C-c a") 'org-agenda)
 (global-set-key (kbd "C-c c") 'org-capture)
 
-;;; BUILT-IN VARS
+;;; [BUILT-IN] VARS
 ;;; Consider using org together with Google Calendar directly
 ;;; TODO
 ;;; [X] connect org agenda to google calendar
 ;;; [X] sync agenda on laptop to iOS google calendar
 
-(setq org-agenda-files '("~/projects/org/cal.org"))
+[(setq org-agenda-files '("~/projects/org/cal.org"))]
 ;;			 "~/projects/org/projects.org"
 ;;			 "~/projects/org/reminder.org"))
 
@@ -21,7 +21,8 @@
 ;; from TODO-state, it will insert the CLOSED timestamp
 ;; (setq org-log-done 'time)
 
-;; try it out on Emacs 27.1
+;; [try] it out on Emacs 27.1
+
 ;; see https://brantou.github.io/2017/03/21/just-try/
 (setq
  org-deadline-warning-days 0
@@ -29,6 +30,18 @@
  org-hide-leading-stars t
  org-agenda-include-diary t
  org-src-fontify-natively t)
+
+;;; globally set category tags (literature, fleeting)
+;;; NOTE: this is NOT the CATEGORY special built-in property
+(setq org-tag-alist
+      '(("literature" . ?l)
+        ("fleeting" . ?f)))
+
+(setq org-tag-faces
+      '(("work" . "#d65d0e")
+	      ("personal" . "#fe8019")
+        ("literature" . "#8fbcbb")
+        ("fleeting" . "#a8b1c1")))
 
 ;;; TODO KEYWORDS FACES
 (setq org-todo-keywords
@@ -40,10 +53,6 @@
 (setq org-todo-keyword-faces
       '(("CANCELLED" . (:foreground "#a89984"))
         ("DOING" . (:foreground "#d79921"))))
-
-(setq org-tag-faces
-      '(("work" . "#d65d0e")
-	("personal" . "#fe8019")))
 
 
 ;;; ORG CAPTURE
