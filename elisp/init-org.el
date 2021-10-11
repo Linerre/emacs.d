@@ -1,15 +1,17 @@
-;; -*- lexical-binding: t -*-
+;;; -*- lexical-binding: t -*-
 
+;;; KEYBINDINGS
 ;;(global-set-key (kbd "C-c l") 'org-store-link)
 (global-set-key (kbd "C-c l") 'org-link-store-props)
 (global-set-key (kbd "C-c a") 'org-agenda)
 (global-set-key (kbd "C-c c") 'org-capture)
-;;; ------------------- ORG MODE ---------------------
-;;; Consider using Google Calendar directly
+
+;;; BUILT-IN VARS
+;;; Consider using org together with Google Calendar directly
 ;;; TODO
-;;; 1) connect org agenda to google calendar
-;;; 2) sync agenda on laptop to iOS google calendar
-;; org-mode keys
+;;; [X] connect org agenda to google calendar
+;;; [X] sync agenda on laptop to iOS google calendar
+
 (setq org-agenda-files '("~/projects/org/cal.org"))
 ;;			 "~/projects/org/projects.org"
 ;;			 "~/projects/org/reminder.org"))
@@ -28,7 +30,7 @@
  org-agenda-include-diary t
  org-src-fontify-natively t)
 
-;; org-mode to do
+;;; TODO KEYWORDS FACES
 (setq org-todo-keywords
       '((sequence "TODO(t)" "|" "DOING(n)" "DONE(d)")
 	(sequence "CANCELLED(c@)" "|" "EVENT(e)" "IDEA(a)" "WATCH(w)")
@@ -44,9 +46,7 @@
 	("personal" . "#fe8019")))
 
 
-;;; --------------------------------------------------------------
-;;; -------------------- ORG CAPTURE -----------------------------
-;;; --------------------------------------------------------------
+;;; ORG CAPTURE
 (setq org-capture-templates nil)
 
 ;; inbox-tasks
@@ -106,8 +106,7 @@
       org-log-refile t)
 (with-eval-after-load 'org
   (add-hook 'org-mode-hook 'yas-minor-mode)
-  ;;(add-hook 'org-mode-hook 'visual-line-mode)
-  ;; the minor mode will handle visual-line-mode
+  (add-hook 'org-mode-hook 'visual-line-mode)
   ;; (setq org-startup-indented t) should work the same
   (add-hook 'org-mode-hook 'org-indent-mode)
   ;; defaults to 2
@@ -117,15 +116,11 @@
 (unless *is-win*
   (require 'init-org-roam))
 
-;;; ------------------- ORG GCAL ---------------------
-;;; Must use full path?
+;;; ORG GCAL
 (when (file-exists-p "~/.emacs.d/elisp/init-org-gcal.el")
      (require 'init-org-gcal))
 
-
-;;; --------------------------------------------------
-;;; ------------------- ORG BABEL --------------------
-;;; --------------------------------------------------
+;;; ORG BABEL
 (require 'org-tempo)
 (setq org-src-fontify-natively t)
 (org-babel-do-load-languages
@@ -136,6 +131,5 @@
    (sqlite . t)
    (latex . t)
    (emacs-lisp . t)))
-
 
 (provide 'init-org)
