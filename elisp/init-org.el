@@ -106,8 +106,13 @@
       org-log-refile t)
 (with-eval-after-load 'org
   (add-hook 'org-mode-hook 'yas-minor-mode)
-  (add-hook 'org-mode-hook 'visual-line-mode)
-  (org-indent-mode t))
+  ;;(add-hook 'org-mode-hook 'visual-line-mode)
+  ;; the minor mode will handle visual-line-mode
+  ;; (setq org-startup-indented t) should work the same
+  (add-hook 'org-mode-hook 'org-indent-mode)
+  ;; defaults to 2
+  (setq org-indent-indentation-per-level 1))
+
 
 (unless *is-win*
   (require 'init-org-roam))
