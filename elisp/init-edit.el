@@ -8,14 +8,14 @@
 ;; open init.el
 (defun open-init-file()
   (interactive)
-  (find-file "~/.config/emacs/init.el"))
+  (find-file "~/.emacs/init.el"))
 
 (global-set-key (kbd "<f2>") 'open-init-file)
 
 ;;; open org bank
 (defun open-org-dir()
   (interactive)
-  (find-file "~/projects/gkroam/org"))
+  (find-file "~/projects/org"))
 (global-set-key (kbd "<f4>") 'open-org-dir)
 
 ;;; open posts
