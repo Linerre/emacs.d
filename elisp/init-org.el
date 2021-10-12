@@ -11,8 +11,7 @@
 ;;; TODO
 ;;; [X] connect org agenda to google calendar
 ;;; [X] sync agenda on laptop to iOS google calendar
-
-[(setq org-agenda-files '("~/projects/org/cal.org"))]
+(setq org-agenda-files '("~/projects/org/cal.org"))
 ;;			 "~/projects/org/projects.org"
 ;;			 "~/projects/org/reminder.org"))
 
