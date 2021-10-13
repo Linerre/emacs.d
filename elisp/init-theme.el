@@ -6,7 +6,7 @@
 (load-theme 'kaolin-light t)
 
 ;; load the cutomized theme here
-(require 'roam-research-default)
+(require 'roam-research-default-theme)
 (load-theme 'roam-research-default t)
 
 (when (display-graphic-p)

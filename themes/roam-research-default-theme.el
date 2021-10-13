@@ -9,9 +9,9 @@
  'roam-research-default
  ;; use nord's dark colors for now
  ;; TODO: bind colors to vars
- '(org-level-3 (:background "#2e3440" :bold nil))
- '(org-level-4 (:background "#2e3440" :bold nil))
- '(org-level-5 (:background "#2e3440" :bold nil)))
+ '(org-level-3 ((t (:foreground "#2e3440" :bold nil))))
+ '(org-level-4 ((t (:foreground "#2e3440" :bold nil))))
+ '(org-level-5 ((t (:foreground "#2e3440" :bold nil)))))
 
 (and load-file-name
      (boundp 'custom-theme-load-path)
