@@ -14,7 +14,7 @@
   (menu-bar-mode -1)
   (cond (*is-mac*
          (add-to-list 'default-frame-alist
-                      '(font . "Courier-18")))
+                      '(font . "Sarasa Mono SC-16")))
         (*is-linux*
          (add-to-list 'default-frame-alist
                       ;'(font . "Courier New-16:bold")))))
