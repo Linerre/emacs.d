@@ -120,10 +120,6 @@
   ;; defaults to 2
   (setq org-indent-indentation-per-level 1))
 
-
-(unless *is-win*
-  (require 'init-org-roam))
-
 ;;; ORG GCAL
 (when (file-exists-p "~/.emacs.d/elisp/init-org-gcal.el")
      (require 'init-org-gcal))
