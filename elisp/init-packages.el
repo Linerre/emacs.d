@@ -13,8 +13,10 @@
 ;; Initialize package.el unless this already done
 (unless (bound-and-true-p package--initialized)
   (package-initialize))
-;;(when (memq window-system '(pc ns x))
-;;  (exec-path-from-shell-initialize))
+
+;; only need this on macOS or Windows
+(when (memq window-system '(pc ns))
+  (exec-path-from-shell-initialize))
 
 (unless package-archive-contents
   (package-refresh-contents))
