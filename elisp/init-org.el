@@ -39,7 +39,7 @@
 (setq org-tag-faces
       '(("work" . "#d65d0e")
 	      ("personal" . "#fe8019")
-        ("literature" . "#8fbcbb")
+        ("literature" . "light sea green")
         ("fleeting" . "#a8b1c1")))
 
 ;;; TODO KEYWORDS FACES
