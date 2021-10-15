@@ -9,10 +9,16 @@
  'roam-research-default
  ;; use nord's dark colors for now
  ;; TODO: bind colors to vars
- '(org-level-3 ((t (:foreground "black" :bold nil))))
- '(org-level-4 ((t (:foreground "black" :bold nil))))
- '(org-level-5 ((t (:foreground "#2e3440" :bold nil))))
- '(org-link ((t (:foreground "#1e90ff" :bold nil)))))
+ '(org-level-2 ((t (:bold t))))
+ '(org-level-3 ((t (:foreground "black"))))
+ '(org-level-4 ((t (:foreground "black"))))
+ '(org-level-5 ((t (:foreground "black"))))
+ ;; roam research backlink color
+ '(org-link ((t (:foreground "#106ba3"))))
+ ;; foregroud UChicargo maron;
+ '(org-code ((t (:foreground "#800000" :family "Monospace Serif" :bold nil))))
+ ;; foreground roam bold;
+ '(org-verbatim ((t (:foreground "#5c7080" :bold t :height 0.9)))))
 
 
 (and load-file-name

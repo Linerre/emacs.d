@@ -39,7 +39,8 @@
 (setq org-tag-faces
       '(("work" . "#d65d0e")
 	      ("personal" . "#fe8019")
-        ("literature" . "light sea green")
+        ;; Gruvbox dark aqua
+        ("literature" . "#427b58")
         ("fleeting" . "#a8b1c1")))
 
 ;;; TODO KEYWORDS FACES
