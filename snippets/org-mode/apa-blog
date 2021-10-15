@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: apa-blog
+# key: apa
+# --
+${1:Last name}, ${2:initials}. (${3:Year}, ${4:Month Day}). ${5:Article Title}. /${6:blog name}/. ${7:URL}<<$1, $3>> [last accessed: `(format-time-string "%Y-%m-%d %H:%M")`]
