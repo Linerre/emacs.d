@@ -138,8 +138,8 @@
    '("&" . meow-query-replace)
    '("%" . meow-query-replace-regexp)
    '("'" . repeat)
-   '("\\" . quoted-insert)
-   '("<escape>" . meow-last-buffer)))
+   '("\\" . quoted-insert)))
+   ;'("<escape>" . meow-last-buffer)))
 
 (setq
  meow-visit-sanitize-completion nil
