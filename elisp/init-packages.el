@@ -23,19 +23,26 @@
 
 (defvar packages-list
   '(company
+    cider
+    clojure-mode
+    clj-refactor
+
     eglot
     emmet-mode
     exec-path-from-shell
     flycheck
-
+    flycheck-clj-kondo
     highlight-defined
 
     jinja2-mode
+    js2-mode
+    json-mode
 
     kaolin-themes
     magit
     markdown-mode
     meow
+    nix-mode
     org-roam
     ob-restclient
     selectrum
