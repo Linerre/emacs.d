@@ -37,6 +37,7 @@
    '("}" . "C-}")
    '("." . "M-.")
    '("," . "M-,")
+   '("<escape>" . "C-g")
    ;; window management
    '("w" . other-window)
    '("W" . window-swap-states)
