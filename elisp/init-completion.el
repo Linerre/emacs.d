@@ -61,6 +61,8 @@
 (autoload #'company-mode "company")
 
 (add-hook 'prog-mode-hook 'company-mode)
+(add-hook 'org-mode-hook 'company-mode)
+(add-hook 'text-mode-hook 'company-mode)
 (add-hook 'conf-mode-hook 'company-mode)
 (add-hook 'eshell-mode-hook 'company-mode)
 

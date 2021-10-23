@@ -22,7 +22,11 @@
   (package-refresh-contents))
 
 (defvar packages-list
-  '(company
+  '(auctex
+    auctex-lua
+    auctex-latexmk
+    cdlatex
+    company
     cider
     clojure-mode
     clj-refactor
