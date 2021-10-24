@@ -79,7 +79,7 @@
   (define-key company-active-map [return] nil)
   (define-key company-active-map (kbd "RET") nil)
   (define-key company-active-map (kbd "SPC") nil)
-  (define-key company-active-map (kbd "SPC") nil)
+  ;;(define-key company-active-map (kbd "SPC") nil)
   (define-key company-active-map (kbd "{") #'company-select-previous)
   (define-key company-active-map (kbd "}") #'company-select-next)
 
