@@ -11,7 +11,6 @@
 (add-to-list 'load-path (expand-file-name "themes" user-emacs-directory))
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 
-
 (require 'init-options)
 (require 'init-utils)
 (require 'init-packages)

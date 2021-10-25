@@ -28,9 +28,7 @@
   (define-key yas-keymap (kbd "RET") 'yas-next-field-or-maybe-expand)
   (define-key yas-keymap (kbd "S-<return>") 'yas-prev-field))
 
-
 ;; company
-;; Enable company globally but fall back to DogEmacs if any problem:
 
 (setq
  company-frontends '(company-pseudo-tooltip-frontend
@@ -87,7 +85,6 @@
   (define-key company-template-nav-map [return] 'company-template-forward-field)
   (define-key company-template-nav-map (kbd "TAB") nil)
   (define-key company-template-nav-map [tab] nil))
-;;(global-company-mode t)
 
 
 (require 'selectrum)
