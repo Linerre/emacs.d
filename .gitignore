@@ -1,6 +1,7 @@
 # ignore pkgs, bookmarks, etc.
 auto-save-list
 elpa/
+elpa-backup/
 bookmarks
 recentf
 rime/
@@ -10,6 +11,7 @@ gkroam/
 librime/
 request/
 org-gcal/
+eln-cache/
 init-org-gcal.el
 projects
 # ignore roam db for now
