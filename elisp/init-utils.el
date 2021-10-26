@@ -8,7 +8,7 @@
 (defconst *is-mac* (string-equal system-type "darwin"))
 (defconst *is-linux* (string-equal system-type "gnu/linux"))
 
-;; TIME FUNCS 
+;; TIME FUNCS
 (defun +insert-timestamp ()
   "Insert timestamp of the current point in time."
   (interactive)
@@ -35,5 +35,7 @@
 (global-set-key (kbd "C-c t d") #'+insert-today-date-string)
 (global-set-key (kbd "C-c t m") #'+insert-tomorrow-date-string)
 
+;; TODO: consider move edit content here
+(require 'init-edit)
 
 (provide 'init-utils)

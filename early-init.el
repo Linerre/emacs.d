@@ -8,9 +8,13 @@
 
 ;;; Code:
 
-(setq package-enable-at-startup nil)
+(add-to-list 'load-path (expand-file-name "elisp" user-emacs-directory))
+(add-to-list 'load-path (expand-file-name "themes" user-emacs-directory))
+(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 
-;; So we can detect this having been loaded
+(require 'init-straight)
+(require 'init-options)
+
 (provide 'early-init)
 
 ;;; early-init.el ends

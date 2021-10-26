@@ -1,7 +1,8 @@
 ;;; init-javascript.el  -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
-
+(straight-use-package 'js2-mode)
+(straight-use-package 'json-mode)
 
 (add-to-list 'auto-mode-alist '("\\.\\(js\\|es6\\)\\(\\.erb\\)?\\'" . js-mode))
 

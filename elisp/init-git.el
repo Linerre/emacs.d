@@ -1,8 +1,8 @@
 ;;; -*- lexical-binding: t -*-
-
+(straight-use-package 'magit)
 
 ;;; magit
-
+(require 'magit)
 (with-eval-after-load "magit"
   (define-key transient-base-map (kbd "<escape>") #'transient-quit-one))
 
