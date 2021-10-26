@@ -2,6 +2,8 @@
 ;;; Author: Errelin
 ;;; Last Change: Sun Oct 10 01:04:01 2021
 
+(straight-use-package 'which-key)
+
 ;;; kill buffer
 (global-set-key (kbd "C-x k") 'kill-this-buffer)
 
