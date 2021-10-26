@@ -1,6 +1,6 @@
 ;;; -*- lexical-binding: t -*-
-;;; THEME
 
+(straight-use-package 'kaolin-themes)
 
 (require 'kaolin-themes)
 (load-theme 'kaolin-light t)

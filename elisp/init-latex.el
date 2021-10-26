@@ -1,6 +1,11 @@
 ;;; -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
+(straight-use-package 'auctex)
+(straight-use-package 'auctex-lua)
+(straight-use-package 'auctex-latexmk)
+(straight-use-package 'company-auctex)
+(straight-use-package 'cdlatex)
 
 (require 'smartparens-latex)
 

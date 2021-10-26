@@ -2,10 +2,12 @@
 ;;; -*- lexical-binding: t -*-
 ;;; ------------------- COMPLETION  -----------------------
 ;; use snippet when there is one, otherwise, company
-(defun +complete-or-snippet ()
-  (interactive)
-  (or (yas/expand)
-      (company-indent-or-complete-common nil)))
+
+(straight-use-package 'company)
+(straight-use-package 'yasnippet)
+(straight-use-package 'selectrum)
+(straight-use-package 'smartparens)
+
 
 ;;; yasnippet
 (setq yas-snippet-dirs

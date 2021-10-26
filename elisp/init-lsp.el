@@ -1,11 +1,11 @@
 ;;; -*- lexical-binding: t -*-
-
 ;;; Commentary:
 ;; see https://github.com/joaotavora/eglot/issues/518#issuecomment-664858272
 ;; project.el is a dependency for eglot
 ;; The current workaround is to load-library project manully
 
 ;;(load-library "project")
+(straight-use-package 'eglot)
 
 ;;; flymake
 (autoload #'flymake-mode "flymake" nil t)
@@ -34,6 +34,5 @@
   (define-key eglot-mode-map (kbd "<f6>") 'xref-find-definitions))
 
 (add-hook 'python-mode-hook 'eglot-ensure)
-
 
 (provide 'init-lsp)
