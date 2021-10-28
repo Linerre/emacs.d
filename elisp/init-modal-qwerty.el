@@ -149,13 +149,19 @@
  meow-select-on-change t
  meow-cursor-type-normal 'box
  meow-cursor-type-insert '(bar . 4)
- meow-selection-command-fallback '((meow-replace . meow-page-up)
-                                   (meow-change . meow-change-char)
-                                   (meow-save . meow-save-empty)
-                                   (meow-kill . meow-C-k)
-                                   (meow-cancel . keyboard-quit)
-                                   (meow-pop . meow-pop-grab)
-                                   (meow-delete . meow-C-d)))
+ meow-selection-command-fallback
+ '((meow-replace . meow-page-up)
+   (meow-change . meow-change-char)
+   (meow-save . meow-save-empty)
+   (meow-kill . meow-C-k)
+   (meow-cancel . keyboard-quit)
+   (meow-pop . meow-pop-grab)
+   (meow-delete . meow-C-d))
+ meow-replace-state-name-list
+ '((normal . "N")
+   (insert . "I")
+   (keypad . "K")
+   (motion . "M")))
 
 (require 'meow)
 
