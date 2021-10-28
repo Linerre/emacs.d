@@ -9,6 +9,11 @@
 (straight-use-package 'smartparens)
 
 
+(defun +complete ()
+  (interactive)
+  (or (yas/expand)
+      (company-indent-or-complete-common nil)))
+
 ;;; yasnippet
 (setq yas-snippet-dirs
   ;; personal snippets
@@ -71,8 +76,8 @@
   (require 'company-template)
   (add-hook 'company-mode-hook 'company-tng-mode)
 
-  (define-key company-mode-map [tab] '+complete-or-snippet)
-  (define-key company-mode-map (kbd "TAB") '+complete-or-snippet)
+  (define-key company-mode-map [tab] '+complete)
+  (define-key company-mode-map (kbd "TAB") '+complete)
   (define-key company-active-map [tab] 'company-complete-common-or-cycle)
   (define-key company-active-map (kbd "TAB") 'company-complete-common-or-cycle)
   (define-key company-active-map [escape] nil)
@@ -80,8 +85,8 @@
   (define-key company-active-map (kbd "RET") nil)
   (define-key company-active-map (kbd "SPC") nil)
   (define-key company-active-map (kbd "SPC") nil)
-  (define-key company-active-map (kbd "{") #'company-select-previous)
-  (define-key company-active-map (kbd "}") #'company-select-next)
+  (define-key company-active-map (kbd "C-p") #'company-select-previous)
+  (define-key company-active-map (kbd "C-n") #'company-select-next)
 
   (define-key company-template-nav-map (kbd "RET") 'company-template-forward-field)
   (define-key company-template-nav-map [return] 'company-template-forward-field)
