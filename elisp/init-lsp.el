@@ -26,7 +26,10 @@
 ;; TODO: python3 needs to be installed by nix
 (with-eval-after-load "eglot"
   (add-to-list 'eglot-server-programs
-               '(python-mode "/Users/errelin/Library/Python/3.9/bin/pyls"))
+               ;; TODO: need to make userhome a constatn
+               ;'(python-mode "/Users/errelin/Library/Python/3.9/bin/pyls")
+               '(vue-mode "/Users/errenil/.local/bin/vls"))
+
   ;; keybindings recommended in README of elgot
   (define-key eglot-mode-map (kbd "C-c r") 'eglot-rename)
   (define-key eglot-mode-map (kbd "C-c o") 'eglot-code-action-organize-imports)
