@@ -21,7 +21,7 @@
 (require 'init-markdown)
 (require 'init-web)
 (require 'init-git)
-(require 'init-modeline)
+(require 'init-modeline-dog)
 (require 'init-org)
 (require 'init-latex)
 (require 'init-server)

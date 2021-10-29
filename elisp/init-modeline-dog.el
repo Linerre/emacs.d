@@ -17,7 +17,7 @@
                 " ⊆ "
                 (:eval mode-name)
                 ))
-         (ww (window-width))
+         ;;(ww (window-width))
          (lhs-str (format-mode-line lhs))
          (rhs-str (format-mode-line rhs))
          (rhs-w (string-width rhs-str)))
