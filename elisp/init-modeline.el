@@ -16,6 +16,9 @@
 
 ;; My modeline as below:
 ;; buffer-file-name [Row:Col] (Relative Position) Git-branch Flymake Modes-alist
+
+(setq major-mode-name major-mode)
+
 (setq-default mode-line-format
               '((:eval (meow-indicator))
                 "[%2l:%2c]"
@@ -37,15 +40,16 @@
                  " "
                  'display
                  `((space :align-to (- (+ right right-fringe right-margin)
-                                       (+ 2
-                                          ,(string-width mode-name)
-                                          ,(string-width (buffer-name)))
+                                       ,(+ 5
+                                          (string-width mode-name)
+                                          (string-width (buffer-name)))
                                           ;,(string-width mode-line-buffer-identification))
                                        )))))
                 ;; show buffer-name, mode-name at the rightmost
-                "%b"
-                " "
                 (:eval mode-name)
+                " ⊇ "
+                "%b"
+                ;(:eval mode-name)
                 ))
 
 (provide 'init-modeline)
