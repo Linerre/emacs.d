@@ -8,8 +8,9 @@
 
 ;;; Code:
 
-(add-to-list 'load-path (expand-file-name "elisp" user-emacs-directory))
 (add-to-list 'load-path (expand-file-name "themes" user-emacs-directory))
+(add-to-list 'load-path (expand-file-name "langs" user-emacs-directory))
+(add-to-list 'load-path (expand-file-name "core" user-emacs-directory))
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 
 (require 'init-straight)
