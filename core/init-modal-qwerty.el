@@ -30,8 +30,7 @@
    ;; cheatsheet
    '("?" . meow-cheatsheet)
    ;; high frequency keybindings
-   '("e" . "C-x C-e")
-   '("s" . "C-x C-s")
+
    '("F" . "C-h")
    '(")" . "C-)")
    '("}" . "C-}")
@@ -45,14 +44,16 @@
    '("=" . split-window-right)
    '("-" . split-window-below)
    ;; high frequency commands
-   '("$" . +change-theme)
+   '("e" . "C-x C-e")
+   '("s" . "C-x C-s")
+   ;; '("$" . +change-theme)
    '(";" . comment-dwim)
    '("k" . kill-this-buffer)
    '("p" . project-find-file)
    '("j" . project-switch-to-buffer)
    '("d" . dired)
    '("b" . switch-to-buffer)
-   '("r" . rg-project)
+   ;; '("r" . rg-project)
    '("f" . find-file)
    '("i" . imenu)
    '("a" . "M-x")
@@ -62,9 +63,9 @@
    '("S" . smartparens-strict-mode)
    '("t" . telega)
    '("P" . pass)
-   '("R" . org-roam-mode)
+   ;; '("R" . org-roam-mode)
    '("A" . org-agenda)
-   '("D" . docker)
+   ;; '("D" . docker)
    ;; org
    '("U" . "C-u C-u")
    '("C" . "C-c C-c")
@@ -170,10 +171,10 @@
 (with-eval-after-load "meow"
   ;; make Meow usable in TUI Emacs
   (meow-esc-mode 1)
-  (add-to-list 'meow-mode-state-list '(inf-iex-mode . normal))
+  ;; (add-to-list 'meow-mode-state-list '(inf-iex-mode . normal))
   (add-to-list 'meow-mode-state-list '(authinfo-mode . normal))
-  (add-to-list 'meow-mode-state-list '(Custom-mode . normal))
-  (add-to-list 'meow-mode-state-list '(cider-test-report-mode . normal))
+  ;; (add-to-list 'meow-mode-state-list '(Custom-mode . normal))
+  ;; (add-to-list 'meow-mode-state-list '(cider-test-report-mode . normal))
   (add-to-list 'meow-grab-fill-commands 'eval-expression)
   (setq meow-cursor-type-keypad 'box)
   (setq meow-cursor-type-insert '(bar . 2))

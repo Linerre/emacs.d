@@ -36,7 +36,6 @@
  vc-follow-symlinks t
  ;; no auto-saving and backups for now
  ;; for backups, look up these options:
- ;; https://github.com/DogLooksGood/dogEmacs/blob/143fb868a23f52f71cfe29793a239a76a33bc375/elisp/init-defaults.el#L33
  ;; backup-directory-alist
  ;; backup-by-copying t
  ;; delete-old-versions t
@@ -58,7 +57,6 @@
  ;; tab-width defaults to 2 globally
  tab-width 2
  ;; make indent commands use space only
- ;; see http://ergoemacs.org/emacs/emacs_tabs_space_indentation_setup.html
  indent-tabs-mode nil
  comment-empty-lines t
  ;; Don't truncate lines in a window narrower than 65 chars.
@@ -94,17 +92,9 @@
 ;; Instead of enabling a minor mode globally
 ;; hook it to several major modes
 (add-hook 'prog-mode-hook 'visual-line-mode)
-(add-hook 'conf-mode-hook 'visual-line-mode)
-;; enabling visual-line-mode make help-mode buffer look weird
-;;(add-hook 'help-mode-hook 'visual-line-mode)
 (add-hook 'prog-mode-hook 'hl-line-mode)
-(add-hook 'conf-mode-hook 'hl-line-mode)
 (add-hook 'prog-mode-hook 'display-line-numbers-mode)
-(add-hook 'text-mode-hook 'display-line-numbers-mode)
-(add-hook 'conf-mode-hook 'display-line-numbers-mode)
 (add-hook 'prog-mode-hook 'show-paren-mode)
-(add-hook 'conf-mode-hook 'show-paren-mode)
-;;(add-hook 'prog-mode-hook 'subword-mode)
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 (provide 'init-options)
