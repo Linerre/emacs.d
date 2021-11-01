@@ -16,9 +16,10 @@
   (tool-bar-mode -1)
   (scroll-bar-mode -1)
   (menu-bar-mode -1)
+  (setq default-frame-alist '((width . 169) (height . 48)))
   (cond (*is-mac*
          (add-to-list 'default-frame-alist
-                      '(font . "Sarasa Mono SC-16")))
+                      '(font . "Inconsolata-16")))
         (*is-linux*
          (add-to-list 'default-frame-alist
                       ;'(font . "Courier New-16:bold")))))
