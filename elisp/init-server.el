@@ -1,11 +1,11 @@
-;; -*- lexical-binding: t -*-
-;; start emacs server ONLY when:
-;; 1) GUI is running
-;; 2) no server is running ATM
-;; Inspired by purcell and dogEmacs
-;; Last Change: Mon Aug 23 21:51:35 2021
+;;; -*- lexical-binding: t -*-
+;;; start emacs server ONLY when:
+;;; 1) GUI is running
+;;; 2) no server is running ATM
+;;; Inspired by purcell and dogEmacs
+;;; Last Change: Mon Aug 23 21:51:35 2021
 
-;;; Allow access from emacsclien
+;;; Allow access from emacsclient
 (require 'server)
 (add-hook 'after-init-hook
           (lambda ()

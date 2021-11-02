@@ -1,5 +1,4 @@
 ;; -*- lexical-binding: t -*-
-(straight-use-package 'org-roam)
 (straight-use-package 'ob-restclient)
 
 ;;(global-set-key (kbd "C-c l") 'org-store-link)
@@ -111,8 +110,6 @@
   (add-hook 'org-mode-hook 'visual-line-mode)
   (org-indent-mode t))
 
-(unless *is-win*
-  (require 'init-org-roam))
 
 ;;; ------------------- ORG GCAL ---------------------
 ;;; Must use full path?
