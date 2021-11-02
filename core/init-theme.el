@@ -8,8 +8,8 @@
 (load-theme 'kaolin-light t)
 
 ;; load the cutomized theme here
-(require 'roam-research-default-theme)
-(load-theme 'roam-research-default t)
+(require 'kaolin-light-tweak-theme)
+(load-theme 'kaolin-light-tweak t)
 
 ;; font
 (when (display-graphic-p)
@@ -36,6 +36,7 @@
 (with-eval-after-load "dired-sidebar"
   (add-hook 'dired-sidebar-mode-hook 'hl-line-mode)
   (setq dired-sidebar-theme 'ascii
+        dired-sidebar-width 30
         dired-sidebar-use-custome-font t
         dired-sidebar-face '(:weight bold)))
 
