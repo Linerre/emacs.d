@@ -18,6 +18,7 @@
 
 ;; vue-mode is a major mode while emmet-mode is a minor one
 ;; use vue-mode for *.vue files
+;; emmet-mode
 (add-hook 'mhtml-mode-hook 'emmet-mode)
 (add-hook 'css-mode-hook 'emmet-mode)
 
@@ -39,5 +40,10 @@
   (add-hook 'mmm-mode-hook
           (lambda ()
             (set-face-background 'mmm-default-submode-face nil))))
+
+;; svelte
+(with-eval-after-load "svelte-mode"
+  (add-hook 'svelte-mode-hook 'emmet-mode))
+
 (provide 'lang-web)
 ;;; lang-web.el ends here
