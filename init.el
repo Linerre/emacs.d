@@ -12,9 +12,9 @@
 (require 'init-theme)
 (require 'init-modal-qwerty)
 (require 'init-completion)
+(require 'init-smartparens)
 (require 'init-git)
 (require 'init-modeline-dog)
-
 (require 'lang-lisp)
 (require 'lang-nix)
 (require 'lang-web)

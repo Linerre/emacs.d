@@ -6,7 +6,7 @@
 (straight-use-package 'company)
 (straight-use-package 'yasnippet)
 (straight-use-package 'selectrum)
-(straight-use-package 'smartparens)
+
 
 
 (defun +complete ()
