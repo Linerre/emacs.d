@@ -7,10 +7,12 @@
 (straight-use-package 'js2-mode)
 (straight-use-package
  '(vue-mode :type git :host github :repo "AdamNiederer/vue-mode"))
+(straight-use-package
+ '(svelte-mode :type git :host github :repo "leafOfTree/svelte-mode"))
 (straight-use-package 'json-mode)
 
 ;; jinja2-mode
-(autoload #'jinja2-mode "jinja2-mode")
+;; (autoload #'jinja2-mode "jinja2-mode")
 (add-hook 'jinja2-mode-hook 'yas-minor-mode)
 (add-hook 'jinja2-mode-hook 'visual-line-mode)
 
@@ -30,6 +32,12 @@
 
 ;; vue
 ;; (autoload #'vue-mode "vue-mode" nil t)
-
+(with-eval-after-load "vue-mode"
+  (add-hook 'vue-mode-hook 'emmet-mode)
+  (add-hook 'vue-mode-hook 'hl-line-mode)
+  (add-hook 'vue-mode-hook 'display-line-numbers-mode)
+  (add-hook 'mmm-mode-hook
+          (lambda ()
+            (set-face-background 'mmm-default-submode-face nil))))
 (provide 'lang-web)
 ;;; lang-web.el ends here
