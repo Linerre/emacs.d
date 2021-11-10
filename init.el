@@ -10,7 +10,7 @@
 
 (require 'init-utils)
 (require 'init-theme)
-(require 'init-modal-qwerty)
+(require 'init-meow)
 (require 'init-completion)
 (require 'init-smartparens)
 (require 'init-git)
