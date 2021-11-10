@@ -2,6 +2,18 @@
 ;;; Commentary:
 ;;; Code
 (straight-use-package '(meow :type git :host github :repo "DogLooksGood/meow"))
+(straight-use-package '(ford-this.el :type git :host github :repo "magnars/fold-this.el"))
+
+(autoload #'fold-this "fold-this" nil t)
+;; meow
+(setq meow-expand-hint-remove-delay 1.5
+      meow-use-cursor-position-hack t
+      meow-replace-state-name-list
+      '((normal . "N")
+        (insert . "I")
+        (keypad . "K")
+        (motion . "M")
+        (bmacro . "B")))
 
 (require 'meow)
 
@@ -30,34 +42,42 @@
    ;; cheatsheet
    '("?" . meow-cheatsheet)
    ;; high frequency keybindings
-
-   '("F" . "C-h")
-   '(")" . "C-)")
-   '("}" . "C-}")
+   ;'("F" . "C-h")
+   ;'(")" . "C-)")
+   ;'("}" . "C-}")
    '("." . "M-.")
    '("," . "M-,")
    '("<escape>" . "C-g")
    ;; window management
-   '("w" . other-window)
-   '("W" . window-swap-states)
+   '("w" . windmove-up)
+   '("a" . windmove-left)
+   '("s" . windmove-down)
+   '("d" . windmove-right)
+   '("r w" . windmove-delete-up)
+   '("r a" . windmove-delete-left)
+   '("r s" . windmove-delete-down)
+   '("r d" . windmove-delete-right)
+   ;'("W" . window-swap-states)
    '("o" . delete-other-windows)
    '("=" . split-window-right)
    '("-" . split-window-below)
    ;; high frequency commands
    '("e" . "C-x C-e")
-   '("s" . "C-x C-s")
+   '("<SPC>" . "C-x C-s")
    ;; '("$" . +change-theme)
    '(";" . comment-dwim)
    '("k" . kill-this-buffer)
    '("p" . project-find-file)
    '("j" . project-switch-to-buffer)
-   '("d" . dired)
+   ;'("d" . dired)
    '("b" . switch-to-buffer)
    ;; '("r" . rg-project)
    '("f" . find-file)
    '("i" . imenu)
-   '("a" . "M-x")
-   '("v" . "C-x g")
+   '("n" . "M-x")
+   '("g" . "C-x g")
+   '("z" . fold-this)
+   '("Z" . fold-this)
    ;; toggles
    '("L" . display-line-numbers-mode)
    '("S" . smartparens-strict-mode)
@@ -158,11 +178,7 @@
    (meow-cancel . keyboard-quit)
    (meow-pop . meow-pop-grab)
    (meow-delete . meow-C-d))
- meow-replace-state-name-list
- '((normal . "N")
-   (insert . "I")
-   (keypad . "K")
-   (motion . "M")))
+ )
 
 (require 'meow)
 
@@ -186,4 +202,4 @@
   ;; add indicator to modeline
   (meow-setup-indicator))
 
-(provide 'init-modal-qwerty)
+(provide 'init-meow)
