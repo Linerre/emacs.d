@@ -10,8 +10,9 @@
 
 (require 'init-utils)
 (require 'init-theme)
-(require 'init-modal-qwerty)
+(require 'init-meow)
 (require 'init-completion)
+<<<<<<< HEAD
 ;(require 'init-lsp)
 ;(require 'init-clojure)
 ;(require 'init-lisp)
@@ -25,3 +26,11 @@
 ;(require 'init-org)
 ;(require 'init-latex)
 ;(require 'init-server)
+=======
+(require 'init-smartparens)
+(require 'init-git)
+(require 'init-modeline-dog)
+(require 'lang-lisp)
+(require 'lang-nix)
+(require 'lang-web)
+>>>>>>> js/vue-mode

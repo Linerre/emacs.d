@@ -1,14 +1,20 @@
 ;;; -*- lexical-binding: t -*-
 
-;;; This small theme is meant to block all the headline colors in org mode
-;;; plus a few other tweaks so that org mode looks far less colorful
+;;; This small theme provide the following tweaks:
+;;; 1. Block all headline colors under level 2
+;;; 2. Make org mode look more like roam research
+;;; 3. Other minor tweaks suitable for all the modes in use
 
-(deftheme roam-research-default "A simple black-and-white-based theme that mimics roam research's default style")
+(deftheme kaolin-light-tweak "A simple black-and-white-based theme that mimics roam research's default style")
 
 (custom-theme-set-faces
- 'roam-research-default
+ 'kaolin-light-tweak
  ;; use nord's dark colors for now
  ;; TODO: bind colors to vars
+ '(meow-keypad-indicator  ((t (:bold t))))
+ '(meow-insert-indicator  ((t (:bold t))))
+ '(meow-normal-indicator  ((t (:bold t))))
+ '(meow-motion-indicator  ((t (:bold t))))
  '(org-level-2 ((t (:bold t))))
  '(org-level-3 ((t (:foreground "black"))))
  '(org-level-4 ((t (:foreground "black"))))
@@ -27,4 +33,4 @@
                   (file-name-as-directory
                    (file-name-directory load-file-name))))
 
-(provide-theme 'roam-research-default)
+(provide-theme 'kaolin-light-tweak)
