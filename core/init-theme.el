@@ -19,11 +19,15 @@
   (setq default-frame-alist '((width . 169) (height . 48)))
   (cond (*is-mac*
          (add-to-list 'default-frame-alist
+<<<<<<< HEAD
                       '(font . "Inconsolata-16")))
+=======
+                      '(font . "IBM Plex Mono-16")))
+>>>>>>> 432bc88 (clean working tree)
         (*is-linux*
          (add-to-list 'default-frame-alist
                       ;'(font . "Courier New-16:bold")))))
-                      '(font . "Liberation Mono-16")))))
+                      '(font . "IBM Plex Mono-16")))))
 ;; use terminal theme/font in TUI with minor fixes
 (when (not (display-graphic-p))
   (menu-bar-mode -1))
