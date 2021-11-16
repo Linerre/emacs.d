@@ -14,7 +14,7 @@
                 (:eval (when (bound-and-true-p flymake-mode)
                          flymake-mode-line-format))))
          (rhs '("%b"
-                " ⊆ "
+                " | "
                 (:eval mode-name)
                 ))
          ;;(ww (window-width))
