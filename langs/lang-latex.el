@@ -25,5 +25,10 @@
   (setq TeX-view-program-selection
         '((output-pdf "Skim")
           (output-dvi "xdvi"))))
-
-(provide 'init-latex)
+(when *is-linux*
+  (setq TeX-view-program-list
+        '(("Zathura" "zathura %o")))
+  (setq TeX-view-program-selection
+        '((output-pdf "Zathura")
+          (output-dvi "xdvi"))))
+(provide 'lang-latex)
