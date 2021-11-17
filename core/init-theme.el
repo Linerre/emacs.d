@@ -1,7 +1,10 @@
 ;;; -*- lexical-binding: t -*-
 
 (straight-use-package 'kaolin-themes)
+<<<<<<< HEAD
 (straight-use-package 'emacs-neotree)
+=======
+>>>>>>> dedbe5d (found back my lost sidebar!)
 (straight-use-package 'dired-sidebar)
 
 (require 'kaolin-themes)
@@ -35,7 +38,11 @@
 ;; tree
 (autoload
   #'dired-sidebar-toggle-sidebar "dired-sidebar" nil t)
+<<<<<<< HEAD
 (global-set-key (kbd "C-v") #'dired-sidebar-toggle-sidebar)
+=======
+(global-set-key (kbd "C-c f") #'dired-sidebar-toggle-sidebar)
+>>>>>>> dedbe5d (found back my lost sidebar!)
 
 (with-eval-after-load "dired-sidebar"
   (add-hook 'dired-sidebar-mode-hook 'hl-line-mode)
