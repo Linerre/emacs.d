@@ -82,6 +82,7 @@
  custom-file (expand-file-name "custom.el" user-emacs-directory)
  ;; eldoc idle delay
  eldoc-idle-delay 1
+ ispell-program-name "aspell"
  debug-on-error t)
  ;;inhibit-compacting-font-caches t
 
