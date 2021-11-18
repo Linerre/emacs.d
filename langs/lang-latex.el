@@ -32,9 +32,6 @@
 
 (autoload #'latex-mode "tex-mode" nil t)
 (add-hook 'LaTeX-mode-hook #'flyspell-mode)
-(add-hook 'LaTeX-mode-hook 'global-linum-mode)
-(add-hook 'LaTeX-mode-hook 'hl-line-mode)
-(add-hook 'LaTeX-mode-hook 'visual-line-mode)
 (add-hook 'LaTeX-mode-hook 'turn-on-cdlatex)
 (add-hook 'LaTeX-mode-hook #'company-auctex-init)
 (add-hook 'LaTeX-mode-hook #'+which-pdf-viewer)

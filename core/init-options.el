@@ -1,6 +1,6 @@
 ;;; Various emacs built-in options set for both GUI and TUI
-;;; Author: Errelin
-;;; Last Change:
+;;; Author: Errenil
+;;; Last Change: 2021-11-18 Thu
 
 (setq-default
  ;; startup config
@@ -83,12 +83,12 @@
  ;; eldoc idle delay
  eldoc-idle-delay 1
  ispell-program-name "aspell"
+ org-directory "~/projects/org"
  debug-on-error t)
  ;;inhibit-compacting-font-caches t
 
 ;; set yes-or-no-p to use y-or-n-p
 (fset 'yes-or-no-p 'y-or-n-p)
-
 
 ;; Instead of enabling a minor mode globally
 ;; hook it to several major modes
@@ -96,6 +96,9 @@
 (add-hook 'prog-mode-hook 'hl-line-mode)
 (add-hook 'prog-mode-hook 'display-line-numbers-mode)
 (add-hook 'prog-mode-hook 'show-paren-mode)
+(add-hook 'text-mode-hook 'visual-line-mode)
+(add-hook 'text-mode-hook 'hl-line-mode)
+(add-hook 'text-mode-hook (lambda () (set-window-margins nil 2)))
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 (provide 'init-options)
