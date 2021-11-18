@@ -83,7 +83,6 @@
  ;; eldoc idle delay
  eldoc-idle-delay 1
  ispell-program-name "aspell"
- org-directory "~/projects/org"
  debug-on-error t)
  ;;inhibit-compacting-font-caches t
 
