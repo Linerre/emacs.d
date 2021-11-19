@@ -104,6 +104,7 @@
 (add-hook 'prog-mode-hook 'show-paren-mode)
 (add-hook 'text-mode-hook 'visual-line-mode)
 (add-hook 'text-mode-hook 'hl-line-mode)
+(add-hook 'text-mode-hook 'flyspell-mode)
 (add-hook 'text-mode-hook #'+add-margins-to-textmode)
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
