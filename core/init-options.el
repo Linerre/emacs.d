@@ -92,8 +92,9 @@
 ;; cutome funs to be hooked to various modes
 (defun +add-margins-to-textmode ()
   "When in text-mode, add margins to both sides of the current buffer."
-  (setq left-margin-width 4)
-  (setq right-margin-width 4))
+  (unless (memq major-mode '(mhtml-mode css-mode))
+    (setq left-margin-width 4)
+    (setq right-margin-width 4)))
 
 ;; Instead of enabling a minor mode globally
 ;; hook it to several major modes
