@@ -89,6 +89,12 @@
 ;; set yes-or-no-p to use y-or-n-p
 (fset 'yes-or-no-p 'y-or-n-p)
 
+;; cutome funs to be hooked to various modes
+(defun +add-margins-to-textmode ()
+  "When in text-mode, add margins to both sides of the current buffer."
+  (setq left-margin-width 4)
+  (setq right-margin-width 4))
+
 ;; Instead of enabling a minor mode globally
 ;; hook it to several major modes
 (add-hook 'prog-mode-hook 'visual-line-mode)
@@ -97,7 +103,7 @@
 (add-hook 'prog-mode-hook 'show-paren-mode)
 (add-hook 'text-mode-hook 'visual-line-mode)
 (add-hook 'text-mode-hook 'hl-line-mode)
-(add-hook 'text-mode-hook (lambda () (set-window-margins nil 2)))
+(add-hook 'text-mode-hook #'+add-margins-to-textmode)
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 (provide 'init-options)
