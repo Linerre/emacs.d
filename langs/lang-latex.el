@@ -31,7 +31,6 @@
 (setq-default Tex-master nil)
 
 (autoload #'latex-mode "tex-mode" nil t)
-(add-hook 'LaTeX-mode-hook #'flyspell-mode)
 (add-hook 'LaTeX-mode-hook 'turn-on-cdlatex)
 (add-hook 'LaTeX-mode-hook #'company-auctex-init)
 (add-hook 'LaTeX-mode-hook #'+which-pdf-viewer)
