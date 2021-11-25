@@ -17,5 +17,6 @@
 (require 'init-modeline-dog)
 (require 'lang-lisp)
 (require 'lang-nix)
+(require 'lang-go)
 (require 'lang-latex)
 (require 'lang-web)
