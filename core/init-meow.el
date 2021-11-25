@@ -21,13 +21,15 @@
 
 (defun meow-setup ()
   (setq meow-cheatsheet-layout meow-cheatsheet-layout-qwerty)
-  (meow-motion-overwrite-define-key
-   '("j" . meow-next)
-   '("k" . meow-prev))
+  ;; use C-n/p to move up/down in Motion mode instead
+  ;; Otherwise j/k will not be recognized as characters in gdb mode
+  ;;(meow-motion-overwrite-define-key
+  ;; '("j" . meow-next)
+  ;; '("k" . meow-prev))
   (meow-leader-define-key
    ;; SPC j/k will run the original command in MOTION state.
-   '("j" . meow-motion-origin-command)
-   '("k" . meow-motion-origin-command)
+   ;;'("j" . meow-motion-origin-command)
+   ;;'("k" . meow-motion-origin-command)
    ;; Use SPC (0-9) for digit arguments.
    '("1" . meow-digit-argument)
    '("2" . meow-digit-argument)
