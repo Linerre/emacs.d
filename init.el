@@ -19,4 +19,5 @@
 (require 'lang-nix)
 (require 'lang-go)
 (require 'lang-latex)
+(require 'lang-org)
 (require 'lang-web)
