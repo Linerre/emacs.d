@@ -23,9 +23,9 @@
   (setq meow-cheatsheet-layout meow-cheatsheet-layout-qwerty)
   ;; use C-n/p to move up/down in Motion mode instead
   ;; Otherwise j/k will not be recognized as characters in gdb mode
-  ;;(meow-motion-overwrite-define-key
-  ;; '("j" . meow-next)
-  ;; '("k" . meow-prev))
+  (meow-motion-overwrite-define-key
+   '("j" . meow-next)
+   '("k" . meow-prev))
   (meow-leader-define-key
    ;; SPC j/k will run the original command in MOTION state.
    ;;'("j" . meow-motion-origin-command)
