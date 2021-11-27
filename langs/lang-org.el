@@ -138,4 +138,4 @@
 ;   (latex . t)
 ;   (emacs-lisp . t)))
 
-(provide 'init-org)
+(provide 'lang-org)
