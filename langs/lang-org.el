@@ -127,15 +127,15 @@
      (require 'init-org-gcal))
 
 ;;; ORG BABEL
-(require 'org-tempo)
-(setq org-src-fontify-natively t)
-(org-babel-do-load-languages
- 'org-babel-load-languages
- '((lua . t)
-   (python . t)
-   (C . t)
-   (sqlite . t)
-   (latex . t)
-   (emacs-lisp . t)))
+;(require 'org-tempo)
+;(setq org-src-fontify-natively t)
+;(org-babel-do-load-languages
+; 'org-babel-load-languages
+; '((lua . t)
+;   (python . t)
+;   (C . t)
+;   (sqlite . t)
+;   (latex . t)
+;   (emacs-lisp . t)))
 
 (provide 'init-org)
