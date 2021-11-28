@@ -13,7 +13,7 @@
  ;; frame, window, buffer config
  ;; prefer horizental split
  split-height-threshold nil
- split-width-threshold 120
+ split-width-threshold 100
  ;; don't create lockfiles
  ;;create-lockfiles nil
  frame-resize-pixelwise t
@@ -48,6 +48,8 @@
  mouse-yank-at-point t
  ;; this fix the cursor movement lag
  auto-window-vscroll nil
+ ;; scrolling
+ scroll-conservatively 200
  ;; use thiner than default(6) window divider
  window-divider-default-right-width 1
  window-divider-default-bottom-width 1
@@ -59,8 +61,8 @@
  ;; make indent commands use space only
  indent-tabs-mode nil
  comment-empty-lines t
- ;; Don't truncate lines in a window narrower than 65 chars.
- truncate-partial-width-windows 65
+ ;; Minimum width before truncate-line occurs
+ truncate-partial-width-windows 40
  ;; Default line number width.
  display-line-numbers-width 3
 
