@@ -25,6 +25,16 @@
   (setq tmw (+ (* 24 60 60) (time-convert nil 'integer)))
   (insert (format-time-string "%Y-%m-%d %a" tmw)))
 
+(defun +vc-branch-name ()
+  (when vc-mode
+    (propertize
+     (replace-regexp-in-string
+      "Git[-:]"
+      ""
+      (substring-no-properties vc-mode))
+     'face
+     'bold)))
+
 ;; LEXICAL
 (defun lexical-binding ()
   (interactive)

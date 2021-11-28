@@ -9,7 +9,8 @@
                 "("
                 (-3 "%p")
                 "/%I)"
-                (vc-mode vc-mode)
+                ;;(vc-mode vc-mode)
+                (:eval (+vc-branch-name))
                 (:eval (when (bound-and-true-p flycheck-mode) flycheck-mode-line))
                 (:eval (when (bound-and-true-p flymake-mode) flymake-mode-line-format))))
          (rhs '("%b"
