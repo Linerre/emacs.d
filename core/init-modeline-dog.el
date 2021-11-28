@@ -1,6 +1,6 @@
 ;; Mode Line  -*- lexical-binding: t; -*-
 
-(setq-default header-line-format nil)
+
 
 (defun +format-mode-line ()
   (let* ((lhs '((:eval (meow-indicator))
@@ -11,8 +11,7 @@
                 "/%I)"
                 (vc-mode vc-mode)
                 (:eval (when (bound-and-true-p flycheck-mode) flycheck-mode-line))
-                (:eval (when (bound-and-true-p flymake-mode)
-                         flymake-mode-line-format))))
+                (:eval (when (bound-and-true-p flymake-mode) flymake-mode-line-format))))
          (rhs '("%b"
                 " | "
                 (:eval mode-name)
@@ -27,5 +26,6 @@
             rhs-str)))
 
 (setq-default mode-line-format '((:eval (+format-mode-line))))
+(setq-default header-line-format nil)
 
 (provide 'init-modeline-dog)
