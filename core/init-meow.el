@@ -191,6 +191,7 @@
   (meow-esc-mode 1)
   ;; (add-to-list 'meow-mode-state-list '(inf-iex-mode . normal))
   (add-to-list 'meow-mode-state-list '(authinfo-mode . normal))
+  (add-to-list 'meow-mode-state-list '(bibtex-mode . normal))
   (add-to-list 'meow-mode-state-list '(gud-mode . normal))
   (add-to-list 'meow-mode-state-list '(shell-mode . normal))
   ;; (add-to-list 'meow-mode-state-list '(Custom-mode . normal))

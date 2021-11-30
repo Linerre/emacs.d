@@ -31,8 +31,17 @@
 (setq-default Tex-master nil)
 
 (autoload #'latex-mode "tex-mode" nil t)
-(add-hook 'LaTeX-mode-hook 'turn-on-cdlatex)
-(add-hook 'LaTeX-mode-hook #'company-auctex-init)
-(add-hook 'LaTeX-mode-hook #'+which-pdf-viewer)
+
+(with-eval-after-load 'tex-mode
+  (add-hook 'LaTeX-mode-hook 'turn-on-cdlatex)
+  (add-hook 'LaTeX-mode-hook #'company-auctex-init)
+  (add-hook 'LaTeX-mode-hook #'+which-pdf-viewer)
+  (add-hook 'LaTeX-mode-hook 'display-line-numbers-mode))
+
+(with-eval-after-load 'bibtex
+  (add-hook 'bibtex-mode-hook 'display-line-numbers-mode)
+  (add-hook 'bibtex-mode-hook 'visual-line-mode)
+  (add-hook 'bibtex-mode-hook 'hl-line-mode)
+  (add-hook 'bibtex-mode-hook 'flyspell-mode))
 
 (provide 'lang-latex)
