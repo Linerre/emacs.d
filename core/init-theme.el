@@ -14,6 +14,7 @@
 (require 'kaolin-light-tweak-theme)
 (load-theme 'kaolin-light-tweak t)
 
+<<<<<<< HEAD
 ;; font
 (when (display-graphic-p)
   (tool-bar-mode -1)
@@ -35,6 +36,8 @@
 (when (not (display-graphic-p))
   (menu-bar-mode -1))
 
+=======
+>>>>>>> 0007395 (use LXGW Wenkai for Chinese characters)
 ;; tree
 (autoload
   #'dired-sidebar-toggle-sidebar "dired-sidebar" nil t)

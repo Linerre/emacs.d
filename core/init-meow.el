@@ -87,7 +87,6 @@
    '("P" . pass)
    ;; '("R" . org-roam-mode)
    '("A" . org-agenda)
-   ;; '("D" . docker)
    ;; org
    '("U" . "C-u C-u")
    '("C" . "C-c C-c")

@@ -7,8 +7,8 @@
 ;;; Modules stored in the "elisp" directory
 
 ;;; Code:
-
 (require 'init-utils)
+(require 'init-font)
 (require 'init-theme)
 (require 'init-meow)
 (require 'init-completion)
