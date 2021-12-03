@@ -6,6 +6,8 @@
 (straight-use-package 'jinja2-mode)
 (straight-use-package 'js2-mode)
 (straight-use-package
+ '(indent-guide :type git :host github :repo "zk-phi/indent-guide"))
+(straight-use-package
  '(vue-mode :type git :host github :repo "AdamNiederer/vue-mode"))
 (straight-use-package
  '(svelte-mode :type git :host github :repo "leafOfTree/svelte-mode"))
@@ -19,8 +21,13 @@
 ;; vue-mode is a major mode while emmet-mode is a minor one
 ;; use vue-mode for *.vue files
 ;; emmet-mode
-(add-hook 'mhtml-mode-hook 'emmet-mode)
+
 (add-hook 'css-mode-hook 'emmet-mode)
+
+(with-eval-after-load "mhtml-mode"
+  (add-hook 'mhtml-mode-hook 'emmet-mode)
+  (add-hook 'mhtml-mode-hook 'indent-guide-mode)
+  (setq indent-guide-delay 0.1))
 
 (with-eval-after-load "css-mode"
   (setq css-indent-offset 2)
