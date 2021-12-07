@@ -17,7 +17,14 @@
   (sp-with-modes '(lisp-mode emacs-lisp-mode lisp-interaction-mode)
     (sp-local-pair "'" nil :actions nil)))
 
-(dolist (h '(c-mode-hook python-mode-hook css-mode-hook jinja2-mode-hook))
+(dolist (h
+         '(c-mode-hook
+           go-mode-hook
+           nix-mode-hook
+           python-mode-hook
+           css-mode-hook
+           jinja2-mode-hook
+           js-mode-hook))
   (add-hook h 'smartparens-mode))
 
 (dolist (h '(lisp-mode-hook lisp-interaction-mode-hook emacs-lisp-mode-hook))
