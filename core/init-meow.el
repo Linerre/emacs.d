@@ -7,7 +7,7 @@
 (autoload #'fold-this "fold-this" nil t)
 ;; meow
 (setq meow-expand-hint-remove-delay 1.5
-      meow-use-cursor-position-hack t
+      ;;meow-use-cursor-position-hack t
       meow-replace-state-name-list
       '((normal . "N")
         (insert . "I")
@@ -85,7 +85,6 @@
    '("S" . smartparens-strict-mode)
    '("t" . telega)
    '("P" . pass)
-   ;; '("R" . org-roam-mode)
    '("A" . org-agenda)
    ;; org
    '("U" . "C-u C-u")
@@ -136,7 +135,7 @@
    '("n" . meow-search)
    '("N" . meow-pop-search)
    '("o" . meow-block)
-   '("O" . meow-block-expand)
+   '("O" . meow-to-block)
    '("p" . meow-yank)
    '("P" . meow-yank-pop)
    '("q" . meow-quit)
