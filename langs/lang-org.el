@@ -119,6 +119,7 @@
   (add-hook 'org-mode-hook 'auto-fill-mode)
   (add-hook 'org-mode-hook 'yas-minor-mode)
   (add-hook 'org-mode-hook 'visual-line-mode)
+  (add-hook 'org-mode-hook 'display-fill-column-indicator-mode)
   ;; (setq org-startup-indented t) should work the same
   (add-hook 'org-mode-hook 'org-indent-mode)
   ;; defaults to 2

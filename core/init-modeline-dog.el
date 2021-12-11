@@ -4,7 +4,7 @@
 
 (defun +format-mode-line ()
   (let* ((lhs '((:eval (meow-indicator))
-                "[%2l:%2c]"
+                "[%2L:%2c]"
                 " "
                 "("
                 (-3 "%p")
