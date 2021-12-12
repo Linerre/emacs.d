@@ -16,6 +16,7 @@
 (require 'init-git)
 (require 'init-modeline-dog)
 (require 'lang-lisp)
+(require 'lang-clojure)
 (require 'lang-nix)
 (require 'lang-go)
 (require 'lang-latex)
