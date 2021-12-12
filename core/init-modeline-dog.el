@@ -4,17 +4,15 @@
 
 (defun +format-mode-line ()
   (let* ((lhs '((:eval (meow-indicator))
-                "[%2L:%2c]"
+                "[%2l:%2c]"
                 " "
-                "("
-                (-3 "%p")
-                "/%I)"
+                "%*:%I"
                 ;;(vc-mode vc-mode)
                 (:eval (+vc-branch-name))
                 (:eval (when (bound-and-true-p flycheck-mode) flycheck-mode-line))
                 (:eval (when (bound-and-true-p flymake-mode) flymake-mode-line-format))))
          (rhs '("%b"
-                " | "
+                " "
                 (:eval mode-name)
                 ))
          ;;(ww (window-width))

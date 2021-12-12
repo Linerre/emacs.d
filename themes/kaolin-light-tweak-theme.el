@@ -1,7 +1,7 @@
 ;;; -*- lexical-binding: t -*-
 
 ;;; This small theme provide the following tweaks:
-;;; 1. Block all headline colors under level 2
+;;; 1. Block all headline colors under org level 2
 ;;; 2. Make org mode look more like roam research
 ;;; 3. Other minor tweaks suitable for all the modes in use
 
