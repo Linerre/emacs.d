@@ -15,6 +15,7 @@
  '(meow-insert-indicator  ((t (:bold t))))
  '(meow-normal-indicator  ((t (:bold t))))
  '(meow-motion-indicator  ((t (:bold t))))
+ '(meow-bmacro-indicator  ((t (:bold t))))
  '(mode-line              ((((type tty))
                            (:background "grey70"))
                           (((type graphic))

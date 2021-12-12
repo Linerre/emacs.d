@@ -1,8 +1,10 @@
 ;;; -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code
-(straight-use-package '(meow :type git :host github :repo "DogLooksGood/meow"))
-(straight-use-package '(ford-this.el :type git :host github :repo "magnars/fold-this.el"))
+(straight-use-package
+ '(meow :type git :host github :repo "DogLooksGood/meow"))
+(straight-use-package
+ '(ford-this.el :type git :host github :repo "magnars/fold-this.el"))
 
 (autoload #'fold-this "fold-this" nil t)
 ;; meow
