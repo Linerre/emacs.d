@@ -1,6 +1,5 @@
+;;; -*- lexical-binding: t -*-
 ;;; settings for daily editting: keymaps and more
-;;; Author: Errelin
-;;; Last Change: Sun Oct 10 01:04:01 2021
 
 (straight-use-package 'which-key)
 
@@ -8,29 +7,23 @@
 (global-set-key (kbd "C-x k") 'kill-this-buffer)
 
 ;; open init.el
-(defun open-init-file()
+(defun open-init-dir()
   (interactive)
-  (find-file "~/.emacs/init.el"))
+  (find-file "~/.emacs.d"))
 
-(global-set-key (kbd "<f2>") 'open-init-file)
+(global-set-key (kbd "<f2>") 'open-init-dir)
 
 ;;; open org bank
 (defun open-org-dir()
   (interactive)
   (find-file "~/projects/org"))
-(global-set-key (kbd "<f4>") 'open-org-dir)
+(global-set-key (kbd "<f6>") 'open-org-dir)
 
 ;;; open posts
 (defun open-longreads-dir()
   (interactive)
   (find-file "~/projects/posts/wechat"))
-(global-set-key (kbd "<f5>") 'open-longreads-dir)
-
-;;; open recent files
-;(require 'recentf)
-;(recentf-mode 1)
-;(setq recnetf-max-menu-item 10)
-;(global-set-key (kbd "C-x C-r") 'recentf-open-files)
+(global-set-key (kbd "C-c r") 'open-longreads-dir)
 
 ;; other modules related to editting experience
 (require 'which-key)
