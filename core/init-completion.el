@@ -23,6 +23,7 @@
 
 (autoload 'yas-minor-mode "yasnippet")
 (add-hook 'prog-mode-hook 'yas-minor-mode)
+
 (with-eval-after-load "yasnippet"
   (let ((inhibit-message t))
     (yas-reload-all))
@@ -65,9 +66,9 @@
 
 (autoload #'company-mode "company")
 
-(add-hook 'prog-mode-hook 'company-mode)
-(add-hook 'conf-mode-hook 'company-mode)
-(add-hook 'eshell-mode-hook 'company-mode)
+(dolist (hook '(prog-mode-hook conf-mode-hook))
+  (add-hook hook 'company-mode)
+  (add-hook hook 'company-mode))
 
 (with-eval-after-load "company"
   (require 'company-tng)

@@ -7,7 +7,6 @@
 (straight-use-package 'company-auctex)
 (straight-use-package 'cdlatex)
 
-(require 'smartparens-latex)
 
 ;; use PDF viewers depending on system type
 (defun +which-pdf-viewer ()
@@ -28,20 +27,26 @@
       TeX-parse-self t
       ;; use pdflatex
       TeX-PDF-mode t)
+
 (setq-default Tex-master nil)
 
 (autoload #'latex-mode "tex-mode" nil t)
 
 (with-eval-after-load 'tex-mode
-  (add-hook 'LaTeX-mode-hook 'turn-on-cdlatex)
-  (add-hook 'LaTeX-mode-hook #'company-auctex-init)
-  (add-hook 'LaTeX-mode-hook #'+which-pdf-viewer)
-  (add-hook 'LaTeX-mode-hook 'display-line-numbers-mode))
+  (require 'smartparens-latex)
+  (dolist (hook '(LaTeX-mode-hook))
+          (add-hook hook 'turn-no-cdlatex)
+          (add-hook hook #'company-auctex-init)
+          (add-hook hook #'+which-pdf-viewer)
+          (add-hook hook 'display-line-numbers-mode)))
 
 (with-eval-after-load 'bibtex
-  (add-hook 'bibtex-mode-hook 'display-line-numbers-mode)
-  (add-hook 'bibtex-mode-hook 'visual-line-mode)
-  (add-hook 'bibtex-mode-hook 'hl-line-mode)
-  (add-hook 'bibtex-mode-hook 'flyspell-mode))
+  (dolist (hook '(bibtex-mode-hook))
+          (add-hook 'bibtex-mode-hook 'display-line-numbers-mode)
+          (add-hook 'bibtex-mode-hook 'visual-line-mode)
+          (add-hook 'bibtex-mode-hook 'hl-line-mode)
+          (add-hook 'bibtex-mode-hook 'flyspell-mode)))
 
 (provide 'lang-latex)
+
+;; lang-latex ends here

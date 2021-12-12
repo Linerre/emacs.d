@@ -100,16 +100,18 @@
 
 ;; Instead of enabling a minor mode globally
 ;; hook it to several major modes
-(add-hook 'prog-mode-hook 'visual-line-mode)
-(add-hook 'prog-mode-hook 'hl-line-mode)
-(add-hook 'prog-mode-hook 'display-line-numbers-mode)
-(add-hook 'prog-mode-hook 'show-paren-mode)
-(add-hook 'text-mode-hook 'visual-line-mode)
-(add-hook 'text-mode-hook 'hl-line-mode)
-(add-hook 'text-mode-hook 'flyspell-mode)
-(add-hook 'text-mode-hook #'+add-margins-to-textmode)
-(add-hook 'conf-space-mode-hook 'hl-line-mode)
-(add-hook 'conf-space-mode-hook 'display-line-numbers-mode)
+(dolist (hook '(prog-mode-hook conf-space-mode-hook))
+  (add-hook hook 'visual-line-mode)
+  (add-hook hook 'hl-line-mode)
+  (add-hook hook 'display-line-numbers-mode)
+  (add-hook hook 'show-paren-mode))
+
+(dolist (hook '(text-mode-hook))
+  (add-hook hook 'visual-line-mode)
+  (add-hook hook 'hl-line-mode)
+  (add-hook hook 'flyspell-mode)
+  (add-hook hook #'+add-margins-to-textmode))
+
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 (provide 'init-options)
