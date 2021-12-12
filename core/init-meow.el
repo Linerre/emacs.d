@@ -9,11 +9,11 @@
 (setq meow-expand-hint-remove-delay 1.5
       ;;meow-use-cursor-position-hack t
       meow-replace-state-name-list
-      '((normal . "N")
-        (insert . "I")
-        (keypad . "K")
-        (motion . "M")
-        (bmacro . "B")))
+      '((normal . "NORMAL")
+        (insert . "INSERT")
+        (keypad . "KEYPAD")
+        (motion . "MOTION")
+        (beacon . "BEACON")))
 
 (require 'meow)
 
@@ -177,7 +177,8 @@
    (meow-kill . meow-C-k)
    (meow-cancel . keyboard-quit)
    (meow-pop . meow-pop-grab)
-   (meow-delete . meow-C-d))
+   (meow-delete . meow-C-d)
+   (meow-beacon-change . meow-beacon-change-char))
  )
 
 (require 'meow)
