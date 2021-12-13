@@ -14,15 +14,10 @@
 (straight-use-package 'json-mode)
 
 ;; jinja2-mode
-;; (autoload #'jinja2-mode "jinja2-mode")
-(add-hook 'jinja2-mode-hook 'yas-minor-mode)
-(add-hook 'jinja2-mode-hook 'visual-line-mode)
-
-;; vue-mode is a major mode while emmet-mode is a minor one
-;; use vue-mode for *.vue files
-;; emmet-mode
-
-(add-hook 'css-mode-hook 'emmet-mode)
+(autoload #'jinja2-mode "jinja2-mode" nil t)
+(with-eval-after-load "jinja2-mode"
+  (add-hook 'jinja2-mode-hook 'yas-minor-mode)
+  (add-hook 'jinja2-mode-hook 'visual-line-mode))
 
 (with-eval-after-load "mhtml-mode"
   (add-hook 'mhtml-mode-hook 'emmet-mode)
@@ -31,15 +26,18 @@
 
 (with-eval-after-load "css-mode"
   (setq css-indent-offset 2)
+  (add-hook 'css-mode-hook 'emmet-mode)
   (define-key company-active-map (kbd "SPC") #'company-complete-selection))
 
-(add-to-list 'auto-mode-alist '("\\.\\(js\\|es6\\)\\(\\.erb\\)?\\'" . js-mode))
-
-(with-eval-after-load "js-mode"
+(autoload #'json-mode "json-mode")
+(with-eval-after-load "js"
   (setq-default js-indent-level 2))
 
 ;; vue
-;; (autoload #'vue-mode "vue-mode" nil t)
+(autoload #'vue-mode "vue-mode" nil t)
+
+;; vue-mode is a major mode while emmet-mode is a minor one
+;; use vue-mode for *.vue files
 (with-eval-after-load "vue-mode"
   (add-hook 'vue-mode-hook 'emmet-mode)
   (add-hook 'vue-mode-hook 'hl-line-mode)
@@ -49,6 +47,7 @@
             (set-face-background 'mmm-default-submode-face nil))))
 
 ;; svelte
+(autoload #'svelte-mode "svelte-mode" nil t)
 (with-eval-after-load "svelte-mode"
   (add-hook 'svelte-mode-hook 'emmet-mode))
 
