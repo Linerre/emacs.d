@@ -1,133 +1,53 @@
 ;;; -*- lexical-binding: t -*-
 
-;;; KEYBINDINGS
-;;(global-set-key (kbd "C-c l") 'org-store-link)
-(global-set-key (kbd "C-c l") 'org-link-store-props)
-(global-set-key (kbd "C-c a") 'org-agenda)
-(global-set-key (kbd "C-c c") 'org-capture)
 
-;;; [BUILT-IN] VARS
-;;; Consider using org together with Google Calendar directly
-;;; TODO
-;;; [X] connect org agenda to google calendar
-;;; [X] sync agenda on laptop to iOS google calendar
-(setq org-directory "~/projects/org")
-(setq org-agenda-files '("~/projects/org/calendar.org"))
-;;			 "~/projects/org/projects.org"
-;;			 "~/projects/org/reminder.org"))
-
-
-;; I don't want this becasue every time I change a state
-;; from TODO-state, it will insert the CLOSED timestamp
-;; (setq org-log-done 'time)
-
-;; [try] it out on Emacs 27.1
-
-;; see https://brantou.github.io/2017/03/21/just-try/
-(setq
- org-deadline-warning-days 0
- org-startup-folded 'content
- org-hide-leading-stars t
- org-agenda-include-diary t
- org-src-fontify-natively t)
-
-;;; globally set category tags (literature, fleeting)
-;;; NOTE: this is NOT the CATEGORY special built-in property
-(setq org-tag-alist
-      '(("literature" . ?l)
-        ("fleeting" . ?f)))
-
-(setq org-tag-faces
-      '(("work" . "#d65d0e")
-	      ("personal" . "#fe8019")
-        ;; Gruvbox dark aqua
-        ("literature" . "#427b58")
-        ("fleeting" . "#a8b1c1")))
-
-;;; TODO KEYWORDS FACES
-(setq org-todo-keywords
-      '((sequence "TODO(t)" "|" "DOING(n)" "DONE(d)")
-	(sequence "CANCELLED(c@)" "|" "EVENT(e)" "IDEA(a)" "WATCH(w)")
-;; right arrow: migrate to Futher; left arrow: migrate to Other collections
-	(sequence "✝TODO(i)" "|" ">(f)" "<(o)")))
-
-(setq org-todo-keyword-faces
-      '(("CANCELLED" . (:foreground "#a89984"))
-        ("DOING" . (:foreground "#d79921"))))
-
-
-;;; ORG CAPTURE
-(setq org-capture-templates nil)
-
-;; inbox-tasks
-(add-to-list 'org-capture-templates
-	     '("t" "Inbox [TODO]" entry
-	       (file+headline "~/projects/org/inbox.org" "Tasks")
-	       "* TODO %? %^G" :kill-buffer t))
-
-;; inbox-idea/note/thoughts
-(add-to-list 'org-capture-templates
-	     '("a" "Inbox [IDEA]" entry
-	       (file+headline "~/projects/org/inbox.org" "Thoughts")
-              "* IDEA %? \n%u" :kill-buffer t))
-
-;; inbox-event
-(add-to-list 'org-capture-templates
-     '("e" "Inbox [EVENTS]" entry
-	       (file+headline "~/projects/org/inbox.org" "Events")
-               "* EVENT %? %U" :kill-buffer t))
-
-;; inbox-note
-(add-to-list 'org-capture-templates
-     '("n" "Inbox [NOTE]" entry
-       (file+headline "~/projects/org/inbox.org" "Thoughts")
-       "* NOTE %? %^G" :kill-buffer t))
-
-;; inbox-reading
-(add-to-list 'org-capture-templates '("r" "Reading"))
-(add-to-list 'org-capture-templates
-     '("rb" "Readings [Book]" entry
-       (file+headline "~/projects/org/readings.org" "Book")
-               "* TODO Title: %^{Title} \nSource: %^{Link} \n%u\n" :kill-buffer t))
-(add-to-list 'org-capture-templates
-     '("ra" "Readings [Article]" entry
-       (file+headline "~/projects/org/readings.org" "Article")
-               "* TODO [[%^{Link}][%^{Title}]] \n%u\n" :kill-buffer t))
-
-;; reminder
-(add-to-list 'org-capture-templates
-             '("T" "Tickler" entry
-      (file+headline "~/projects/org/reminder.org" "Tickler")
-              "* TODO %? %^G" :kill-buffer t))
-
-(add-to-list 'org-capture-templates
-             '("b" "Billing" plain
-               (file+function "~/projects/org/bills.org" find-month-tree)
-               " | %U | %^{Type} | %^{Detail} | %^{Amount} |" :kill-buffer t))
-
-(setq org-refile-targets '(("~/projects/org/inbox.org" :maxlevel . 3)
-                           ("~/projects/org/reminder.org" :level . 1)
-                           ("~/projects/org/projects.org" :maxlevel . 2)
-		   ("~/projects/org/readings.org" :maxlevel . 1)
-		   ("~/projects/org/barn.org" :maxlevel . 5)))
-
-
-(setq org-refile-use-outline-path 'file
-      org-log-refile t)
 (with-eval-after-load 'org
+  ;; VARS
+  ;; (setq org-log-done 'time)
   (setq-default fill-column 80)
-  (add-hook 'org-mode-hook 'auto-fill-mode)
-  (add-hook 'org-mode-hook 'yas-minor-mode)
-  (add-hook 'org-mode-hook 'visual-line-mode)
-  (add-hook 'org-mode-hook 'display-fill-column-indicator-mode)
+  (setq
+   org-deadline-warning-days 0
+   org-startup-folded 'content
+   org-hide-leading-stars t
+   org-agenda-include-diary t
+   org-src-fontify-natively t
+   ;; defaults to 2
+   org-indent-indentation-per-level 1)
   ;; (setq org-startup-indented t) should work the same
-  (add-hook 'org-mode-hook 'org-indent-mode)
-  ;; defaults to 2
-  (setq org-indent-indentation-per-level 1))
+  (setq org-directory "~/projects/org")
+  (setq org-agenda-files '("~/projects/org/calendar.org"))
+  ;;			 "~/projects/org/projects.org"
+  ;;			 "~/projects/org/reminder.org"))
 
-;;; ORG GCAL
-(when (file-exists-p "~/.emacs.d/elisp/init-org-gcal.el")
-     (require 'init-org-gcal))
+  (setq org-tag-faces
+        '(("work" . "#d65d0e")
+          ("personal" . "#fe8019")
+          ;; Gruvbox dark aqua
+          ("literature" . "#427b58")
+          ("fleeting" . "#a8b1c1")))
+  (setq org-todo-keywords
+      '((sequence "TODO(t)" "|" "DOING(n)" "DONE(d)")
+	      (sequence "CANCELLED(c@)" "|" "EVENT(e)" "IDEA(a)" "WATCH(w)")
+        ;; right arrow: migrate to Futher;
+        ;; left arrow: migrate to Other collections
+	      (sequence "✝TODO(i)" "|" ">(f)" "<(o)")))
+
+  ;; OTHER CONFIG
+  (when (file-exists-p "~/.emacs.d/langs/lang-orgtemp.el")
+    (require 'lang-orgtemp))
+
+  ;; KEYBINDINGS
+  (global-set-key (kbd "C-c l") 'org-link-store-props)
+  (global-set-key (kbd "C-c a") 'org-agenda)
+  (global-set-key (kbd "C-c c") 'org-capture)
+
+  ;; HOOKS
+  (dolist (h '(org-mode-hook))
+    (add-hook h #'auto-fill-mode)
+    (add-hook h #'yas-minor-mode)
+    (add-hook h #'visual-line-mode)
+    (add-hook h #'display-fill-column-indicator-mode)
+    (add-hook h #'org-indent-mode)))
 
 ;;; ORG BABEL
 ;(require 'org-tempo)
