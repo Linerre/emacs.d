@@ -6,20 +6,20 @@
 =======
 >>>>>>> dedbe5d (found back my lost sidebar!)
 (straight-use-package 'dired-sidebar)
+(straight-use-package
+ '(zenburn-emacs :type git :host github :repo "bbatsov/zenburn-emacs"))
 
-(require 'minidark-theme)
-(require 'printed-theme)
 
 (blink-cursor-mode -1)
+
 ;; THEME-CHANGE
 (defun +change-current-theme (new-theme)
   "Load the new-theme and disable the current theme."
-  (interactive)
-  (dolist (th custom-enabled-themes)
-    (disable-theme th))
+  (interactive "SChange current theme to: ")
+  (mapc #'disable-theme custom-enabled-themes)
   (load-theme new-theme t))
 
-(global-set-key (kbd "C-c m") (+change-current-theme 'minidark))
+(global-set-key (kbd "C-c m") #'+change-current-theme)
 
 (if (display-graphic-p)
     (progn
