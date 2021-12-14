@@ -20,10 +20,14 @@ org-gcal/
 eln-cache/
 init-org-gcal.el
 projects
+<<<<<<< HEAD
 # ignore roam db for now
 org-roam.db
 .org-id-locations
 custom*
 tramp
+=======
+custom.el
+>>>>>>> 8cf9756 (Stop tracking custom.el and org-roam stuff)
 # ignore macOS stuff
 .DS_Store
