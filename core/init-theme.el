@@ -7,6 +7,10 @@
 >>>>>>> dedbe5d (found back my lost sidebar!)
 (straight-use-package 'dired-sidebar)
 
+(require 'minidark-theme)
+(require 'printed-theme)
+
+(blink-cursor-mode -1)
 ;; THEME-CHANGE
 (defun +change-current-theme (new-theme)
   "Load the new-theme and disable the current theme."
@@ -18,9 +22,9 @@
 (global-set-key (kbd "C-c m") (+change-current-theme 'minidark))
 
 (if (display-graphic-p)
-  (progn
-    (require 'storybook-theme)
-    (load-theme 'storybook t))
+    (progn
+      (require 'storybook-theme)
+      (load-theme 'storybook t))
   (progn
     (require 'kaolin-themes)
     (load-theme 'kaolin-light t)
