@@ -3,7 +3,7 @@
 
 
 (defun +format-mode-line ()
-  (let* ((lhs '((:eval (meow-indicator))
+  (let* ((lhs '(;(:eval (meow-indicator)) no longer necessary; handled by meow
                 "[%2l:%2c]"
                 " "
                 "%*:%I"

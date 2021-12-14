@@ -14,7 +14,6 @@
 (require 'init-completion)
 (require 'init-smartparens)
 (require 'init-git)
-(require 'init-modeline-dog)
 (require 'lang-lisp)
 (require 'lang-clojure)
 (require 'lang-nix)

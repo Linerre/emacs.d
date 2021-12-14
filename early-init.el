@@ -15,7 +15,7 @@
 
 (require 'init-straight)
 (require 'init-options)
-
+(require 'init-modeline-dog)
 (provide 'early-init)
 
 ;;; early-init.el ends
