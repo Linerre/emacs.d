@@ -7,12 +7,25 @@
 >>>>>>> dedbe5d (found back my lost sidebar!)
 (straight-use-package 'dired-sidebar)
 
-(require 'kaolin-themes)
-(load-theme 'kaolin-light t)
+;; THEME-CHANGE
+(defun +change-current-theme (new-theme)
+  "Load the new-theme and disable the current theme."
+  (interactive)
+  (dolist (th custom-enabled-themes)
+    (disable-theme th))
+  (load-theme new-theme t))
 
-;; load the cutomized theme here
-(require 'kaolin-light-tweak-theme)
-(load-theme 'kaolin-light-tweak t)
+(global-set-key (kbd "C-c m") (+change-current-theme 'minidark))
+
+(if (display-graphic-p)
+  (progn
+    (require 'storybook-theme)
+    (load-theme 'storybook t))
+  (progn
+    (require 'kaolin-themes)
+    (load-theme 'kaolin-light t)
+    (require 'kaolin-light-tweak-theme)
+    (load-theme 'kaolin-light-tweak t)))
 
 <<<<<<< HEAD
 ;; font
