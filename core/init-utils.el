@@ -35,12 +35,6 @@
      'face
      'bold)))
 
-;; LEXICAL
-(defun lexical-binding ()
-  (interactive)
-  (goto-char (point-min))
-  (insert ";;; -*- lexical-binding: t -*-"))
-
 (global-set-key (kbd "C-c t s") #'+insert-timestamp)
 (global-set-key (kbd "C-c t d") #'+insert-today-date-string)
 (global-set-key (kbd "C-c t m") #'+insert-tomorrow-date-string)

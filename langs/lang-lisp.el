@@ -2,7 +2,13 @@
 
 (straight-use-package 'highlight-defined)
 
-(autoload #'highlight-defined-mode "highlight-defined")
+;; LEXICAL
+(defun lexical-binding ()
+  (interactive)
+  (goto-char (point-min))
+  (insert ";;; -*- lexical-binding: t; -*-"))
+
+(autoload #'highlight-defined-mode "highlight-defined" nil t)
 
 ;; elisp
 (with-eval-after-load "elisp-mode"
