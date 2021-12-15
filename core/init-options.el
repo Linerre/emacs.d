@@ -71,7 +71,7 @@
  ;;line-number-display-limit 500
  ;; hilight line only in current/selected window
  hl-line-sticky-flag nil
-
+ require-final-newline t
  ;; case insensitive completion
  read-buffer-completion-ignore-case t
  read-file-name-completion-ignore-case t
