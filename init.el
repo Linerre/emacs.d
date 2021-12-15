@@ -18,6 +18,7 @@
 (require 'lang-clojure)
 (require 'lang-nix)
 (require 'lang-go)
+(require 'lang-markdown)
 (require 'lang-latex)
 (require 'lang-org)
 (require 'lang-web)
