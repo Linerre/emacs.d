@@ -18,6 +18,8 @@
 (require 'lang-clojure)
 (require 'lang-nix)
 (require 'lang-go)
+(require 'lang-python)
+(require 'lang-shell)
 (require 'lang-markdown)
 (require 'lang-latex)
 (require 'lang-org)
