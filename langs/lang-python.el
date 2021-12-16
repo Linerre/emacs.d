@@ -1,14 +1,16 @@
-;; -*- lexical-binding: t -*-
+;; -*- lexical-binding: t; -*-
 
-(autoload #'python-mode "pyton" nil t)
-(defun my/python-mode-tweaks ()
-  (setq tab-width 4
-        ;; make sure this is true, though it is by default
-        electric-indent-inhibit t))
+(autoload #'python-mode "python" nil t)
+
+(defun +insert-utf8-header ()
+  (interactive)
+  (goto-line 1)
+  (insert "# -*- coding: utf-8 -*-"))
 
 (with-eval-after-load "python"
   (setq python-indent-offset 4
         python-indent-guess-indent-offset-verbose nil)
-  (add-hook 'python-mode-hook #'my/python-mode-tweaks))
+  (define-key python-mode-map (kbd "C-c u") #'+insert-utf8-header))
 
 (provide 'lang-python)
+;; lang-python ends here
