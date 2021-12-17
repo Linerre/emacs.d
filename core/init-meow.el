@@ -66,8 +66,8 @@
    '("=" . split-window-right)
    '("-" . split-window-below)
    ;; high frequency commands
-   '("c m" . flymake-mode)
-   '("c c" . flycheck-mode)
+   '("l m" . flymake-mode)
+   '("l c" . flycheck-mode)
    '("e" . "C-x C-e")
    '("<SPC>" . "C-x C-s")
    ;; '("$" . +change-theme)
