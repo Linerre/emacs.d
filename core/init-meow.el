@@ -1,6 +1,6 @@
-;;; -*- lexical-binding: t -*-
+;;; init-meow.el --- -*- lexical-binding: t; -*-
 ;;; Commentary:
-;;; Code
+;;; Code:
 (straight-use-package
  '(meow :type git :host github :repo "DogLooksGood/meow"))
 (straight-use-package
@@ -66,6 +66,8 @@
    '("=" . split-window-right)
    '("-" . split-window-below)
    ;; high frequency commands
+   '("c m" . flymake-mode)
+   '("c c" . flycheck-mode)
    '("e" . "C-x C-e")
    '("<SPC>" . "C-x C-s")
    ;; '("$" . +change-theme)
@@ -73,7 +75,7 @@
    '("k" . kill-this-buffer)
    '("p" . project-find-file)
    '("j" . project-switch-to-buffer)
-   ;'("d" . dired)
+   '("D" . dired)
    '("b" . switch-to-buffer)
    ;; '("r" . rg-project)
    '("f" . find-file)
@@ -209,3 +211,4 @@
   (meow-setup-indicator))
 
 (provide 'init-meow)
+;;; init-meow.el ends here
