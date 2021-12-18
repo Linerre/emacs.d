@@ -19,10 +19,15 @@
   (add-hook 'jinja2-mode-hook 'yas-minor-mode)
   (add-hook 'jinja2-mode-hook 'visual-line-mode))
 
+(autoload #'flyspell-mode "flyspell" "Toggle flyspel mode" t)
+(autoload #'smartparens-mode "smartparens" nil t)
 (with-eval-after-load "mhtml-mode"
   (add-hook 'mhtml-mode-hook 'emmet-mode)
   (add-hook 'mhtml-mode-hook 'indent-guide-mode)
-  (setq indent-guide-delay 0.1))
+  (add-hook 'mhtml-mode-hook 'smartparens-mode)
+  (remove-hook 'text-mode-hook 'flyspell-mode)
+  (setq indent-guide-delay 0.1)
+  (define-key mhtml-mode-map (kbd "C-c s") #'flyspell-mode))
 
 (with-eval-after-load "css-mode"
   (setq css-indent-offset 2)
@@ -35,7 +40,6 @@
 
 ;; vue
 (autoload #'vue-mode "vue-mode" nil t)
-
 ;; vue-mode is a major mode while emmet-mode is a minor one
 ;; use vue-mode for *.vue files
 (with-eval-after-load "vue-mode"
