@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: vue-for
+# key: vs
+# --
+v-for="${1:item} in ${2:items}"

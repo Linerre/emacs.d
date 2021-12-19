@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: vue-data
+# key: vd
+# --
+data() {
+  return {
+    $1
+  }
+}
