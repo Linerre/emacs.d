@@ -1,7 +1,4 @@
-
 ;;; -*- lexical-binding: t -*-
-;;; ------------------- COMPLETION  -----------------------
-;; use snippet when there is one, otherwise, company
 
 (straight-use-package 'company)
 (straight-use-package 'yasnippet)
@@ -10,6 +7,7 @@
 
 
 (defun +complete ()
+  "Expand snippet when there is one; otherwise, fall back on company."
   (interactive)
   (or (yas/expand)
       (company-indent-or-complete-common nil)))
@@ -19,12 +17,12 @@
   ;; personal snippets
   '("~/.emacs.d/snippets"))
 
-(setq yas-prompt-functions '(yas-ido-prompt yas-x-prompt yas-completing-prompt))
-
 (autoload 'yas-minor-mode "yasnippet")
 (add-hook 'prog-mode-hook 'yas-minor-mode)
 
 (with-eval-after-load "yasnippet"
+  (setq yas-prompt-functions
+        '(yas-ido-prompt yas-x-prompt yas-completing-prompt))
   (let ((inhibit-message t))
     (yas-reload-all))
 
@@ -37,7 +35,6 @@
   (define-key yas-keymap (kbd "S-<return>") 'yas-prev-field))
 
 ;; company
-
 (setq
  company-frontends '(company-pseudo-tooltip-frontend
                      company-preview-if-just-one-frontend
@@ -83,10 +80,8 @@
   (define-key company-active-map [return] nil)
   (define-key company-active-map (kbd "RET") nil)
   (define-key company-active-map (kbd "SPC") nil)
-  (define-key company-active-map (kbd "SPC") nil)
   (define-key company-active-map (kbd "C-p") #'company-select-previous)
   (define-key company-active-map (kbd "C-n") #'company-select-next)
-
   (define-key company-template-nav-map (kbd "RET") 'company-template-forward-field)
   (define-key company-template-nav-map [return] 'company-template-forward-field)
   (define-key company-template-nav-map (kbd "TAB") nil)
