@@ -3,6 +3,8 @@
 (straight-use-package 'company)
 (straight-use-package 'yasnippet)
 (straight-use-package 'selectrum)
+(straight-use-package
+ '(cmt :type git :host gitlab :repo "protesilaos/mct"))
 
 
 
@@ -88,8 +90,17 @@
   (define-key company-template-nav-map [tab] nil))
 
 
-(require 'selectrum)
-(selectrum-mode t)
+;; (require 'selectrum)
+;; (selectrum-mode t)
+(require 'mct)
+(setq mct-remove-shadowed-file-names t) ; works when `file-name-shadow-mode' is enabled
+(setq mct-hide-completion-mode-line t)
+(setq mct-show-completion-line-numbers nil)
+(setq mct-apply-completion-stripes t)
+(setq mct-minimum-input 3)
+(setq mct-live-update-delay 0.6)
+(setq mct-completions-format 'one-column)
+(mct-mode 1)
 
 (provide 'init-completion)
 ;;; init-completion ends here
