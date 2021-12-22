@@ -8,7 +8,8 @@
 (straight-use-package 'dired-sidebar)
 (straight-use-package
  '(zenburn-emacs :type git :host github :repo "bbatsov/zenburn-emacs"))
-
+(straight-use-package
+   '(modus-themes :type git :host gitlab :repo "protesilaos/modus-themes"))
 
 (blink-cursor-mode -1)
 
@@ -21,10 +22,14 @@
 
 (global-set-key (kbd "C-c m") #'+change-current-theme)
 
-(if (display-graphic-p)
+;; Use modus-operandi (light) on macOS with Emacs 27.2 GUI
+(if (or (display-graphic-p) (version< emacs-version "28.0"))
     (progn
-      (require 'storybook-theme)
-      (load-theme 'storybook t))
+      (require 'modus-themes)
+      (setq modus-themes-italic-constructs t
+            modus-themes-bold-constructs nil
+            modus-themes-region '(bg-only no-extend))
+      (load-theme 'modus-operandi t))
   (progn
     (require 'kaolin-themes)
     (load-theme 'kaolin-light t)
