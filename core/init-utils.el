@@ -3,6 +3,12 @@
 ;; Author: Errenil
 ;; Last Change: Sat Oct  9 00:36:00 2021
 
+(straight-use-package
+ '(ebuild-mode :type git :host github :repo "emacsmirror/ebuild-mode"))
+(autoload #'ebuild-mode "ebuild-mode" nil t)
+(global-set-key (kbd "C-c e b") #'ebuild-mode)
+
+
 ;;  VARIABLES
 (defconst *is-win* (string-equal system-type "windows-nt"))
 (defconst *is-mac* (string-equal system-type "darwin"))
