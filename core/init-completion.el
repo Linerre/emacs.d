@@ -2,11 +2,12 @@
 
 (straight-use-package 'company)
 (straight-use-package 'yasnippet)
-(straight-use-package 'selectrum)
+(straight-use-package 'consult)
+(straight-use-package 'marginalia)
+;; (straight-use-package 'selectrum)
+;; (straight-use-package 'vertico)
 (straight-use-package
  '(cmt :type git :host gitlab :repo "protesilaos/mct"))
-
-
 
 (defun +complete ()
   "Expand snippet when there is one; otherwise, fall back on company."
@@ -92,15 +93,24 @@
 
 ;; (require 'selectrum)
 ;; (selectrum-mode t)
+;; (setq completion-styles
+;;       '(basic substring initials flex partial-completion))
+;; (setq completion-category-overrides
+;;       '((file (styles . (basic partial-completion)))))
+
 (require 'mct)
-(setq mct-remove-shadowed-file-names t) ; works when `file-name-shadow-mode' is enabled
-(setq mct-hide-completion-mode-line t)
-(setq mct-show-completion-line-numbers nil)
-(setq mct-apply-completion-stripes t)
-(setq mct-minimum-input 3)
-(setq mct-live-update-delay 0.6)
-(setq mct-completions-format 'one-column)
+(setq mct-remove-shadowed-file-names t
+      mct-hide-completion-mode-line t
+      mct-show-completion-line-numbers nil
+      mct-apply-completion-stripes t
+      mct-minimum-input 3
+      mct-live-update-delay 0.6
+      mct-completions-format 'one-column)
+ ; works when `file-name-shadow-mode' is enabled
 (mct-mode 1)
+
+(require 'marginalia)
+(marginalia-mode 1)
 
 (provide 'init-completion)
 ;;; init-completion ends here
