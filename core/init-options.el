@@ -104,6 +104,7 @@
   (add-hook hook 'visual-line-mode)
   (add-hook hook 'hl-line-mode)
   (add-hook hook 'display-line-numbers-mode)
+  (add-hook hook 'hs-minor-mode)
   (add-hook hook 'show-paren-mode))
 
 (dolist (hook '(text-mode-hook))

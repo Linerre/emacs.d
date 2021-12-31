@@ -6,7 +6,7 @@
 (straight-use-package
  '(ford-this.el :type git :host github :repo "magnars/fold-this.el"))
 
-(autoload #'fold-this "fold-this" nil t)
+;; (autoload #'fold-this "fold-this" nil t)
 ;; meow
 (setq meow-expand-hint-remove-delay 1.5
       ;;meow-use-cursor-position-hack t
@@ -82,8 +82,8 @@
    '("i" . imenu)
    '("n" . "M-x")
    '("g" . "C-x g")
-   '("z" . fold-this)
-   '("Z" . fold-this)
+   '("z" . hs-toggle-hiding)
+   '("Z" . hs-hide-all)
    ;; toggles
    '("L" . display-line-numbers-mode)
    '("S" . smartparens-strict-mode)
