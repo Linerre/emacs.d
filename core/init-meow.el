@@ -82,6 +82,7 @@
    '("i" . imenu)
    '("n" . "M-x")
    '("g" . "C-x g")
+   '("W" . eww)
    '("z" . hs-toggle-hiding)
    '("Z" . hs-hide-all)
    ;; toggles
