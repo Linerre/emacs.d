@@ -1,7 +1,8 @@
 # ignore pkgs, bookmarks, etc.
 auto-save-list
-elpa/
-bookmarks
+elpa*
+eln*
+*bookmarks
 recentf
 rime/
 transient/
@@ -15,6 +16,7 @@ projects
 # ignore roam db for now
 org-roam.db
 .org-id-locations
-
+custom*
+tramp
 # ignore macOS stuff
 .DS_Store
