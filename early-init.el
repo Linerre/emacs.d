@@ -1,6 +1,6 @@
+;;; -*- lexical-binding: t; -*-
 ;;; early-init.el
 ;;; Commentary:
-
 ;;; Borrowed from Purcell's config
 ;; Emacs 27+ loads this file before (normally) calling
 ;; `package-initialize'.  We use this file to suppress that automatic
@@ -15,7 +15,8 @@
 
 (require 'init-straight)
 (require 'init-options)
-(require 'init-modeline-dog)
+;; (require 'init-modeline-dog)
+(require 'init-modeline)
 (provide 'early-init)
 
 ;;; early-init.el ends

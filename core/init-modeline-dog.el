@@ -1,6 +1,8 @@
-;; Mode Line  -*- lexical-binding: t; -*-
+;;; Mode Line  -*- lexical-binding: t; -*-
+;;; Commentary:
+;;; Modeline adopted from dogEmacs <https://github.com/DogLooksGood/dogEmacs>
 
-
+;;; Code:
 
 (defun +format-mode-line ()
   (let* ((lhs '(;(:eval (meow-indicator)) no longer necessary; handled by meow

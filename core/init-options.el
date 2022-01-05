@@ -104,12 +104,16 @@
   (add-hook hook 'visual-line-mode)
   (add-hook hook 'hl-line-mode)
   (add-hook hook 'display-line-numbers-mode)
+  (add-hook hook 'column-number-mode)   ; for col numb on modeline -- Emacs 28
+  (add-hook hook 'line-number-mode)
   (add-hook hook 'hs-minor-mode)
   (add-hook hook 'show-paren-mode))
 
 (dolist (hook '(text-mode-hook))
   (add-hook hook 'visual-line-mode)
   (add-hook hook 'hl-line-mode)
+  (add-hook hook 'column-number-mode)   ; for col numb on modeline -- Emacs 28
+  (add-hook hook 'line-number-mode)
   (add-hook hook 'flyspell-mode)
   (add-hook hook #'+add-margins-to-textmode))
 

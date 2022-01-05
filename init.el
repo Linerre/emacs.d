@@ -1,9 +1,6 @@
-;;;  -*- lexical-binding: t -*-
+;;; init.el --- -*- lexical-binding: t -*-
 
 ;;; Commentary:
-;;; Modularized initialization
-;;; Author: Errelin
-;;; Last Change: Sat Aug 21 23:41:36 2021
 ;;; Modules stored in the "elisp" directory
 
 ;;; Code:
@@ -26,3 +23,5 @@
 (require 'lang-markdown)
 (require 'lang-latex)
 (require 'lang-org)
+
+;;; init.el ends here

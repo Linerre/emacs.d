@@ -11,11 +11,11 @@
 (setq meow-expand-hint-remove-delay 1.5
       ;;meow-use-cursor-position-hack t
       meow-replace-state-name-list
-      '((normal . "NORMAL")
-        (insert . "INSERT")
-        (keypad . "KEYPAD")
-        (motion . "MOTION")
-        (beacon . "BEACON")))
+      '((normal . "[N]")
+        (insert . "[I]")
+        (keypad . "[K]")
+        (motion . "[M]")
+        (beacon . "[B]")))
 
 (require 'meow)
 
