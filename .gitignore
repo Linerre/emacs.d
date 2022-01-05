@@ -7,8 +7,13 @@ eln*
 =======
 elpa/
 elpa-backup/
+<<<<<<< HEAD
 bookmarks
 >>>>>>> ae2d53f (clean up work)
+=======
+*bookmarks
+tramp
+>>>>>>> 69e5da6 (Ignore tramp and eww-bookmark)
 recentf
 rime/
 transient/
