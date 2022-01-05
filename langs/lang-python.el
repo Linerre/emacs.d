@@ -17,4 +17,3 @@
   (define-key python-mode-map (kbd "C-c u") #'+insert-utf8-header))
 
 (provide 'lang-python)
-;;; lang-python.el ends here

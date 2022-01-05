@@ -3,6 +3,7 @@
 
 ;;; magit
 (autoload #'magit "magit" nil t)
+
 (with-eval-after-load "magit"
   (define-key transient-base-map (kbd "<escape>") #'transient-quit-one))
 

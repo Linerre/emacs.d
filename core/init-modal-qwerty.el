@@ -1,21 +1,19 @@
-;;; init-meow.el --- -*- lexical-binding: t; -*-
+;;; -*- lexical-binding: t -*-
 ;;; Commentary:
-;;; Code:
-(straight-use-package
- '(meow :type git :host github :repo "DogLooksGood/meow"))
-(straight-use-package
- '(ford-this.el :type git :host github :repo "magnars/fold-this.el"))
+;;; Code
+(straight-use-package '(meow :type git :host github :repo "DogLooksGood/meow"))
+(straight-use-package '(ford-this.el :type git :host github :repo "magnars/fold-this.el"))
 
-;; (autoload #'fold-this "fold-this" nil t)
+(autoload #'fold-this "fold-this" nil t)
 ;; meow
 (setq meow-expand-hint-remove-delay 1.5
-      ;;meow-use-cursor-position-hack t
+      meow-use-cursor-position-hack t
       meow-replace-state-name-list
-      '((normal . "[N]")
-        (insert . "[I]")
-        (keypad . "[K]")
-        (motion . "[M]")
-        (beacon . "[B]")))
+      '((normal . "N")
+        (insert . "I")
+        (keypad . "K")
+        (motion . "M")
+        (bmacro . "B")))
 
 (require 'meow)
 
@@ -66,8 +64,6 @@
    '("=" . split-window-right)
    '("-" . split-window-below)
    ;; high frequency commands
-   '("l m" . flymake-mode)
-   '("l c" . flycheck-mode)
    '("e" . "C-x C-e")
    '("<SPC>" . "C-x C-s")
    ;; '("$" . +change-theme)
@@ -75,22 +71,23 @@
    '("k" . kill-this-buffer)
    '("p" . project-find-file)
    '("j" . project-switch-to-buffer)
-   '("D" . dired)
+   ;'("d" . dired)
    '("b" . switch-to-buffer)
    ;; '("r" . rg-project)
    '("f" . find-file)
    '("i" . imenu)
    '("n" . "M-x")
    '("g" . "C-x g")
-   '("W" . eww)
-   '("z" . hs-toggle-hiding)
-   '("Z" . hs-hide-all)
+   '("z" . fold-this)
+   '("Z" . fold-this)
    ;; toggles
    '("L" . display-line-numbers-mode)
    '("S" . smartparens-strict-mode)
    '("t" . telega)
    '("P" . pass)
+   ;; '("R" . org-roam-mode)
    '("A" . org-agenda)
+   ;; '("D" . docker)
    ;; org
    '("U" . "C-u C-u")
    '("C" . "C-c C-c")
@@ -182,9 +179,7 @@
    (meow-kill . meow-C-k)
    (meow-cancel . keyboard-quit)
    (meow-pop . meow-pop-grab)
-   (meow-delete . meow-C-d)
-   (meow-beacon-change . meow-beacon-change-char))
- )
+   (meow-delete . meow-C-d)))
 
 (require 'meow)
 
@@ -194,10 +189,7 @@
   ;; make Meow usable in TUI Emacs
   (meow-esc-mode 1)
   ;; (add-to-list 'meow-mode-state-list '(inf-iex-mode . normal))
-  ;; (add-to-list 'meow-mode-state-list '(authinfo-mode . normal))
-  ;; (add-to-list 'meow-mode-state-list '(bibtex-mode . normal))
-  ;; (add-to-list 'meow-mode-state-list '(gud-mode . normal))
-  ;; (add-to-list 'meow-mode-state-list '(shell-mode . normal))
+  (add-to-list 'meow-mode-state-list '(authinfo-mode . normal))
   ;; (add-to-list 'meow-mode-state-list '(Custom-mode . normal))
   ;; (add-to-list 'meow-mode-state-list '(cider-test-report-mode . normal))
   (add-to-list 'meow-grab-fill-commands 'eval-expression)
@@ -211,6 +203,5 @@
   ;; add indicator to modeline
   (meow-setup-indicator))
 
-(provide 'init-meow)
-;;; init-meow.el ends here
-
+(provide 'init-modal-qwerty)
+;;; init-modal-qwerty.el ends here

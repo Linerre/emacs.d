@@ -7,6 +7,8 @@
 (straight-use-package 'company-auctex)
 (straight-use-package 'cdlatex)
 
+(require 'smartparens-latex)
+
 
 ;; use PDF viewers depending on system type
 (defun +which-pdf-viewer ()

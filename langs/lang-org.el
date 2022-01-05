@@ -1,6 +1,5 @@
 ;;; -*- lexical-binding: t -*-
 
-
 (with-eval-after-load 'org
   ;; VARS
   ;; (setq org-log-done 'time)

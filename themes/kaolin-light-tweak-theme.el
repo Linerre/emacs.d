@@ -1,12 +1,11 @@
 ;;; -*- lexical-binding: t -*-
 
 ;;; This small theme provide the following tweaks:
-;;; 1. Block all headline colors under org level 2
+;;; 1. Block all headline colors under level 2
 ;;; 2. Make org mode look more like roam research
 ;;; 3. Other minor tweaks suitable for all the modes in use
 
-(deftheme kaolin-light-tweak
-  "A after-hook theme that makes kaolin-light less colorful.")
+(deftheme kaolin-light-tweak "A simple black-and-white-based theme that mimics roam research's default style")
 
 (custom-theme-set-faces
  'kaolin-light-tweak
@@ -16,11 +15,6 @@
  '(meow-insert-indicator  ((t (:bold t))))
  '(meow-normal-indicator  ((t (:bold t))))
  '(meow-motion-indicator  ((t (:bold t))))
- '(meow-bmacro-indicator  ((t (:bold t))))
- '(mode-line              ((((type tty)) :background "#a2a6a8" :foreground "black")
-                           (((type graphic)) :background "grey70")))
- '(mode-line-inactive     ((((type tty)) :background "#d2d7d9" :foreground "black")
-                           (((type graphic)) :background "grey80")))
  '(org-level-2 ((t (:bold t))))
  '(org-level-3 ((t (:foreground "black"))))
  '(org-level-4 ((t (:foreground "black"))))

@@ -1,5 +1,6 @@
 ;;; -*- lexical-binding: t -*-
-
+;;; Commentary:
+;;; Code:
 (straight-use-package 'company)
 (straight-use-package 'yasnippet)
 (straight-use-package 'consult)

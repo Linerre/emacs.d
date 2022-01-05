@@ -44,6 +44,7 @@
          (add-to-list 'default-frame-alist
                       ;'(font . "Courier New-16:bold")))))
                       '(font . "IBM Plex Mono-16")))))))
+
 ;; use terminal theme/font in TUI with minor fixes
 (when (not (display-graphic-p))
   (menu-bar-mode -1))
@@ -52,7 +53,6 @@
 (autoload
   #'dired-sidebar-toggle-sidebar "dired-sidebar" nil t)
 (global-set-key (kbd "C-c f") #'dired-sidebar-toggle-sidebar)
-
 
 (with-eval-after-load "dired-sidebar"
   (add-hook 'dired-sidebar-mode-hook 'hl-line-mode)
