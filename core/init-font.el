@@ -20,8 +20,7 @@
   (menu-bar-mode -1)
   (when *is-mac*
     (add-to-list 'default-frame-alist
-                 '(font . "IBM Plex Mono-16"))))
-
-
+                 ;; '(font . "IBM Plex Mono-16")
+                 '(font . "Roboto Mono-18"))))
 
 (provide 'init-font)
