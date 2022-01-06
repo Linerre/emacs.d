@@ -3,10 +3,10 @@
 ;;; Code:
 (straight-use-package
  '(meow :type git :host github :repo "DogLooksGood/meow"))
-(straight-use-package
- '(ford-this.el :type git :host github :repo "magnars/fold-this.el"))
-
+;; (straight-use-package
+;;  '(ford-this.el :type git :host github :repo "magnars/fold-this.el"))
 ;; (autoload #'fold-this "fold-this" nil t)
+
 ;; meow
 (setq meow-expand-hint-remove-delay 1.5
       ;;meow-use-cursor-position-hack t
@@ -213,4 +213,3 @@
 
 (provide 'init-meow)
 ;;; init-meow.el ends here
-
