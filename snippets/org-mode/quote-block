@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: quote-block
+# key: bl
+# --
+#+BEGIN_QUOTE
+${1:quote}
+#+END_QUOTE
