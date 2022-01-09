@@ -18,9 +18,11 @@
 
 (global-set-key (kbd "C-c m") #'+change-current-theme)
 
-;; Use modus-operandi (light) on macOS with Emacs 27.2 GUI
-(if (or (display-graphic-p) (version< emacs-version "28.0"))
+(if (display-graphic-p)
     (progn
+      (tool-bar-mode -1)
+      (scroll-bar-mode -1)
+      ;; (menu-bar-mode -1)
       (require 'modus-themes)
       (setq modus-themes-italic-constructs t
             modus-themes-bold-constructs nil
@@ -31,24 +33,6 @@
     (load-theme 'kaolin-light t)
     (require 'kaolin-light-tweak-theme)
     (load-theme 'kaolin-light-tweak t)))
-
-;; font
-(when (display-graphic-p)
-  (tool-bar-mode -1)
-  (scroll-bar-mode -1)
-  (menu-bar-mode -1)
-  (setq default-frame-alist '((width . 120) (height . 48)))
-  (cond (*is-mac*
-         (add-to-list 'default-frame-alist
-                      '(font . "Roboto Mono-16")))
-        (*is-linux*
-         (add-to-list 'default-frame-alist
-                      ;'(font . "Courier New-16:bold")))))
-                      '(font . "IBM Plex Mono-16")))))
-
-;; use terminal theme/font in TUI with minor fixes
-(when (not (display-graphic-p))
-  (menu-bar-mode -1))
 
 ;; tree
 (autoload
