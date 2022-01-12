@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: handler
+# key: handler
+# --
+(defn handler [request-map]
+  {:status 200
+   :headers {"Content-Type" "text/html"}
+   :body $1})
