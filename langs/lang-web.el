@@ -33,7 +33,8 @@
 
 (with-eval-after-load "css-mode"
   (setq css-indent-offset 2)
-  (define-key company-active-map (kbd "SPC") #'company-complete-selection))
+  ;; (define-key company-active-map (kbd "SPC") #'company-complete-selection)
+  )
 
 (autoload #'json-mode "json-mode" nil t)
 (with-eval-after-load "js"

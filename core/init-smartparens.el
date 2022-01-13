@@ -19,16 +19,23 @@
 
 (dolist (h
          '(c-mode-hook
+           ;; cider-repl-mode-hook
            go-mode-hook
            nix-mode-hook
            python-mode-hook
            css-mode-hook
            jinja2-mode-hook
-           js-mode-hook))
+           js-mode-hook
+           sql-mode-hook))
   (add-hook h 'smartparens-mode))
 
-(dolist (h '(lisp-mode-hook lisp-interaction-mode-hook emacs-lisp-mode-hook))
+(dolist (h
+         '(emacs-lisp-mode-hook
+           lisp-mode-hook
+           lisp-interaction-mode-hook))
   (add-hook h 'smartparens-mode)
   (add-hook h 'smartparens-strict-mode))
 
 (provide 'init-smartparens)
+
+;;; init-smartparens.el ends here

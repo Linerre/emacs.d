@@ -66,6 +66,7 @@
    '("=" . split-window-right)
    '("-" . split-window-below)
    ;; high frequency commands
+   '("'" . "M-g g")
    '("l m" . flymake-mode)
    '("l c" . flycheck-mode)
    '("e" . "C-x C-e")
