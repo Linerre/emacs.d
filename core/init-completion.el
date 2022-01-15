@@ -110,8 +110,16 @@
  ; works when `file-name-shadow-mode' is enabled
 (mct-mode 1)
 
+;; marginalia
 (require 'marginalia)
 (marginalia-mode 1)
+
+;; orderless (suggested by a friend)
+;; for fuzzy search in minibuffer
+(straight-use-package 'orderless)
+(defun friend/use-orderless-in-minibuffer ()
+  (setq-local completion-styles '(orderless)))
+(add-hook 'minibuffer-setup-hook #'friend/use-orderless-in-minibuffer)
 
 (provide 'init-completion)
 ;;; init-completion ends here
