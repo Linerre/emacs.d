@@ -37,7 +37,7 @@
 (with-eval-after-load 'tex-mode
   (require 'smartparens-latex)
   (dolist (hook '(LaTeX-mode-hook))
-          (add-hook hook 'turn-no-cdlatex)
+          (add-hook hook 'turn-on-cdlatex)
           (add-hook hook #'company-auctex-init)
           (add-hook hook #'+which-pdf-viewer)
           (add-hook hook 'display-line-numbers-mode)))

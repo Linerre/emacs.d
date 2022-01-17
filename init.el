@@ -1,7 +1,9 @@
 ;;; init.el --- -*- lexical-binding: t -*-
 
 ;;; Commentary:
-;;; Modules stored in the "elisp" directory
+;;; Modules are categorized into two groups:
+;;; core/init-* are essentials for all types of editting in Emacs;
+;;; langs/lang-* specify preferences for langs
 
 ;;; Code:
 (require 'init-utils)
