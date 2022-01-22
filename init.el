@@ -21,6 +21,7 @@
 (require 'lang-go)
 (require 'lang-python)
 (require 'lang-shell)
+(require 'lang-sql)
 (require 'lang-web)
 (require 'lang-markdown)
 (require 'lang-latex)
