@@ -7,8 +7,6 @@
 (straight-use-package 'company-auctex)
 (straight-use-package 'cdlatex)
 
-(require 'smartparens-latex)
-
 
 ;; use PDF viewers depending on system type
 (defun +which-pdf-viewer ()
@@ -40,7 +38,8 @@
           (add-hook hook 'turn-on-cdlatex)
           (add-hook hook #'company-auctex-init)
           (add-hook hook #'+which-pdf-viewer)
-          (add-hook hook 'display-line-numbers-mode)))
+          (add-hook hook 'display-line-numbers-mode))
+  (define-key latex-mode-map (kbd "C-c c w") #'count-words))
 
 (with-eval-after-load 'bibtex
   (dolist (hook '(bibtex-mode-hook))

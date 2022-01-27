@@ -45,6 +45,7 @@
 (global-set-key (kbd "C-c t d") #'+insert-today-date-string)
 (global-set-key (kbd "C-c t m") #'+insert-tomorrow-date-string)
 
+
 ;; TODO: consider move edit content here
 (require 'init-edit)
 
