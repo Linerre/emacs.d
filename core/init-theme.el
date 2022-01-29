@@ -34,17 +34,6 @@
     (require 'kaolin-light-tweak-theme)
     (load-theme 'kaolin-light-tweak t)))
 
-;; tree
-(autoload
-  #'dired-sidebar-toggle-sidebar "dired-sidebar" nil t)
-(global-set-key (kbd "C-c f") #'dired-sidebar-toggle-sidebar)
-
-(with-eval-after-load "dired-sidebar"
-  (add-hook 'dired-sidebar-mode-hook 'hl-line-mode)
-  (setq dired-sidebar-theme 'ascii
-        dired-sidebar-width 30
-        dired-sidebar-use-custome-font t
-        dired-sidebar-face '(:weight bold)))
 
 (provide 'init-theme)
 
