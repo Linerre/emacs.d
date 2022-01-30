@@ -7,7 +7,9 @@
 ;;  '(ford-this.el :type git :host github :repo "magnars/fold-this.el"))
 ;; (autoload #'fold-this "fold-this" nil t)
 
-;; meow
+(require 'meow)
+
+;; Custome meow indicator
 (setq meow-expand-hint-remove-delay 1.5
       ;;meow-use-cursor-position-hack t
       meow-replace-state-name-list
@@ -16,9 +18,6 @@
         (keypad . "[K]")
         (motion . "[M]")
         (beacon . "[B]")))
-
-(require 'meow)
-
 (meow-global-mode 1)
 
 (defun meow-setup ()
