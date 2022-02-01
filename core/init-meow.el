@@ -68,7 +68,9 @@
    '("'" . goto-line)
    '("l m" . flymake-mode)
    '("l c" . flycheck-mode)
-   '("e" . eval-last-sexp)
+   ;; C-x C-x could be bound to different fns in
+   ;; different modes, so use the keybindings
+   '("e" . "C-x C-e")
    '("SPC" . save-buffer)
    ;; '("$" . +change-theme)
    '(";" . comment-dwim)
