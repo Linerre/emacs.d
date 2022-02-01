@@ -65,11 +65,13 @@
    '("=" . split-window-right)
    '("-" . split-window-below)
    ;; high frequency commands
-   '("'" . "M-g g")
+   '("'" . goto-line)
    '("l m" . flymake-mode)
    '("l c" . flycheck-mode)
+   ;; C-x C-x could be bound to different fns in
+   ;; different modes, so use the keybindings
    '("e" . "C-x C-e")
-   '("<SPC>" . "C-x C-s")
+   '("SPC" . save-buffer)
    ;; '("$" . +change-theme)
    '(";" . comment-dwim)
    '("k" . kill-this-buffer)
