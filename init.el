@@ -14,7 +14,6 @@
 (require 'init-smartparens)
 (require 'init-linter)
 (require 'init-git)
-;; (require 'init-etools)
 (require 'lang-lisp)
 (require 'lang-clojure)
 (require 'lang-nix)

@@ -1,14 +1,17 @@
 ;; -*- lexical-binding: t -*-;
-;; My functions for various purposes
-;; Author: Errenil
-;; Last Change: Sat Oct  9 00:36:00 2021
+;; Commentary:
+;; Code:
 
-
+;; which-key
+(straight-use-package 'which-key)
+(require 'which-key)
+(which-key-mode)
 
 ;;  VARIABLES
 (defconst *is-win* (string-equal system-type "windows-nt"))
 (defconst *is-mac* (string-equal system-type "darwin"))
 (defconst *is-linux* (string-equal system-type "gnu/linux"))
+
 
 ;; TIME FUNCS
 (defun +insert-timestamp ()
@@ -41,8 +44,5 @@
 (global-set-key (kbd "C-c t d") #'+insert-today-date-string)
 (global-set-key (kbd "C-c t m") #'+insert-tomorrow-date-string)
 
-
-;; TODO: consider move edit content here
-(require 'init-edit)
-
 (provide 'init-utils)
+;; init-utils.el ends here
