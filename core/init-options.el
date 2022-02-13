@@ -48,6 +48,8 @@
  mouse-yank-at-point t
  ;; this fix the cursor movement lag
  auto-window-vscroll nil
+ ;; The nano style for truncated long lines.
+ auto-hscroll-mode 'current-line
  ;; scrolling
  scroll-conservatively 200
  ;; use thiner than default(6) window divider
