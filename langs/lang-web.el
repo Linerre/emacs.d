@@ -27,7 +27,10 @@
   (add-hook hook #'yas-minor-mode)
   (add-hook hook #'emmet-mode))
 
-(autoload #'web-mode "web-mode" nil t)
+(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.s?css\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.xml\\'" . web-mode))
+
 (with-eval-after-load "web-mode"
   (setq web-mode-enable-auto-closing t))
 
