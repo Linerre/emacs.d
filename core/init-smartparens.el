@@ -19,6 +19,7 @@
 
 (dolist (h
          '(c-mode-hook
+           c++-mode-hook
            ;; cider-repl-mode-hook
            go-mode-hook
            nix-mode-hook
