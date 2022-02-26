@@ -26,7 +26,8 @@
 
 ;; cider-mode -- an Emacs minor mode
 (with-eval-after-load "cider"
-  (setq nrepl-log-messages t)
+  (setq nrepl-log-messages t
+        nrepl-hide-special-buffers t)
   (add-hook 'cider-repl-mode-hook 'paredit-mode)
   ;; Use Emacs native keybindings in cider-repl
   (add-hook 'cider-repl-mode-hook (lambda () (meow-mode -1)))
