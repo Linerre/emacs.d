@@ -42,7 +42,6 @@
 
   ;; HOOKS
   (dolist (h '(org-mode-hook))
-    (add-hook h #'auto-fill-mode)
     (add-hook h #'yas-minor-mode)
     (add-hook h #'visual-line-mode)
     (add-hook h #'display-fill-column-indicator-mode)
