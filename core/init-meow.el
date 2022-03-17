@@ -13,11 +13,11 @@
 (setq meow-expand-hint-remove-delay 1.5
       ;;meow-use-cursor-position-hack t
       meow-replace-state-name-list
-      '((normal . "[N]")
-        (insert . "[I]")
-        (keypad . "[K]")
-        (motion . "[M]")
-        (beacon . "[B]")))
+      '((normal . "N")
+        (insert . "I")
+        (keypad . "K")
+        (motion . "M")
+        (beacon . "B")))
 (meow-global-mode 1)
 
 (defun meow-setup ()
@@ -90,8 +90,8 @@
    ;; toggles
    '("L" . display-line-numbers-mode)
    '("S" . smartparens-strict-mode)
-   '("t" . telega)
-   '("P" . pass)
+   ;; '("t" . telega)
+   ;; '("P" . pass)
    '("A" . org-agenda)
    ;; org
    '("U" . "C-u C-u")
