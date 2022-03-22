@@ -10,6 +10,8 @@
    org-hide-leading-stars t
    org-agenda-include-diary t
    org-src-fontify-natively t
+   org-src-preserve-indentation t
+   org-edit-source-content-indentation 0
    ;; defaults to 2
    org-indent-indentation-per-level 1)
   ;; (setq org-startup-indented t) should work the same
