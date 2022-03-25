@@ -18,6 +18,7 @@
 (require 'lang-clojure)
 (require 'lang-nix)
 (require 'lang-rust)
+(require 'lang-cpp)
 (require 'lang-go)
 (require 'lang-python)
 (require 'lang-shell)
