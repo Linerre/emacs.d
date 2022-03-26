@@ -92,7 +92,7 @@
    '("S" . smartparens-strict-mode)
    ;; '("t" . telega)
    ;; '("P" . pass)
-   '("A" . org-agenda)
+   ;; '("A" . org-agenda)
    ;; org
    '("U" . "C-u C-u")
    '("C" . "C-c C-c")

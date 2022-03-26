@@ -1,4 +1,6 @@
 ;;; -*- lexical-binding: t -*-
+;;; Commentary:
+;;; Code:
 
 (with-eval-after-load 'org
   ;; VARS
@@ -39,16 +41,18 @@
     (require 'lang-orgtemp))
 
   ;; KEYBINDINGS
-  (global-set-key (kbd "C-c l") 'org-link-store-props)
-  (global-set-key (kbd "C-c a") 'org-agenda)
-  (global-set-key (kbd "C-c c") 'org-capture)
+  (define-key org-mode-map (kbd "C-c l") 'org-link-store-props)
+  (define-key org-mode-map (kbd "C-c A") 'org-agenda)
+  (define-key org-mode-map (kbd "C-c c") 'org-capture)
 
   ;; HOOKS
+  ;; TODO: disbale electric-pair-mode and use smartparens instead
   (dolist (h '(org-mode-hook))
     (add-hook h #'yas-minor-mode)
     (add-hook h #'visual-line-mode)
     (add-hook h #'display-fill-column-indicator-mode)
-    (add-hook h #'org-indent-mode)))
+    (add-hook h #'org-indent-mode)
+    (add-hook h (lambda () (show-paren-local-mode -1)))))
 
 ;;; ORG BABEL
 ;(require 'org-tempo)
