@@ -92,7 +92,7 @@
 
 ;; set yes-or-no-p to use y-or-n-p
 (fset 'yes-or-no-p 'y-or-n-p)
-
+(electric-pair-mode -1)  ; gloablly disable it
 ;; cutome funs to be hooked to various modes
 (defun +add-margins-to-textmode ()
   "When in text-mode, add margins to both sides of the current buffer."

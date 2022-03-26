@@ -52,7 +52,7 @@
     (add-hook h #'visual-line-mode)
     (add-hook h #'display-fill-column-indicator-mode)
     (add-hook h #'org-indent-mode)
-    (add-hook h (lambda () (show-paren-local-mode -1)))))
+    (add-hook h (lambda () (electric-pair-mode -1)))))
 
 ;;; ORG BABEL
 ;(require 'org-tempo)

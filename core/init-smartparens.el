@@ -27,7 +27,8 @@
            css-mode-hook
            jinja2-mode-hook
            js-mode-hook
-           sql-mode-hook))
+           sql-mode-hook
+           org-mode-hook))
   (add-hook h 'smartparens-mode))
 
 (dolist (h
