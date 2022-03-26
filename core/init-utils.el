@@ -1,5 +1,7 @@
 ;; -*- lexical-binding: t -*-;
 ;; Commentary:
+;; Interactive commands and con defined here for all modes
+;; For fns and consts to use in other modules, refer to init-macros.el
 ;; Code:
 
 ;; which-key
@@ -11,7 +13,6 @@
 (defconst *is-win* (string-equal system-type "windows-nt"))
 (defconst *is-mac* (string-equal system-type "darwin"))
 (defconst *is-linux* (string-equal system-type "gnu/linux"))
-
 
 ;; TIME FUNCS
 (defun +insert-timestamp ()
@@ -30,15 +31,6 @@
   (setq tmw (+ (* 24 60 60) (time-convert nil 'integer)))
   (insert (format-time-string "%Y-%m-%d %a" tmw)))
 
-(defun +vc-branch-name ()
-  (when vc-mode
-    (propertize
-     (replace-regexp-in-string
-      "Git[-:]"
-      ""
-      (substring-no-properties vc-mode))
-     'face
-     'bold)))
 
 (global-set-key (kbd "C-c t s") #'+insert-timestamp)
 (global-set-key (kbd "C-c t d") #'+insert-today-date-string)
