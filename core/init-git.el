@@ -1,5 +1,5 @@
 ;;; -*- lexical-binding: t -*-
-(straight-use-package 'magit)
+(emerge 'magit)
 
 ;;; magit
 (autoload #'magit "magit" nil t)

@@ -4,8 +4,11 @@
 ;; For fns and consts to use in other modules, refer to init-macros.el
 ;; Code:
 
+;; straight-use-package is too much to type
+(defalias 'emerge 'straight-use-package)
+
 ;; which-key
-(straight-use-package 'which-key)
+(emerge 'which-key)
 (require 'which-key)
 (which-key-mode)
 

@@ -1,10 +1,9 @@
 ;;; -*- lexical-binding: t -*-
 
-(straight-use-package 'kaolin-themes)
-(straight-use-package 'dired-sidebar)
-(straight-use-package
- '(zenburn-emacs :type git :host github :repo "bbatsov/zenburn-emacs"))
-(straight-use-package
+(emerge 'kaolin-themes)
+;; (emerge
+;;  '(zenburn-emacs :type git :host github :repo "bbatsov/zenburn-emacs"))
+(emerge
    '(modus-themes :type git :host gitlab :repo "protesilaos/modus-themes"))
 
 (blink-cursor-mode -1)

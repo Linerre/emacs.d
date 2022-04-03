@@ -1,9 +1,10 @@
 ;;; init-meow.el --- -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
-(straight-use-package
+(emerge
  '(meow :type git :host github :repo "DogLooksGood/meow"))
-;; (straight-use-package
+
+;; (emerge
 ;;  '(ford-this.el :type git :host github :repo "magnars/fold-this.el"))
 ;; (autoload #'fold-this "fold-this" nil t)
 

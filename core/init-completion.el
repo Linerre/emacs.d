@@ -1,13 +1,13 @@
 ;;; -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
-(straight-use-package 'company)
-(straight-use-package 'yasnippet)
-(straight-use-package 'consult)
-(straight-use-package 'marginalia)
-;; (straight-use-package 'selectrum)
-;; (straight-use-package 'vertico)
-(straight-use-package
+(emerge 'company)
+(emerge 'yasnippet)
+(emerge 'consult)
+(emerge 'marginalia)
+;; (emerge 'selectrum)
+;; (emerge 'vertico)
+(emerge
  '(cmt :type git :host gitlab :repo "protesilaos/mct"))
 
 (defun +complete ()
@@ -116,7 +116,7 @@
 
 ;; orderless (suggested by a friend)
 ;; for fuzzy search in minibuffer
-(straight-use-package 'orderless)
+(emerge 'orderless)
 (defun friend/use-orderless-in-minibuffer ()
   (setq-local completion-styles '(orderless)))
 (add-hook 'minibuffer-setup-hook #'friend/use-orderless-in-minibuffer)
