@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: malloc
+# key: mlc
+# --
+(${0:cast to} *) malloc(sizeof (${1:data_type}))
+/* Don't forget to call free() */

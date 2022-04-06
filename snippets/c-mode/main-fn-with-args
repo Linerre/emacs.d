@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: main-fn-with-cmn-args
+# key: argm
+# --
+int main (int argc, char *argv[]${1:any-other-arg?})
+{
+  $0
+  return 0;
+}

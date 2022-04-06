@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: define-const-macro
+# key: def
+# --
+#define ${1:$$(upcase yas-text)} ${2:macro}
