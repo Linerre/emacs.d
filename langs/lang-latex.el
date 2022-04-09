@@ -1,11 +1,11 @@
 ;;; -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
-(straight-use-package 'auctex)
-(straight-use-package 'auctex-lua)
-(straight-use-package 'auctex-latexmk)
-(straight-use-package 'company-auctex)
-(straight-use-package 'cdlatex)
+(sup 'auctex)
+(sup 'auctex-lua)
+(sup 'auctex-latexmk)
+(sup 'company-auctex)
+(sup 'cdlatex)
 
 
 ;; use PDF viewers depending on system type

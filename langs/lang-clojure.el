@@ -2,13 +2,13 @@
 ;;; Commentary:
 ;;; Code:
 
-(straight-use-package 'clojure-mode)
-(straight-use-package 'cider)
-(straight-use-package 'clj-refactor)
-(straight-use-package 'flycheck)
-(straight-use-package 'flycheck-clj-kondo)
-(straight-use-package 'flycheck-joker)
-(straight-use-package 'paredit)
+(sup 'clojure-mode)
+(sup 'cider)
+(sup 'clj-refactor)
+(sup 'flycheck)
+(sup 'flycheck-clj-kondo)
+(sup 'flycheck-joker)
+(sup 'paredit)
 
 ;;; clojure-mode
 (setq clojure-toplevel-inside-comment-form t)

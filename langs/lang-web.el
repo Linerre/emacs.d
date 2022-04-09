@@ -2,14 +2,14 @@
 ;;; Author: Errelin
 ;;; Last Change:
 
-(straight-use-package 'emmet-mode)
-(straight-use-package 'web-mode)
-(straight-use-package
+(sup 'emmet-mode)
+(sup 'web-mode)
+(sup
  '(indent-guide :type git :host github :repo "zk-phi/indent-guide"))
 
-(straight-use-package
+(sup
  '(svelte-mode :type git :host github :repo "leafOfTree/svelte-mode"))
-(straight-use-package 'json-mode)
+(sup 'json-mode)
 
 ;; web-mode
 (setq web-mode-markup-indent-offset 2

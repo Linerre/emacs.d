@@ -1,6 +1,6 @@
 ;;; -*- lexical-binding: t -*-
 
-(straight-use-package 'nix-mode)
+(sup 'nix-mode)
 
 (autoload #'nix-mode "nix-mode")
 

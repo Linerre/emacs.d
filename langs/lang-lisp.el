@@ -1,6 +1,6 @@
 ;; -*- lexical-binding: t -*-
 
-(straight-use-package 'highlight-defined)
+(sup 'highlight-defined)
 
 ;; LEXICAL
 (defun lexical-binding ()

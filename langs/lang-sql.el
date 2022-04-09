@@ -2,9 +2,9 @@
 ;;; Commentary
 ;;; Code:
 
-(straight-use-package
+(sup
  '(emacs-sql-indent :type git :host github :repo "alex-hhh/emacs-sql-indent"))
-(straight-use-package
+(sup
  '(sqlup-mode :type git :host github :repo "Trevoke/sqlup-mode.el"))
 
 (with-eval-after-load "sql"

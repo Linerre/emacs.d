@@ -4,7 +4,7 @@
 ;;; Shell-script-mode and shell-mode config
 
 ;;; Code:
-(straight-use-package
+(sup
  '(ebuild-mode :type git :host github :repo "emacsmirror/ebuild-mode"))
 ;; a child mode of shell-script-mode
 (autoload #'ebuild-mode "ebuild-mode" nil t)

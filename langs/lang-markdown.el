@@ -1,6 +1,6 @@
 ;;; -*- lexical-binding: t -*-
 
-(straight-use-package 'markdown-mode)
+(sup 'markdown-mode)
 
 (autoload #'markdown-mode "markdown-mode"
    "Major mode for editing Markdown files" t)

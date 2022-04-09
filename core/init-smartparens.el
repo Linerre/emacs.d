@@ -1,7 +1,7 @@
 ;; -*- lexical-binding: t -*-
 ;; smart parens
 
-(emerge 'smartparens)
+(sup 'smartparens)
 ;; (setq sp-autowrap-region nil)
 (autoload #'smartparens-mode "smartparens" nil t)
 

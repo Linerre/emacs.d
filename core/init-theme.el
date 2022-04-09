@@ -1,9 +1,9 @@
 ;;; -*- lexical-binding: t -*-
 
-(emerge 'kaolin-themes)
+(sup 'kaolin-themes)
 ;; (emerge
 ;;  '(zenburn-emacs :type git :host github :repo "bbatsov/zenburn-emacs"))
-(emerge
+(sup
    '(modus-themes :type git :host gitlab :repo "protesilaos/modus-themes"))
 
 (blink-cursor-mode -1)

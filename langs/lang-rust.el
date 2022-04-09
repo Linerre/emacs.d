@@ -1,7 +1,7 @@
 ;;; -*- lexical-binding: t; -*-
 ;;; Commentary
 ;;; Code:
-(straight-use-package 'rust-mode)
+(sup 'rust-mode)
 
 (with-eval-after-load "rust-mode"
   (add-hook 'rust-mode-hook #'electric-pair-mode)

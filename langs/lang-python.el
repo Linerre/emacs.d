@@ -3,7 +3,7 @@
 ;;; Commentary:
 
 ;;; Code:
-(autoload #'python-mode "python" nil t)
+;; (autoload #'python-mode "python" nil t)
 
 (defun +insert-utf8-header ()
   "Insert utf-8 header line to the beginning of a Python script."

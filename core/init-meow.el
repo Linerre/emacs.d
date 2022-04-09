@@ -1,7 +1,7 @@
 ;;; init-meow.el --- -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
-(emerge
+(sup
  '(meow :type git :host github :repo "DogLooksGood/meow"))
 
 ;; (emerge

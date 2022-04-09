@@ -5,10 +5,11 @@
 ;; Code:
 
 ;; straight-use-package is too much to type
-(defalias 'emerge 'straight-use-package)
+;; (defalias 'emerge 'straight-use-package)
+(defalias 'sup 'straight-use-package "Another alias for straight-use-package.")
 
 ;; which-key
-(emerge 'which-key)
+(sup 'which-key)
 (require 'which-key)
 (which-key-mode)
 

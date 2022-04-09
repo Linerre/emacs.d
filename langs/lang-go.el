@@ -1,5 +1,5 @@
 ;;; -*- lexical-binding: t -*-
-(straight-use-package
+(sup
  '(go-mode.el :type git :host github :repo "dominikh/go-mode.el"))
 
 (autoload #'go-mode "go-mode" nil t)
