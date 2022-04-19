@@ -12,9 +12,11 @@
 
 ;;; clojure-mode
 (setq clojure-toplevel-inside-comment-form t)
+
 (autoload #'clojure-mode "clojure-mode" nil t)
 
 (with-eval-after-load "clojure-mode"
+  (setq cider-default-cljs-repl 'shadow) ;; prefered to be set in .dir-local.el
   (add-hook 'clojure-mode-hook 'paredit-mode)
   ;; cider-jack-in will enable cider-mode so there's no need to hook it to
   ;; clojure-mode. But doing so will allow immediate access to cider-mode
@@ -28,13 +30,7 @@
 (with-eval-after-load "cider"
   (setq nrepl-log-messages t
         nrepl-hide-special-buffers t)
-  (add-hook 'cider-repl-mode-hook 'paredit-mode)
-  ;; Use Emacs native keybindings in cider-repl
-  (add-hook 'cider-repl-mode-hook (lambda () (meow-mode -1)))
-  (define-key cider-repl-mode-map (kbd "C-c h") 'windmove-left)
-  (define-key cider-repl-mode-map (kbd "C-c l") 'windmove-right)
-  (define-key cider-repl-mode-map (kbd "C-c j") 'windmove-down)
-  (define-key cider-repl-mode-map (kbd "C-c k") 'windmove-up))
+  (add-hook 'cider-repl-mode-hook 'paredit-mode))
 
 (provide 'lang-clojure)
 ;;; lang-clojure.el ends here
