@@ -87,7 +87,11 @@
  ;; eldoc idle delay
  eldoc-idle-delay 1
  ispell-program-name "aspell"
- debug-on-error t)
+ debug-on-error t
+ ;; log errors and ingnore warnings
+ ;; but not pop up the *Warnings* buffer
+ warning-minimum-level :error
+ native-comp-async-report-warnings-errors 'silent)
  ;;inhibit-compacting-font-caches t
 
 ;; set yes-or-no-p to use y-or-n-p
