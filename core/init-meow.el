@@ -4,7 +4,7 @@
 (sup
  '(meow :type git :host github :repo "DogLooksGood/meow"))
 
-;; (emerge
+;; (sup
 ;;  '(ford-this.el :type git :host github :repo "magnars/fold-this.el"))
 ;; (autoload #'fold-this "fold-this" nil t)
 
@@ -46,7 +46,6 @@
    ;; cheatsheet
    '("?" . meow-cheatsheet)
    ;; high frequency keybindings
-   ;'("F" . "C-h")
    ;'(")" . "C-)")
    ;'("}" . "C-}")
    '("." . "M-.")
@@ -186,8 +185,7 @@
    (meow-cancel . keyboard-quit)
    (meow-pop . meow-pop-grab)
    (meow-delete . meow-C-d)
-   (meow-beacon-change . meow-beacon-change-char))
- )
+   (meow-beacon-change . meow-beacon-change-char)))
 
 (require 'meow)
 
