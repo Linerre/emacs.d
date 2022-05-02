@@ -30,7 +30,10 @@
 (with-eval-after-load "cider"
   (setq nrepl-log-messages t
         nrepl-hide-special-buffers t)
-  (add-hook 'cider-repl-mode-hook 'paredit-mode))
+  (add-hook 'cider-repl-mode-hook 'electric-pair-mode)
+  ;; Tab doesn't complete instead it moves cursor as C-a was pressed
+  ;; Use the default C-a/w/d to move to left/right/up windows
+  (add-hook 'cider-repl-mode-hook (lambda () (meow-mode -1))))
 
 (provide 'lang-clojure)
 ;;; lang-clojure.el ends here
