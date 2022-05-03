@@ -22,20 +22,20 @@
 
 (setq mode-line-compact nil)            ; Emacs 28
 (setq-default mode-line-format
-              '(
-                mode-line-front-space
+              '(mode-line-front-space
                 "%Z"
                 ;; mode-line-mule-info
                 mode-line-client
                 mode-line-modified
                 mode-line-remote
                 mode-line-frame-identification
-                mode-line-buffer-identification
+                (:eval (file-relative-name buffer-file-name projects-root))
+                ;; mode-line-buffer-identification
                 " "
                 mode-line-position
                 ;; mode-line-modes
                 (vc-mode vc-mode)
-                "  "
+                " "
                 mode-name
                 mode-line-misc-info
                 mode-line-end-spaces))
