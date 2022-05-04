@@ -66,7 +66,7 @@
  ;; Minimum width before truncate-line occurs
  truncate-partial-width-windows 40
  ;; Default line number width.
- display-line-numbers-width 3
+ ;; display-line-numbers-width 3
 
  ;; if set, when buffer size (not the number of lines!) exceeds 500;
  ;; then line number will not show in modeline; instead you get "??"
@@ -108,7 +108,7 @@
 (dolist (hook '(prog-mode-hook conf-space-mode-hook))
   (add-hook hook 'visual-line-mode)
   (add-hook hook 'hl-line-mode)
-  (add-hook hook 'display-line-numbers-mode)
+  ;; (add-hook hook 'display-line-numbers-mode)  ; line number on the left margin
   (add-hook hook 'column-number-mode)   ; for col numb on modeline -- Emacs 28
   (add-hook hook 'line-number-mode)
   (add-hook hook 'hs-minor-mode)
