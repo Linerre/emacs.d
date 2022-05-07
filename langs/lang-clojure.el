@@ -29,7 +29,12 @@
 ;; cider-mode -- an Emacs minor mode
 (with-eval-after-load "cider"
   (setq nrepl-log-messages t
-        nrepl-hide-special-buffers t)
+        nrepl-hide-special-buffers t
+        ;; supress the error buffer, just the error msg in repl
+        cider-show-error-buffer 'only-in-repl
+        cider-print-fn 'zprint)
+  (cider-add-to-alist 'cider-jack-in-dependencies
+                      "zprint/zprint" "1.2.3")
   (add-hook 'cider-repl-mode-hook 'electric-pair-mode)
   ;; Tab doesn't complete instead it moves cursor as C-a was pressed
   ;; Use the default C-a/w/d to move to left/right/up windows
