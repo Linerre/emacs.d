@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: defn-wt-docstring
+# key: df
+# --
+(defn ${1:fn name} [${2:args?}]
+  ${0:fn body})
