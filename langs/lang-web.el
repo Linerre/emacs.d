@@ -12,9 +12,9 @@
 (sup 'json-mode)
 
 ;; web-mode
-(setq web-mode-markup-indent-offset 2
-      web-mode-css-indent-offset 2
-      web-mode-code-indent-offset 2)
+;; (setq web-mode-markup-indent-offset 2
+;;       web-mode-css-indent-offset 2
+;;       web-mode-code-indent-offset 2)
 
 (dolist (hook
          '(mhtml-mode-hook
@@ -27,12 +27,12 @@
   (add-hook hook #'yas-minor-mode)
   (add-hook hook #'emmet-mode))
 
-(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.s?css\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.xml\\'" . web-mode))
+;; (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+;; (add-to-list 'auto-mode-alist '("\\.s?css\\'" . web-mode))
+;; (add-to-list 'auto-mode-alist '("\\.xml\\'" . web-mode))
 
-(with-eval-after-load "web-mode"
-  (setq web-mode-enable-auto-closing t))
+;; (with-eval-after-load "web-mode"
+;;   (setq web-mode-enable-auto-closing t))
 
 (with-eval-after-load "css-mode"
   (setq css-indent-offset 2)
