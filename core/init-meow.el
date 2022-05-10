@@ -96,7 +96,9 @@
    ;; org
    '("U" . "C-u C-u")
    '("C" . "C-c C-c")
-   '("X" . "C-c C-x"))
+   '("X" . "C-c C-x")
+   ;; vundo
+   '("v" . vundo))
   (meow-normal-define-key
    '("0" . meow-expand-0)
    '("9" . meow-expand-9)
