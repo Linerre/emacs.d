@@ -30,8 +30,8 @@
 (with-eval-after-load "cider"
   (setq nrepl-log-messages t
         nrepl-hide-special-buffers t
-        ;; supress the error buffer, just the error msg in repl
-        cider-show-error-buffer 'only-in-repl
+        ;; spill the errors to the error buffer instead of repl
+        cider-show-error-buffer 'except-in-repl
         cider-print-fn 'zprint)
   (cider-add-to-alist 'cider-jack-in-dependencies
                       "zprint/zprint" "1.2.3")
