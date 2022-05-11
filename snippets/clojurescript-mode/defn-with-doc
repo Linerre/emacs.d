@@ -2,7 +2,7 @@
 # name: defn-with-docstr
 # key: dd
 # --
-(defn ${1:fn name}
+(defn ${1:name}
   "${2:docstring}"
   [${3:args}]
   ${4:body})
