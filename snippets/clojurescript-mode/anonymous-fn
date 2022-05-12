@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: anonymous-fn
+# key: af
+# --
+(fn [${1:arg?}] ${2:body}$0)
