@@ -44,6 +44,9 @@
 
 ;; PROJECTS ROOT
 (defconst projects-root "~/projects/")
+(defun +last-three-level-dir (filepath)
+  "Trim the absolute file path to the last three levels."
+  (string-join (last (split-string  filepath "/") 3) "/"))
 
 (provide 'init-utils)
 ;; init-utils.el ends here

@@ -29,7 +29,8 @@
                 mode-line-modified
                 mode-line-remote
                 mode-line-frame-identification
-                (:eval (file-relative-name buffer-file-name projects-root))
+                (:eval
+                 (+last-three-level-dir buffer-file-name))
                 ;; mode-line-buffer-identification
                 " "
                 mode-line-position
