@@ -10,7 +10,7 @@
    org-deadline-warning-days 0
    org-startup-folded 'content
    org-hide-leading-stars t
-   org-hide-emphasis-markers t
+   ;; org-hide-emphasis-markers t
    org-agenda-include-diary t
    org-src-fontify-natively t
    org-src-preserve-indentation t
