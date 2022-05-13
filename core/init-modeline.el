@@ -28,9 +28,10 @@
                 mode-line-client
                 mode-line-modified
                 mode-line-remote
-                mode-line-frame-identification
+                " "
+                ;; mode-line-frame-identification ; ATM I just use emacs in 1 frame
                 (:eval
-                 (+last-three-level-dir buffer-file-name))
+                 (+trim-file-path buffer-file-name))
                 ;; mode-line-buffer-identification
                 " "
                 mode-line-position

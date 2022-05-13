@@ -44,9 +44,17 @@
 
 ;; PROJECTS ROOT
 (defconst projects-root "~/projects/")
-(defun +last-three-level-dir (filepath)
+
+;; This fn, when used in modeline, often throws an error:
+;; Error during redisplay: (eval (+last-three-level-dir buffer-file-name)) signaled (wrong-type-argument stringp nil) [36 times]
+;; This is because some buffers like *scratch*, *Message*,
+;; *Help* are special; they point to no real file at all!
+;; Consider making it interactive
+(defun +trim-file-path (filepath)
   "Trim the absolute file path to the last three levels."
-  (string-join (last (split-string  filepath "/") 3) "/"))
+  (if (stringp filepath)
+      (string-join (last (split-string  filepath "/") 3) "/")
+    mode-line-buffer-identification))
 
 (provide 'init-utils)
 ;; init-utils.el ends here
