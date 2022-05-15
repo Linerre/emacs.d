@@ -83,10 +83,12 @@
    '("f" . find-file)
    '("i" . imenu)
    '("n" . "M-x")
-   ;; '("v" . magit-status)
    '("W" . eww)
    '("z" . hs-toggle-hiding)
    '("Z" . hs-hide-all)
+   '("u" . magit-status)
+   ;; vundo
+   '("v" . vundo)
    ;; toggles
    '("L" . display-line-numbers-mode)
    '("S" . smartparens-strict-mode)
@@ -96,9 +98,7 @@
    ;; org
    '("U" . "C-u C-u")
    '("C" . "C-c C-c")
-   '("X" . "C-c C-x")
-   ;; vundo
-   '("v" . vundo))
+   '("X" . "C-c C-x"))
   (meow-normal-define-key
    '("0" . meow-expand-0)
    '("9" . meow-expand-9)
