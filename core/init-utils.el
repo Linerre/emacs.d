@@ -63,15 +63,15 @@
   (if (stringp filepath)
       (let ((proj-root (nth 3 (split-string filepath "/"))))
         (if (string= "projects" proj-root)
-            (string-join
-             (list
-              (nth 4 (split-string filepath "/"))
-              (buffer-name))
-             ":")
+            (propertize
+             (string-join
+              (list
+               (nth 4 (split-string filepath "/"))
+               (buffer-name))
+              ":")
+             'face '(:foreground "#4C7A90")) ;azure4
           mode-line-buffer-identification))
       mode-line-buffer-identification))
-
-(+project-indicator "/etc/portage/package.use")
 
 (provide 'init-utils)
 ;; init-utils.el ends here
