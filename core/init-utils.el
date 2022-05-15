@@ -58,22 +58,32 @@
        "/")
     mode-line-buffer-identification))
 
-(defun +project-indicator (filepath)
+(defun +project-indicator (fpath)
   "Enhance +trim-file-path and returns a shorter path in the format of `project-root':`current-buffer-name'. When it is not in ~/projects/, or in one of the special buffers, fall back to `mode-line-buffer-identification'."
-  (if (stringp filepath)
-      (let ((proj-root-user (nth 3 (split-string filepath "/")))
-            (proj-root-root (nth 2 (split-string filepath "/"))))
-        (if (or (string= "projects" proj-root-user)
-                (string= "projects" proj-root-root))
+  (if (stringp fpath)
+      ;; For normal user, /home/username/projects
+      ;; For root user, /root/projects
+      (let* ((user-proj (nth 3 (split-string fpath "/")))
+             (root-proj (nth 2 (split-string fpath "/")))
+             (proj-dir (cond
+                       ((string= "projects" user-proj)
+                        (nth 4 (split-string fpath "/"))
+                        )
+                       ((string= "projects" root-proj)
+                        (nth 3 (split-string fpath "/"))
+                        )
+                       (t mode-line-buffer-identification))))
+        (if (stringp proj-dir)
             (propertize
              (string-join
               (list
-               (nth 4 (split-string filepath "/"))
+               proj-dir
                (buffer-name))
               ":")
              'face '(:foreground "#4C7A90")) ;azure4
-          mode-line-buffer-identification))
-      mode-line-buffer-identification))
+           mode-line-buffer-identification)
+        )
+    mode-line-buffer-identification))
 
 (provide 'init-utils)
 ;; init-utils.el ends here
