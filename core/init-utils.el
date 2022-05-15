@@ -53,8 +53,25 @@
 (defun +trim-file-path (filepath)
   "Trim the absolute file path to the last three levels."
   (if (stringp filepath)
-      (string-join (last (split-string  filepath "/") 3) "/")
+      (string-join
+       (last (split-string  filepath "/") 3)
+       "/")
     mode-line-buffer-identification))
+
+(defun +project-indicator (filepath)
+  "Enhance +trim-file-path and returns a shorter path in the format of `project-root':`current-buffer-name'. When it is not in ~/projects/, or in one of the special buffers, fall back to `mode-line-buffer-identification'."
+  (if (stringp filepath)
+      (let ((proj-root (nth 3 (split-string filepath "/"))))
+        (if (string= "projects" proj-root)
+            (string-join
+             (list
+              (nth 4 (split-string filepath "/"))
+              (buffer-name))
+             ":")
+          mode-line-buffer-identification))
+      mode-line-buffer-identification))
+
+(+project-indicator "/etc/portage/package.use")
 
 (provide 'init-utils)
 ;; init-utils.el ends here

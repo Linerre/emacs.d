@@ -31,7 +31,7 @@
                 " "
                 ;; mode-line-frame-identification ; ATM I just use emacs in 1 frame
                 (:eval
-                 (+trim-file-path buffer-file-name))
+                 (+project-indicator buffer-file-name))
                 ;; mode-line-buffer-identification
                 " "
                 mode-line-position
