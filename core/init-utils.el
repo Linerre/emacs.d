@@ -61,8 +61,10 @@
 (defun +project-indicator (filepath)
   "Enhance +trim-file-path and returns a shorter path in the format of `project-root':`current-buffer-name'. When it is not in ~/projects/, or in one of the special buffers, fall back to `mode-line-buffer-identification'."
   (if (stringp filepath)
-      (let ((proj-root (nth 3 (split-string filepath "/"))))
-        (if (string= "projects" proj-root)
+      (let ((proj-root-user (nth 3 (split-string filepath "/")))
+            (proj-root-root (nth 2 (split-string filepath "/"))))
+        (if (or (string= "projects" proj-root-user)
+                (string= "projects" proj-root-root))
             (propertize
              (string-join
               (list
