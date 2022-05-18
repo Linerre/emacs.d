@@ -6,7 +6,8 @@
 (sup 'consult)
 (sup 'marginalia)
 ;; (sup 'selectrum)
-;; (sup 'vertico)
+(sup 'vertico)
+(sup 'corfu)
 (sup
  '(cmt :type git :host gitlab :repo "protesilaos/mct"))
 
@@ -38,6 +39,23 @@
   (define-key yas-keymap (kbd "RET") 'yas-next-field-or-maybe-expand)
   (define-key yas-keymap (kbd "S-<return>") 'yas-prev-field))
 
+;; (autoload #'corfu-mode "corfu" nil t)
+;; (autoload #'company-mode "company" nil t)
+
+(dolist (hook '(prog-mode-hook conf-mode-hook))
+  (if (display-graphic-p) ;; corfu works in GUI only
+      (progn
+        (add-hook hook 'global-corfu-mode)
+        (add-hook hook 'global-corfu-mode))
+    (progn
+      (add-hook hook #'company-mode)
+      (add-hook hook #'company-mode))))
+
+;; corfu
+(with-eval-after-load "corfu"
+  (setq completion-cycle-threshold 3
+        tab-always-indent 'complete))
+
 ;; company
 (setq
  company-frontends '(company-pseudo-tooltip-frontend
@@ -65,12 +83,6 @@
       ;; disable format margin since I use no icons/imgs in compl
       company-format-margin-function nil)
 
-(autoload #'company-mode "company")
-
-(dolist (hook '(prog-mode-hook conf-mode-hook))
-  (add-hook hook 'company-mode)
-  (add-hook hook 'company-mode))
-
 (with-eval-after-load "company"
   (require 'company-tng)
   (require 'company-template)
@@ -90,6 +102,7 @@
   (define-key company-template-nav-map [return] 'company-template-forward-field)
   (define-key company-template-nav-map (kbd "TAB") nil)
   (define-key company-template-nav-map [tab] nil))
+
 
 
 ;; (require 'selectrum)
