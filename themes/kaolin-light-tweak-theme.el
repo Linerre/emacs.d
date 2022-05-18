@@ -15,6 +15,7 @@
  '(meow-insert-indicator  ((t (:bold t))))
  '(meow-normal-indicator  ((t (:bold t))))
  '(meow-motion-indicator  ((t (:bold t))))
+ '(mode-line ((t (:background "color-249"))))
  '(web-mode-html-attr-name-face ((t (:foreground "#845A84"))))
  '(web-mode-html-attr-equal-face ((t (:foreground "black"))))
  '(web-mode-html-tag-bracket-face ((t (:foreground "black"))))
