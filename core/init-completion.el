@@ -54,7 +54,10 @@
 ;; corfu
 (with-eval-after-load "corfu"
   (setq completion-cycle-threshold 3
-        tab-always-indent 'complete))
+        tab-always-indent 'complete
+        corfu-preview-current nil  ;; Preview currently selected candidate.
+        corfu-preselect-first nil  ;; Disable candidate preselection
+        ))
 
 ;; company
 (setq
