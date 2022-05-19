@@ -10,14 +10,6 @@
   ;; use LXGW for chinese characters
   (set-fontset-font t 'han (font-spec :family +chinese-font-family)))
 
-;; TUI
-(when (not (display-graphic-p))
-  (menu-bar-mode -1)
-  (when *is-mac*
-    (add-to-list 'default-frame-alist
-                 ;; '(font . "IBM Plex Mono-16")
-                 '(font . "Roboto Mono-18"))))
-
 (provide 'init-font)
 
 ;;; init-font.el ends here
