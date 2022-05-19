@@ -11,6 +11,10 @@
  'kaolin-light-tweak
  ;; use nord's dark colors for now
  ;; TODO: bind colors to vars
+ ;; '(company-scrollbar-bg   ((t (:foreground "#DED4CD"))))
+ ;; '(company-scrollbar-fg   ((t (:foreground "black"))))
+ '(company-tooltip-scrollbar-track ((t (:background "#DED4CD"))))
+ '(company-tooltip-scrollbar-thumb ((t (:background "black"))))
  '(meow-keypad-indicator  ((t (:bold t))))
  '(meow-insert-indicator  ((t (:bold t))))
  '(meow-normal-indicator  ((t (:bold t))))
