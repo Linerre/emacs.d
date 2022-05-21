@@ -28,8 +28,7 @@
                 mode-line-client
                 mode-line-modified
                 mode-line-remote
-                " "
-                ;; mode-line-frame-identification ; ATM I just use emacs in 1 frame
+                mode-line-frame-identification
                 (:eval
                  (+project-indicator buffer-file-name))
                 ;; mode-line-buffer-identification
