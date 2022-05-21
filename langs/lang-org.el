@@ -16,12 +16,12 @@
    org-src-preserve-indentation t
    org-edit-source-content-indentation 0
    ;; defaults to 2
-   org-indent-indentation-per-level 1)
-  ;; (setq org-startup-indented t) should work the same
-  (setq org-directory "~/projects/org")
-  (setq org-agenda-files '("~/projects/org/calendar.org"))
-  ;;			 "~/projects/org/projects.org"
-  ;;			 "~/projects/org/reminder.org"))
+   ;; (setq org-startup-indented t) should work the same
+   org-indent-indentation-per-level 1
+   org-directory "~/projects/org"
+   ;; org-agenda-files '("~/projects/org/agenda.org")
+   org-agenda-files (concat org-directory "/agenda.org")
+   org-default-notes-file (concat org-directory "/notes.org"))
 
   (setq org-tag-faces
         '(("work" . "#d65d0e")
