@@ -38,7 +38,26 @@
 (setq dired-sidebar-theme 'ascii
       dired-sidebar-width 30
       dired-sidebar-use-custome-font t
-      dired-sidebar-face '(:weight bold))
+      dired-sidebar-face '(:weight bold)
+
+      ;; I don't like the default sidebar modeline format
+      ;; It displays the current dir path, duplicated by the
+      ;; buffer beginning line.
+      ;; I want the git branch info instead but there's no
+      ;; easy way to do that.
+      ;; 10sr/git-ps1-mode-el seems to be a solution, though.
+      ;; dired-sidebar-mode-line-format
+      ;; '("%e" mode-line-front-space
+      ;;   mode-line-mule-info
+      ;;   (vc-mode vc-mode)
+      ;;   " "  mode-line-end-spaces)
+      )
+
+;; To be decided yet
+(sup
+ '(git-ps1-mode-el
+   :type git :host github :repo "10sr/git-ps1-mode-el"))
+
 (autoload
   #'dired-sidebar-toggle-sidebar "dired-sidebar" nil t)
 (global-set-key (kbd "<f8>") #'dired-sidebar-toggle-sidebar)
