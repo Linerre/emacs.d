@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: reg-event-db
+# key: revn
+# --
+(${1:re-frame}/reg-event-db
+  :${2:ns}/${3:id}
+  (fn [${4:params}]
+    ${0:body}))

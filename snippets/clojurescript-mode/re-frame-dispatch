@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: re-frame-dispatch
+# key: rds
+# --
+${1:re-frame/}dispatch [${2:event}$0]

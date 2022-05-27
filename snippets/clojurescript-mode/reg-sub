@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: reg-sub
+# key: sub
+# --
+(${1:re-frame}/reg-sub
+  :${2:ns}/${3:id}
+  (fn [${4:params}]
+    ${5:body}))
