@@ -94,10 +94,11 @@
    '("S" . smartparens-strict-mode)
    ;; '("t" . telega)
    ;; '("P" . pass)
-   ;; '("A" . org-agenda)
    ;; org
+   '("A" . org-agenda)
+   '("C" . org-capture)
    '("U" . "C-u C-u")
-   '("C" . "C-c C-c")
+   ;; '("C" . "C-c C-c")
    '("X" . "C-c C-x"))
   (meow-normal-define-key
    '("0" . meow-expand-0)
