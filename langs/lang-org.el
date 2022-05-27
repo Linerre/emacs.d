@@ -23,12 +23,13 @@
    org-agenda-files (concat org-directory "/agenda.org")
    org-default-notes-file (concat org-directory "/notes.org"))
 
-  (setq org-tag-faces
-        '(("work" . "#d65d0e")
-          ("personal" . "#fe8019")
-          ;; Gruvbox dark aqua
-          ("literature" . "#427b58")
-          ("fleeting" . "#a8b1c1")))
+  ;; (setq org-tag-faces
+  ;;       '(("work" . "#d65d0e")
+  ;;         ("personal" . "#fe8019")
+  ;;         ;; Gruvbox dark aqua
+  ;;         ("literature" . "#427b58")
+  ;;         ("fleeting" . "#a8b1c1")))
+
   (setq org-todo-keywords
       '((sequence "TODO(t)" "|" "DOING(n)" "DONE(d)")
 	      (sequence "CANCELLED(c@)" "|" "EVENT(e)" "IDEA(a)" "WATCH(w)")
