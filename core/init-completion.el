@@ -8,6 +8,11 @@
 ;; (sup 'selectrum)
 (sup 'vertico)
 (sup 'corfu)
+(sup 'cape)
+;; (sup
+;;  '(corfu-terminal
+;;    :type git
+;;    :repo "https://codeberg.org/akib/emacs-corfu-terminal.git"))
 (sup
  '(cmt :type git :host gitlab :repo "protesilaos/mct"))
 
@@ -40,16 +45,13 @@
   (define-key yas-keymap (kbd "S-<return>") 'yas-prev-field))
 
 ;; (autoload #'corfu-mode "corfu" nil t)
-;; (autoload #'company-mode "company" nil t)
+(autoload #'company-mode "company" nil t)
 
-(dolist (hook '(prog-mode-hook conf-mode-hook))
-  (if (display-graphic-p) ;; corfu works in GUI only
-      (progn
-        (add-hook hook 'global-corfu-mode)
-        (add-hook hook 'global-corfu-mode))
-    (progn
-      (add-hook hook #'company-mode)
-      (add-hook hook #'company-mode))))
+(if (display-graphic-p)
+    (global-corfu-mode)
+  (progn
+    (add-hook 'prog-mode-hook #'company-mode)
+    (add-hook 'conf-mode-hook #'company-mode)))
 
 ;; corfu
 (with-eval-after-load "corfu"
@@ -57,7 +59,27 @@
         tab-always-indent 'complete
         corfu-preview-current nil  ;; Preview currently selected candidate.
         corfu-preselect-first nil  ;; Disable candidate preselection
-        ))
+        )
+  (add-to-list 'completion-at-point-functions #'cape-dabbrev)
+  (add-to-list 'completion-at-point-functions #'cape-file)
+
+  ;; Add the following to proper modes, e.g. cape-ispell for plain text files
+  ;;(add-to-list 'completion-at-point-functions #'cape-ispell)
+  ;;(add-to-list 'completion-at-point-functions #'cape-history)
+  ;;(add-to-list 'completion-at-point-functions #'cape-keyword)
+  ;;(add-to-list 'completion-at-point-functions #'cape-tex)
+  ;;(add-to-list 'completion-at-point-functions #'cape-sgml)
+  ;;(add-to-list 'completion-at-point-functions #'cape-rfc1345)
+  ;;(add-to-list 'completion-at-point-functions #'cape-abbrev)
+  ;;(add-to-list 'completion-at-point-functions #'cape-dict)
+  ;;(add-to-list 'completion-at-point-functions #'cape-symbol)
+  ;;(add-to-list 'completion-at-point-functions #'cape-line)
+
+  ;; keybindings here are not necessary. Just use TAB
+  ;; (global-set-key (kbd "C-c x f") #'cape-file)
+  ;; (global-set-key (kbd "C-c c d") #'cape-dabbrev)
+  ;; (global-set-key (kbd "C-c c i") #'cape-ispell)
+  )
 
 ;; company
 (setq
