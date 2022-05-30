@@ -31,6 +31,7 @@
 (add-hook 'prog-mode-hook 'yas-minor-mode)
 
 (with-eval-after-load "yasnippet"
+  (add-hook 'snippet-mode-hook 'electric-pair-mode)
   (setq yas-prompt-functions
         '(yas-ido-prompt yas-x-prompt yas-completing-prompt))
   (let ((inhibit-message t))
