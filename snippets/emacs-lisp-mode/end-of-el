@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: end-of-el
+# key: eel
+# --
+;; ${1:xxx}.el ends here
