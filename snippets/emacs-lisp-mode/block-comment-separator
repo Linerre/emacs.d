@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: block-cmt-sep-lisp
-# key: blks
-# --
-;; -- ${1:block name} ${1:$(make-string (- 45 (string-width yas-text)) ?-)}
