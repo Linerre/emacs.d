@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: reg-event-fx
+# key: ref
+# --
+(${1:re-frame}/reg-event-fx
+  :${2:$$(file-name-base (buffer-name))}/${3:id}
+  (fn [${4:params}]
+    ${0:body}))

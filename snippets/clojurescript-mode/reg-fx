@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: reg-fx
+# key: rfx
+# --
+(${1:re-frame}/reg-fx
+  :${2:ns}/${3:id}
+  (fn [${4:arg}]
+  ${5:body}))
