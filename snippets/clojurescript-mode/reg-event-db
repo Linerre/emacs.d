@@ -5,4 +5,4 @@
 (${1:re-frame}/reg-event-db
   :${2:$$(file-name-base (buffer-name))}/${3:id}
   (fn [${4:params}]
-    ${0:body}))
+    ${5:body}))
