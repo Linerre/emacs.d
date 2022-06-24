@@ -1,0 +1,20 @@
+* Cookbook
+[[https://www.emacswiki.org/emacs/ElispCookbook][Elisp Cookbook]]
+
+* 2022-05-15 Sun
+** project.el
+1. [[https://emacstalk.github.io/post/010/][project.el 使用说明]]
+2. [[https://manueluberti.eu/emacs/2020/09/18/project/][It’s never too late]]
+3. [[https://cestlaz.github.io/post/using-emacs-79-project/][Using Emacs 79 Project]]
+
+* 2022-05-16 Mon
+** company
+[[https://emacs.stackexchange.com/a/15180][Stack Overflow -Company backend for words inside the buffer]]
+[[https://www.gnu.org/software/emacs/manual/html_node/emacs/Dynamic-Abbrevs.html][29.7 Dynamic Abbrev Expansion]]
+** git server of my own
+[[https://snow-dev.com/posts/build-your-own-git-server-with-a-raspberry-pi.html][Build your own Git Server with a Raspberry Pi]]
+
+* 2022-05-25 Wed
+** minibuffer height
+Most relevant vars are ~resize-mini-windows~ and ~message-truncate-lines~
+[[https://www.gnu.org/software/emacs/manual/html_node/elisp/Minibuffer-Windows.html][Elisp Ref - 21.11 Minibuffer Windows]]
