@@ -12,24 +12,26 @@
 ;;; ORG CAPTURE
 (setq org-capture-templates
       '(("t" "Tasks")
-        ("td" "Dealine" entry             ; todos->deadline
-	       (file+headline "~/projects/org/tasks.org" "Tasks")
-	       "* TODO %? %^G\nSCHEDULED: %T" :kill-buffer t :prepend t)
-        ("ts" "Scheduled" entry             ; todos->scheduled
-	       (file+headline "~/projects/org/tasks.org" "Tasks")
+        ("td" "With Dealines" entry     ; todos->deadline
+	       (file+headline "tasks.org" "Deadlines")
 	       "* TODO %? %^G\nDEADLINE: %T" :kill-buffer t :prepend t)
+        ("ts" "Scheduled" entry         ; todos->scheduled
+	       (file+headline "tasks.org" "TODOS")
+	       "* TODO %? %^G\nSCHEDULED: %T" :kill-buffer t :prepend t)
         ;; notes
         ("n" "Daily Notes" entry
-         (file+headline "~/projects/org/notes.org" "Thoughts")
+         (file+headline "notes.org" "NOTES")
          "* %? %^G\n%U" :kill-buffer t :prepend t)
         ;; readings
         ("r" "Readings")
         ("ra" "Article" entry
-         (file+headline "~/projects/org/readings.org" "Article")
-         "* TODO %^{Short|Title} %^G\nTTL: %^{Complete|Title}\nSRC: %^{Link}\n%u\n" :kill-buffer t)
+         (file+headline "readings.org" "ARTICLE")
+         "* TODO %^{Short title for heading} %^G \nTTL: %^{Long title} \nSRC: %^{Link} \n%u \n%^{Quick note?}"
+         :kill-buffer t)
         ("rb" "Book" entry
-         (file+headline "~/projects/org/readings.org" "Book")
-         "* TODO %^{Short|Title} %^G\nTTL: %^{Complete|Title}\nSRC: %^{Link}\n%u\n" :kill-buffer t)
+         (file+headline "readings.org" "BOOK")
+         "* TODO %^{Short title for heading} %^G \nTTL: %^{Long title} \nSRC: %^{Link} \n%u \n%^{Quick note?}"
+         :kill-buffer t)
         ))
 
 ;; (add-to-list 'org-capture-templates
