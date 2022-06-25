@@ -87,8 +87,8 @@
    '("z" . hs-toggle-hiding)
    '("Z" . hs-hide-all)
    '("u" . magit-status)
-   ;; vundo
    '("v" . vundo)
+   '("y" . yas-insert-snippet)
    ;; toggles
    '("L" . display-line-numbers-mode)
    '("S" . smartparens-strict-mode)
