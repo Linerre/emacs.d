@@ -9,6 +9,13 @@
       '(("CANCELLED" . (:foreground "#a89984"))
         ("DOING" . (:foreground "#d79921"))))
 
+  ;; (setq org-tag-faces
+  ;;       '(("work" . "#d65d0e")
+  ;;         ("personal" . "#fe8019")
+  ;;         ;; Gruvbox dark aqua
+  ;;         ("literature" . "#427b58")
+  ;;         ("fleeting" . "#a8b1c1")))
+
 ;;; ORG CAPTURE
 (setq org-capture-templates
       '(("t" "Tasks")
@@ -18,6 +25,10 @@
         ("ts" "Scheduled" entry         ; todos->scheduled
 	       (file+headline "tasks.org" "TODOS")
 	       "* TODO %? %^G\nSCHEDULED: %T" :kill-buffer t :prepend t)
+        ;; memos
+        ("m" "Memo" entry
+         (file+headline "memo.org" "MEMO")
+         "* %? %^G\n%U" :kill-buffer t :prepend t)
         ;; notes
         ("n" "Daily Notes" entry
          (file+headline "notes.org" "NOTES")
@@ -26,11 +37,11 @@
         ("r" "Readings")
         ("ra" "Article" entry
          (file+headline "readings.org" "ARTICLE")
-         "* TODO %^{Short title for heading} %^G \nTTL: %^{Long title} \nSRC: %^{Link} \n%u \n%^{Quick note?}"
+         "* TODO %^{Short title for heading} %^G \nTTL: %^{Long title} \nSRC: %^{Link} \n%u \nSUM: %^{Quick note?}"
          :kill-buffer t)
         ("rb" "Book" entry
          (file+headline "readings.org" "BOOK")
-         "* TODO %^{Short title for heading} %^G \nTTL: %^{Long title} \nSRC: %^{Link} \n%u \n%^{Quick note?}"
+         "* TODO %^{Short title for heading} %^G \nTTL: %^{Long title} \nSRC: %^{Link} \n%u \nSUM: %^{Quick note?}"
          :kill-buffer t)
         ))
 
