@@ -1,5 +1,5 @@
 # -*- mode: snippet -*-
-# name: defn-wt-docstring
+# name: defn-w/o-docstr
 # key: df
 # --
 (defn ${1:name} [${2:args?}]
