@@ -27,8 +27,9 @@
 	       "* TODO %? %^G\nSCHEDULED: %T" :kill-buffer t :prepend t)
         ;; memos
         ("m" "Memo" entry
-         (file+headline "memo.org" "MEMO")
-         "* %? %^G\n%U" :kill-buffer t :prepend t)
+         (file "hearsay.org")
+         "* %^{Short Title} %^G \nON: %^U \nSUM: %^{Summary} \nSRC: %^L \n%U"
+         :kill-buffer t :prepend t)
         ;; notes
         ("n" "Daily Notes" entry
          (file+headline "notes.org" "NOTES")
@@ -37,18 +38,12 @@
         ("r" "Readings")
         ("ra" "Article" entry
          (file+headline "readings.org" "ARTICLE")
-         "* TODO %^{Short title for heading} %^G \nTTL: %^{Long title} \nSRC: %^{Link} \n%u \nSUM: %^{Quick note?}"
+         "* TODO %^{Short title} %^G \nTTL: %^{Long title} \nSRC: %^{Link} \n%u \nSUM: %^{Summary}"
          :kill-buffer t)
         ("rb" "Book" entry
          (file+headline "readings.org" "BOOK")
-         "* TODO %^{Short title for heading} %^G \nTTL: %^{Long title} \nSRC: %^{Link} \n%u \nSUM: %^{Quick note?}"
-         :kill-buffer t)
-        ))
-
-;; (add-to-list 'org-capture-templates
-;;              '("b" "Billing" plain
-;;                (file+function "~/projects/org/bills.org" find-month-tree)
-;;                " | %U | %^{Type} | %^{Detail} | %^{Amount} |" :kill-buffer t))
+         "* TODO %^{Short title} %^G \nTTL: %^{Long title} \nSRC: %^{Link} \n%u \nSUM: %^{Summary}"
+         :kill-buffer t)))
 
 (setq org-refile-targets '(("~/projects/org/inbox.org" :maxlevel . 3)
                            ("~/projects/org/done.org" :level . 1)
