@@ -19,8 +19,7 @@
    ;; (setq org-startup-indented t) should work the same
    org-indent-indentation-per-level 1
    org-directory "~/projects/org"
-   ;; org-agenda-files '("~/projects/org/agenda.org")
-   org-agenda-files (concat org-directory "/agenda.org")
+   org-agenda-files '("~/projects/org/agenda.org")
    org-default-notes-file (concat org-directory "/notes.org"))
 
   (setq org-todo-keywords
