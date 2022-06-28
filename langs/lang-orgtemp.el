@@ -26,9 +26,10 @@
 	       (file+headline "tasks.org" "TODOS")
 	       "* TODO %? %^G\nSCHEDULED: %T" :kill-buffer t :prepend t)
         ;; memos
-        ("m" "Memo" entry
-         (file "hearsay.org")
-         "* %^{Short Title} %^G \nON: %^U \nSUM: %^{Summary} \nSRC: %^L \n%U"
+        ("m" "Memos")
+        ("mt" "Twitter" entry
+         (file "twitter.org")
+         "* %^{Short Title} %^G \nTWEET: %^{Link} \nTIME: %^{Tweet Date}t"
          :kill-buffer t :prepend t)
         ;; notes
         ("n" "Daily Notes" entry
