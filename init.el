@@ -11,6 +11,7 @@
 (require 'init-theme)
 (require 'init-meow)
 (require 'init-completion)
+(require 'init-mail)
 (require 'init-smartparens)
 (require 'init-linter)
 (require 'init-git)
