@@ -15,7 +15,8 @@
 
 ;; sh-script.el
 (with-eval-after-load "sh-script"
-  (add-hook 'sh-mode-hook 'electric-pair-mode))
+  (add-hook 'sh-mode-hook 'electric-pair-mode)
+  (add-hook 'after-save-hook #'executable-make-buffer-file-executable-if-script-p))
 
 ;; vars can be set:
 ;; sh-basic-offset -- defaults to 4
