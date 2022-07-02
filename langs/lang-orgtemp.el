@@ -21,29 +21,29 @@
       '(("t" "Tasks")
         ("td" "With Dealines" entry     ; todos->deadline
 	       (file+headline "tasks.org" "Deadlines")
-	       "* TODO %? %^G\nDEADLINE: %T" :kill-buffer t :prepend t)
+	       "* TODO %? %^g\nDEADLINE: %T" :kill-buffer t :prepend t)
         ("ts" "Scheduled" entry         ; todos->scheduled
 	       (file+headline "tasks.org" "TODOS")
-	       "* TODO %? %^G\nSCHEDULED: %T" :kill-buffer t :prepend t)
+	       "* TODO %? %^g\nSCHEDULED: %T" :kill-buffer t :prepend t)
         ;; memos
         ("m" "Memos")
         ("mt" "Twitter" entry
          (file "twitter.org")
-         "* %^{Short Title} %^G \nTWEET: %^{Link} \nTIME: %^{Tweet Date}t"
+         "* %^{Short Title} %^g \nTWEET: %^{Link} \nTIME: %^{Tweet Date}u"
          :kill-buffer t :prepend t)
         ;; notes
         ("n" "Daily Notes" entry
          (file+headline "notes.org" "NOTES")
-         "* %? %^G\n%U" :kill-buffer t :prepend t)
+         "* %? %^g\n%U" :kill-buffer t :prepend t)
         ;; readings
         ("r" "Readings")
         ("ra" "Article" entry
          (file+headline "readings.org" "ARTICLE")
-         "* TODO %^{Short title} %^G \nTTL: %^{Long title} \nSRC: %^{Link} \n%u \nSUM: %^{Summary}"
+         "* TODO %^{Short title} %^g \nTTL: %^{Long title} \nSRC: %^{Link} \n%u \nSUM: %^{Summary}"
          :kill-buffer t)
         ("rb" "Book" entry
          (file+headline "readings.org" "BOOK")
-         "* TODO %^{Short title} %^G \nTTL: %^{Long title} \nSRC: %^{Link} \n%u \nSUM: %^{Summary}"
+         "* TODO %^{Short title} %^g \nTTL: %^{Long title} \nSRC: %^{Link} \n%u \nSUM: %^{Summary}"
          :kill-buffer t)))
 
 (setq org-refile-targets '(("~/projects/org/inbox.org" :maxlevel . 3)
