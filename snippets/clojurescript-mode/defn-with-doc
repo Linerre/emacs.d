@@ -5,4 +5,4 @@
 (defn ${1:name}
   "${2:docstring}"
   [${3:args}]
-  ${4:body})
+  ${4:body}$0)
