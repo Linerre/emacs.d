@@ -91,11 +91,12 @@
  ;; log errors and ingnore warnings
  ;; but not pop up the *Warnings* buffer
  warning-minimum-level :error
- native-comp-async-report-warnings-errors 'silent)
+ native-comp-async-report-warnings-errors 'silent
+ ;; >= emacs 28
+ use-short-answers t)
  ;;inhibit-compacting-font-caches t
 
-;; set yes-or-no-p to use y-or-n-p
-(fset 'yes-or-no-p 'y-or-n-p)
+;; (fset 'yes-or-no-p 'y-or-n-p)
 ;; cutome funs to be hooked to various modes
 (defun +add-margins-to-textmode ()
   "When in text-mode, add margins to both sides of the current buffer."
