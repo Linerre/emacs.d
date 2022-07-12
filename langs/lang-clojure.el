@@ -11,6 +11,11 @@
 (sup 'paredit)
 
 ;;; clojure-mode
+(defun +cljs-company-backends ()
+  (setq-local company-backends
+              '((company-dabbrev :with company-dabbrev-code)
+                company-capf company-semantic company-keywords company-files)))
+
 (setq clojure-toplevel-inside-comment-form t)
 
 (autoload #'clojure-mode "clojure-mode" nil t)
@@ -23,6 +28,7 @@
   ;; after entering a clj buffer. REPL is not always necessary however.
   (add-hook 'clojure-mode-hook 'cider-mode)
   (add-hook 'clojure-mode-hook 'clj-refactor-mode)
+  (add-hook 'clojurescript-mode-hook #'+cljs-company-backends)
   (define-key clojure-mode-map (kbd "C-c j") #'cider-jack-in)
   (define-key clojure-mode-map (kbd "C-c c") #'cider-connect))
 
