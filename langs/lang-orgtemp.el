@@ -29,7 +29,7 @@
         ("m" "Memos")
         ("mt" "Twitter" entry
          (file "twitter.org")
-         "* %^{Short Title} %^g \nTWEET: %^{Link} \nTIME: %^{Tweet Date}u"
+         "* %^{Short Title} %^g \nTWEET: %^{Link} \nTIME: %u"
          :kill-buffer t :prepend t)
         ;; notes
         ("n" "Daily Notes" entry
