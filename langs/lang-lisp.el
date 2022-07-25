@@ -18,6 +18,9 @@
             (lambda () (add-hook 'after-save-hook #'check-parens)))
   (add-hook 'lisp-interaction-mode-hook #'eldoc-mode))
 
+;; scheme
+(setq scheme-program-name "mit-scheme")
+
 (provide 'lang-lisp)
 
 ;; lang-list ends here
