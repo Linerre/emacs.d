@@ -29,21 +29,31 @@
         ("m" "Memos")
         ("mt" "Twitter" entry
          (file "twitter.org")
-         "* %^{Short Title} %^g \nTWEET: %^{Link} \nTIME: %u"
+         "* %^{Short Title} %^g \n*TWEET*: %^{Link} \n*TIME*: %u"
          :kill-buffer t :prepend t)
         ;; notes
         ("n" "Daily Notes" entry
          (file+headline "notes.org" "NOTES")
          "* %? %^g\n%U" :kill-buffer t :prepend t)
+        ;; people
+        ("p" "People")
+        ("pa" "Academia" entry
+         (file+headline "people.org" "Academia")
+         "* %^{Full Name}%? \n%^{Association}p%^{Site}p%^{Title}p"
+         :kill-buffer t :prepend t)
+        ("pi" "Industry" entry
+         (file+headline "people.org" "Industry")
+         "* %^{Full Name}%? \n%^{Site}p"
+         :kill-buffer t :prepend t)
         ;; readings
         ("r" "Readings")
         ("ra" "Article" entry
          (file+headline "readings.org" "ARTICLE")
-         "* TODO %^{Short title} %^g \nTTL: %^{Long title} \nSRC: %^{Link} \n%u \nSUM: %^{Summary}"
+         "* %^{Short title} %^g \n*TTL*: %^{Long title} \n*SRC*: %^{Link} \n*SUM*: %^{Summary} \n%u"
          :kill-buffer t)
         ("rb" "Book" entry
          (file+headline "readings.org" "BOOK")
-         "* TODO %^{Short title} %^g \nTTL: %^{Long title} \nSRC: %^{Link} \n%u \nSUM: %^{Summary}"
+         "* %^{Short title} %^g \n*TTL*: %^{Long title} \n*SRC*: %^{Link} \n*SUM*: %^{Summary} \n%u"
          :kill-buffer t)))
 
 (setq org-refile-targets '(("~/projects/org/inbox.org" :maxlevel . 3)
