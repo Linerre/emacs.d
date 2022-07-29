@@ -1,14 +1,15 @@
 ;;; -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
+(sup 'cape)
 (sup 'company)
-(sup 'yasnippet)
+(sup 'corfu)
 (sup 'consult)
+(sup 'eglot)
 (sup 'marginalia)
 ;; (sup 'selectrum)
 (sup 'vertico)
-(sup 'corfu)
-(sup 'cape)
+(sup 'yasnippet)
 ;; (sup
 ;;  '(corfu-terminal
 ;;    :type git
@@ -21,6 +22,8 @@
   (interactive)
   (or (yas/expand)
       (company-indent-or-complete-common nil)))
+;;; eglot
+(autoload 'eglot-ensure "eglot" nil nil)
 
 ;;; yasnippet
 (setq yas-snippet-dirs
@@ -83,15 +86,14 @@
   )
 
 ;; company
-(setq
- company-frontends '(company-pseudo-tooltip-frontend
-                     company-preview-if-just-one-frontend
-                     company-echo-metadata-frontend
-                     company-tng-frontend)
+(setq company-frontends '(company-pseudo-tooltip-frontend
+                          company-preview-if-just-one-frontend
+                          company-echo-metadata-frontend
+                          company-tng-frontend)
 
       ;; self insert the first candidate
       company-begin-commands '(self-insert-command)
-      ;; company-idle-delay 0.5
+      company-idle-delay 1
       company-dabbrev-ignore-invisible t
       company-dabbrev-downcase nil
       ;; annos align to the right

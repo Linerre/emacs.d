@@ -16,7 +16,9 @@
     (compile compile-command)))
 
 (with-eval-after-load "cc-mode"
-  (define-key c-mode-base-map [f9] #'+code-compile))
+  (define-key c-mode-base-map [f9] #'+code-compile)
+  (add-hook 'c-mode-hook 'eglot-ensure)
+  (add-hook 'c++-mode-hook 'eglot-ensure))
 
 (provide 'lang-cpp)
 ;; lang-cpp.el ends here
