@@ -39,10 +39,11 @@
   ;; (define-key company-active-map (kbd "SPC") #'company-complete-selection)
   )
 
-(autoload #'json-mode "json-mode" nil t)
 (with-eval-after-load "js"
   (setq-default js-indent-level 2))
 
+(with-eval-after-load "json-mode"
+  (add-hook 'json-mode-hook #'flycheck-mode))
 ;; svelte
 (autoload #'svelte-mode "svelte-mode" nil t)
 ;; (with-eval-after-load "svelte-mode")
