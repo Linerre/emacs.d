@@ -8,13 +8,13 @@
 (sup 'flycheck)
 (sup 'flycheck-clj-kondo)
 (sup 'flycheck-joker)
-(sup 'paredit)
 
 ;;; clojure-mode
 (defun +cljs-company-backends ()
   (setq-local company-backends
-              '((company-dabbrev :with company-dabbrev-code)
-                company-capf company-semantic company-keywords company-files)))
+              '(company-semantic company-keywords company-files
+                (company-dabbrev-code :with company-dabbrev)
+                   company-capf company-gtags)))
 
 (setq clojure-toplevel-inside-comment-form t)
 
@@ -22,7 +22,8 @@
 
 (with-eval-after-load "clojure-mode"
   (setq cider-default-cljs-repl 'shadow) ;; prefered to be set in .dir-local.el
-  (add-hook 'clojure-mode-hook 'paredit-mode)
+  (setq-local flycheck-checker 'clj-kondo-clj)
+  ;; (add-hook 'clojure-mode-hook 'paredit-mode)
   ;; cider-jack-in will enable cider-mode so there's no need to hook it to
   ;; clojure-mode. But doing so will allow immediate access to cider-mode
   ;; after entering a clj buffer. REPL is not always necessary however.
@@ -31,6 +32,7 @@
   (add-hook 'clojurescript-mode-hook #'+cljs-company-backends)
   (define-key clojure-mode-map (kbd "C-c j") #'cider-jack-in)
   (define-key clojure-mode-map (kbd "C-c c") #'cider-connect))
+
 
 ;; cider-mode -- an Emacs minor mode
 (with-eval-after-load "cider"
@@ -43,11 +45,8 @@
                       "zprint/zprint" "1.2.3"))
 
 (with-eval-after-load "cider-repl"
-    (add-hook 'cider-repl-mode-hook 'electric-pair-mode)
-    ;; Tab doesn't complete instead it moves cursor as C-a was pressed
-    ;; Use the default C-a/w/d to move to left/right/up windows
-    ;; (add-hook 'cider-repl-mode-hook (lambda () (meow-mode -1)))
-)
+  ;; (add-hook 'cider-repl-mode-hook #'electric-pair-mode)
+  )
 
 (provide 'lang-clojure)
 ;;; lang-clojure.el ends here

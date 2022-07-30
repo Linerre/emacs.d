@@ -12,7 +12,7 @@
 (require 'init-meow)
 (require 'init-completion)
 (require 'init-mail)
-(require 'init-smartparens)
+(require 'init-paredit)
 (require 'init-linter)
 (require 'init-git)
 (require 'lang-lisp)
