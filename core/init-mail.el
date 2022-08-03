@@ -9,14 +9,14 @@
 
 ;; Compose and send email
 (setq user-mail-address "errelinaaron@gmail.com"
-        user-full-name "Noel Errenil"
-        message-signature user-full-name
-        message-send-mail-function #'message-use-send-mail-function
-        send-mail-function #'smtpmail-send-it
-        smtpmail-default-smtp-server "smtp.gmail.com"
-        smtpmail-smtp-server "smtp.gmail.com"
-        smtpmail-smtp-service 587
-        smtpmail-stream-type 'ssl)
+      user-full-name "Noel Errenil"
+      message-signature user-full-name
+      message-send-mail-function #'message-use-send-mail-function
+      send-mail-function #'smtpmail-send-it
+      smtpmail-default-smtp-server "smtp.gmail.com"
+      smtpmail-smtp-server "smtp.gmail.com"
+      smtpmail-smtp-service 587
+      smtpmail-stream-type 'ssl)
 
 ;; The following vars are for Emacs SMTP Library:
 ;; https://www.gnu.org/software/emacs/manual/html_node/smtpmail/index.html
