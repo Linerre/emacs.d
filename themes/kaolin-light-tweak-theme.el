@@ -20,7 +20,7 @@
  '(meow-normal-indicator  ((t (:bold t))))
  '(meow-motion-indicator  ((t (:bold t))))
  ;; '(mode-line ((t (:foreground "color-248"))))
- '(mode-line-inactive ((t (:foreground "color-249" ))))
+ '(mode-line-inactive ((t (:foreground "#D6D4D4" ))))
  '(web-mode-html-attr-name-face ((t (:foreground "#845A84"))))
  '(web-mode-html-attr-equal-face ((t (:foreground "black"))))
  '(web-mode-html-tag-bracket-face ((t (:foreground "black"))))
