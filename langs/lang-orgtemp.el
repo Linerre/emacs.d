@@ -51,7 +51,11 @@
          (file+headline "readings.org" "ARTICLE")
          "* %^{Short title} %^g \n*TTL*: %^{Long title} \n*SRC*: %^{Link} \n*SUM*: %^{Summary} \n%u"
          :kill-buffer t)
-        ("rb" "Book" entry
+        ("rl" "Blog" entry
+         (file+headline "readings.org" "BLOG")
+         "* %^{Site Title} %^g \n*URL*: %^{Link} \n*REP*: %^{Representative article} \n Last Accessed: %u"
+         :kill-buffer t)
+        ("rk" "Book" entry
          (file+headline "readings.org" "BOOK")
          "* %^{Short title} %^g \n*TTL*: %^{Long title} \n*SRC*: %^{Link} \n*SUM*: %^{Summary} \n%u"
          :kill-buffer t)))
