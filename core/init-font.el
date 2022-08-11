@@ -9,7 +9,7 @@
     (add-to-list 'default-frame-alist '(font . "Menlo-18")))
 
   (when *is-linux*
-    (add-to-list 'default-frame-alist '(font . "Consolas-16")))
+    (add-to-list 'default-frame-alist '(font . "Inconsolata-16")))
 
   ;; use LXGW for chinese characters
   (set-fontset-font t 'han (font-spec :family +chinese-font-family)))
