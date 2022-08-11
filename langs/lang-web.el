@@ -23,7 +23,7 @@
            svelte-mode-hook
            web-mode-hook))
   (add-hook hook #'indent-guide-mode)
-  (add-hook hook #'smartparens-mode)
+  (add-hook hook #'electric-pair-mode)
   (add-hook hook #'yas-minor-mode)
   (add-hook hook #'emmet-mode))
 

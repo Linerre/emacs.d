@@ -16,6 +16,7 @@
              go-mode-hook
              jinja2-mode-hook
              js-mode-hook
+             lua-mode-hook
              nix-mode-hook
              org-mode-hook
              python-mode-hook
