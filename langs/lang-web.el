@@ -18,7 +18,6 @@
 
 (dolist (hook
          '(mhtml-mode-hook
-           css-mode-hook
            json-mode-hook
            svelte-mode-hook
            web-mode-hook))

@@ -23,10 +23,9 @@
              sql-mode-hook))
   (add-hook h #'electric-pair-mode))
 
-(dolist (h '(c-mode-hook
-             c++-mode-hook
-             cider-repl-mode-hook
-             css-mode-hook
+(dolist (h '(cider-repl-mode-hook
+             clojure-mode-hook
+             clojurescript-mode-hook
              emacs-lisp-mode-hook
              lisp-mode-hook
              lisp-interaction-mode-hook))
