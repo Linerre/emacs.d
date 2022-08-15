@@ -51,17 +51,15 @@
  ;; The nano style for truncated long lines.
  auto-hscroll-mode 'current-line
  ;; scrolling
- scroll-conservatively 200
- ;; use thiner than default(6) window divider
+ scroll-conservatively 200 ; use thiner than default(6) window divider
  window-divider-default-right-width 1
  window-divider-default-bottom-width 1
- echo-keystrokes 0.01
- ;; no overline margin
- overline-margin 0
- ;; tab-width defaults to 2 globally
- tab-width 2
- ;; make indent commands use space only
+ echo-keystrokes 0.01 ; no overline margin
+ overline-margin 0 ; tab-width defaults to 2 globally
+ tab-width 2 ; make indent commands use space only
  indent-tabs-mode nil
+ c-tab-always-indent t
+ backward-delete-function nil ; DO NOT expand tabs when deleting
  comment-empty-lines t
  ;; Minimum width before truncate-line occurs
  truncate-partial-width-windows 40
