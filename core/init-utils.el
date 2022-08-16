@@ -16,6 +16,9 @@
 ;; vundo
 (sup 'vundo)
 
+;; direnv
+(sup 'direnv)
+
 ;;  VARIABLES
 (defconst *is-win* (string-equal system-type "windows-nt"))
 (defconst *is-mac* (string-equal system-type "darwin"))
