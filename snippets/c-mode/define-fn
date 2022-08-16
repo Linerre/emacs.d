@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: define-fn
+# key: fn
+# expand-env: ((yas-indent-line 'auto))
+# --
+${1:return} ${2:name}(${3:signature}) $0

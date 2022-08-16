@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: single-line-comment
+# key: sm
+# --
+/* ${1:comment} */
