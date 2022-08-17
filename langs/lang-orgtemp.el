@@ -9,13 +9,6 @@
       '(("CANCELLED" . (:foreground "#a89984"))
         ("DOING" . (:foreground "#d79921"))))
 
-  ;; (setq org-tag-faces
-  ;;       '(("work" . "#d65d0e")
-  ;;         ("personal" . "#fe8019")
-  ;;         ;; Gruvbox dark aqua
-  ;;         ("literature" . "#427b58")
-  ;;         ("fleeting" . "#a8b1c1")))
-
 ;;; ORG CAPTURE
 (setq org-capture-templates
       '(("t" "Tasks")
@@ -29,7 +22,7 @@
         ("m" "Memos")
         ("mt" "Twitter" entry
          (file "twitter.org")
-         "* %^{Short Title} %^g \n*TWEET*: %^{Link} \n*TIME*: %u"
+         "* %^{Short Title} %^g \n*TWEET*: [[%^{LINK}]] \n*TIME*: %u"
          :kill-buffer t :prepend t)
         ;; notes
         ("n" "Daily Notes" entry
@@ -49,15 +42,15 @@
         ("r" "Readings")
         ("ra" "Article" entry
          (file+headline "readings.org" "ARTICLE")
-         "* %^{Short title} %^g \n*TTL*: %^{Long title} \n*SRC*: %^{Link} \n*SUM*: %^{Summary} \n%u"
+         "* %^{Short title} %^g \n*TTL*: %^{Long title} \n*SRC*: [[%^{LINK}]] \n*SUM*: %^{Summary} \n%u"
          :kill-buffer t)
         ("rl" "Blog" entry
          (file+headline "readings.org" "BLOG")
-         "* %^{Site Title} %^g \n*URL*: %^{Link} \n*REP*: %^{Representative article} \n Last Accessed: %u"
+         "* %^{Site Title} %^g \n*URL*: [[%^{LINK}]] \n*REP*: %^{Representative article} \n Last Accessed: %u"
          :kill-buffer t)
         ("rk" "Book" entry
          (file+headline "readings.org" "BOOK")
-         "* %^{Short title} %^g \n*TTL*: %^{Long title} \n*SRC*: %^{Link} \n*SUM*: %^{Summary} \n%u"
+         "* %^{Short title} %^g \n*TTL*: %^{Long title} \n*SRC*: [[%^{LINK}]] \n*SUM*: %^{Summary} \n%u"
          :kill-buffer t)))
 
 (setq org-refile-targets '(("~/projects/org/inbox.org" :maxlevel . 3)
