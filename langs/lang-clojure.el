@@ -21,7 +21,7 @@
 (autoload #'clojure-mode "clojure-mode" nil t)
 
 (with-eval-after-load "clojure-mode"
-  (setq cider-default-cljs-repl 'shadow) ;; prefered to be set in .dir-local.el
+  (setq clojure-indent-style 'always-indent)
   (setq-local flycheck-checker 'clj-kondo-clj)
   ;; (add-hook 'clojure-mode-hook 'paredit-mode)
   ;; cider-jack-in will enable cider-mode so there's no need to hook it to
