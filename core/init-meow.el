@@ -8,8 +8,6 @@
 ;;  '(ford-this.el :type git :host github :repo "magnars/fold-this.el"))
 ;; (autoload #'fold-this "fold-this" nil t)
 
-(require 'meow)
-
 ;; Custome meow indicator
 (setq meow-expand-hint-remove-delay 1.5
       ;;meow-use-cursor-position-hack t
@@ -19,7 +17,6 @@
         (keypad . "K")
         (motion . "M")
         (beacon . "B")))
-(meow-global-mode 1)
 
 (defun meow-setup ()
   (setq meow-cheatsheet-layout meow-cheatsheet-layout-qwerty)
