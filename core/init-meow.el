@@ -8,15 +8,6 @@
 ;;  '(ford-this.el :type git :host github :repo "magnars/fold-this.el"))
 ;; (autoload #'fold-this "fold-this" nil t)
 
-;; Custome meow indicator
-(setq meow-expand-hint-remove-delay 1.5
-      ;;meow-use-cursor-position-hack t
-      meow-replace-state-name-list
-      '((normal . "N")
-        (insert . "I")
-        (keypad . "K")
-        (motion . "M")
-        (beacon . "B")))
 
 (defun meow-setup ()
   (setq meow-cheatsheet-layout meow-cheatsheet-layout-qwerty)
@@ -195,8 +186,14 @@
   ;; make Meow usable in TUI Emacs
   (meow-esc-mode 1)
   (add-to-list 'meow-grab-fill-commands 'eval-expression)
-  (setq meow-cursor-type-keypad 'box)
-  (setq meow-cursor-type-insert '(bar . 2))
+  (setq meow-cursor-type-keypad 'box
+        meow-cursor-type-insert '(bar . 2)
+        meow-expand-hint-remove-delay 1.5
+        meow-replace-state-name-list '((normal . "N")
+                                      (insert . "I")
+                                      (keypad . "K")
+                                      (motion . "M")
+                                      (beacon . "B")))
   ;; use << and >> to select to bol/eol
   (add-to-list 'meow-char-thing-table '(?> . line))
   (add-to-list 'meow-char-thing-table '(?< . line))
