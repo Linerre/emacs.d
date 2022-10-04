@@ -4,8 +4,25 @@
 * 2022-05-15 Sun
 ** project.el
 1. [[https://emacstalk.github.io/post/010/][project.el 使用说明]]
-2. [[https://manueluberti.eu/emacs/2020/09/18/project/][It’s never too late]]
-3. [[https://cestlaz.github.io/post/using-emacs-79-project/][Using Emacs 79 Project]]
+2. [[https://michael.stapelberg.ch/posts/2021-04-02-emacs-project-override/][Emacs: overriding the project.el project directory]]
+   #+BEGIN_SRC elisp
+;; Returns the parent directory containing a .project.el file, if any,
+;; to override the standard project.el detection logic when needed.
+(defun zkj-project-override (dir)
+  (let ((override (locate-dominating-file dir ".project.el")))
+    (if override
+      (cons 'vc override)
+      nil)))
+
+(use-package project
+  ;; Cannot use :hook because 'project-find-functions does not end in -hook
+  ;; Cannot use :init (must use :config) because otherwise
+  ;; project-find-functions is not yet initialized.
+  :config
+  (add-hook 'project-find-functions #'zkj-project-override))
+   #+END_SRC
+3. [[https://manueluberti.eu/emacs/2020/09/18/project/][It’s never too late]]
+4. [[https://cestlaz.github.io/post/using-emacs-79-project/][Using Emacs 79 Project]]
 
 * 2022-05-16 Mon
 ** company
