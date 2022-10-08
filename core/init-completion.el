@@ -51,11 +51,8 @@
 ;; (autoload #'corfu-mode "corfu" nil t)
 (autoload #'company-mode "company" nil t)
 
-(if (display-graphic-p)
-    (global-corfu-mode)
-  (progn
-    (add-hook 'prog-mode-hook #'company-mode)
-    (add-hook 'conf-mode-hook #'company-mode)))
+(add-hook 'prog-mode-hook #'company-mode)
+(add-hook 'conf-mode-hook #'company-mode)
 
 ;; corfu
 (with-eval-after-load "corfu"

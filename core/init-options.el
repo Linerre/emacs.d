@@ -13,7 +13,7 @@
  ;; frame, window, buffer config
  ;; prefer horizental split
  split-height-threshold nil
- split-width-threshold 100
+ ;; split-width-threshold 100
  ;; don't create lockfiles
  ;;create-lockfiles nil
  frame-resize-pixelwise t
