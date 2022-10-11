@@ -21,9 +21,14 @@
 (autoload #'clojure-mode "clojure-mode" nil t)
 
 (with-eval-after-load "clojure-mode"
-  (setq clojure-indent-style 'always-indent)
+  (require 'flycheck-clj-kondo)
+  (add-hook 'clojure-mode-hook 'flycheck-mode)
+  (eldoc-mode -1)             ; avoid overriding flycheck hints
+  (setq clojure-indent-style 'always-indent
+        clojure-align-forms-automatically t)
   (setq-local flycheck-checker 'clj-kondo-clj)
-  ;; (add-hook 'clojure-mode-hook 'paredit-mode)
+  (put-clojure-indent 'or 0)
+  (put-clojure-indent 'and 0)
   ;; cider-jack-in will enable cider-mode so there's no need to hook it to
   ;; clojure-mode. But doing so will allow immediate access to cider-mode
   ;; after entering a clj buffer. REPL is not always necessary however.
@@ -33,7 +38,6 @@
   (add-hook 'clojurescript-mode-hook #'+cljs-company-backends)
   (define-key clojure-mode-map (kbd "C-c j") #'cider-jack-in)
   (define-key clojure-mode-map (kbd "C-c c") #'cider-connect))
-
 
 ;; cider-mode -- an Emacs minor mode
 (with-eval-after-load "cider"
