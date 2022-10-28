@@ -29,6 +29,11 @@
   (setq-local flycheck-checker 'clj-kondo-clj)
   (put-clojure-indent 'or 0)
   (put-clojure-indent 'and 0)
+  ;; (put-clojure-indent 'reg-sub 1)
+  ;; (put-clojure-indent 'reg-event-db 1)
+  ;; (put-clojure-indent 'reg-event-fx 1)
+  ;; (put-clojure-indent 'reg-fx 1)
+  ;; (add-hook 'clojure-mode-hook 'paredit-mode)
   ;; cider-jack-in will enable cider-mode so there's no need to hook it to
   ;; clojure-mode. But doing so will allow immediate access to cider-mode
   ;; after entering a clj buffer. REPL is not always necessary however.
