@@ -83,7 +83,7 @@
  epa-pinentry-mode 'loopback
  custom-file (expand-file-name "custom.el" user-emacs-directory)
  ;; eldoc idle delay
- eldoc-idle-delay 1
+ ;; eldoc-idle-delay 1
  ispell-program-name "aspell"
  debug-on-error t
  ;; log errors and ingnore warnings
@@ -107,6 +107,7 @@
 (dolist (hook '(prog-mode-hook conf-space-mode-hook))
   (add-hook hook 'visual-line-mode)
   (add-hook hook 'hl-line-mode)
+  (add-hook hook 'semantic-mode)
   ;; (add-hook hook 'display-line-numbers-mode)  ; line number on the left margin
   (add-hook hook 'column-number-mode)   ; for col numb on modeline -- Emacs 28
   (add-hook hook 'line-number-mode)
