@@ -83,7 +83,8 @@
  epa-pinentry-mode 'loopback
  custom-file (expand-file-name "custom.el" user-emacs-directory)
  ;; eldoc idle delay
- ;; eldoc-idle-delay 1
+ eldoc-idle-delay 1
+ eldoc-echo-area-use-multiline-p nil
  ispell-program-name "aspell"
  debug-on-error t
  ;; log errors and ingnore warnings
@@ -112,7 +113,10 @@
   (add-hook hook 'column-number-mode)   ; for col numb on modeline -- Emacs 28
   (add-hook hook 'line-number-mode)
   (add-hook hook 'hs-minor-mode)
+  (add-hook hook 'electric-pair-local-mode)
   (add-hook hook 'show-paren-mode))
+
+(add-hook 'conf-mode-hook 'electric-pair-local-mode)
 
 (dolist (hook '(text-mode-hook))
   (add-hook hook 'visual-line-mode)

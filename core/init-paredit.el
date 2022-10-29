@@ -21,7 +21,7 @@
              org-mode-hook
              python-mode-hook
              sql-mode-hook))
-  (add-hook h #'electric-pair-mode))
+  (add-hook h #'electric-pair-local-mode))
 
 (dolist (h '(cider-repl-mode-hook
              clojure-mode-hook

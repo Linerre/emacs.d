@@ -22,6 +22,7 @@
   (interactive)
   (or (yas/expand)
       (company-indent-or-complete-common nil)))
+
 ;;; eglot
 (autoload 'eglot-ensure "eglot" nil nil)
 
@@ -34,7 +35,7 @@
 (add-hook 'prog-mode-hook 'yas-minor-mode)
 
 (with-eval-after-load "yasnippet"
-  (add-hook 'snippet-mode-hook 'electric-pair-mode)
+  (add-hook 'snippet-mode-hook 'electric-pair-local-mode)
   (setq yas-prompt-functions
         '(yas-ido-prompt yas-x-prompt yas-completing-prompt))
   (let ((inhibit-message t))

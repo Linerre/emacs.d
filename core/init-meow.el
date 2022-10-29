@@ -44,18 +44,12 @@
    '("a" . windmove-left)
    '("s" . windmove-down)
    '("d" . windmove-right)
-   '("r w" . windmove-delete-up)
-   '("r a" . windmove-delete-left)
-   '("r s" . windmove-delete-down)
-   '("r d" . windmove-delete-right)
    ;'("W" . window-swap-states)
    '("o" . delete-other-windows)
    '("=" . split-window-right)
    '("-" . split-window-below)
    ;; high frequency commands
    '("'" . goto-line)
-   '("l m" . flymake-mode)
-   '("l c" . flycheck-mode)
    ;; C-x C-x could be bound to different fns in
    ;; different modes, so use the keybindings
    '("e" . "C-x C-e")
@@ -71,6 +65,7 @@
    '("f" . find-file)
    '("i" . imenu)
    '("n" . "M-x")
+   '("r" . rg)
    '("W" . eww)
    '("z" . hs-toggle-hiding)
    '("Z" . hs-hide-all)

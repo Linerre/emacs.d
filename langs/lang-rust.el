@@ -6,7 +6,6 @@
 ;; (sup 'rustic)
 
 (with-eval-after-load "rust-mode"
-  (add-hook 'rust-mode-hook #'electric-pair-mode)
   (add-hook 'rust-mode-hook 'eglot-ensure)
   (define-key rust-mode-map (kbd "C-c C-r") #'rust-run)
   (define-key rust-mode-map (kbd "C-c C-t") #'rust-test)

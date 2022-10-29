@@ -36,8 +36,8 @@
   (dolist (hook '(LaTeX-mode-hook))
           (add-hook hook 'turn-on-cdlatex)
           (add-hook hook #'company-auctex-init)
-          (add-hook hook #'+which-pdf-viewer)
-          (add-hook hook #'electric-pair-mode))
+          (add-hook hook #'+which-pdf-viewer))
+
   (define-key latex-mode-map (kbd "C-c c w") #'count-words))
 
 (with-eval-after-load 'bibtex

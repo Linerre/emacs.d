@@ -40,6 +40,7 @@
                 mode-name
                 mode-line-misc-info
                 mode-line-end-spaces))
+
 (provide 'init-modeline)
 
 ;;; init-modeline.el ends here

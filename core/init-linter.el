@@ -7,7 +7,7 @@
 
 ;; Flymake
 (autoload #'flymake-mode "flymake" nil t)
-(global-set-key (kbd "C-c C-c") #'flymake-mode)
+(global-set-key (kbd "C-c C-f m") #'flymake-mode)
 
 (with-eval-after-load "flymake"
   (setq flymake-no-changes-timeout 2)
