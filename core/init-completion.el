@@ -26,6 +26,18 @@
 ;;; eglot
 (autoload 'eglot-ensure "eglot" nil nil)
 
+(defun +eglot-hook ()
+  (setq eldoc-documentation-functions
+        (cons #'flymake-eldoc-functions
+              (remove #'flymake-eldoc-function eldoc-documentation-functions))))
+
+(with-eval-after-load "eglot"
+  (add-hook 'eglot-managed-mode #'+eglot-hook)
+  (setq eldoc-echo-area-use-multiline-p 3
+        eldoc-echo-area-display-truncation-message nil)
+  (set-face-attribute 'eglot-highlight-symbol-face nil
+                      :background "#B3D7FF"))
+
 ;;; yasnippet
 (setq yas-snippet-dirs
   ;; personal snippets

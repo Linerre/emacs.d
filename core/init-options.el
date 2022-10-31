@@ -84,7 +84,6 @@
  custom-file (expand-file-name "custom.el" user-emacs-directory)
  ;; eldoc idle delay
  eldoc-idle-delay 1
- eldoc-echo-area-use-multiline-p nil
  ispell-program-name "aspell"
  debug-on-error t
  ;; log errors and ingnore warnings
