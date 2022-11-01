@@ -48,6 +48,10 @@
 (with-eval-after-load "cider"
   (setq nrepl-log-messages t
         nrepl-hide-special-buffers t
+        cider-repl-result-prefix ";; =>"
+        cider-connection-message-fn nil
+        cider-repl-display-help-banner nil
+        ;; cider-use-overlays nil
         ;; spill the errors to the error buffer instead of repl
         cider-show-error-buffer 'except-in-repl
         cider-print-fn 'zprint)
