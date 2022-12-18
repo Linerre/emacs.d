@@ -112,6 +112,8 @@
       company-tooltip-width-grow-only t
       ;; delay in secs until tooltip shows
       company-tooltip-idle-delay 0.5
+      company-tooltip-limit 10
+      company-dabbrev-downcase nil
       ;; cancel manually-triggered compl when prefix gets too short (<3)
       company-abort-manual-when-too-short t
       ;; allow free typing anywhere
@@ -121,6 +123,11 @@
       company-global-modes '(not dired-mode dired-sidebar-mode)
       ;; disable format margin since I use no icons/imgs in compl
       company-format-margin-function nil)
+
+(setq-default company-backends
+              '(company-capf company-files company-dabbrev-code))
+
+(setq-default company-search-filtering t)
 
 (with-eval-after-load "company"
   (require 'company-tng)
