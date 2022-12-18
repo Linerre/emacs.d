@@ -12,9 +12,11 @@
 ;;; clojure-mode
 (defun +cljs-company-backends ()
   (setq-local company-backends
-              '(company-semantic company-keywords company-files
-                (company-dabbrev-code :with company-dabbrev)
-                   company-capf company-gtags)))
+              '(company-semantic
+                company-keywords
+                company-files
+                company-dabbrev-code
+                company-capf company-gtags)))
 
 (setq clojure-toplevel-inside-comment-form t)
 
