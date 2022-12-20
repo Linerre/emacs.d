@@ -18,7 +18,8 @@
 
 (defun +my-c-indent ()
   ;; Set any indentation that needs a change
-  (setq-local display-buffer-alist
+  (setq-local c-tab-always-indent t
+              display-buffer-alist
               '(("\\*compilation\\*" (display-buffer-in-side-window))))
   (setq-local c-basic-offset 8
               tab-width 8
