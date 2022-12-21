@@ -44,7 +44,7 @@
  ;; version-control t
  make-backup-files nil
  auto-save-default nil
- create-lockfiles nil
+ ;; create-lockfiles nil
  ;; mouse yank at point instead of click position.
  mouse-yank-at-point t
  ;; this fix the cursor movement lag
@@ -77,7 +77,9 @@
  read-buffer-completion-ignore-case t
  read-file-name-completion-ignore-case t
  ;; use short answer
+ ;; >= emacs 28
  read-answer-short t
+ use-short-answers t
  ;; move cursor to top/bottom before signaling a scroll error
  scroll-error-top-bottom t
  ;; see its explanation in help doc
@@ -91,9 +93,11 @@
  ;; but not pop up the *Warnings* buffer
  warning-minimum-level :error
  native-comp-async-report-warnings-errors 'silent
- ;; >= emacs 28
- use-short-answers t)
  ;;inhibit-compacting-font-caches t
+
+ ;; t means in dired `C-s' == `M-s f C-s'
+ dired-isearch-filenames t
+ default-directory "~/projects")
 
 ;; (fset 'yes-or-no-p 'y-or-n-p)
 ;; cutome funs to be hooked to various modes
