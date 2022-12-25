@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: println_macro
+# key: lg
+# --
+println!("$1");$0
