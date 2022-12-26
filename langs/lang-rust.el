@@ -15,9 +15,10 @@
 ;;   (define-key rust-mode-map (kbd "C-c c k") #'rust-check))
 
 (with-eval-after-load "rustic"
-  (add-hook 'rustic-mode-hook 'eglot-ensure)
-  (add-hook 'rustic-mode-hook 'cargo-minor-mode)
-  (setq rustic-lsp-client 'eglot))
+  ;; (setq rustic-lsp-client 'eglot)
+  ;; (add-hook 'rustic-mode-hook 'eglot-ensure)
+  (add-hook 'rustic-mode-hook 'lsp)
+  (add-hook 'rustic-mode-hook 'cargo-minor-mode))
 
 (with-eval-after-load "cargo-mode"
   (setq compilation-scroll-output 'first-error))

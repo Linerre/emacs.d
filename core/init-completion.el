@@ -5,7 +5,9 @@
 (sup 'company)
 (sup 'corfu)
 (sup 'consult)
-(sup 'eglot)
+;; (sup 'eglot)
+(sup 'lsp-mode)
+(sup 'flycheck-pos-tip)
 (sup 'marginalia)
 ;; (sup 'selectrum)
 (sup 'vertico)
@@ -23,20 +25,33 @@
   (or (yas/expand)
       (company-indent-or-complete-common nil)))
 
-;;; eglot
-(autoload 'eglot-ensure "eglot" nil nil)
+;; ;;; eglot
+;; (autoload 'eglot-ensure "eglot" nil nil)
+;;
+;; (defun +eglot-hook ()
+;;   (setq eldoc-documentation-functions
+;;         (cons #'flymake-eldoc-functions
+;;               (remove #'flymake-eldoc-function eldoc-documentation-functions))))
+;;
+;; (with-eval-after-load "eglot"
+;;   (add-hook 'eglot-managed-mode #'+eglot-hook)
+;;   (setq eldoc-echo-area-use-multiline-p 3
+;;         eldoc-echo-area-display-truncation-message nil)
+;;   (set-face-attribute 'eglot-highlight-symbol-face nil
+;;                       :background "#B3D7FF"))
 
-(defun +eglot-hook ()
-  (setq eldoc-documentation-functions
-        (cons #'flymake-eldoc-functions
-              (remove #'flymake-eldoc-function eldoc-documentation-functions))))
+;; lsp-mod
+(setq lsp-keymap-prefix "C-c l"
+      lsp-enable-symbol-highlighting nil
+      lsp-enable-dap-auto-configure nil
+      lsp-lens-enable nil
+      lsp-headerline-breadcrumb-enable nil
+      lsp-signature-doc-lines 3)
 
-(with-eval-after-load "eglot"
-  (add-hook 'eglot-managed-mode #'+eglot-hook)
-  (setq eldoc-echo-area-use-multiline-p 3
-        eldoc-echo-area-display-truncation-message nil)
-  (set-face-attribute 'eglot-highlight-symbol-face nil
-                      :background "#B3D7FF"))
+(autoload 'lsp "lsp-mode" nil t)
+
+(with-eval-after-load "flycheck"
+  (flycheck-pos-tip-mode))
 
 ;;; yasnippet
 (setq yas-snippet-dirs
