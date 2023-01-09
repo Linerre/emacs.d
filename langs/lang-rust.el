@@ -1,8 +1,14 @@
 ;;; -*- lexical-binding: t; -*-
-;;; Commentary
+;;; Commentary:
+;;; Last Update: 2023-01-09
+;;; For programming in Rust, choose either of the following bundles:
+;;; 1. rust-mode + cargo-mode
+;;; cargo mode offers keys to run cargo cmds within Emacs
+;;; 2. rustic (based on rust-mode/util.el) and integrates cargo cmds
+
 ;;; Code:
 
-(sup 'cargo-mode)
+;; (sup 'cargo-mode)
 ;; (sup 'rust-mode)
 (sup 'rustic)
 
@@ -17,11 +23,8 @@
 (with-eval-after-load "rustic"
   ;; (setq rustic-lsp-client 'eglot)
   ;; (add-hook 'rustic-mode-hook 'eglot-ensure)
-  (add-hook 'rustic-mode-hook 'lsp)
-  (add-hook 'rustic-mode-hook 'cargo-minor-mode))
-
-(with-eval-after-load "cargo-mode"
-  (setq compilation-scroll-output 'first-error))
+  ;; rustic provides cmds to interact with cargo
+  (add-hook 'rustic-mode-hook 'lsp))
 
 (provide 'lang-rust)
 ;;; lang-rust.el ends here
