@@ -51,6 +51,8 @@
 (autoload 'lsp "lsp-mode" nil t)
 
 (with-eval-after-load "flycheck"
+  (define-key flycheck-mode-map (kbd "M-p") #'flycheck-previous-error)
+  (define-key flycheck-mode-map (kbd "M-n") #'flycheck-next-error)
   (flycheck-pos-tip-mode))
 
 ;;; yasnippet
