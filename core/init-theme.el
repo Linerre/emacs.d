@@ -1,8 +1,8 @@
 ;;; -*- lexical-binding: t -*-
 
-(sup 'kaolin-themes)
-(sup
- '(zenburn-emacs :type git :host github :repo "bbatsov/zenburn-emacs"))
+;; (sup 'kaolin-themes)
+;; (sup
+;;  '(zenburn-emacs :type git :host github :repo "bbatsov/zenburn-emacs"))
 (sup
  '(modus-themes :type git :host gitlab :repo "protesilaos/modus-themes"))
 
@@ -28,10 +28,16 @@
       (load-theme 'modus-operandi t))
   (progn
     (menu-bar-mode -1)                  ; almost useless in TUI
-    (require 'kaolin-themes)
-    (load-theme 'kaolin-light t)
-    (require 'kaolin-light-tweak-theme)
-    (load-theme 'kaolin-light-tweak t)))
+    (require 'modus-themes)
+    (setq modus-themes-italic-constructs t
+          modus-themes-bold-constructs nil
+          modus-themes-region '(bg-only no-extend))
+    (load-theme 'modus-vivendi t)
+    ;; (require 'kaolin-themes)
+    ;; (load-theme 'kaolin-light t)
+    ;; (require 'kaolin-light-tweak-theme)
+    ;; (load-theme 'kaolin-light-tweak t)
+    ))
 
 ;; tree sidebar is useful when viewing a project
 (sup 'dired-sidebar)
