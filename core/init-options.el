@@ -114,9 +114,13 @@
 
 (setq after-focus-change-function '+real-auto-save)
 
+;; Rebind a few keys
+(define-key global-map (kbd "C-x C-b") #'ibuffer)
+(add-hook 'ibuffer-mode-hook #'hl-line-mode)
+
 ;; Instead of enabling a minor mode globally
 ;; hook it to several major modes
-(dolist (hook '(prog-mode-hook conf-space-mode-hook))
+(dolist (hook '(conf-space-mode-hook prog-mode-hook))
   (add-hook hook 'visual-line-mode)
   (add-hook hook 'hl-line-mode)
   (add-hook hook 'semantic-mode)
