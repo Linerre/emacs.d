@@ -72,6 +72,8 @@
    '("u" . magit-status)
    '("v" . vundo)
    '("y" . yas-insert-snippet)
+   ;; eshell
+   '("S" . eshell)
    ;; toggles
    '("L" . display-line-numbers-mode)
    ;; '("t" . telega)
