@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: lifetime-anno
+# key: ''
+# --
+<'${1:anno1}${0:anno2?}>
