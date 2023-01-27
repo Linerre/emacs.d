@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: new-vec-with-cap
+# key: vw
+# --
+Vec::with_capacity(${1:capactiy});$0
