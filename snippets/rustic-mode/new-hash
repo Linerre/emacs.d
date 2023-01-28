@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: new-hash
+# key: hn
+# --
+HashMap::new();
