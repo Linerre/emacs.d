@@ -1,41 +1,22 @@
 # ignore pkgs, bookmarks, etc.
 auto-save-list
-<<<<<<< HEAD
+*bookmarks
 elpa*
 eln*
-*bookmarks
-=======
-elpa/
-elpa-backup/
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> b1ffb72f166df1f14c3d80c10dd19a40b510a941
-bookmarks
->>>>>>> ae2d53f (clean up work)
-=======
-*bookmarks
+eshell/
+gkroam/
 tramp
->>>>>>> 69e5da6 (Ignore tramp and eww-bookmark)
 recentf
 rime/
 transient/
 straight/
-gkroam/
+semantic*
 librime/
 request/
 org-gcal/
-eln-cache/
 init-org-gcal.el
 projects
-<<<<<<< HEAD
-# ignore roam db for now
-org-roam.db
-.org-id-locations
-custom*
-tramp
-=======
 custom.el
->>>>>>> 8cf9756 (Stop tracking custom.el and org-roam stuff)
+*lsp-*
 # ignore macOS stuff
 .DS_Store
