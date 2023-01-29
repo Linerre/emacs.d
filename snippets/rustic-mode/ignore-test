@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: ignore-test
+# key: ig
+# --
+#[ignore]
