@@ -1,22 +1,22 @@
 # ignore pkgs, bookmarks, etc.
 auto-save-list
 *bookmarks
+custom.el
 elpa*
 eln*
 eshell/
 gkroam/
-tramp
-recentf
-rime/
-transient/
+librime/
+org-gcal/
+projects
 straight/
 semantic*
-librime/
+tramp
+recentf
 request/
-org-gcal/
-init-org-gcal.el
-projects
-custom.el
-*lsp-*
+rime/
+transient/
+*lsp*
+
 # ignore macOS stuff
 .DS_Store
