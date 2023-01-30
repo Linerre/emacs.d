@@ -74,7 +74,7 @@
 ;;; Nix
 (autoload #'nix-mode "nix-mode")
 (with-eval-after-load "nix-mode"
-  (add-hook 'nix-mode-hook 'smartparens-mode))
+  (add-hook 'nix-mode-hook #'electric-pair-mode))
 
 ;;; SQL
 (with-eval-after-load "sql"
