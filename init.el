@@ -17,16 +17,12 @@
 (require 'init-git)
 (require 'lang-lisp)
 (require 'lang-clojure)
-(require 'lang-nix)
 (require 'lang-rust)
 (require 'lang-cpp)
 (require 'lang-go)
 (require 'lang-python)
 (require 'lang-shell)
-(require 'lang-sql)
 (require 'lang-web)
-(require 'lang-markdown)
-(require 'lang-latex)
-(require 'lang-org)
+(require 'lang-dsl)
 
 ;;; init.el ends here
