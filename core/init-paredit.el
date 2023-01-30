@@ -6,10 +6,6 @@
 
 (autoload #'paredit-mode "paredit" nil t)
 
-;; (with-eval-after-load "paredit"
-;;   ;; hooks, keybinds, setq etc
-;;   )
-
 (dolist (h '(c-mode-hook
              c++-mode-hook
              css-mode-hook
