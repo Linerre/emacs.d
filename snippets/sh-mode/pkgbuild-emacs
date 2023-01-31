@@ -1,0 +1,29 @@
+# -*- mode: snippet -*-
+# name: pkgbuild-emacs
+# key: pbe
+# --
+# Maintainer: Errenil Noel <errelinaaron@gmail.com>
+
+pkgname=${1:name}
+pkgver=${2:version}
+pkgrel=${3:release_num}
+pkgdesc="${4:description}"
+arch=('any')
+url="${5:home_page_url}"
+license=('${5:GPL}')
+# groups=()
+depends=('emacs' ${6:other})
+checkdepends=()
+source=("{7:src_url}")
+sha256sums=()
+
+build() {
+	cd "$pkgname-$pkgver"
+	./configure --prefix=/usr
+	make
+}
+
+package() {
+	cd "$pkgname-$pkgver"
+	make DESTDIR="$pkgdir/" install
+}
