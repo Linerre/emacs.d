@@ -1,0 +1,52 @@
+# -*- mode: snippet -*-
+# name: pkgbuild-temp-general
+# key: pbg
+# --
+# Maintainer: Errenil Noel <errelinaaron@gmail.com>
+
+pkgname=${1:name}
+pkgver=${2:version}
+pkgrel=${3:release_num}
+epoch=
+pkgdesc=""
+arch=(${4:architecture})
+url=""
+license=('${5:GPL}')
+groups=()
+depends=()
+makedepends=()
+checkdepends=()
+optdepends=()
+provides=()
+conflicts=()
+replaces=()
+backup=()
+options=()
+install=
+changelog=
+source=("$pkgname-$pkgver.tar.gz"
+        "$pkgname-$pkgver.patch")
+noextract=()
+md5sums=()
+validpgpkeys=()
+
+prepare() {
+	cd "$pkgname-$pkgver"
+	patch -p1 -i "$srcdir/$pkgname-$pkgver.patch"
+}
+
+build() {
+	cd "$pkgname-$pkgver"
+	./configure --prefix=/usr
+	make
+}
+
+check() {
+	cd "$pkgname-$pkgver"
+	make -k check
+}
+
+package() {
+	cd "$pkgname-$pkgver"
+	make DESTDIR="$pkgdir/" install
+}
