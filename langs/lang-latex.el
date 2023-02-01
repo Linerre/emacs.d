@@ -1,5 +1,5 @@
 ;;; -*- lexical-binding: t -*-
-;;; Commentary:
+;;; Commentary: Configs for markup languages such as latex and markdown
 ;;; Code:
 (sup 'auctex)
 (sup 'auctex-lua)

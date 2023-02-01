@@ -8,10 +8,6 @@
 
 ;;; Code:
 
-;; (sup 'cargo-mode)
-;; (sup 'rust-mode)
-(sup 'rustic)
-
 ;; (with-eval-after-load "rust-mode"
 ;;   (add-hook 'rust-mode-hook 'eglot-ensure)
 ;;   (add-hook 'rust-mode-hook 'cargo-minor-mode)

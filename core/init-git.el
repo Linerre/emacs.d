@@ -1,5 +1,4 @@
 ;;; -*- lexical-binding: t -*-
-(sup 'magit)
 
 ;;; magit
 (autoload #'magit "magit" nil t)
@@ -12,7 +11,6 @@
 (autoload #'magit-blame "magit" nil t)
 
 ;; smerge-mode
-
 (autoload 'smerge-mode "smerge-mode" nil t)
 
 (defun sm-try-smerge ()

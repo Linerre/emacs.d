@@ -1,13 +1,8 @@
 ;;; init-meow.el --- -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
-(sup
- '(meow :type git :host github :repo "DogLooksGood/meow"))
 
-;; (sup
-;;  '(ford-this.el :type git :host github :repo "magnars/fold-this.el"))
 ;; (autoload #'fold-this "fold-this" nil t)
-
 
 (defun meow-setup ()
   (setq meow-cheatsheet-layout meow-cheatsheet-layout-qwerty)

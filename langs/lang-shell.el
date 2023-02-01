@@ -4,14 +4,13 @@
 ;;; Shell-script-mode and shell-mode config
 
 ;;; Code:
-(sup
- '(ebuild-mode :type git :host github :repo "emacsmirror/ebuild-mode"))
+
 ;; a child mode of shell-script-mode
 (autoload #'ebuild-mode "ebuild-mode" nil t)
 
-
 ;; shell-script-mode
 (add-to-list 'auto-mode-alist '("bash_profile\\'\\|[bz]a?shrc\\'" . sh-mode))
+(add-to-list 'auto-mode-alist '("PKGBUILD\\'" . sh-mode))
 
 ;; sh-script.el
 (with-eval-after-load "sh-script"

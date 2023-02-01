@@ -2,8 +2,6 @@
 ;;; Commentary:
 ;;; Code:
 (sup 'js2-mode)
-(sup 'json-mode)
-;; (sup 'vue-mode)
 
 (add-to-list 'auto-mode-alist '("\\.\\(js\\|es6\\)\\(\\.erb\\)?\\'" . js-mode))
 

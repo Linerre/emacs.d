@@ -1,24 +1,6 @@
 ;;; -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
-(sup 'cape)
-(sup 'company)
-(sup 'corfu)
-(sup 'consult)
-;; (sup 'eglot)
-(sup 'lsp-mode)
-(sup 'flycheck-pos-tip)
-(sup 'marginalia)
-;; (sup 'selectrum)
-(sup 'vertico)
-(sup 'yasnippet)
-;; (sup
-;;  '(corfu-terminal
-;;    :type git
-;;    :repo "https://codeberg.org/akib/emacs-corfu-terminal.git"))
-(sup
- '(cmt :type git :host gitlab :repo "protesilaos/mct"))
-
 (defun +complete ()
   "Expand snippet when there is one; otherwise, fall back on company."
   (interactive)
@@ -40,7 +22,7 @@
 ;;   (set-face-attribute 'eglot-highlight-symbol-face nil
 ;;                       :background "#B3D7FF"))
 
-;; lsp-mod
+;;; LSP
 (setq lsp-keymap-prefix "C-c l"
       lsp-enable-symbol-highlighting nil
       lsp-enable-dap-auto-configure nil
@@ -50,10 +32,21 @@
 
 (autoload 'lsp "lsp-mode" nil t)
 
+;;; Flycheck
 (with-eval-after-load "flycheck"
   (define-key flycheck-mode-map (kbd "M-p") #'flycheck-previous-error)
   (define-key flycheck-mode-map (kbd "M-n") #'flycheck-next-error)
   (flycheck-pos-tip-mode))
+
+;;; Flymake
+(autoload #'flymake-mode "flymake" nil t)
+(global-set-key (kbd "C-c C-f m") #'flymake-mode)
+
+(with-eval-after-load "flymake"
+  (setq flymake-no-changes-timeout 2)
+  (define-key flymake-mode-map (kbd "C-c k") 'flymake-show-diagnostics-buffer)
+  (define-key flymake-mode-map (kbd "M-n") 'flymake-goto-next-error)
+  (define-key flymake-mode-map (kbd "M-p") 'flymake-goto-prev-error))
 
 ;;; yasnippet
 (setq yas-snippet-dirs
@@ -166,8 +159,6 @@
   (define-key company-template-nav-map (kbd "TAB") nil)
   (define-key company-template-nav-map [tab] nil))
 
-
-
 ;; (require 'selectrum)
 ;; (selectrum-mode t)
 ;; (setq completion-styles
@@ -192,7 +183,6 @@
 
 ;; orderless (suggested by a friend)
 ;; for fuzzy search in minibuffer
-(sup 'orderless)
 (defun friend/use-orderless-in-minibuffer ()
   (setq-local completion-styles '(orderless)))
 (add-hook 'minibuffer-setup-hook #'friend/use-orderless-in-minibuffer)

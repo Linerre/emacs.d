@@ -31,7 +31,7 @@
 (sup 'magit)
 (sup 'marginalia)
 (sup 'markdown-mode)
-(sup '(meow :type git :host github :repo "DogLooksGood/meow"))
+;; (sup '(meow :type git :host github :repo "DogLooksGood/meow"))
 ;; (sup '(modus-themes :type git :host gitlab :repo "protesilaos/modus-themes"))
 (sup 'nix-mode)
 (sup 'orderless)

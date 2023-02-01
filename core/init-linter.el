@@ -1,8 +1,6 @@
 ;;; flycheck/make.el --- -*- lexical-binding: t; -*-
 
 ;;; Commentary:
-;;; Flycheck and Flymake config
-
 ;;; Code:
 
 ;; Flymake

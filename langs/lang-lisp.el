@@ -1,7 +1,5 @@
 ;; -*- lexical-binding: t -*-
 
-(sup 'highlight-defined)
-
 ;; LEXICAL
 (defun lexical-binding ()
   (interactive)

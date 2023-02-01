@@ -2,13 +2,6 @@
 ;;; Commentary:
 ;;; Code:
 
-(sup 'clojure-mode)
-(sup 'cider)
-(sup 'clj-refactor)
-(sup 'flycheck)
-(sup 'flycheck-clj-kondo)
-(sup 'flycheck-joker)
-
 ;;; clojure-mode
 (defun +cljs-company-backends ()
   (setq-local company-backends
@@ -59,7 +52,8 @@
   ;; Make RET break a line and C-j to trigger eval
   (define-key cider-repl-mode-map (kbd "RET") #'cider-repl-newline-and-indent)
   (define-key cider-repl-mode-map (kbd "<return>") #'cider-repl-newline-and-indent)
-  (define-key cider-repl-mode-map (kbd "C-j") #'cider-repl-return)
+  (define-key cider-repl-mode-map (kbd "M-<return>") #'cider-repl-return)
+  (define-key cider-repl-mode-map (kbd "M-RET") #'cider-repl-return)
   (cider-add-to-alist 'cider-jack-in-dependencies
                       "zprint/zprint" "1.2.3"))
 

@@ -10,7 +10,6 @@
 (add-to-list 'auto-mode-alist '("README\\.md\\'" . gfm-mode))
 
 (with-eval-after-load "markdown-mode"
-  (dolist (h '(markdown-mode-hook))
-    (add-hook h #'flyspell-mode)))
+  (add-hook 'markdown-mode-hook #'flyspell-mode))
 
 (provide 'lang-markdown)

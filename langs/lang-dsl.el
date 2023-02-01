@@ -3,18 +3,6 @@
 ;;; Commentary:
 ;;; Domain Specific Languages such as Nix, SQL, Tex, Markdown etc.
 
-(sup 'auctex)
-(sup 'auctex-lua)
-(sup 'auctex-latexmk)
-(sup 'company-auctex)
-(sup 'cdlatex)
-(sup 'markdown-mode)
-(sup 'nix-mode)
-(sup
- '(emacs-sql-indent :type git :host github :repo "alex-hhh/emacs-sql-indent"))
-(sup
- '(sqlup-mode :type git :host github :repo "Trevoke/sqlup-mode.el"))
-
 ;;; Org
 (with-eval-after-load 'org
   ;; (setq org-log-done 'time)
@@ -52,12 +40,23 @@
   (define-key org-mode-map (kbd "C-c c") 'org-capture)
 
   ;; HOOKS
-  ;; TODO: disbale electric-pair-mode and use smartparens instead
-  (dolist (h '(org-mode-hook))
-    (add-hook h #'yas-minor-mode)
-    (add-hook h #'visual-line-mode)
-    (add-hook h #'display-fill-column-indicator-mode)
-    (add-hook h #'org-indent-mode)))
+  (add-hook 'org-mode-hook #'yas-minor-mode)
+  (add-hook 'org-mode-hook #'visual-line-mode)
+  (add-hook 'org-mode-hook #'org-indent-mode)
+  ;; It revent electric-pair from inserting `>' to match `<', but
+  ;; it wont prevent ep from thinking `<' and `>' are matched
+  ;; need to turn off check-paren
+  (add-hook 'org-mode-hook
+            (lambda ()
+              (setq-local electric-pair-inhibit-predicate
+                          `(lambda (c)
+                             (if (char-equal c ?<)
+                                 t
+                               (,electric-pair-inhibit-predicate c))))))
+  )
+
+  ;; https://www.topbug.net/blog/2016/09/29/emacs-disable-certain-pairs-for-electric-pair-mode/
+
 
 ;;; ORG BABEL
 ;(require 'org-tempo)

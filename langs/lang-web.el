@@ -2,14 +2,6 @@
 ;;; Author: Errelin
 ;;; Last Change:
 
-(sup 'emmet-mode)
-(sup 'web-mode)
-(sup
- '(indent-guide :type git :host github :repo "zk-phi/indent-guide"))
-
-(sup
- '(svelte-mode :type git :host github :repo "leafOfTree/svelte-mode"))
-(sup 'json-mode)
 
 ;; web-mode
 ;; (setq web-mode-markup-indent-offset 2

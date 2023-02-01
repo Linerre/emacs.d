@@ -2,8 +2,6 @@
 ;;; Commentary
 ;;; Code:
 
-(sup 'paredit)
-
 (autoload #'paredit-mode "paredit" nil t)
 
 (dolist (h '(c-mode-hook
