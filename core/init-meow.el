@@ -67,6 +67,8 @@
    '("u" . magit-status)
    '("v" . vundo)
    '("y" . yas-insert-snippet)
+   ;; Registors
+   '("R" . jump-to-register)
    ;; eshell
    '("S" . eshell)
    ;; toggles
