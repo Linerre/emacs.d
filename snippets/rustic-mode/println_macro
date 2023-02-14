@@ -2,4 +2,4 @@
 # name: println_macro
 # key: lg
 # --
-println!("$1");$0
+println!("$1 {}", $2);$0
