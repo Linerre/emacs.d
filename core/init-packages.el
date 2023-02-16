@@ -45,7 +45,6 @@
 (sup 'which-key)
 (sup 'yasnippet)
 (sup 'emmet-mode)
-(sup 'web-mode)
 
 ;;; Dropped
 ;; (sup 'cargo-mode)
@@ -61,5 +60,6 @@
 ;;  '(corfu-terminal
 ;;    :type git
 ;;    :repo "https://codeberg.org/akib/emacs-corfu-terminal.git"))
+;; (sup 'web-mode)
 
 (provide 'init-packages)
