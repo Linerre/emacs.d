@@ -17,7 +17,6 @@
 (sup 'corfu)
 (sup '(cmt :type git :host gitlab :repo "protesilaos/mct"))
 (sup 'direnv)
-(sup '(ebuild-mode :type git :host github :repo "emacsmirror/ebuild-mode"))
 (sup '(emacs-sql-indent :type git :host github :repo "alex-hhh/emacs-sql-indent"))
 (sup '(go-mode.el :type git :host github :repo "dominikh/go-mode.el"))
 (sup 'highlight-defined)
@@ -31,8 +30,6 @@
 (sup 'magit)
 (sup 'marginalia)
 (sup 'markdown-mode)
-;; (sup '(meow :type git :host github :repo "DogLooksGood/meow"))
-;; (sup '(modus-themes :type git :host gitlab :repo "protesilaos/modus-themes"))
 (sup 'nix-mode)
 (sup 'orderless)
 (sup 'paredit)
@@ -41,19 +38,23 @@
 (sup '(sqlup-mode :type git :host github :repo "Trevoke/sqlup-mode.el"))
 (sup '(svelte-mode :type git :host github :repo "leafOfTree/svelte-mode"))
 (sup 'vertico)
-(sup 'vundo)
 (sup 'which-key)
 (sup 'yasnippet)
 (sup 'emmet-mode)
+
+;;; Managed by pacman (Arch) or portage (Gentoo)
+;; (sup '(meow :type git :host github :repo "DogLooksGood/meow")) installed via pacman/portage
+;; (sup 'vundo)
+;; (sup 'ebuild-mode)
 
 ;;; Dropped
 ;; (sup 'cargo-mode)
 ;; (sup 'rust-mode)
 ;; (sup 'selectrum)
 ;; (sup 'kaolin-themes)
+;; (sup '(modus-themes :type git :host gitlab :repo "protesilaos/modus-themes"))
 ;; (sup
 ;;  '(zenburn-emacs :type git :host github :repo "bbatsov/zenburn-emacs"))
-
 ;; (sup
 ;;  '(ford-this.el :type git :host github :repo "magnars/fold-this.el"))
 ;; (sup
