@@ -19,7 +19,6 @@
 (sup 'direnv)
 (sup '(emacs-sql-indent :type git :host github :repo "alex-hhh/emacs-sql-indent"))
 (sup '(go-mode.el :type git :host github :repo "dominikh/go-mode.el"))
-(sup 'highlight-defined)
 (sup '(indent-guide :type git :host github :repo "zk-phi/indent-guide"))
 (sup 'json-mode)
 (sup 'lsp-mode)
@@ -46,6 +45,7 @@
 ;; (sup '(meow :type git :host github :repo "DogLooksGood/meow")) installed via pacman/portage
 ;; (sup 'vundo)
 ;; (sup 'ebuild-mode)
+;; (sup 'highlight-defined)
 
 ;;; Dropped
 ;; (sup 'cargo-mode)
