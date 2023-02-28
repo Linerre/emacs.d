@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: inline-hint
+# key: il
+# --
+#[inline(${1:hint})]
