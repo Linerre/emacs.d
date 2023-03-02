@@ -16,11 +16,11 @@
 ;;   (define-key rust-mode-map (kbd "C-c c b") #'rust-compile)
 ;;   (define-key rust-mode-map (kbd "C-c c k") #'rust-check))
 
-(with-eval-after-load "rustic"
+;; (with-eval-after-load "rustic"
   ;; (setq rustic-lsp-client 'eglot)
   ;; (add-hook 'rustic-mode-hook 'eglot-ensure)
   ;; rustic provides cmds to interact with cargo
-  (add-hook 'rustic-mode-hook 'lsp))
+  ;; (add-hook 'rustic-mode-hook 'lsp))
 
 (provide 'lang-rust)
 ;;; lang-rust.el ends here
