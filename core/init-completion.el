@@ -23,14 +23,14 @@
 ;;                       :background "#B3D7FF"))
 
 ;;; LSP
+(autoload 'lsp "lsp-mode" nil t)
+
 (setq lsp-keymap-prefix "C-c l"
       lsp-enable-symbol-highlighting nil
       lsp-enable-dap-auto-configure nil
       lsp-lens-enable nil
       lsp-headerline-breadcrumb-enable nil
       lsp-signature-doc-lines 3)
-
-(autoload 'lsp "lsp-mode" nil t)
 
 ;;; Flycheck
 (with-eval-after-load "flycheck"
