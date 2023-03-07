@@ -41,6 +41,7 @@
 (sup 'yasnippet)
 (sup 'emmet-mode)
 
+(require 'vundo)
 ;;; Managed by pacman (Arch) or portage (Gentoo)
 ;; (sup '(meow :type git :host github :repo "DogLooksGood/meow")) installed via pacman/portage
 ;; (sup 'vundo)
