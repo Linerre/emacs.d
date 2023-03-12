@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: this-error-macro
+# key: err
+# --
+#[error("${1:mesg}")]
+${2:ErrorVariant}

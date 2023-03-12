@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: log-error
+# key: el
+# --
+eprintln!("${1:message} {}", ${2:var});
