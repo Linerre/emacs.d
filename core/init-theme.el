@@ -23,23 +23,22 @@
 
 (global-set-key (kbd "C-c m") #'+change-current-theme)
 
+
 (setq modus-themes-italic-constructs t
       modus-themes-bold-constructs nil
       modus-themes-region '(bg-only no-extend))
+(load-theme 'modus-operandi t)
 
 (if (display-graphic-p)
     (progn
       (tool-bar-mode -1)
-      (scroll-bar-mode -1)
-      ;; (require 'modus-themes)
-      (load-theme 'modus-operandi t))
+      (scroll-bar-mode -1))
   (progn
     (menu-bar-mode -1)
-    (load-theme 'modus-vivendi t)
     ;; (require 'kaolin-themes)
     ;; (load-theme 'kaolin-light t)
     ;; (require 'kaolin-light-tweak-theme)
-    ;; (load-theme 'kaolin-light-tweak t)
+    ;; (load-theme 'kaolin-light-tweak t))
     ))
 
 ;; tree sidebar is useful when viewing a project
