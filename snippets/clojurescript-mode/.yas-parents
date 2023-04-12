@@ -1,1 +1,2 @@
-clj-cljs-mode
+# Inherit snippets from clojure-mode
+clojure-mode
