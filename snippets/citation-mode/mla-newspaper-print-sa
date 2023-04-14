@@ -1,4 +1,4 @@
-# key: mlnsa
+# key: mlasa
 # name: mla-newspaper-print-single-author
 # --
 ${1:author-last-name}, ${2:first-name}. "${3:Article-title}." /${4:newspaper-name}/, `(format-time-string "%d %b. %Y")`, pp. ${5:page}.

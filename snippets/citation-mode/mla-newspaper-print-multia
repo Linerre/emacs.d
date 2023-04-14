@@ -1,4 +1,4 @@
-# key: mlnma
+# key: mlama
 # name: mla-newspaper-print-multi-author
 # --
 ${1:author-last-name}, ${2:first-name}, et al. "${3:Article-title}." /${4:newspaper-name}/, `(format-time-string "%d %b. %Y")`, pp. ${5:page}.

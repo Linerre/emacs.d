@@ -1,4 +1,4 @@
-# key: mln2a
+# key: mla2a
 # name: mla-newspaper-print-2-author
 # --
 ${1:author-last-name}, ${2:first-name}, and ${3:author-last-name}, ${4:first-name}. "${5:Article-title}." /${6:newspaper-name}/, `(format-time-string "%d %b. %Y")`, pp. ${7:page}.
