@@ -21,9 +21,14 @@
 
 (with-eval-after-load "json-mode"
   (add-hook 'json-mode-hook #'flycheck-mode))
-;; svelte
+
 (autoload #'svelte-mode "svelte-mode" nil t)
 ;; (with-eval-after-load "svelte-mode")
+
+(with-eval-after-load "typescript-mode"
+  (setq typescript-indent-level 2)
+  (define-key typescript-mode-map (kbd "C-c C-l") #'lsp)
+  (define-key typescript-mode-map (kbd "C-c C-a") #'lsp-execute-code-action))
 
 (provide 'lang-web)
 ;;; lang-web.el ends here
