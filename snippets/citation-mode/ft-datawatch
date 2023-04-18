@@ -1,0 +1,4 @@
+# key: mlasa
+# name: mla-newspaper-print-single-author
+# --
+${1:Source}, "Datawatch." /${4:newspaper-name}/, `(format-time-string "%d %b. %Y")`, pp. 1.
