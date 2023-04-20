@@ -32,6 +32,11 @@
       lsp-headerline-breadcrumb-enable nil
       lsp-signature-doc-lines 3)
 
+(with-eval-after-load "lsp-mode"
+  ;; start lsp after `modes' are enabled
+  (add-hook 'rust-mode-hook #'lsp)
+  (add-hook 'typescript-mode-hook #'lsp))
+
 ;;; Flycheck
 (with-eval-after-load "flycheck"
   (define-key flycheck-mode-map (kbd "M-p") #'flycheck-previous-error)
@@ -78,32 +83,31 @@
 (add-hook 'conf-mode-hook #'company-mode)
 
 ;; corfu
-(with-eval-after-load "corfu"
-  (setq completion-cycle-threshold 3
-        tab-always-indent 'complete
-        corfu-preview-current nil  ;; Preview currently selected candidate.
-        corfu-preselect-first nil  ;; Disable candidate preselection
-        )
-  (add-to-list 'completion-at-point-functions #'cape-dabbrev)
-  (add-to-list 'completion-at-point-functions #'cape-file)
-
-  ;; Add the following to proper modes, e.g. cape-ispell for plain text files
-  ;;(add-to-list 'completion-at-point-functions #'cape-ispell)
-  ;;(add-to-list 'completion-at-point-functions #'cape-history)
-  ;;(add-to-list 'completion-at-point-functions #'cape-keyword)
-  ;;(add-to-list 'completion-at-point-functions #'cape-tex)
-  ;;(add-to-list 'completion-at-point-functions #'cape-sgml)
-  ;;(add-to-list 'completion-at-point-functions #'cape-rfc1345)
-  ;;(add-to-list 'completion-at-point-functions #'cape-abbrev)
-  ;;(add-to-list 'completion-at-point-functions #'cape-dict)
-  ;;(add-to-list 'completion-at-point-functions #'cape-symbol)
-  ;;(add-to-list 'completion-at-point-functions #'cape-line)
-
-  ;; keybindings here are not necessary. Just use TAB
-  ;; (global-set-key (kbd "C-c x f") #'cape-file)
-  ;; (global-set-key (kbd "C-c c d") #'cape-dabbrev)
-  ;; (global-set-key (kbd "C-c c i") #'cape-ispell)
-  )
+;; (with-eval-after-load "corfu"
+;;   (setq completion-cycle-threshold 3
+;;         tab-always-indent 'complete
+;;         corfu-preview-current nil  ;; Preview currently selected candidate.
+;;         corfu-preselect-first nil  ;; Disable candidate preselection
+;;         )
+;;   (add-to-list 'completion-at-point-functions #'cape-dabbrev)
+;;   (add-to-list 'completion-at-point-functions #'cape-file)
+;;
+;;   Add the following to proper modes, e.g. cape-ispell for plain text files
+;;   (add-to-list 'completion-at-point-functions #'cape-ispell)
+;;   (add-to-list 'completion-at-point-functions #'cape-history)
+;;   (add-to-list 'completion-at-point-functions #'cape-keyword)
+;;   (add-to-list 'completion-at-point-functions #'cape-tex)
+;;   (add-to-list 'completion-at-point-functions #'cape-sgml)
+;;   (add-to-list 'completion-at-point-functions #'cape-rfc1345)
+;;   (add-to-list 'completion-at-point-functions #'cape-abbrev)
+;;   (add-to-list 'completion-at-point-functions #'cape-dict)
+;;   (add-to-list 'completion-at-point-functions #'cape-symbol)
+;;   (add-to-list 'completion-at-point-functions #'cape-line)
+;;
+;;   keybindings here are not necessary. Just use TAB
+;;   (global-set-key (kbd "C-c x f") #'cape-file)
+;;   (global-set-key (kbd "C-c c d") #'cape-dabbrev)
+;;   (global-set-key (kbd "C-c c i") #'cape-ispell))
 
 ;; company
 (setq company-frontends '(company-pseudo-tooltip-frontend
