@@ -170,16 +170,18 @@
 ;; (setq completion-category-overrides
 ;;       '((file (styles . (basic partial-completion)))))
 
-(require 'mct)
-(setq mct-remove-shadowed-file-names t
-      mct-hide-completion-mode-line t
-      mct-show-completion-line-numbers nil
-      mct-apply-completion-stripes t
-      mct-minimum-input 3
-      mct-live-update-delay 0.6
-      mct-completions-format 'one-column)
- ; works when `file-name-shadow-mode' is enabled
-(mct-mode 1)
+;; (require 'mct)
+;; (setq mct-remove-shadowed-file-names t
+;;       mct-hide-completion-mode-line t
+;;       mct-show-completion-line-numbers nil
+;;       mct-apply-completion-stripes t
+;;       mct-minimum-input 3
+;;       mct-live-update-delay 0.6
+;;       mct-completions-format 'one-column)
+;;  ; works when `file-name-shadow-mode' is enabled
+;; (mct-mode 1)
+
+(vertico-mode)
 
 ;; marginalia
 (require 'marginalia)

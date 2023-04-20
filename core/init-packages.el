@@ -15,7 +15,6 @@
 (sup 'company-auctex)
 (sup 'consult)
 (sup 'corfu)
-(sup '(cmt :type git :host gitlab :repo "protesilaos/mct"))
 (sup 'direnv)
 (sup '(emacs-sql-indent :type git :host github :repo "alex-hhh/emacs-sql-indent"))
 (sup '(go-mode.el :type git :host github :repo "dominikh/go-mode.el"))
@@ -39,12 +38,16 @@
 (sup 'cargo)
 (sup '(sqlup-mode :type git :host github :repo "Trevoke/sqlup-mode.el"))
 (sup '(svelte-mode :type git :host github :repo "leafOfTree/svelte-mode"))
-(sup 'vertico)
+;;(sup 'vertico)
 (sup 'which-key)
 (sup 'yasnippet)
 (sup 'emmet-mode)
 
+;; (sup 'gcmh)
+;; (require 'gcmh)
+
 (require 'vundo)
+(require 'vertico)
 ;;; Managed by pacman (Arch) or portage (Gentoo)
 ;; (sup '(meow :type git :host github :repo "DogLooksGood/meow")) installed via pacman/portage
 ;; (sup 'vundo)
@@ -57,6 +60,7 @@
 ;; (sup 'selectrum)
 ;; (sup 'kaolin-themes)
 ;; (sup '(modus-themes :type git :host gitlab :repo "protesilaos/modus-themes"))
+;; (sup '(cmt :type git :host gitlab :repo "protesilaos/mct"))
 ;; (sup
 ;;  '(zenburn-emacs :type git :host github :repo "bbatsov/zenburn-emacs"))
 ;; (sup
