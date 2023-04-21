@@ -97,6 +97,8 @@
 
  ;; t means in dired `C-s' == `M-s f C-s'
  dired-isearch-filenames t
+ ;; show match number in minibuffer
+ isearch-lazy-count t
  default-directory "~/projects")
 
 ;; (fset 'yes-or-no-p 'y-or-n-p)
@@ -122,8 +124,6 @@
 ;; hook it to several major modes
 (dolist (hook '(conf-space-mode-hook prog-mode-hook))
   (add-hook hook 'visual-line-mode)
-  (add-hook hook 'hl-line-mode)
-  (add-hook hook 'semantic-mode)
   ;; (add-hook hook 'display-line-numbers-mode)  ; line number on the left margin
   (add-hook hook 'column-number-mode)   ; for col numb on modeline -- Emacs 28
   (add-hook hook 'line-number-mode)
@@ -135,7 +135,6 @@
 
 (dolist (hook '(text-mode-hook))
   (add-hook hook 'visual-line-mode)
-  (add-hook hook 'hl-line-mode)
   (add-hook hook 'column-number-mode)   ; for col numb on modeline -- Emacs 28
   (add-hook hook 'line-number-mode)
   (add-hook hook 'flyspell-mode)
