@@ -31,18 +31,18 @@
 (sup 'nix-mode)
 (sup 'orderless)
 (sup 'paredit)
+(sup 'tree-sitter)
+(sup 'tree-sitter-langs)
 (sup 'typescript-mode)
 (sup 'rg)
-;; (sup 'rustic)
 (sup 'rust-mode)
 (sup 'cargo)
 (sup '(sqlup-mode :type git :host github :repo "Trevoke/sqlup-mode.el"))
 (sup '(svelte-mode :type git :host github :repo "leafOfTree/svelte-mode"))
-;;(sup 'vertico)
 (sup 'which-key)
 (sup 'yasnippet)
 (sup 'emmet-mode)
-
+(sup 'zenburn-theme)
 ;; (sup 'gcmh)
 ;; (require 'gcmh)
 
@@ -53,6 +53,7 @@
 ;; (sup 'vundo)
 ;; (sup 'ebuild-mode)
 ;; (sup 'highlight-defined)
+;; (sup 'vertico)
 
 ;;; Dropped
 ;; (sup 'cargo-mode)
