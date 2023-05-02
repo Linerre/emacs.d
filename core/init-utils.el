@@ -1,12 +1,12 @@
-;; -*- lexical-binding: t -*-;
-;; Commentary:
-;; Interactive commands and con defined here for all modes
-;; For fns and consts to use in other modules, refer to init-macros.el
-;; Code:
+;;; -*- lexical-binding: t -*-;
+;;; Commentary:
+;;; Interactive commands and con defined here for all modes
+;;; For fns and consts to use in other modules, refer to init-macros.el
+;;; Code:
 
 ;; which-key
 (require 'which-key)
-(which-key-mode)
+(which-key-mode t)
 
 ;; TIME FUNCS
 (defun +insert-timestamp ()
@@ -35,7 +35,7 @@
 ;; *Help* are special; they point to no real file at all!
 ;; Consider making it interactive
 (defun +trim-file-path (filepath)
-  "Trim the absolute file path to the last three levels."
+  "Trim the absolute FILEPATH to the last three levels."
   (if (stringp filepath)
       (string-join
        (last (split-string  filepath "/") 3)
@@ -43,7 +43,7 @@
     mode-line-buffer-identification))
 
 (defun +project-indicator (fpath)
-  "Enhance +trim-file-path and returns a shorter path in the format of `project-root':`current-buffer-name'. When it is not in ~/projects/, or in one of the special buffers, fall back to `mode-line-buffer-identification'."
+  "Enhance +trim-file-path and return a shorter FPATH in the format of `project-root':`current-buffer-name'.  When it is not in ~/projects/, or in one of the special buffers, fall back to `mode-line-buffer-identification'."
   (if (stringp fpath)
       ;; For normal user, /home/username/projects
       ;; For root user, /root/projects
@@ -64,10 +64,11 @@
                proj-dir
                (buffer-name))
               ":")
-             'face '(:foreground "#4C7A90")) ;azure4
+             'face '(:foreground "#5CC7D1"))
            mode-line-buffer-identification)
         )
     mode-line-buffer-identification))
 
 (provide 'init-utils)
-;; init-utils.el ends here
+
+;;; init-utils.el ends here

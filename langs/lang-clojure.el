@@ -15,13 +15,13 @@
 
 (autoload #'clojure-mode "clojure-mode" nil t)
 
+(setq clojure-indent-style 'always-indent
+      clojure-align-forms-automatically t)
+(setq-local flycheck-checker 'clj-kondo-clj)
 (with-eval-after-load "clojure-mode"
   (require 'flycheck-clj-kondo)
   (add-hook 'clojure-mode-hook 'flycheck-mode)
   (eldoc-mode -1)             ; avoid overriding flycheck hints
-  (setq clojure-indent-style 'always-indent
-        clojure-align-forms-automatically t)
-  (setq-local flycheck-checker 'clj-kondo-clj)
   (put-clojure-indent 'or 0)
   (put-clojure-indent 'and 0)
   ;; (put-clojure-indent 'reg-sub 1)
@@ -39,8 +39,7 @@
   (define-key clojure-mode-map (kbd "C-c j") #'cider-jack-in)
   (define-key clojure-mode-map (kbd "C-c c") #'cider-connect))
 
-(with-eval-after-load "cider"
-  (setq nrepl-log-messages t
+(setq nrepl-log-messages t
         nrepl-hide-special-buffers t
         cider-repl-result-prefix ";;=> "
         cider-connection-message-fn nil
@@ -49,6 +48,8 @@
         ;; spill the errors to the error buffer instead of repl
         cider-show-error-buffer 'except-in-repl
         cider-print-fn 'zprint)
+
+(with-eval-after-load "cider"
   ;; Make RET break a line and C-j to trigger eval
   (define-key cider-repl-mode-map (kbd "RET") #'cider-repl-newline-and-indent)
   (define-key cider-repl-mode-map (kbd "<return>") #'cider-repl-newline-and-indent)

@@ -52,12 +52,12 @@
    ;; '("$" . +change-theme)
    '(";" . comment-dwim)
    '("k" . kill-this-buffer)
-   '("p" . project-find-file)
    '("j" . project-switch-to-buffer)
    '("D" . dired)
    '("b" . switch-to-buffer)
    ;; '("r" . rg-project)
    '("f" . find-file)
+   '("p" . project-find-file)
    '("i" . imenu)
    '("n" . "M-x")
    '("r" . rg)
@@ -173,13 +173,7 @@
 
 (require 'meow)
 
-(meow-global-mode 1)
-
-(with-eval-after-load "meow"
-  ;; make Meow usable in TUI Emacs
-  (meow-esc-mode 1)
-  (add-to-list 'meow-grab-fill-commands 'eval-expression)
-  (setq meow-cursor-type-keypad 'box
+(setq meow-cursor-type-keypad 'box
         meow-cursor-type-insert '(bar . 2)
         meow-expand-hint-remove-delay 2.0
         meow-replace-state-name-list '((normal . "N")
@@ -187,13 +181,22 @@
                                        (keypad . "K")
                                        (motion . "M")
                                        (beacon . "B")))
+
+(add-to-list 'meow-mode-state-list
+               '(cargo-process-mode . motion))
+
+(meow-global-mode 1)
+(meow-setup)
+(meow-setup-indicator)
+
+(with-eval-after-load "meow"
+  ;; make Meow usable in TUI Emacs
+  (meow-esc-mode 1)
+  (add-to-list 'meow-grab-fill-commands 'eval-expression)
+
   ;; use << and >> to select to bol/eol
   (add-to-list 'meow-char-thing-table '(?> . line))
-  (add-to-list 'meow-char-thing-table '(?< . line))
-  ;; define our command layout
-  (meow-setup)
-  ;; add indicator to modeline
-  (meow-setup-indicator))
+  (add-to-list 'meow-char-thing-table '(?< . line)))
 
 (provide 'init-meow)
 ;;; init-meow.el ends here

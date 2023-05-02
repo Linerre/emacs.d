@@ -1,7 +1,6 @@
 ;;; web-langs: html/css/javascript -*- lexical-binding: t -*-
-;;; Author: Errelin
-;;; Last Change:
-
+;;; Commentary
+;;; Code
 
 (dolist (hook
          '(mhtml-mode-hook
@@ -16,8 +15,9 @@
   ;; (define-key company-active-map (kbd "SPC") #'company-complete-selection)
   )
 
-(with-eval-after-load "js"
-  (setq-default js-indent-level 2))
+(setq-default js-indent-level 2)
+;; (with-eval-after-load "js"
+;;   )
 
 (with-eval-after-load "json-mode"
   (add-hook 'json-mode-hook #'flycheck-mode))
@@ -25,10 +25,14 @@
 (autoload #'svelte-mode "svelte-mode" nil t)
 ;; (with-eval-after-load "svelte-mode")
 
-(with-eval-after-load "typescript-mode"
-  (setq typescript-indent-level 2)
-  (define-key typescript-mode-map (kbd "C-c C-l") #'lsp)
-  (define-key typescript-mode-map (kbd "C-c C-a") #'lsp-execute-code-action))
+(add-to-list 'auto-mode-alist '("\\.tsx\\'" . tsx-ts-mode))
+(add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-ts-mode))
+
+(with-eval-after-load "typescript-ts-mode"
+  (add-hook 'typescript-ts-mode-hook
+            (lambda ()
+              (local-set-key (kbd "C-c C-l") #'lsp)
+              (local-set-key (kbd "C-c C-a") #'lsp-execute-code-action))))
 
 (provide 'lang-web)
 ;;; lang-web.el ends here
