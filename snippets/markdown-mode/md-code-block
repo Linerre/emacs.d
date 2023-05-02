@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: md-code-block
+# key: mc
+# --
+```
+$1
+```
