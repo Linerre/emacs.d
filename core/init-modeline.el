@@ -1,7 +1,5 @@
 ;;; -*- lexical-binding: t; -*-
 ;;; Commentary:
-;;; Below modeline is mostly based on Protesilaos' Emacs config
-;;; <https://protesilaos.com/emacs/dotemacs> -- 6.2 Modeline section
 ;;; Code:
 ;;; Mode line
 (setq mode-line-percent-position '(-3 "%p"))
@@ -11,12 +9,10 @@
 
 (setq mode-line-compact nil)            ; Emacs 28
 (setq-default mode-line-format
-              '(mode-line-front-space
-                "%Z"
-                mode-line-client
-                mode-line-modified
-                mode-line-remote
-                mode-line-frame-identification
+              '("%Z"
+                "%*"
+                " "
+                ;; mode-line-frame-identification
                 ;; (:eval
                 ;;  (+project-indicator buffer-file-name))
                 mode-line-buffer-identification
