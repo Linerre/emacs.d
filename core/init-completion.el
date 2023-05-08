@@ -25,9 +25,11 @@
 ;;; LSP
 (autoload 'lsp "lsp-mode" nil t)
 
+;; https://emacs-lsp.github.io/lsp-mode/tutorials/how-to-turn-off/
 (setq lsp-keymap-prefix "C-c l"
       lsp-enable-symbol-highlighting nil
       lsp-enable-dap-auto-configure nil
+      lsp-modeline-diagnostics-enable nil ; 5/6/7 <----- a string whose colors default to error/success
       lsp-lens-enable nil
       lsp-headerline-breadcrumb-enable nil
       lsp-signature-doc-lines 3)
@@ -46,9 +48,9 @@
 ;;; Flymake
 (autoload #'flymake-mode "flymake" nil t)
 (global-set-key (kbd "C-c C-f m") #'flymake-mode)
+(setq flymake-no-changes-timeout 2)
 
 (with-eval-after-load "flymake"
-  (setq flymake-no-changes-timeout 2)
   (define-key flymake-mode-map (kbd "C-c k") 'flymake-show-diagnostics-buffer)
   (define-key flymake-mode-map (kbd "M-n") 'flymake-goto-next-error)
   (define-key flymake-mode-map (kbd "M-p") 'flymake-goto-prev-error))
@@ -163,24 +165,7 @@
   (define-key company-template-nav-map (kbd "TAB") nil)
   (define-key company-template-nav-map [tab] nil))
 
-;; (require 'selectrum)
-;; (selectrum-mode t)
-;; (setq completion-styles
-;;       '(basic substring initials flex partial-completion))
-;; (setq completion-category-overrides
-;;       '((file (styles . (basic partial-completion)))))
-
-;; (require 'mct)
-;; (setq mct-remove-shadowed-file-names t
-;;       mct-hide-completion-mode-line t
-;;       mct-show-completion-line-numbers nil
-;;       mct-apply-completion-stripes t
-;;       mct-minimum-input 3
-;;       mct-live-update-delay 0.6
-;;       mct-completions-format 'one-column)
-;;  ; works when `file-name-shadow-mode' is enabled
-;; (mct-mode 1)
-
+(require 'vertico)
 (vertico-mode)
 
 ;; marginalia
