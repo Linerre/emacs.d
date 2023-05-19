@@ -178,5 +178,20 @@
   (setq-local completion-styles '(orderless)))
 (add-hook 'minibuffer-setup-hook #'friend/use-orderless-in-minibuffer)
 
+;; tree-sitter
+(when (and (fboundp 'treesit-available-p)
+           (treesit-available-p))
+  (require 'treesit)
+  (add-to-list
+   'treesit-language-source-alist
+   '(clojure "https://github.com/sogaiu/tree-sitter-clojure.git")))
+
+
+;; (Setq major-mode-remap-alist
+;;         '((clojure-mode . clojure-ts-mode)
+;;           (python-mode . python-ts-mode)
+;;           (rust-mode . rust-ts-mode)
+;;           (typescript-mode . typescript-ts-mode)))
+
 (provide 'init-completion)
-;;; init-completion ends here
+;;; init-completion.el ends here
