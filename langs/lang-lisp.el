@@ -1,4 +1,6 @@
-;; -*- lexical-binding: t -*-
+;;; -*- lexical-binding: t -*-
+;;; Commentary:
+;;; Code:
 
 ;; LEXICAL
 (defun lexical-binding ()
@@ -12,6 +14,7 @@
 (with-eval-after-load "elisp-mode"
   (add-hook 'emacs-lisp-mode-hook #'highlight-defined-mode)
   (add-hook 'emacs-lisp-mode-hook #'eldoc-mode)
+  (add-hook 'emacs-lisp-mode-hook #'flycheck-mode)
   (add-hook 'emacs-lisp-mode-hook
             (lambda () (add-hook 'after-save-hook #'check-parens)))
   (add-hook 'lisp-interaction-mode-hook #'eldoc-mode))
@@ -21,4 +24,4 @@
 
 (provide 'lang-lisp)
 
-;; lang-list ends here
+;;; lang-lisp.el ends here
