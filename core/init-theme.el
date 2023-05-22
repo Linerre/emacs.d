@@ -1,45 +1,48 @@
 ;;; -*- lexical-binding: t -*-
+;;; Commentary:
+;;; Code:
 
 ;;; Font
 (defvar +chinese-font-family "LXGW WenKai")
 
-(when (display-graphic-p)
-  (when *is-mac*
-    (setq default-frame-alist '((width . 140) (height . 60)))
-    (add-to-list 'default-frame-alist '(font . "Menlo-18")))
+;; For Monospace use 16
+(add-to-list 'default-frame-alist '(font . "IBM Plex Mono-18"))
+(set-fontset-font t 'han (font-spec :family +chinese-font-family))
+(set-face-attribute 'variable-pitch nil :family "Sans Serif" :font "Crimson-24")
+(set-face-attribute 'fixed-pitch nil :font "IBM Plex Mono-18")
 
-  (when *is-linux*
-    (add-to-list 'default-frame-alist '(font . "Liberation Mono-16:weight=regular")))
+;; Theme
+(defvar my-themes
+  '(alabaster
+    carbon
+    ft))
 
-  ;; use LXGW for chinese characters
-  (set-fontset-font t 'han (font-spec :family +chinese-font-family)))
-
-;; THEME-CHANGE
-(defun +change-current-theme (new-theme)
-  "Load the new-theme and disable the current theme."
-  (interactive "SChange current theme to: ")
+(defun +toggle-themes ()
+  "Load the new-theme and disable the current one."
+  (interactive)
+  (setq my-themes (append (cdr my-themes) (list (car my-themes))))
   (mapc #'disable-theme custom-enabled-themes)
-  (load-theme new-theme t))
+  (load-theme (car my-themes) t))
 
-(global-set-key (kbd "C-c m") #'+change-current-theme)
+(global-set-key (kbd "C-c m") #'+toggle-themes)
 
+;; (setq modus-themes-italic-constructs t
+;;       modus-themes-bold-constructs nil
+;;       modus-themes-region '(bg-only no-extend))
+;; (load-theme 'modus-operandi t)
 
-(setq modus-themes-italic-constructs t
-      modus-themes-bold-constructs nil
-      modus-themes-region '(bg-only no-extend))
-(load-theme 'modus-operandi t)
+(load-theme 'ft t nil)
 
+(blink-cursor-mode -1)
 (if (display-graphic-p)
     (progn
       (tool-bar-mode -1)
-      (scroll-bar-mode -1))
+      (scroll-bar-mode -1)
+      ;; (load-theme 'alabaster t nil)
+      )
   (progn
-    (menu-bar-mode -1)
-    ;; (require 'kaolin-themes)
-    ;; (load-theme 'kaolin-light t)
-    ;; (require 'kaolin-light-tweak-theme)
-    ;; (load-theme 'kaolin-light-tweak t))
-    ))
+    ;; (load-theme 'alabaster t nil)
+    (menu-bar-mode -1)))
 
 ;; tree sidebar is useful when viewing a project
 (sup 'dired-sidebar)
@@ -54,8 +57,7 @@
 (with-eval-after-load "dired-sidebar"
   (add-hook 'dired-sidebar-mode-hook 'hl-line-mode))
 
-(blink-cursor-mode -1)
 
 (provide 'init-theme)
 
-;;; theme ends here
+;;; init-theme.el ends here
