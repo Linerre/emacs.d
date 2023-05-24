@@ -127,9 +127,12 @@
   ;; (add-hook hook 'display-line-numbers-mode)  ; line number on the left margin
   (add-hook hook 'column-number-mode)   ; for col numb on modeline -- Emacs 28
   (add-hook hook 'line-number-mode)
-  (add-hook hook 'hs-minor-mode)
   (add-hook hook 'electric-pair-local-mode)
   (add-hook hook 'show-paren-mode))
+
+;; In prog-mode or any its deried modes, make isearch case sensitive
+(add-hook 'prog-mode-hook (lambda ()
+                            (setq case-fold-search nil)))
 
 (add-hook 'conf-mode-hook 'electric-pair-local-mode)
 
