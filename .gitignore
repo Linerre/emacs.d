@@ -1,5 +1,6 @@
 # ignore pkgs, bookmarks, etc.
 auto-save-list
+*-theme.el
 *bookmarks
 custom.el
 elpa*
