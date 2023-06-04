@@ -37,7 +37,7 @@
 (with-eval-after-load "lsp-mode"
   ;; start lsp after `modes' are enabled
   (add-hook 'rust-mode-hook #'lsp)
-  (add-hook 'typescript-mode-hook #'lsp))
+  (add-hook 'typescript-ts-mode-hook #'lsp))
 
 ;;; Flycheck
 (with-eval-after-load "flycheck"
@@ -83,33 +83,6 @@
 
 (add-hook 'prog-mode-hook #'company-mode)
 (add-hook 'conf-mode-hook #'company-mode)
-
-;; corfu
-;; (with-eval-after-load "corfu"
-;;   (setq completion-cycle-threshold 3
-;;         tab-always-indent 'complete
-;;         corfu-preview-current nil  ;; Preview currently selected candidate.
-;;         corfu-preselect-first nil  ;; Disable candidate preselection
-;;         )
-;;   (add-to-list 'completion-at-point-functions #'cape-dabbrev)
-;;   (add-to-list 'completion-at-point-functions #'cape-file)
-;;
-;;   Add the following to proper modes, e.g. cape-ispell for plain text files
-;;   (add-to-list 'completion-at-point-functions #'cape-ispell)
-;;   (add-to-list 'completion-at-point-functions #'cape-history)
-;;   (add-to-list 'completion-at-point-functions #'cape-keyword)
-;;   (add-to-list 'completion-at-point-functions #'cape-tex)
-;;   (add-to-list 'completion-at-point-functions #'cape-sgml)
-;;   (add-to-list 'completion-at-point-functions #'cape-rfc1345)
-;;   (add-to-list 'completion-at-point-functions #'cape-abbrev)
-;;   (add-to-list 'completion-at-point-functions #'cape-dict)
-;;   (add-to-list 'completion-at-point-functions #'cape-symbol)
-;;   (add-to-list 'completion-at-point-functions #'cape-line)
-;;
-;;   keybindings here are not necessary. Just use TAB
-;;   (global-set-key (kbd "C-c x f") #'cape-file)
-;;   (global-set-key (kbd "C-c c d") #'cape-dabbrev)
-;;   (global-set-key (kbd "C-c c i") #'cape-ispell))
 
 ;; company
 (setq company-frontends '(company-pseudo-tooltip-frontend
@@ -178,20 +151,23 @@
   (setq-local completion-styles '(orderless)))
 (add-hook 'minibuffer-setup-hook #'friend/use-orderless-in-minibuffer)
 
-;; tree-sitter
-(when (and (fboundp 'treesit-available-p)
-           (treesit-available-p))
-  (require 'treesit)
-  (add-to-list
-   'treesit-language-source-alist
-   '(clojure "https://github.com/sogaiu/tree-sitter-clojure.git")))
+;; tree-sitter Emacs 29
+;; (when (and (fboundp 'treesit-available-p)
+;;            (treesit-available-p))
+;;   (require 'treesit)
+;;   (add-to-list
+;;    'treesit-language-source-alist
+;;    '(clojure "https://github.com/sogaiu/tree-sitter-clojure.git")))
 
-
-;; (Setq major-mode-remap-alist
+;; (setq major-mode-remap-alist
 ;;         '((clojure-mode . clojure-ts-mode)
 ;;           (python-mode . python-ts-mode)
 ;;           (rust-mode . rust-ts-mode)
 ;;           (typescript-mode . typescript-ts-mode)))
+
+;; tree-sitter package
+(require 'tree-sitter)
+(require 'tree-sitter-langs)
 
 (provide 'init-completion)
 ;;; init-completion.el ends here

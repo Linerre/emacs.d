@@ -154,29 +154,29 @@
       ;; window-resize-pixelwise t
       fit-window-to-buffer-horizontally t)
 
-(with-eval-after-load 'window
-  (setq
-   display-buffer-alist
-   '(
-    ;; ("\\*Buffer List\\*" display-buffer-in-side-window
-    ;;  (side . top) (slot . 0) (window-height . 0.25)
-    ;;  (preserve-size . (nil . t))
-    ;;  ;; ,parameters
-    ;;  )
-    ;; ("\\*Tags List\\*" display-buffer-in-side-window
-    ;;  (side . right) (slot . 0) (window-width . fit-window-to-buffer)
-    ;;  (preserve-size . (t . nil))
-    ;;  ;; ,parameters
-    ;;  )
-    ;; ("\\*\\(?:help\\|grep\\|Completions\\)\\*"
-    ;;  display-buffer-in-side-window
-    ;;  (side . bottom) (slot . -1) (preserve-size . (nil . t))
-    ;;  ;; ,parameters
-    ;;  )
-    ("\\*\\(e?shell\\|compilation\\)\\*" display-buffer-in-side-window
-     (side . bottom) (slot . 1) (preserve-size . (nil . t))
-     ;; ,parameters
-     ))))
+;; (with-eval-after-load 'window
+;;   (setq
+;;    display-buffer-alist
+;;    '(
+;;     ;; ("\\*Buffer List\\*" display-buffer-in-side-window
+;;     ;;  (side . top) (slot . 0) (window-height . 0.25)
+;;     ;;  (preserve-size . (nil . t))
+;;     ;;  ;; ,parameters
+;;     ;;  )
+;;     ;; ("\\*Tags List\\*" display-buffer-in-side-window
+;;     ;;  (side . right) (slot . 0) (window-width . fit-window-to-buffer)
+;;     ;;  (preserve-size . (t . nil))
+;;     ;;  ;; ,parameters
+;;     ;;  )
+;;     ;; ("\\*\\(?:help\\|grep\\|Completions\\)\\*"
+;;     ;;  display-buffer-in-side-window
+;;     ;;  (side . bottom) (slot . -1) (preserve-size . (nil . t))
+;;     ;;  ;; ,parameters
+;;     ;;  )
+;;     ("\\*\\(e?shell\\|compilation\\)\\*" display-buffer-in-side-window
+;;      (side . bottom) (slot . 1) (preserve-size . (nil . t))
+;;      ;; ,parameters
+;;      ))))
 
 (provide 'init-options)
-;;; init-options ends here
+;;; init-options.el ends here

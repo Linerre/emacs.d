@@ -5,8 +5,8 @@
 ;;; Code:
 
 ;; which-key
-(require 'which-key)
-(which-key-mode t)
+;; (require 'which-key)
+;; (which-key-mode t)
 
 ;; TIME FUNCS
 (defun +insert-timestamp ()

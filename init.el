@@ -16,6 +16,9 @@
 ;; PROJECTS ROOT
 (defconst projects-root "~/projects/")
 
+(add-to-list 'custom-theme-load-path "/home/noel/projects/alabaster/")
+(add-to-list 'custom-theme-load-path "/home/noel/projects/ft-theme/")
+
 ;;; Install packages:
 ;;; On macOS or Windows, pakcages will be installed by straight.el ONLY.
 ;;; On Linux, packages will be installed by the system package manager,

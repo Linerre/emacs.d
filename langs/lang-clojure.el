@@ -2,7 +2,13 @@
 ;;; Commentary:
 ;;; Code:
 
-;;; clojure-mode
+(sup '(clojure-ts-mode :type git :host github :repo "clojure-emacs/clojure-ts-mode"))
+
+;; (add-to-list 'auto-mode-alist '("\\.clj\\'" . clojure-ts-mode))
+;; (add-to-list 'auto-mode-alist '("\\.cljs\\'" . clojure-ts-mode))
+
+(autoload #'cider-mode "cider-mode" nil t)
+
 (defun +cljs-company-backends ()
   (setq-local company-backends
               '(company-semantic
@@ -11,33 +17,49 @@
                 company-dabbrev-code
                 company-capf company-gtags)))
 
-(setq clojure-toplevel-inside-comment-form t)
-
-(autoload #'clojure-mode "clojure-mode" nil t)
-
 (setq clojure-indent-style 'always-indent
-      clojure-align-forms-automatically t)
+      clojure-align-forms-automatically t
+      clojure-toplevel-inside-comment-form t)
 (setq-local flycheck-checker 'clj-kondo-clj)
+
+;; (add-hook 'clojure-mode-hook #'tree-sitter-mode)
+;; (add-hook 'clojure-mode-hook #'tree-sitter-hl-mode)
+;; (add-hook 'clojure-mode-hook #'ts-fold-mode)
+
+;; (add-function :before-until tree-sitter-hl-face-mapping-function
+;;   (lambda (capture-name)
+;;     (pcase capture-name
+;;       ("clj" 'font-lock-function-name-face))))
+;;
+;; (add-hook 'clojure-mode-hook
+;;             (lambda ()
+;;               (tree-sitter-hl-add-patterns nil
+;;                 [(list_lit (sym_lit (sym_name)) @clj)])))
+
 (with-eval-after-load "clojure-mode"
   (require 'flycheck-clj-kondo)
   (add-hook 'clojure-mode-hook 'flycheck-mode)
   (eldoc-mode -1)             ; avoid overriding flycheck hints
   (put-clojure-indent 'or 0)
   (put-clojure-indent 'and 0)
-  ;; (put-clojure-indent 'reg-sub 1)
-  ;; (put-clojure-indent 'reg-event-db 1)
-  ;; (put-clojure-indent 'reg-event-fx 1)
-  ;; (put-clojure-indent 'reg-fx 1)
-  ;; (add-hook 'clojure-mode-hook 'paredit-mode)
+  (put-clojure-indent 'reg-sub 1)
+  (put-clojure-indent 'reg-event-db 1)
+  (put-clojure-indent 'reg-event-fx 1)
+  (put-clojure-indent 'reg-fx 1)
   ;; cider-jack-in will enable cider-mode so there's no need to hook it to
   ;; clojure-mode. But doing so will allow immediate access to cider-mode
   ;; after entering a clj buffer. REPL is not always necessary however.
-  (add-hook 'clojure-mode-hook 'cider-mode)
-  (add-hook 'clojure-mode-hook 'clj-refactor-mode)
-  (add-hook 'clojure-mode-hook 'direnv-mode)
+  (add-hook 'clojure-mode-hook #'cider-mode)
+  (add-hook 'clojure-mode-hook #'clj-refactor-mode)
+  (add-hook 'clojure-mode-hook #'direnv-mode)
   (add-hook 'clojurescript-mode-hook #'+cljs-company-backends)
   (define-key clojure-mode-map (kbd "C-c j") #'cider-jack-in)
-  (define-key clojure-mode-map (kbd "C-c c") #'cider-connect))
+  (define-key clojure-mode-map (kbd "C-c c") #'cider-connect)
+  ;; tree-sitter
+  ;; (add-to-list 'tree-sitter-major-mode-language-alist '(clojurescript-mode . clojure))
+
+)
+
 
 (setq nrepl-log-messages t
         nrepl-hide-special-buffers t
