@@ -44,14 +44,14 @@
 (sup 'tree-sitter)
 (sup 'tree-sitter-langs)
 (sup '(ts-fold :type git :host github :repo "emacs-tree-sitter/ts-fold"))
+(sup 'vertico)
+(sup 'vundo)
 
 ;; To drop
 ;;; Managed by pacman (Arch) or portage (Gentoo)
 ;; (sup '(meow :type git :host github :repo "DogLooksGood/meow")) installed via pacman/portage
-;; (sup 'vundo)
 ;; (sup 'ebuild-mode)
-;; (sup 'highlight-defined)
-;; (sup 'vertico)
+(sup 'highlight-defined)
 
 ;;; Dropped
 ;; (sup 'cargo-mode)
