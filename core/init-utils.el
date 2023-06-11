@@ -69,6 +69,13 @@
         )
     mode-line-buffer-identification))
 
+;; Highlight TODO/FIMEXE in comments
+(defun +hl-cmt-kws ()
+  "Hilight keywords such as TODO and FIXME in comments."
+  (font-lock-add-keywords
+   nil
+   '(("\\<\\(FIXME\\|TODO\\):" 1 font-lock-warning-face prepend))))
+
 (provide 'init-utils)
 
 ;;; init-utils.el ends here
