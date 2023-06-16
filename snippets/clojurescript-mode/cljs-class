@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: cljs-class
+# key: cl
+# --
+{:class $1}
