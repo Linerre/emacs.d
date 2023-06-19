@@ -16,6 +16,7 @@
 (sup 'consult)
 (sup 'corfu)
 (sup 'direnv)
+(sup 'embark)
 (sup '(emacs-sql-indent :type git :host github :repo "alex-hhh/emacs-sql-indent"))
 (sup '(go-mode.el :type git :host github :repo "dominikh/go-mode.el"))
 (sup '(indent-guide :type git :host github :repo "zk-phi/indent-guide"))
