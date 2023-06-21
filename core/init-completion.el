@@ -122,7 +122,6 @@
   (require 'company-tng)
   (require 'company-template)
   (add-hook 'company-mode-hook 'company-tng-mode)
-
   (define-key company-mode-map [tab] '+complete)
   (define-key company-mode-map (kbd "TAB") '+complete)
   (define-key company-active-map [tab] 'company-complete-common-or-cycle)
@@ -152,20 +151,20 @@
 (add-hook 'minibuffer-setup-hook #'friend/use-orderless-in-minibuffer)
 
 ;; tree-sitter Emacs 29
-;; (when (and (fboundp 'treesit-available-p)
-;;            (treesit-available-p))
-;;   (require 'treesit)
-;;   (add-to-list
-;;    'treesit-language-source-alist
-;;    '(clojure "https://github.com/sogaiu/tree-sitter-clojure.git")))
+(when (and (fboundp 'treesit-available-p)
+           (treesit-available-p))
+  (require 'treesit)
+  (add-to-list
+   'treesit-language-source-alist
+   '(clojure "https://github.com/sogaiu/tree-sitter-clojure.git")))
 
-;; (setq major-mode-remap-alist
-;;         '((clojure-mode . clojure-ts-mode)
-;;           (python-mode . python-ts-mode)
-;;           (rust-mode . rust-ts-mode)
-;;           (typescript-mode . typescript-ts-mode)))
+(setq major-mode-remap-alist
+      '((python-mode . python-ts-mode)
+        ;; (clojure-mode . clojure-ts-mode)
+        ;; (rust-mode . rust-ts-mode)
+        (typescript-mode . typescript-ts-mode)))
 
-;; tree-sitter package
+;; tree-sitter package for Emacs 28 compatibility
 (require 'tree-sitter)
 (require 'tree-sitter-langs)
 
