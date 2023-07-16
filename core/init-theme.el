@@ -6,10 +6,11 @@
 (defvar +chinese-font-family "LXGW WenKai")
 
 ;; For Monospace use 16
-(add-to-list 'default-frame-alist '(font . "IBM Plex Mono-18"))
+(add-to-list 'default-frame-alist '(font . "Px437 IBM EGA 9x14-16"))
+;; (add-to-list 'default-frame-alist '(font . "IBM Plex Mono-18"))
 (set-fontset-font t 'han (font-spec :family +chinese-font-family))
 (set-face-attribute 'variable-pitch nil :family "Sans Serif" :font "Crimson-24")
-(set-face-attribute 'fixed-pitch nil :font "IBM Plex Mono-18")
+(set-face-attribute 'fixed-pitch nil :font "Px437 IBM EGA 9x14")
 
 ;; Theme
 (defvar my-themes
