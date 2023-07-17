@@ -72,6 +72,7 @@
                 [(arguments (identifier) @rust.constant
                             (.match? @rust.constant "^[A-Z][A-Z_\\d]+"))
                  (const_item (identifier) @rust.constant)
+                 (tuple_expression (identifier) @rust.constant)
                  ]))))
 
 (provide 'lang-rust)
