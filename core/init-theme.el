@@ -6,11 +6,11 @@
 (defvar +chinese-font-family "LXGW WenKai")
 
 ;; For Monospace use 16
-(add-to-list 'default-frame-alist '(font . "Px437 IBM EGA 9x14-16"))
-;; (add-to-list 'default-frame-alist '(font . "IBM Plex Mono-18"))
+;; (add-to-list 'default-frame-alist '(font . "Px437 IBM EGA 9x14-16"))
+(add-to-list 'default-frame-alist '(font . "Ac437 IBM VGA 8x16-16"))
 (set-fontset-font t 'han (font-spec :family +chinese-font-family))
 (set-face-attribute 'variable-pitch nil :family "Sans Serif" :font "Crimson-24")
-(set-face-attribute 'fixed-pitch nil :font "Px437 IBM EGA 9x14")
+(set-face-attribute 'fixed-pitch nil :font "Ac437 IBM VGA 8x16-16")
 
 ;; Theme
 (defvar my-themes
@@ -27,23 +27,14 @@
 
 (global-set-key (kbd "C-c m") #'+toggle-themes)
 
-;; (setq modus-themes-italic-constructs t
-;;       modus-themes-bold-constructs nil
-;;       modus-themes-region '(bg-only no-extend))
-;; (load-theme 'modus-operandi t)
-
 (load-theme 'ft t nil)
 
 (blink-cursor-mode -1)
+(menu-bar-mode -1)
 (if (display-graphic-p)
     (progn
       (tool-bar-mode -1)
-      (scroll-bar-mode -1)
-      ;; (load-theme 'alabaster t nil)
-      )
-  (progn
-    ;; (load-theme 'alabaster t nil)
-    (menu-bar-mode -1)))
+      (scroll-bar-mode -1)))
 
 ;; tree sidebar is useful when viewing a project
 (sup 'dired-sidebar)
