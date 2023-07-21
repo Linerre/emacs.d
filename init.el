@@ -9,10 +9,11 @@
 
 ;;; Alias
 (defalias 'sup 'straight-use-package "Another alias for straight-use-package.")
+
 ;;; Consts
 (defconst *is-win* (string-equal system-type "windows-nt"))
-(defconst *is-mac* (string-equal system-type "darwin"))
 (defconst *is-linux* (string-equal system-type "gnu/linux"))
+
 ;; PROJECTS ROOT
 (defconst projects-root "~/projects/")
 
