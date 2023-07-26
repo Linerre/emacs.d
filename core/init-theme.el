@@ -7,15 +7,16 @@
 
 ;; For Monospace use 16
 ;; (add-to-list 'default-frame-alist '(font . "Px437 IBM EGA 9x14-16"))
-(add-to-list 'default-frame-alist '(font . "Ac437 IBM VGA 8x16-16"))
+(add-to-list 'default-frame-alist '(font . "Px437 IBM VGA 8x16-16"))
 (set-fontset-font t 'han (font-spec :family +chinese-font-family))
 (set-face-attribute 'variable-pitch nil :family "Sans Serif" :font "Crimson-24")
-(set-face-attribute 'fixed-pitch nil :font "Ac437 IBM VGA 8x16-16")
+(set-face-attribute 'fixed-pitch nil :font "Px437 IBM VGA 8x16")
 
 ;; Theme
 (defvar my-themes
   '(alabaster
     carbon
+    console
     ft))
 
 (defun +toggle-themes ()
