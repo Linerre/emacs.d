@@ -16,6 +16,7 @@
 
 ;; PROJECTS ROOT
 (defconst projects-root "~/projects/")
+(setq custom-theme-directory "~/.emacs.d/themes/")
 
 ;;; Install packages:
 ;;; On macOS or Windows, pakcages will be installed by straight.el ONLY.
