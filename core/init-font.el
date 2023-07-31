@@ -4,10 +4,6 @@
 
 ;; GUI
 (when (display-graphic-p)
-  (when *is-mac*
-    (setq default-frame-alist '((width . 160) (height . 60)))
-    (add-to-list 'default-frame-alist '(font . "Menlo-18")))
-
   (when *is-linux*
     (add-to-list 'default-frame-alist '(font . "Roboto Mono")))
 

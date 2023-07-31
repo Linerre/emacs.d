@@ -85,12 +85,6 @@
 ;;; Tex
 ;; use PDF viewers depending on system type
 (defun +which-pdf-viewer ()
-  (when *is-mac*
-    (setq TeX-view-program-list
-        '(("Skim" "/Applications/Skim.app/Contents/SharedSupport/displayline %n %o %b")))
-    (setq TeX-view-program-selection
-        '((output-pdf "Skim")
-          (output-dvi "xdvi"))))
   (when *is-linux*
     (setq TeX-view-program-list
         '(("Zathura" "zathura %o")))
