@@ -15,6 +15,7 @@
 ;; Theme
 (defvar my-themes
   '(alabaster
+    chacha
     carbon
     console
     ft))
@@ -28,7 +29,7 @@
 
 (global-set-key (kbd "C-c m") #'+toggle-themes)
 
-(load-theme 'ft t nil)
+(load-theme 'chacha t nil)
 
 (blink-cursor-mode -1)
 (menu-bar-mode -1)
