@@ -9,8 +9,17 @@
 ;;; Code:
 (defun +hl-rust-kw ()
   "Highlight Rust docstrings in `rust-ts-mode' of Emacs 29."
-  (font-lock-add-keywords nil
-                          '(("\\<\\(FIXME\\|TODO\\):" 1 font-lock-warning-face prepend))))
+  (font-lock-remove-keywords
+   'rust-mode
+   '(("\\([[:word:][:multibyte:]_][[:word:][:multibyte:]_[:digit:]]*!\\)[({[:space:][]"
+      1 font-lock-preprocessor-face)))
+
+  (font-lock-add-keywords 'rust-mode
+                          '(("\\<\\(FIXME\\|TODO\\):" 1 font-lock-warning-face prepend)
+                            ("\\<\\(true\\|false\\)" . font-lock-constant-face)
+                            ("\\<\\([A-Z_]+\\>\\)" . font-lock-constant-face)
+                            ("\\([[:word:][:multibyte:]_][[:word:][:multibyte:]_[:digit:]]*!\\)[({[:space:][]"
+      1 font-lock-constant-face))))
 
 (defun +rust-toggle-lsp-target ()
   "Toggle target to be compiled by rustc."
@@ -57,23 +66,24 @@
 
 (with-eval-after-load "rust-mode"
   (add-hook 'rust-mode-hook #'cargo-minor-mode)
-  (add-hook 'rust-mode-hook #'tree-sitter-mode)
-  (add-hook 'rust-mode-hook #'tree-sitter-hl-mode)
-  (add-hook 'rust-mode-hook #'ts-fold-mode)
+  ;; (add-hook 'rust-mode-hook #'tree-sitter-mode)
+  ;; (add-hook 'rust-mode-hook #'tree-sitter-hl-mode)
+  ;; (add-hook 'rust-mode-hook #'ts-fold-mode)
   (add-hook 'rust-mode-hook #'+hl-rust-kw)
   (add-hook 'rust-mode-hook
             (lambda ()
               (local-set-key (kbd "C-c '") #'+rust-toggle-lsp-target)
               (local-set-key (kbd "C-c C-l") #'lsp)
               (local-set-key (kbd "C-c C-a") #'lsp-execute-code-action)))
-  (add-hook 'rust-mode-hook
-            (lambda ()
-              (tree-sitter-hl-add-patterns nil
-                [(arguments (identifier) @rust.constant
-                            (.match? @rust.constant "^[A-Z][A-Z_\\d]+"))
-                 (const_item (identifier) @rust.constant)
-                 (tuple_expression (identifier) @rust.constant)
-                 ]))))
+  ;; (add-hook 'rust-mode-hook
+  ;;           (lambda ()
+  ;;             (tree-sitter-hl-add-patterns nil
+  ;;               [(arguments (identifier) @rust.constant
+  ;;                           (.match? @rust.constant "^[A-Z][A-Z_\\d]+"))
+  ;;                (const_item (identifier) @rust.constant)
+  ;;                (tuple_expression (identifier) @rust.constant)
+  ;;                ])))
+  )
 
 (provide 'lang-rust)
 
