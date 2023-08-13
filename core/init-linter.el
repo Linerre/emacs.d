@@ -14,4 +14,5 @@
   (define-key flymake-mode-map (kbd "M-p") 'flymake-goto-prev-error))
 
 (provide 'init-linter)
+
 ;;; init-linter.el ends here

@@ -93,15 +93,16 @@
       ;; self insert the first candidate
       company-begin-commands '(self-insert-command)
       company-idle-delay 1
+      company-echo-delay 0
       company-dabbrev-ignore-invisible t
       company-dabbrev-downcase nil
+      company-tooltip-idle-delay 0.5
+      company-tooltip-limit 10
       ;; annos align to the right
       company-tooltip-align-annotations t
       ;; not allow tooltip width to decrease
       company-tooltip-width-grow-only t
       ;; delay in secs until tooltip shows
-      company-tooltip-idle-delay 0.5
-      company-tooltip-limit 10
       company-dabbrev-downcase nil
       ;; cancel manually-triggered compl when prefix gets too short (<3)
       company-abort-manual-when-too-short t

@@ -6,15 +6,15 @@
 (defvar +chinese-font-family "LXGW WenKai")
 
 ;; For Monospace use 16
-;; (add-to-list 'default-frame-alist '(font . "Px437 IBM EGA 9x14-16"))
 (add-to-list 'default-frame-alist '(font . "Px437 IBM VGA 8x16-16"))
 (set-fontset-font t 'han (font-spec :family +chinese-font-family))
-(set-face-attribute 'variable-pitch nil :family "Sans Serif" :font "Crimson-24")
-(set-face-attribute 'fixed-pitch nil :font "Px437 IBM VGA 8x16")
+(set-face-attribute 'variable-pitch nil :family "Sans" :font "Liberation Sans-16")
+(set-face-attribute 'fixed-pitch nil :font "Liberation Mono-16")
 
 ;; Theme
 (defvar my-themes
-  '(alabaster
+  '(
+    ;; alabaster
     chacha
     carbon
     console
@@ -29,14 +29,15 @@
 
 (global-set-key (kbd "C-c m") #'+toggle-themes)
 
-(load-theme 'chacha t nil)
 
 (blink-cursor-mode -1)
+(tool-bar-mode -1)
 (menu-bar-mode -1)
+(scroll-bar-mode -1)
+
 (if (display-graphic-p)
-    (progn
-      (tool-bar-mode -1)
-      (scroll-bar-mode -1)))
+    (load-theme 'chacha t nil)
+    (load-theme 'console t nil))
 
 ;; tree sidebar is useful when viewing a project
 (sup 'dired-sidebar)

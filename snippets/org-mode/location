@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: location
+# key: lo
+# --
+Read: [[file:~/Documents/catalog/$1.pdf][${1:filename}.pdf]]

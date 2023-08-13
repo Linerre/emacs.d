@@ -31,6 +31,7 @@
 (sup 'markdown-mode)
 (sup 'nix-mode)
 (sup 'orderless)
+(sup 'proof-general)
 (sup 'paredit)
 (sup 'rg)
 (sup 'cargo)

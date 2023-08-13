@@ -3,7 +3,7 @@
 ;;; Commentary:
 ;;; Domain Specific Languages such as Nix, SQL, Tex, Markdown etc.
 
-;;; Org
+;;; -- Org --------------------------------
 ;; Use serif font for org mode body
 (add-hook 'org-mode-hook #'variable-pitch-mode)
 (add-hook 'org-mode-hook #'yas-minor-mode)
@@ -76,21 +76,23 @@
 (with-eval-after-load "nix-mode"
   (add-hook 'nix-mode-hook #'electric-pair-mode))
 
-;;; SQL
+;;; -- SQL --------------------------------
 (with-eval-after-load "sql"
   (add-hook 'sql-mode-hook 'sqlind-minor-mode)
   (add-hook 'sql-mode-hook 'sqlup-mode)
   (define-key sql-mode-map (kbd "C-c u") 'sqlup-capitalize-keywords-in-region))
 
-;;; Tex
+;;; -- COQ --------------------------------
+
+;;; -- Tex --------------------------------
 ;; use PDF viewers depending on system type
 (defun +which-pdf-viewer ()
   (when *is-linux*
     (setq TeX-view-program-list
-        '(("Zathura" "zathura %o")))
+          '(("Okular" "okular %o")))
     (setq TeX-view-program-selection
-        '((output-pdf "Zathura")
-          (output-dvi "xdvi")))))
+          '((output-pdf "Okular")
+            (output-dvi "xdvi")))))
 
 ;; auctex
 (setq TeX-auto-save t
@@ -102,6 +104,7 @@
 
 (autoload #'latex-mode "tex-mode" nil t)
 
+(add-hook 'latex-mode-hook #'turn-on-cdlatex)
 (with-eval-after-load 'tex-mode
   (dolist (hook '(LaTeX-mode-hook))
           (add-hook hook 'turn-on-cdlatex)
@@ -117,7 +120,7 @@
           (add-hook 'bibtex-mode-hook 'hl-line-mode)
           (add-hook 'bibtex-mode-hook 'flyspell-mode)))
 
-;;; Markdown
+;;; -- Markdown -----------------------------
 (autoload #'markdown-mode "markdown-mode"
    "Major mode for editing Markdown files" t)
 (autoload #'gfm-mode "markdown-mode"
