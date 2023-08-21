@@ -22,14 +22,6 @@
       clojure-toplevel-inside-comment-form t)
 (setq-local flycheck-checker 'clj-kondo-clj)
 
-(add-to-list 'tree-sitter-major-mode-language-alist '(clojurescript-mode . clojure))
-
-(add-function :before-until tree-sitter-hl-face-mapping-function
-              (lambda (capture-name)
-                (pcase capture-name
-                  ("clj.ns" 'font-lock-function-name-face))))
-
-
 (with-eval-after-load "clojure-mode"
   (require 'flycheck-clj-kondo)
   (add-hook 'clojure-mode-hook 'flycheck-mode)
@@ -49,17 +41,8 @@
   (add-hook 'clojure-mode-hook #'clj-refactor-mode)
   (add-hook 'clojure-mode-hook #'direnv-mode)
   (add-hook 'clojure-mode-hook #'+hl-cmt-kws)
-  ;; tree-sitter
-  (add-hook 'clojure-mode-hook #'tree-sitter-mode)
-  (add-hook 'clojure-mode-hook #'tree-sitter-hl-mode)
-  (add-hook 'clojure-mode-hook #'ts-fold-mode)
   ;; (add-hook 'clojurescript-mode-hook #'+cljs-company-backends)
-  ;; (add-hook 'clojure-mode-hook
-  ;;           (lambda ()
-  ;;             (tree-sitter-hl-add-patterns nil
-  ;;               [(list_lit (_) (sym_lit (sym_name)) @clj.ns)])))
   )
-
 
 (setq nrepl-log-messages t
         nrepl-hide-special-buffers t

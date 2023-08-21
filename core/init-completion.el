@@ -165,9 +165,5 @@
         ;; (rust-mode . rust-ts-mode)
         (typescript-mode . typescript-ts-mode)))
 
-;; tree-sitter package for Emacs 28 compatibility
-(require 'tree-sitter)
-(require 'tree-sitter-langs)
-
 (provide 'init-completion)
 ;;; init-completion.el ends here

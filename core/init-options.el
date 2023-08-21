@@ -99,6 +99,7 @@
  dired-isearch-filenames t
  ;; show match number in minibuffer
  isearch-lazy-count t
+ font-lock-maximum-decoration 2
  default-directory "~/projects")
 
 ;; (fset 'yes-or-no-p 'y-or-n-p)

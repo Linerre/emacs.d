@@ -85,40 +85,33 @@
 ;;; -- COQ --------------------------------
 
 ;;; -- Tex --------------------------------
-;; use PDF viewers depending on system type
-(defun +which-pdf-viewer ()
-  (when *is-linux*
-    (setq TeX-view-program-list
-          '(("Okular" "okular %o")))
-    (setq TeX-view-program-selection
-          '((output-pdf "Okular")
-            (output-dvi "xdvi")))))
-
 ;; auctex
 (setq TeX-auto-save t
       TeX-parse-self t
+      TeX-open-quote ""
+      TeX-close-quote ""
       ;; use pdflatex
       TeX-PDF-mode t)
 
 (setq-default Tex-master nil)
 
-(autoload #'latex-mode "tex-mode" nil t)
+(setq TeX-view-program-selection
+      '((output-pdf "okular")
+        (output-dvi "xdvi")
+        (output-html "xdg-open")))
+(setq TeX-view-program-list
+      '(("okular" "okular %o")))
 
-(add-hook 'latex-mode-hook #'turn-on-cdlatex)
-(with-eval-after-load 'tex-mode
-  (dolist (hook '(LaTeX-mode-hook))
-          (add-hook hook 'turn-on-cdlatex)
-          (add-hook hook #'company-auctex-init)
-          (add-hook hook #'+which-pdf-viewer))
-
-  (define-key latex-mode-map (kbd "C-c c w") #'count-words))
+;; LaTeX-mode is an alias for latex-mode
+;; but AUCTeX calls `LaTeX-mode-hook' for any hooks
+(add-hook 'LaTeX-mode-hook #'turn-on-cdlatex)
+(add-hook 'LaTeX-mode-hook #'company-auctex-init)
 
 (with-eval-after-load 'bibtex
   (dolist (hook '(bibtex-mode-hook))
-          (add-hook 'bibtex-mode-hook 'display-line-numbers-mode)
-          (add-hook 'bibtex-mode-hook 'visual-line-mode)
-          (add-hook 'bibtex-mode-hook 'hl-line-mode)
-          (add-hook 'bibtex-mode-hook 'flyspell-mode)))
+    (add-hook 'bibtex-mode-hook 'display-line-numbers-mode)
+    (add-hook 'bibtex-mode-hook 'visual-line-mode)
+    (add-hook 'bibtex-mode-hook 'flyspell-mode)))
 
 ;;; -- Markdown -----------------------------
 (autoload #'markdown-mode "markdown-mode"

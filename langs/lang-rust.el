@@ -59,10 +59,10 @@
 ;;            (#match? @id "^derive|allow|cfg"))
 
 ;; Map @rust.constant (identifier) capture to constant face.
-(add-function :before-until tree-sitter-hl-face-mapping-function
-              (lambda (capture-name)
-                (pcase capture-name
-                  ("rust.constant" 'font-lock-constant-face))))
+;; (add-function :before-until tree-sitter-hl-face-mapping-function
+;;               (lambda (capture-name)
+;;                 (pcase capture-name
+;;                   ("rust.constant" 'font-lock-constant-face))))
 
 (with-eval-after-load "rust-mode"
   (add-hook 'rust-mode-hook #'cargo-minor-mode)

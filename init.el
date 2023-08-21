@@ -1,10 +1,7 @@
 ;;; init.el --- -*- lexical-binding: t -*-
 
 ;;; Commentary:
-;;; Modules are categorized into two groups:
-;;; core/init-* are essentials for all types of editting in Emacs;
-;;; langs/lang-* specify preferences for langs
-
+;;; Use `emacs --debug-init' when noticing any problems
 ;;; Code:
 
 ;;; Alias
@@ -14,13 +11,11 @@
 (defconst *is-win* (string-equal system-type "windows-nt"))
 (defconst *is-linux* (string-equal system-type "gnu/linux"))
 
-;; PROJECTS ROOT
+;; Projects root
 (defconst projects-root "~/projects/")
 (setq custom-theme-directory "~/.emacs.d/themes/")
 
-;;; Install packages:
-;;; On macOS or Windows, pakcages will be installed by straight.el ONLY.
-;;; On Linux, packages will be installed by the system package manager,
+;;; On Linux, some packages will be installed by the system package manager:
 ;;; `emerge' on Gentoo and `pacman' on Arch.
 (require 'init-packages)
 
