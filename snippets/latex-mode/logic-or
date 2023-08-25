@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: logic-or
+# key: lo
+# --
+\lor
