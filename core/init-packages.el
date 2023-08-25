@@ -26,6 +26,7 @@
 (sup 'flycheck-clj-kondo)
 (sup 'flycheck-joker)
 (sup 'flycheck-pos-tip)
+(sup 'haskell-mode)
 (sup 'magit)
 (sup 'marginalia)
 (sup 'markdown-mode)

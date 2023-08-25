@@ -7,7 +7,8 @@
 ;; Use serif font for org mode body
 (add-hook 'org-mode-hook #'variable-pitch-mode)
 (add-hook 'org-mode-hook #'yas-minor-mode)
-(add-hook 'org-mode-hook #'org-indent-mode)
+;; (add-hook 'org-mode-hook #'org-indent-mode)
+
 ;; HOOKS
 ;; It revent electric-pair from inserting `>' to match `<', but
 ;; it wont prevent ep from thinking `<' and `>' are matched
