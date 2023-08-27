@@ -9,7 +9,7 @@
 (add-to-list 'default-frame-alist '(font . "Px437 IBM VGA 8x16-16"))
 (set-fontset-font t 'han (font-spec :family +chinese-font-family))
 (set-face-attribute 'variable-pitch nil :family "Sans" :font "Liberation Sans-16")
-(set-face-attribute 'fixed-pitch nil :font "Liberation Mono-16")
+(set-face-attribute 'fixed-pitch nil :font "Px437 IBM VGA 8x16-16")
 
 ;; Theme
 (defvar my-themes

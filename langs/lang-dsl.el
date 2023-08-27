@@ -7,7 +7,6 @@
 ;; Use serif font for org mode body
 (add-hook 'org-mode-hook #'variable-pitch-mode)
 (add-hook 'org-mode-hook #'yas-minor-mode)
-;; (add-hook 'org-mode-hook #'org-indent-mode)
 
 ;; HOOKS
 ;; It revent electric-pair from inserting `>' to match `<', but
@@ -45,6 +44,10 @@
         ;; right arrow: migrate to Futher;
         ;; left arrow: migrate to Other collections
 	      (sequence "✝TODO(i)" "|" ">(f)" "<(o)")))
+(setq org-todo-keyword-faces
+      '(("TODO" . org-warning)
+        ("DONE" . org-done)
+        ("DOING" . org-drawer)))
 
 (with-eval-after-load 'org
   (add-to-list 'org-file-apps '("\\.pdf::\\([0-9]+\\)\\'" . "okular -p %1 %s"))
@@ -57,8 +60,7 @@
    '(org-code ((t :inherit 'fixed-pitch)))
    '(org-block ((t :inherit 'fixed-pitch)))
    '(org-checkbox ((t :inherit 'fixed-pitch :background unspecified :box nil)))
-   '(org-latex-and-related ((t (:inherit 'fixed-pitch)))))
- )
+   '(org-latex-and-related ((t (:inherit 'fixed-pitch))))))
 
 ;;; ORG BABEL
 ;(require 'org-tempo)
@@ -83,6 +85,9 @@
   (add-hook 'sql-mode-hook 'sqlup-mode)
   (define-key sql-mode-map (kbd "C-c u") 'sqlup-capitalize-keywords-in-region))
 
+(with-eval-after-load "sqlup-mode"
+  (add-to-list 'sqlup-blacklist "name"))
+
 ;;; -- COQ --------------------------------
 
 ;;; -- Tex --------------------------------
@@ -99,14 +104,18 @@
 (setq TeX-view-program-selection
       '((output-pdf "okular")
         (output-dvi "xdvi")
-        (output-html "xdg-open")))
+        (output-html "browser")))
+
 (setq TeX-view-program-list
-      '(("okular" "okular %o")))
+      '(("okular" "okular %o")
+        ("browser" "chromium %o")))
 
 ;; LaTeX-mode is an alias for latex-mode
 ;; but AUCTeX calls `LaTeX-mode-hook' for any hooks
-(add-hook 'LaTeX-mode-hook #'turn-on-cdlatex)
-(add-hook 'LaTeX-mode-hook #'company-auctex-init)
+(with-eval-after-load 'tex-mode
+  (add-hook 'LaTeX-mode-hook #'turn-on-cdlatex)
+  (add-hook 'LaTeX-mode-hook #'company-auctex-init)
+  (add-hook 'LaTeX-mode-hook #'yas-minor-mode))
 
 (with-eval-after-load 'bibtex
   (dolist (hook '(bibtex-mode-hook))
