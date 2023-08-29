@@ -4,10 +4,6 @@
 ;;; For fns and consts to use in other modules, refer to init-macros.el
 ;;; Code:
 
-;; which-key
-;; (require 'which-key)
-;; (which-key-mode t)
-
 ;; TIME FUNCS
 (defun +insert-timestamp ()
   "Insert timestamp of the current point in time."
