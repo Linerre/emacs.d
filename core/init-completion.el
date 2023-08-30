@@ -29,9 +29,10 @@
 (setq lsp-keymap-prefix "C-c l"
       lsp-enable-symbol-highlighting nil
       lsp-enable-dap-auto-configure nil
-      lsp-modeline-diagnostics-enable nil ; 5/6/7 <----- a string whose colors default to error/success
+      ;; lsp-modeline-diagnostics-enable nil ; 5/6/7 <----- a string whose colors default to error/success
       lsp-lens-enable nil
       lsp-headerline-breadcrumb-enable nil
+      lsp-completion-show-detail nil
       lsp-signature-doc-lines 3)
 
 (with-eval-after-load "lsp-mode"
