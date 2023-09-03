@@ -86,7 +86,9 @@
   (define-key sql-mode-map (kbd "C-c u") 'sqlup-capitalize-keywords-in-region))
 
 (with-eval-after-load "sqlup-mode"
-  (add-to-list 'sqlup-blacklist "name"))
+  (add-to-list 'sqlup-blacklist "final")
+  (add-to-list 'sqlup-blacklist "name")
+  (add-to-list 'sqlup-blacklist "result"))
 
 ;;; -- COQ --------------------------------
 
