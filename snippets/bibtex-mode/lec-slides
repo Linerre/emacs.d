@@ -1,0 +1,14 @@
+# -*- mode: snippet -*-
+# name: ref-lectslides
+# key: lec
+# --
+@misc{lec:${1:label},
+author = {$2},
+title = {${3:lecture-topic}},
+titleaddon = {[PowerPoint Slides]},
+type = {${4:course-code}},
+organization = {Australian National University},
+year = {$5},
+url = \url{$6},
+note = {[Accessed `(format-time-string "%d-%B-%Y")`]},
+}

@@ -120,10 +120,8 @@
   (add-hook 'LaTeX-mode-hook #'yas-minor-mode))
 
 (with-eval-after-load 'bibtex
-  (dolist (hook '(bibtex-mode-hook))
-    (add-hook 'bibtex-mode-hook 'display-line-numbers-mode)
-    (add-hook 'bibtex-mode-hook 'visual-line-mode)
-    (add-hook 'bibtex-mode-hook 'flyspell-mode)))
+  (add-hook 'bibtex-mode-hook #'visual-line-mode)
+  (add-hook 'bibtex-mode-hook #'yas-minor-mode))
 
 ;;; -- Markdown -----------------------------
 (autoload #'markdown-mode "markdown-mode"
