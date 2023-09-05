@@ -1,0 +1,13 @@
+# -*- mode: snippet -*-
+# name: ref-article
+# key: art
+# --
+@article{${1:authoryear}
+  author = {$2},
+  title = {$3},
+  journaltitle = {$4},
+  date = {$5},
+  volume = {$6},
+  number = {$7},
+  page = {$8},
+}

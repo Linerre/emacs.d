@@ -2,12 +2,13 @@
 # name: ref-site
 # key: site
 # --
-@misc{site:${1:label},
+@online{site:${1:label},
   author = {$2},
   title = {$3},
   year = {$4},
   month = {$5},
   day = {$6},
-  url = \url{$7},
-  note = {[Accessed `(format-time-string "%d-%B-%Y")`]},
+  organization = {$7},
+  url = \url{$8},
+  urldate = {`(format-time-string "%Y-%m-%d")`},
 }

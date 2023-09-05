@@ -83,7 +83,7 @@
 (with-eval-after-load "sql"
   (add-hook 'sql-mode-hook 'sqlind-minor-mode)
   (add-hook 'sql-mode-hook 'sqlup-mode)
-  (define-key sql-mode-map (kbd "C-c u") 'sqlup-capitalize-keywords-in-region))
+  (define-key sql-mode-map (kbd "C-c M-u") 'sqlup-capitalize-keywords-in-region))
 
 (with-eval-after-load "sqlup-mode"
   (add-to-list 'sqlup-blacklist "final")
@@ -121,7 +121,8 @@
 
 (with-eval-after-load 'bibtex
   (add-hook 'bibtex-mode-hook #'visual-line-mode)
-  (add-hook 'bibtex-mode-hook #'yas-minor-mode))
+  (add-hook 'bibtex-mode-hook #'yas-minor-mode)
+  (add-hook 'bibtex-mode-hook #'electric-pair-local-mode))
 
 ;;; -- Markdown -----------------------------
 (autoload #'markdown-mode "markdown-mode"
