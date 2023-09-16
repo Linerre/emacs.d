@@ -139,17 +139,16 @@
   (define-key company-template-nav-map (kbd "TAB") nil)
   (define-key company-template-nav-map [tab] nil))
 
-(require 'vertico)
-(vertico-mode)
+;; (require 'vertico)
+;; (vertico-mode)
+;; (require 'marginalia)
+;; (marginalia-mode 1)
 
-;; marginalia
-(require 'marginalia)
-(marginalia-mode 1)
-
+(icomplete-mode t)
 ;; orderless (suggested by a friend)
 ;; for fuzzy search in minibuffer
 (defun friend/use-orderless-in-minibuffer ()
-  (setq-local completion-styles '(orderless)))
+  (setq-local completion-styles '(orderless flex basic)))
 (add-hook 'minibuffer-setup-hook #'friend/use-orderless-in-minibuffer)
 
 ;; tree-sitter Emacs 29

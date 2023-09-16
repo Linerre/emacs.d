@@ -4,12 +4,14 @@
 
 ;;; Font
 (defvar +chinese-font-family "LXGW WenKai")
+(defvar bitmap-font "Px437 IBM VGA 8x16-16")
+(defvar ttf-font "Liberation Mono")
 
 ;; For Monospace use 16
-(add-to-list 'default-frame-alist '(font . "Px437 IBM VGA 8x16-16"))
+(add-to-list 'default-frame-alist `(font . ,bitmap-font))
 (set-fontset-font t 'han (font-spec :family +chinese-font-family))
 (set-face-attribute 'variable-pitch nil :family "Sans" :font "Liberation Sans-16")
-(set-face-attribute 'fixed-pitch nil :font "Px437 IBM VGA 8x16-16")
+(set-face-attribute 'fixed-pitch nil :font bitmap-font)
 
 ;; Theme
 (defvar my-themes
@@ -18,6 +20,7 @@
     chacha
     carbon
     console
+    gruber-darker
     ft))
 
 (defun +toggle-themes ()
@@ -25,7 +28,16 @@
   (interactive)
   (setq my-themes (append (cdr my-themes) (list (car my-themes))))
   (mapc #'disable-theme custom-enabled-themes)
-  (load-theme (car my-themes) t))
+  (let ((theme (car my-themes)))
+    (if (or (eq theme 'carbon)
+                (eq theme 'console))
+            (progn
+              (set-frame-font bitmap-font t t t)
+              (load-theme theme t nil))
+          ;; else
+          (progn
+          (set-frame-font ttf-font t t t)
+          (load-theme theme t nil)))))
 
 (global-set-key (kbd "C-c m") #'+toggle-themes)
 
@@ -36,8 +48,10 @@
 (scroll-bar-mode -1)
 
 (if (display-graphic-p)
-    (load-theme 'chacha t nil)
-    (load-theme 'console t nil))
+    (progn
+      (set-frame-font ttf-font t t t)
+      (load-theme 'chacha t nil))
+    (load-theme 'gruber-darker t nil))
 
 ;; tree sidebar is useful when viewing a project
 (sup 'dired-sidebar)

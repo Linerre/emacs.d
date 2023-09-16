@@ -1,6 +1,5 @@
 ;;; Various emacs built-in options set for both GUI and TUI
 ;;; Author: Errenil
-;;; Last Change: 2021-11-18 Thu
 
 (setq-default
  ;; startup config
@@ -64,27 +63,20 @@
  comment-empty-lines t
  ;; Minimum width before truncate-line occurs
  truncate-partial-width-windows 40
- ;; Default line number width.
- ;; display-line-numbers-width 3
 
- ;; if set, when buffer size (not the number of lines!) exceeds 500;
- ;; then line number will not show in modeline; instead you get "??"
- ;;line-number-display-limit 500
  ;; hilight line only in current/selected window
  hl-line-sticky-flag nil
  require-final-newline t
  ;; case insensitive completion
  read-buffer-completion-ignore-case t
  read-file-name-completion-ignore-case t
- ;; use short answer
- ;; >= emacs 28
+ ;; use short answer (>= emacs 28)
  read-answer-short t
  use-short-answers t
  ;; move cursor to top/bottom before signaling a scroll error
  scroll-error-top-bottom t
  ;; see its explanation in help doc
  epa-pinentry-mode 'loopback
- custom-file (expand-file-name "custom.el" user-emacs-directory)
  ;; eldoc idle delay
  eldoc-idle-delay 1
  ispell-program-name "aspell"
@@ -94,7 +86,7 @@
  warning-minimum-level :error
  native-comp-async-report-warnings-errors 'silent
  ;;inhibit-compacting-font-caches t
-
+ ;; custom-file (expand-file-name "custom.el" user-emacs-directory)
  ;; t means in dired `C-s' == `M-s f C-s'
  dired-isearch-filenames t
  ;; show match number in minibuffer
@@ -104,11 +96,11 @@
 
 ;; (fset 'yes-or-no-p 'y-or-n-p)
 ;; cutome funs to be hooked to various modes
-(defun +add-margins-to-textmode ()
-  "When in text-mode, add margins to both sides of the current buffer."
-  (unless (memq major-mode '(mhtml-mode css-mode))
-    (setq left-margin-width 4)
-    (setq right-margin-width 4)))
+;; (defun +add-margins-to-textmode ()
+;;   "When in text-mode, add margins to both sides of the current buffer."
+;;   (unless (memq major-mode '(mhtml-mode css-mode))
+;;     (setq left-margin-width 4)
+;;     (setq right-margin-width 4)))
 
 ;; Save buffers on gain/loss of focus
 (defun +real-auto-save ()
@@ -125,7 +117,6 @@
 ;; hook it to several major modes
 (dolist (hook '(conf-space-mode-hook prog-mode-hook))
   (add-hook hook 'visual-line-mode)
-  ;; (add-hook hook 'display-line-numbers-mode)  ; line number on the left margin
   (add-hook hook 'column-number-mode)   ; for col numb on modeline -- Emacs 28
   (add-hook hook 'line-number-mode)
   (add-hook hook 'electric-pair-local-mode)
@@ -141,12 +132,21 @@
   (add-hook hook 'visual-line-mode)
   (add-hook hook 'column-number-mode)   ; for col numb on modeline -- Emacs 28
   (add-hook hook 'line-number-mode)
-  (add-hook hook 'flyspell-mode)
-  (add-hook hook #'+add-margins-to-textmode))
+  (add-hook hook 'flyspell-mode))
 
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 ;; Windows and Buffers
+;; Ignore useless buffers such as straight or message
+;; (set-frame-parameter
+;;  nil
+;;  'buffer-predicate
+;;  (lambda (buf)
+;;    (if (string-match "straight-process" (buffer-name buf))
+;;        nil
+;;      t)))
+
+
 (defvar parameters                      ; cause side buffers to not be closed
   '(window-parameters . ((no-other-window . t)
                          (no-delete-other-windows . t))))

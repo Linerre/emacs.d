@@ -2,12 +2,12 @@
 # name: ref-wiki
 # key: wiki
 # --
-@misc{wiki:${1:label},
+@online{wiki:${1:label},
   author = {{Wikipedia contributors}},
-  year = {$2},
-  month = {$3},
-  day = {$4},
-  title = {${5:entry} --- {Wikipedia}{,} The Free Encyclopedia},
-  url = \url {$6},
-  note = {[Accessed `(format-time-string "%d-%B-%Y")`]},
+  shortauthor = {Wikipedia},
+  date = {$2},
+  title = {${5:entry}},
+  organization = {{Wikipedia}{,} The Free Encyclopedia},
+  url = {$6},
+  urldate = {`(format-time-string "%Y-%m-%d")`},
 }

@@ -13,13 +13,8 @@
 (sup 'clj-refactor)
 (sup 'company)
 (sup 'company-auctex)
-(sup 'consult)
-(sup 'corfu)
 (sup 'direnv)
-(sup 'embark)
-(sup '(emacs-sql-indent :type git :host github :repo "alex-hhh/emacs-sql-indent"))
 (sup '(go-mode.el :type git :host github :repo "dominikh/go-mode.el"))
-(sup '(indent-guide :type git :host github :repo "zk-phi/indent-guide"))
 (sup 'json-mode)
 (sup 'lsp-mode)
 (sup 'flycheck)
@@ -28,7 +23,6 @@
 (sup 'flycheck-pos-tip)
 (sup 'haskell-mode)
 (sup 'magit)
-(sup 'marginalia)
 (sup 'markdown-mode)
 (sup 'nix-mode)
 (sup 'orderless)
@@ -42,10 +36,11 @@
 (sup 'emmet-mode)
 (sup 'clojure-mode)
 (sup 'rust-mode)
-(sup 'vertico)
 (sup 'vundo)
 
 ;; To drop
+;; (sup '(emacs-sql-indent :type git :host github :repo "alex-hhh/emacs-sql-indent"))
+
 ;;; Managed by pacman (Arch) or portage (Gentoo)
 ;; (sup '(meow :type git :host github :repo "DogLooksGood/meow")) installed via pacman/portage
 ;; (sup 'ebuild-mode)
@@ -53,6 +48,9 @@
 
 ;;; Dropped
 ;; (sup 'cargo-mode)
+;; (sup 'corfu)
+;; (sup 'consult)
+;; (sup 'embark)
 ;; (sup 'selectrum)
 ;; (sup 'kaolin-themes)
 ;; (sup '(modus-themes :type git :host gitlab :repo "protesilaos/modus-themes"))
@@ -66,6 +64,8 @@
 ;;    :type git
 ;;    :repo "https://codeberg.org/akib/emacs-corfu-terminal.git"))
 ;; (sup 'web-mode)
+;; (sup 'marginalia)
+;; (sup 'vertico)
 
 (provide 'init-packages)
 

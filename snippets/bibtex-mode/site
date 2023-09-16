@@ -5,10 +5,8 @@
 @online{site:${1:label},
   author = {$2},
   title = {$3},
-  year = {$4},
-  month = {$5},
-  day = {$6},
+  date = {$4},
   organization = {$7},
-  url = \url{$8},
+  url = {$8},
   urldate = {`(format-time-string "%Y-%m-%d")`},
 }

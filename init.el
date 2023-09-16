@@ -20,7 +20,7 @@
 (require 'init-packages)
 
 ;;; Load the modular configs
-;; (require 'init-options)
+(require 'init-options)
 (require 'init-utils)
 (require 'init-modeline)
 (require 'init-theme)

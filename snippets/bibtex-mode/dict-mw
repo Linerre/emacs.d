@@ -2,16 +2,11 @@
 # name: ref-dict-mw
 # key: mw
 # --
-@booklet{mw:${1:label},
+@online{mw:${1:label},
   author = {{Merriam-Webster}},
-  year = {},
-  subtitle = {${2:$$(capitalize yas-text)}},
-  title = {Merriam-Webster.com dictionary},
-  howpublished = {
-  \src
-  {${3:url}}
-  {${4:domain}}
-  {${5:shortened}}
-  },
-  note = {[Accessed `(format-time-string "%d-%B-%Y")`]},
+  date = {},
+  title = {${2:$$(capitalize yas-text)}},
+  organization = {Merriam-Webster.com dictionary},
+  url = {${3:url}},
+  urldate = {`(format-time-string "%Y-%m-%d")`},
 }
