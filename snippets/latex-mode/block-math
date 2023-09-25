@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: block-math
+# key: bm
+# --
+\[
+$0
+\]

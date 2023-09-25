@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: curly-math-mode
+# key: cm
+# --
+\\{$0\\}
