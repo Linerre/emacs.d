@@ -2,18 +2,19 @@
 ;;; Commentary:
 ;;; Code:
 
-;;; Font
+;;; Fonts
 (defvar +chinese-font-family "LXGW WenKai")
 (defvar bitmap-font "Px437 IBM VGA 8x16-16")
-(defvar ttf-font "Liberation Mono")
+(defvar sans-font "Liberation Sans-16")
+(defvar sans-font "Liberation Serif-16")
+(defvar mono-font "Liberation Mono-16")
 
-;; For Monospace use 16
-(add-to-list 'default-frame-alist `(font . ,bitmap-font))
+(add-to-list 'default-frame-alist `(font . ,mono-font))
 (set-fontset-font t 'han (font-spec :family +chinese-font-family))
-(set-face-attribute 'variable-pitch nil :family "Sans" :font "Liberation Sans-16")
-(set-face-attribute 'fixed-pitch nil :font bitmap-font)
+(set-face-attribute 'variable-pitch nil :family "Sans" :font sans-font)
+(set-face-attribute 'fixed-pitch nil :font mono-font)
 
-;; Theme
+;; Themes
 (defvar my-themes
   '(
     ;; alabaster
@@ -34,10 +35,9 @@
             (progn
               (set-frame-font bitmap-font t t t)
               (load-theme theme t nil))
-          ;; else
-          (progn
-          (set-frame-font ttf-font t t t)
-          (load-theme theme t nil)))))
+      ;; else
+      (set-frame-font mono-font t t t)
+      (load-theme theme t nil))))
 
 (global-set-key (kbd "C-c m") #'+toggle-themes)
 
@@ -49,7 +49,7 @@
 
 (if (display-graphic-p)
     (progn
-      (set-frame-font ttf-font t t t)
+      (set-frame-font mono-font t t t)
       (load-theme 'chacha t nil))
     (load-theme 'gruber-darker t nil))
 
