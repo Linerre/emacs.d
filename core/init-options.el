@@ -137,17 +137,6 @@
 
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
-;; Windows and Buffers
-;; Ignore useless buffers such as straight or message
-;; (set-frame-parameter
-;;  nil
-;;  'buffer-predicate
-;;  (lambda (buf)
-;;    (if (string-match "straight-process" (buffer-name buf))
-;;        nil
-;;      t)))
-
-
 (defvar parameters                      ; cause side buffers to not be closed
   '(window-parameters . ((no-other-window . t)
                          (no-delete-other-windows . t))))

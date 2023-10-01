@@ -6,24 +6,19 @@
          '(mhtml-mode-hook
            json-mode-hook
            svelte-mode-hook))
-  (add-hook hook #'indent-guide-mode)
   (add-hook hook #'yas-minor-mode)
   (add-hook hook #'emmet-mode))
 
 (with-eval-after-load "css-mode"
   (setq css-indent-offset 2)
-  ;; (define-key company-active-map (kbd "SPC") #'company-complete-selection)
   )
 
 (setq-default js-indent-level 2)
-;; (with-eval-after-load "js"
-;;   )
 
 (with-eval-after-load "json-mode"
   (add-hook 'json-mode-hook #'flycheck-mode))
 
 (autoload #'svelte-mode "svelte-mode" nil t)
-;; (with-eval-after-load "svelte-mode")
 
 (add-to-list 'auto-mode-alist '("\\.tsx\\'" . tsx-ts-mode))
 (add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-ts-mode))
