@@ -6,20 +6,12 @@
 ;;; -- Org --------------------------------
 ;; Use serif font for org mode body
 ;; (add-hook 'org-mode-hook #'variable-pitch-mode)
-(add-hook 'org-mode-hook #'yas-minor-mode)
-(add-hook 'org-mode-hook #'turn-on-org-cdlatex)
-;; HOOKS
-;; It revent electric-pair from inserting `>' to match `<', but
-;; it wont prevent ep from thinking `<' and `>' are matched
-;; need to turn off check-paren
-;; https://www.topbug.net/blog/2016/09/29/emacs-disable-certain-pairs-for-electric-pair-mode/
-(add-hook 'org-mode-hook
-          (lambda ()
-            (setq-local electric-pair-inhibit-predicate
-                        `(lambda (c)
-                           (if (char-equal c ?<)
-                               t
-                             (,electric-pair-inhibit-predicate c))))))
+;; (custom-set-faces
+;;    '(org-table ((t :inherit 'fixed-pitch)))
+;;    '(org-code ((t :inherit 'fixed-pitch)))
+;;    '(org-block ((t :inherit 'fixed-pitch)))
+;;    '(org-checkbox ((t :inherit 'fixed-pitch :background unspecified :box nil)))
+;;    '(org-latex-and-related ((t (:inherit 'fixed-pitch)))))
 
 (setq
  org-deadline-warning-days 0
@@ -53,14 +45,9 @@
   (add-to-list 'org-file-apps '("\\.pdf::\\([0-9]+\\)\\'" . "okular -p %1 %s"))
   (define-key org-mode-map (kbd "C-c A") 'org-agenda)
   (define-key org-mode-map (kbd "C-c c") 'org-capture)
-
-  ;; Use fixed pitch for table and code
-  (custom-set-faces
-   '(org-table ((t :inherit 'fixed-pitch)))
-   '(org-code ((t :inherit 'fixed-pitch)))
-   '(org-block ((t :inherit 'fixed-pitch)))
-   '(org-checkbox ((t :inherit 'fixed-pitch :background unspecified :box nil)))
-   '(org-latex-and-related ((t (:inherit 'fixed-pitch))))))
+  (modify-syntax-entry ?> "." org-mode-syntax-table)
+  (modify-syntax-entry ?< "." org-mode-syntax-table)
+  (add-hook 'org-mode-hook #'yas-minor-mode))
 
 ;;; ORG BABEL
 ;(require 'org-tempo)
