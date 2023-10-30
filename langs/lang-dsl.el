@@ -41,12 +41,14 @@
         ("DONE" . org-done)
         ("DOING" . org-drawer)))
 
+(add-hook 'org-mode-hook (lambda ()
+                             (modify-syntax-entry ?> "." org-mode-syntax-table)
+                             (modify-syntax-entry ?< "." org-mode-syntax-table)))
+
 (with-eval-after-load 'org
   (add-to-list 'org-file-apps '("\\.pdf::\\([0-9]+\\)\\'" . "okular -p %1 %s"))
   (define-key org-mode-map (kbd "C-c A") 'org-agenda)
   (define-key org-mode-map (kbd "C-c c") 'org-capture)
-  (modify-syntax-entry ?> "." org-mode-syntax-table)
-  (modify-syntax-entry ?< "." org-mode-syntax-table)
   (add-hook 'org-mode-hook #'yas-minor-mode))
 
 ;;; ORG BABEL

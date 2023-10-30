@@ -92,6 +92,7 @@
  ;; show match number in minibuffer
  isearch-lazy-count t
  font-lock-maximum-decoration 2
+ bidi-display-reordering nil
  visible-bell t
  default-directory "~/projects")
 
