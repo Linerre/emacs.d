@@ -96,6 +96,9 @@
  visible-bell t
  default-directory "~/projects")
 
+;; Use hippie-expand
+(global-set-key [remap dabbrev-expand] 'hippie-expand)
+
 ;; (fset 'yes-or-no-p 'y-or-n-p)
 ;; cutome funs to be hooked to various modes
 ;; (defun +add-margins-to-textmode ()
