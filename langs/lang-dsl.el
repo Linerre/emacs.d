@@ -82,6 +82,10 @@
 ;;; -- COQ --------------------------------
 
 ;;; -- Tex --------------------------------
+;; disable raise/lower scripts
+(setq tex-fontify-script nil
+      font-latex-fontify-script nil)
+
 ;; auctex
 (setq TeX-auto-save t
       TeX-parse-self t
