@@ -20,6 +20,13 @@
 
 ;; scheme
 (setq scheme-program-name "mit-scheme")
+(with-eval-after-load "scheme-mode"
+  (add-hook 'scheme-mode-hook #'paredit-mode)
+  (add-hook 'scheme-mode-hook #'geiser-mode))
+
+(with-eval-after-load "geiser-repl"
+  (add-hook 'geiser-repl-mode-hook #'paredit-mode))
+
 
 (provide 'lang-lisp)
 
