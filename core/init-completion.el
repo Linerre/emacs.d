@@ -33,7 +33,10 @@
       lsp-lens-enable nil
       lsp-headerline-breadcrumb-enable nil
       lsp-completion-show-detail nil
-      lsp-signature-doc-lines 3)
+      ;; lsp-signature-auto-activate nil
+      lsp-signature-render-documentation nil
+      lsp-signature-doc-lines 3
+      lsp-modeline-code-action-fallback-icon "CA")
 
 (with-eval-after-load "lsp-mode"
   ;; start lsp after `modes' are enabled

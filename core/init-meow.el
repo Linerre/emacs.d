@@ -48,21 +48,18 @@
    ;; C-x C-x could be bound to different fns in
    ;; different modes, so use the keybindings
    '("e" . "C-x C-e")
-   '("SPC" . save-buffer)
-   ;; '("$" . +change-theme)
    '(";" . comment-dwim)
    '("k" . kill-this-buffer)
    '("j" . project-switch-to-buffer)
    '("D" . dired)
    '("b" . switch-to-buffer)
-   ;; '("r" . rg-project)
    '("f" . find-file)
    '("p" . project-find-file)
    '("i" . imenu)
    '("n" . "M-x")
    '("r" . rg)
    '("W" . eww)
-   '("z" . ts-fold-toggle)
+   '("z" . delete-window)
    '("Z" . ts-fold-close-all)
    '("u" . magit-status)
    '("v" . vundo)
@@ -73,13 +70,11 @@
    '("S" . eshell)
    ;; toggles
    '("L" . display-line-numbers-mode)
-   ;; '("t" . telega)
    ;; '("P" . pass)
    ;; org
    '("A" . org-agenda)
    '("C" . org-capture)
    '("U" . "C-u C-u")
-   ;; '("C" . "C-c C-c")
    '("X" . "C-c C-x"))
   (meow-normal-define-key
    '("0" . meow-expand-0)

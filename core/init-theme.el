@@ -7,7 +7,9 @@
 (defvar bitmap-font "Px437 IBM VGA 8x16-16")
 (defvar sans-font "Liberation Sans-16")
 (defvar sans-font "Liberation Serif-16")
-(defvar mono-font "Liberation Mono-13")
+;; (defvar mono-font "Liberation Mono-13")
+;; (defvar mono-font "Monospace-13")
+(defvar mono-font "Consolas-15")
 
 (add-to-list 'default-frame-alist `(font . ,mono-font))
 (set-fontset-font t 'han (font-spec :family +chinese-font-family))
