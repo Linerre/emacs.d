@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: gls-vocab
+# key: voc
+# --
+\newglossaryentry{${1:key}}
+{
+  name={${2:entry}},
+  description={${3:sense}}
+}

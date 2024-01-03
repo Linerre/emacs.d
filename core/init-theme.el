@@ -52,7 +52,7 @@
 
 (if (display-graphic-p)
     (progn
-      (set-frame-font mono-font t t t)
+      (set-frame-font mono-font-consolas t t t)
       (load-theme 'chacha t nil))
     (load-theme 'gruber-darker t nil))
 

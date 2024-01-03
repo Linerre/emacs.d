@@ -82,6 +82,25 @@
 ;;; -- COQ --------------------------------
 
 ;;; -- Tex --------------------------------
+(defun +mark-gloassary-word ()
+  "Mark the word at point as gloassary and into the format `\gls{WORD-AT-PT}',
+  move to `vocabs' buffer and insert the old word surrounded by a LaTeX command."
+  (interactive)
+  (save-excursion
+    (let ((gls (thing-at-point 'word))
+          (vocab-file "vocabs.tex"))
+      (if gls
+          (progn
+            (delete-region (car (bounds-of-thing-at-point 'word))
+                           (cdr (bounds-of-thing-at-point 'word)))
+            (insert (format "\\gls{%s}" gls))
+            (kill-new gls)
+            (message "Marked '%s' as '\\gls{%s}'" gls gls)
+            (if (file-exists-p vocab-file)
+                (find-file-other-window vocab-file nil)
+              (find-file-other-window (find-file-noselect file-path nil nil nil))))
+          (message "No word at point")))))
+
 ;; disable raise/lower scripts
 (setq tex-fontify-script nil
       font-latex-fontify-script nil)
@@ -94,7 +113,7 @@
       ;; use pdflatex
       TeX-PDF-mode t)
 
-(setq-default Tex-master nil)
+(setq-default Tex-master "master")
 
 (setq TeX-view-program-selection
       '((output-pdf "okular")
@@ -110,7 +129,10 @@
 (with-eval-after-load 'tex-mode
   (add-hook 'LaTeX-mode-hook #'turn-on-cdlatex)
   (add-hook 'LaTeX-mode-hook #'company-auctex-init)
-  (add-hook 'LaTeX-mode-hook #'yas-minor-mode))
+  (add-hook 'LaTeX-mode-hook #'yas-minor-mode)
+  (add-hook 'tex-mode-hook #'yas-minor-mode)
+  (add-hook 'LaTeX-mode-hook (lambda ()
+                               (keymap-local-set "C-c g" #'+mark-gloassary-word))))
 
 (with-eval-after-load 'bibtex
   (add-hook 'bibtex-mode-hook #'visual-line-mode)
