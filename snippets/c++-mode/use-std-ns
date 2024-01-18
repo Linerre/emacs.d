@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: use-std-namepace
+# key: ust
+# --
+using namespace std;
