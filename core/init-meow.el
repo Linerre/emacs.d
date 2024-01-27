@@ -2,7 +2,28 @@
 ;;; Commentary:
 ;;; Code:
 
-;; (autoload #'fold-this "fold-this" nil t)
+(require 'meow)
+
+(setq
+ meow-visit-sanitize-completion nil
+ meow-esc-delay 0.001
+ meow-keypad-describe-delay 0.5
+ meow-select-on-change t
+ meow-expand-hint-remove-delay 2.0
+ meow-cursor-type-normal 'box
+
+ meow-selection-command-fallback
+ '((meow-replace . meow-page-up)
+   (meow-change . meow-change-char)
+   (meow-save . meow-save-empty)
+   (meow-kill . meow-C-k)
+   (meow-cancel . keyboard-quit)
+   (meow-pop . meow-pop-grab)
+   (meow-delete . meow-C-d)
+   (meow-beacon-change . meow-beacon-change-char)))
+
+(add-to-list 'meow-mode-state-list
+               '(cargo-process-mode . motion))
 
 (defun meow-setup ()
   (setq meow-cheatsheet-layout meow-cheatsheet-layout-qwerty)
@@ -10,7 +31,8 @@
   ;; Otherwise j/k will not be recognized as characters in gdb mode
   (meow-motion-overwrite-define-key
    '("j" . meow-next)
-   '("k" . meow-prev))
+   '("k" . meow-prev)
+   '("/" . find-file))
   (meow-leader-define-key
    ;; SPC j/k will run the original command in MOTION state.
    ;;'("j" . meow-motion-origin-command)
@@ -29,8 +51,6 @@
    ;; cheatsheet
    '("?" . meow-cheatsheet)
    ;; high frequency keybindings
-   ;'(")" . "C-)")
-   ;'("}" . "C-}")
    '("." . "M-.")
    '("," . "M-,")
    '("<escape>" . "C-g")
@@ -43,8 +63,6 @@
    '("o" . delete-other-windows)
    '("=" . split-window-right)
    '("-" . split-window-below)
-   ;; high frequency commands
-   '("'" . goto-line)
    ;; C-x C-x could be bound to different fns in
    ;; different modes, so use the keybindings
    '("e" . "C-x C-e")
@@ -53,8 +71,8 @@
    '("j" . project-switch-to-buffer)
    '("D" . dired)
    '("b" . switch-to-buffer)
-   '("f" . find-file)
    '("p" . project-find-file)
+   '("q" . meow-keypad-quit)
    '("i" . imenu)
    '("n" . "M-x")
    '("r" . rg)
@@ -91,8 +109,8 @@
    '(";" . meow-reverse)
    '("," . meow-inner-of-thing)
    '("." . meow-bounds-of-thing)
-   '("[" . meow-beginning-of-thing)
-   '("]" . meow-end-of-thing)
+   '("[" . meow-mark-word)
+   '("]" . meow-mark-symbol)
    '("a" . meow-append)
    '("A" . meow-open-below)
    '("b" . meow-back-word)
@@ -101,7 +119,7 @@
    '("C" . meow-change-save)
    '("d" . meow-C-d)
    '("D" . meow-backward-delete)
-   '("e" . meow-next-word)
+   '("e" . meow-line)
    '("E" . meow-next-symbol)
    '("f" . meow-find)
    '("F" . meow-find-expand)
@@ -127,7 +145,6 @@
    '("q" . meow-quit)
    '("Q" . meow-goto-line)
    '("r" . meow-replace)
-   '("R" . meow-swap-grab)
    '("s" . meow-kill)
    '("t" . meow-till)
    '("T" . meow-till-expand)
@@ -135,9 +152,9 @@
    '("U" . meow-undo-in-selection)
    '("v" . meow-visit)
    '("V" . meow-kmacro-matches)
-   '("w" . meow-mark-word)
-   '("W" . meow-mark-symbol)
-   '("x" . meow-line)
+   '("w" . meow-next-word)
+   '("W" . meow-swap-grab)
+   '("x" . meow-keypad-start)
    '("X" . meow-kmacro-lines)
    '("y" . meow-save)
    '("Y" . meow-sync-grab)
@@ -145,40 +162,14 @@
    '("Z" . meow-pop-all-selection)
    '("&" . meow-query-replace)
    '("%" . meow-query-replace-regexp)
-   '("'" . repeat)
-   '("\\" . quoted-insert)))
-   ;'("<escape>" . meow-last-buffer)))
+   '("/" . find-file)))
 
-(setq
- meow-visit-sanitize-completion nil
- meow-esc-delay 0.001
- meow-keypad-describe-delay 0.5
- meow-select-on-change t
- meow-cursor-type-normal 'box
- meow-cursor-type-insert '(bar . 4)
- meow-selection-command-fallback
- '((meow-replace . meow-page-up)
-   (meow-change . meow-change-char)
-   (meow-save . meow-save-empty)
-   (meow-kill . meow-C-k)
-   (meow-cancel . keyboard-quit)
-   (meow-pop . meow-pop-grab)
-   (meow-delete . meow-C-d)
-   (meow-beacon-change . meow-beacon-change-char)))
-
-(require 'meow)
-
-(setq meow-cursor-type-keypad 'box
-        meow-cursor-type-insert '(bar . 2)
-        meow-expand-hint-remove-delay 2.0
-        meow-replace-state-name-list '((normal . "N")
-                                       (insert . "I")
-                                       (keypad . "K")
-                                       (motion . "M")
-                                       (beacon . "B")))
-
-(add-to-list 'meow-mode-state-list
-               '(cargo-process-mode . motion))
+(setq  meow-replace-state-name-list
+       '((normal . "N")
+         (insert . "I")
+         (keypad . "K")
+         (motion . "M")
+         (beacon . "B")))
 
 (meow-global-mode 1)
 (meow-setup)

@@ -21,8 +21,8 @@
   (setq-local c-tab-always-indent t
               display-buffer-alist
               '(("\\*compilation\\*" (display-buffer-in-side-window))))
-  (setq-local c-basic-offset 8
-              tab-width 8
+  (setq-local c-basic-offset 4
+              tab-width 4
               indent-tabs-mode t)
   (c-set-offset 'substatement-open 0)
   (c-set-offset 'inline-open '+)
@@ -30,12 +30,13 @@
   (c-set-offset 'brace-list-open '+)   ; all "opens" should be indented by the c-indent-level
   (c-set-offset 'case-label '+))
 
+(add-hook 'c++-mode-hook (lambda ()
+                           (modify-syntax-entry ?> "." c++-mode-syntax-table)
+                           (modify-syntax-entry ?< "." c++-mode-syntax-table)))
+
 (with-eval-after-load "cc-mode"
   (define-key c-mode-base-map [f9] #'+code-compile)
-  (add-hook 'c-mode-hook #'+my-c-indent)
-  ;; (add-hook 'c-mode-hook 'eglot-ensure)
-  ;; (add-hook 'c++-mode-hook 'eglot-ensure)
-  )
+  (add-hook 'c-mode-hook #'+my-c-indent))
 
 (provide 'lang-cpp)
 

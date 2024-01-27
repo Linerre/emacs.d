@@ -25,6 +25,8 @@
 (sup 'flycheck-joker)
 (sup 'flycheck-pos-tip)
 (sup 'haskell-mode)
+(sup 'flymake-hlint)
+(sup 'hindent)
 (sup 'magit)
 (sup 'markdown-mode)
 (sup 'nix-mode)

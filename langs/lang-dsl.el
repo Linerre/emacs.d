@@ -101,6 +101,19 @@
               (find-file-other-window (find-file-noselect file-path nil nil nil))))
           (message "No word at point")))))
 
+(defun +replace-puncs ()
+  "Replace full-width punctuations with half-width ones in the current buffer."
+  (interactive)
+  (save-excursion
+    (goto-char (point-min))
+    (while (re-search-forward "[“”‘’—]" nil t)
+      (replace-match (pcase (match-string 0 nil)
+                       ("“" "``")
+                       ("”" "''")
+                       ("‘" "`'")
+                       ("’" "'")
+                       ("—" "---"))))))
+
 ;; disable raise/lower scripts
 (setq tex-fontify-script nil
       font-latex-fontify-script nil)
@@ -132,7 +145,8 @@
   (add-hook 'LaTeX-mode-hook #'yas-minor-mode)
   (add-hook 'tex-mode-hook #'yas-minor-mode)
   (add-hook 'LaTeX-mode-hook (lambda ()
-                               (keymap-local-set "C-c g" #'+mark-gloassary-word))))
+                               (keymap-local-set "C-c g" #'+mark-gloassary-word)
+                               (keymap-local-set "C-c p" #'+replace-puncs))))
 
 (with-eval-after-load 'bibtex
   (add-hook 'bibtex-mode-hook #'visual-line-mode)

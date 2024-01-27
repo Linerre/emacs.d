@@ -25,4 +25,8 @@
              lisp-interaction-mode-hook))
   (add-hook h #'paredit-mode))
 
+(with-eval-after-load 'paredit
+  (define-key paredit-mode-map (kbd "M-<up>") nil)
+  (define-key paredit-mode-map (kbd "M-<down>") nil))
+
 (provide 'init-paredit)
