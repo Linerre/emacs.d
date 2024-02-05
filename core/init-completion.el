@@ -39,9 +39,13 @@
       lsp-modeline-code-action-fallback-icon "CA")
 
 (with-eval-after-load "lsp-mode"
-  ;; start lsp after `modes' are enabled
-  (add-hook 'rust-mode-hook #'lsp)
-  (add-hook 'typescript-ts-mode-hook #'lsp))
+  (add-to-list 'lsp-language-id-configuration '(move-mode . "move"))
+  (lsp-register-client
+   (make-lsp-client
+    :new-connection (lsp-stdio-connection "move-analyzer")
+    :activation-fn (lsp-activate-on "move")
+    :priority -1
+    :server-id 'move-analyzer)))
 
 ;;; Flycheck
 (with-eval-after-load "flycheck"
