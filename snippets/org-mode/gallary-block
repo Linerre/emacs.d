@@ -1,0 +1,6 @@
+# key: ga
+# name: gallary-block
+# --
+#+begin_gall
+$0
+#+end_gall
