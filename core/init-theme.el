@@ -7,10 +7,10 @@
 (defvar bitmap-font "Px437 IBM VGA 8x16-16")
 (defvar sans-font "Liberation Sans-16")
 (defvar serif-font "Liberation Serif-16")
-;; (defvar mono-font "Liberation Mono-13")
-;; (defvar mono-font "Monospace-13")
+(defvar mono-font-liberation "Liberation Mono-13")
 (defvar mono-font-inconsolata "Inconsolata-14")
-(defvar mono-font-consolas "Consolas-15")
+(defvar mono-font-consolas "Consolas-14")
+;; (defvar mono-font "Monospace-13")
 
 (add-to-list 'default-frame-alist `(font . ,mono-font-consolas))
 (set-fontset-font t 'han (font-spec :family +chinese-font-family))
@@ -33,17 +33,9 @@
   (setq my-themes (append (cdr my-themes) (list (car my-themes))))
   (mapc #'disable-theme custom-enabled-themes)
   (let ((theme (car my-themes)))
-    (if (or (eq theme 'carbon)
-                (eq theme 'console))
-            (progn
-              (set-frame-font mono-font-inconsolata t t t)
-              (load-theme theme t nil))
-      ;; else
-      (set-frame-font mono-font-consolas t t t)
-      (load-theme theme t nil))))
+    (load-theme theme t nil)))
 
 (global-set-key (kbd "C-c m") #'+toggle-themes)
-
 
 (blink-cursor-mode -1)
 (tool-bar-mode -1)
@@ -51,10 +43,8 @@
 (scroll-bar-mode -1)
 
 (if (display-graphic-p)
-    (progn
-      (set-frame-font mono-font-consolas t t t)
-      (load-theme 'chacha t nil))
-    (load-theme 'gruber-darker t nil))
+    (load-theme 'chacha t nil)
+  (load-theme 'gruber-darker t nil))
 
 ;; tree sidebar is useful when viewing a project
 (sup 'dired-sidebar)

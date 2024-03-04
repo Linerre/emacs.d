@@ -41,6 +41,8 @@
         ("DONE" . org-done)
         ("DOING" . org-drawer)))
 
+(setq org-html-doctype "html5")
+
 (add-hook 'org-mode-hook (lambda ()
                              (modify-syntax-entry ?> "." org-mode-syntax-table)
                              (modify-syntax-entry ?< "." org-mode-syntax-table)))

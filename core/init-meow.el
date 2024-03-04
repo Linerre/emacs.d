@@ -11,6 +11,7 @@
  meow-select-on-change t
  meow-expand-hint-remove-delay 2.0
  meow-cursor-type-normal 'box
+ meow-cursor-type-insert '(bar . 2)
 
  meow-selection-command-fallback
  '((meow-replace . meow-page-up)
@@ -77,8 +78,9 @@
    '("n" . "M-x")
    '("r" . rg)
    '("W" . eww)
-   '("z" . delete-window)
-   '("Z" . ts-fold-close-all)
+   '("z" . meow-pop-selection)
+   '("Z" . meow-pop-all-selection)
+
    '("u" . magit-status)
    '("v" . vundo)
    '("y" . yas-insert-snippet)
@@ -109,8 +111,8 @@
    '(";" . meow-reverse)
    '("," . meow-inner-of-thing)
    '("." . meow-bounds-of-thing)
-   '("[" . meow-mark-word)
-   '("]" . meow-mark-symbol)
+   '("[" . meow-beginning-of-thing)
+   '("]" . meow-end-of-thing)
    '("a" . meow-append)
    '("A" . meow-open-below)
    '("b" . meow-back-word)
@@ -119,7 +121,7 @@
    '("C" . meow-change-save)
    '("d" . meow-C-d)
    '("D" . meow-backward-delete)
-   '("e" . meow-line)
+   '("e" . meow-next-word)
    '("E" . meow-next-symbol)
    '("f" . meow-find)
    '("F" . meow-find-expand)
@@ -152,14 +154,13 @@
    '("U" . meow-undo-in-selection)
    '("v" . meow-visit)
    '("V" . meow-kmacro-matches)
-   '("w" . meow-next-word)
-   '("W" . meow-swap-grab)
-   '("x" . meow-keypad-start)
+   '("w" . meow-mark-word)
+   '("W" . meow-mark-symbol)
+   '("x" . meow-line)
    '("X" . meow-kmacro-lines)
    '("y" . meow-save)
    '("Y" . meow-sync-grab)
-   '("z" . meow-pop-selection)
-   '("Z" . meow-pop-all-selection)
+   '("z" . delete-window)
    '("&" . meow-query-replace)
    '("%" . meow-query-replace-regexp)
    '("/" . find-file)))
