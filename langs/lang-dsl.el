@@ -167,6 +167,9 @@
 (with-eval-after-load "markdown-mode"
   (add-hook 'markdown-mode-hook #'flyspell-mode))
 
+(autoload #'typst-ts-mode "typst-ts-mode" "Major mode for typst using treesit" t)
+(add-to-list 'auto-mode-alist '("\\.typ\\'" . typst-ts-mode))
+
 (provide 'lang-dsl)
 
 ;;; lang-dsl.el ends here
