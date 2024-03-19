@@ -8,7 +8,6 @@
 (sup 'auctex-lua)
 (sup 'auctex-latexmk)
 (sup 'cape)
-(sup 'cdlatex)
 (sup 'cider)
 (sup 'clj-refactor)
 (sup 'company)
@@ -31,7 +30,12 @@
 (sup 'markdown-mode)
 (sup 'nix-mode)
 (sup 'orderless)
-(sup 'proof-general)
+;; coq-mode recognizes *.v files which conflict with verilog-mode, to avoid it:
+;; (alist-get "\\.v\\'" auto-mode-alist nil t) ; t means to remove the key (pattern)
+;; (add-to-list 'auto-mode-alist '("\\.coq\\'" . coq-mode))
+;; that is, let coq-mode treat *.coq files as its majore filetype.
+;; For now, I'm working on verilog only.
+;; (sup 'proof-general)
 (sup 'paredit)
 (sup 'rg)
 (sup 'cargo)
@@ -41,6 +45,8 @@
 (sup 'emmet-mode)
 (sup 'clojure-mode)
 (sup 'rust-mode)
+(sup '(verilog-ts-mode :type git :host github :repo "gmlarumbe/verilog-ts-mode"))
+(sup '(fpga :type git :host github :repo "gmlarumbe/fpga"))
 (sup 'vundo)
 
 ;; To drop
@@ -52,6 +58,7 @@
 (sup 'highlight-defined)
 
 ;;; Dropped
+;; (sup 'cdlatex)
 ;; (sup 'cargo-mode)
 ;; (sup 'corfu)
 ;; (sup 'consult)

@@ -50,6 +50,7 @@
 (require 'lang-shell)
 (require 'lang-web)
 (require 'lang-dsl)
-(require 'init-mail)
+(require 'lang-verilog)
+;; (require 'init-mail)
 
 ;;; init.el ends here
