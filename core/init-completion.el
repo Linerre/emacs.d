@@ -167,10 +167,7 @@
    '(clojure "https://github.com/sogaiu/tree-sitter-clojure.git")))
 
 (setq major-mode-remap-alist
-      '((python-mode . python-ts-mode)
-        ;; (clojure-mode . clojure-ts-mode)
-        ;; (rust-mode . rust-ts-mode)
-        (typescript-mode . typescript-ts-mode)))
+      '((typescript-mode . typescript-ts-mode)))
 
 (provide 'init-completion)
 ;;; init-completion.el ends here
