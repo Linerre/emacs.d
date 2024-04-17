@@ -12,8 +12,6 @@
                 ;; company-files
                 company-capf)))
 
-(add-to-list 'auto-mode-alist '("\\.s?vh?\\'" . verilog-ts-mode))
-
 (setq fpga-feature-list '(xilinx))
 ;; verilog-ts-mode requires verilog-mode which sets
 ;; indentation to 3 by default.  This indentation affects <Return>
@@ -23,8 +21,7 @@
 (setq verilog-ts-indent-level 3
       verilog-auto-newline nil)
 
-(with-eval-after-load "verilog-ts-mode"
-  (define-key verilog-ts-mode-map "\C-c\C-i" #'verilog-pretty-declarations)
+(with-eval-after-load "verilog-mode"
   (require 'fpga))
 
 (provide 'lang-verilog)

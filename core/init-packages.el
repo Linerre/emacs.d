@@ -45,8 +45,9 @@
 (sup 'emmet-mode)
 (sup 'clojure-mode)
 (sup 'rust-mode)
-(sup '(verilog-ts-mode :type git :host github :repo "gmlarumbe/verilog-ts-mode"))
+(sup '(verilog-mode :type git :host github :repo "veripool/verilog-mode"))
 (sup '(fpga :type git :host github :repo "gmlarumbe/fpga"))
+;; (sup '(verilog-ts-mode :type git :host github :repo "gmlarumbe/verilog-ts-mode"))
 (sup 'vundo)
 
 ;; To drop
