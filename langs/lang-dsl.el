@@ -116,6 +116,9 @@
                        ("’" "'")
                        ("—" "---"))))))
 
+;; Map *.tex files to LaTeX-mode (AUCTeX)
+(add-to-list 'auto-mode-alist '("\\.[tT]e[xX]\\'" . LaTeX-mode))
+
 ;; disable raise/lower scripts
 (setq tex-fontify-script nil
       font-latex-fontify-script nil)
@@ -146,10 +149,14 @@
   (add-hook 'LaTeX-mode-hook #'company-auctex-init)
   (add-hook 'LaTeX-mode-hook #'electric-pair-local-mode)
   (add-hook 'LaTeX-mode-hook #'yas-minor-mode)
+  (add-hook 'LaTeX-mode-hook #'outline-minor-mode)
   (add-hook 'tex-mode-hook #'yas-minor-mode)
   (add-hook 'LaTeX-mode-hook (lambda ()
                                (keymap-local-set "C-c g" #'+mark-gloassary-word)
-                               (keymap-local-set "C-c p" #'+replace-puncs))))
+                               (keymap-local-set "C-c p" #'+replace-puncs)))
+  ;; (define-key 'LaTeX-mode-map (kbd "C-c C-n") #'outline-next-visible-heading)
+  ;; (define-key 'LaTeX-mode-map (kbd "C-c C-p") #'outline-previous-visible-heading)
+  )
 
 (with-eval-after-load 'bibtex
   (add-hook 'bibtex-mode-hook #'visual-line-mode)
