@@ -2,4 +2,4 @@
 # name: java-println
 # key: sout
 # --
-System.println($1);
+System.out.println($1);
