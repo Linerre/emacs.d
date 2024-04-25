@@ -28,6 +28,7 @@
 (sup 'hindent)
 (sup 'magit)
 (sup 'markdown-mode)
+(sup '(move-mode :type git :host github :repo "amnn/move-mode"))
 (sup 'nix-mode)
 (sup 'orderless)
 ;; coq-mode recognizes *.v files which conflict with verilog-mode, to avoid it:
