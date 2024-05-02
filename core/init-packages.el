@@ -36,7 +36,8 @@
 ;; (add-to-list 'auto-mode-alist '("\\.coq\\'" . coq-mode))
 ;; that is, let coq-mode treat *.coq files as its majore filetype.
 ;; For now, I'm working on verilog only.
-;; (sup 'proof-general)
+(sup 'proof-general)
+(sup 'company-coq)
 (sup 'paredit)
 (sup 'rg)
 (sup 'cargo)
@@ -46,9 +47,9 @@
 (sup 'emmet-mode)
 (sup 'clojure-mode)
 (sup 'rust-mode)
-(sup '(verilog-mode :type git :host github :repo "veripool/verilog-mode"))
-(sup '(fpga :type git :host github :repo "gmlarumbe/fpga"))
+;; (sup '(verilog-mode :type git :host github :repo "veripool/verilog-mode"))
 ;; (sup '(verilog-ts-mode :type git :host github :repo "gmlarumbe/verilog-ts-mode"))
+;; (sup '(fpga :type git :host github :repo "gmlarumbe/fpga"))
 (sup 'vundo)
 
 ;; To drop
