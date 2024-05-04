@@ -1,7 +1,19 @@
 ;;; -*- lexical-binding: t -*-
 ;;; Commentary:
+;;; Configurations for lisps (elisp, clojure, scheme, etc)
 ;;; Code:
 
+;; elisp
+(autoload #'highlight-defined-mode "highlight-defined" nil t)
+
+(with-eval-after-load "elisp-mode"
+  (add-hook 'emacs-lisp-mode-hook #'highlight-defined-mode)
+  (add-hook 'emacs-lisp-mode-hook #'eldoc-mode)
+  (add-hook 'emacs-lisp-mode-hook
+            (lambda () (add-hook 'after-save-hook #'check-parens)))
+  (add-hook 'lisp-interaction-mode-hook #'eldoc-mode))
+
+;; clojure
 (sup '(clojure-ts-mode :type git :host github :repo "clojure-emacs/clojure-ts-mode"))
 
 ;; (add-to-list 'auto-mode-alist '("\\.clj\\'" . clojure-ts-mode))
@@ -63,5 +75,19 @@
   (cider-add-to-alist 'cider-jack-in-dependencies
                       "zprint/zprint" "1.2.3"))
 
-(provide 'lang-clojure)
-;;; lang-clojure.el ends here
+
+;; scheme
+;; (setq scheme-program-name "mit-scheme")
+;; (setq scheme-program-name "csi -:c")
+(setq scheme-program-name "guile")
+(with-eval-after-load "scheme-mode"
+  (add-hook 'scheme-mode-hook #'paredit-mode)
+  (add-hook 'scheme-mode-hook #'geiser-mode)
+  (define-key scheme-mode-map (kbd "C-c g") #'geiser))
+
+(with-eval-after-load "geiser-repl"
+  (add-hook 'geiser-repl-mode-hook #'paredit-mode))
+
+
+(provide 'lang-lisps)
+;;; lang-lisps.el ends here
