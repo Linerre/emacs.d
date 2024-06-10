@@ -12,6 +12,8 @@
 (sup 'clj-refactor)
 (sup 'company)
 (sup 'company-auctex)
+(sup 'consult)
+(sup 'embark)
 (sup 'direnv)
 (sup '(go-mode.el :type git :host github :repo "dominikh/go-mode.el"))
 (sup 'geiser-chicken)
@@ -51,6 +53,7 @@
 ;; (sup '(verilog-ts-mode :type git :host github :repo "gmlarumbe/verilog-ts-mode"))
 ;; (sup '(fpga :type git :host github :repo "gmlarumbe/fpga"))
 (sup 'vundo)
+(sup '(zk :type git :host github :repo "localauthor/zk"))
 
 ;; To drop
 ;; (sup '(emacs-sql-indent :type git :host github :repo "alex-hhh/emacs-sql-indent"))
