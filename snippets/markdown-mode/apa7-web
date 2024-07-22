@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: apa7-web
+# key: refweb
+# --
+${1:surname}, ${2:initials}. (${3:Year, Month Day}). _${4:Title}_. Retrieved ${5:Month Day, Year}, from ${6:URL}.
