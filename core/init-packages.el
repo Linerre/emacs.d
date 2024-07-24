@@ -14,6 +14,7 @@
 (sup 'company-auctex)
 (sup 'consult)
 (sup 'embark)
+(sup '(emacs-ccls :type git :host github :repo "emacs-lsp/emacs-ccls"))
 (sup 'direnv)
 (sup '(go-mode.el :type git :host github :repo "dominikh/go-mode.el"))
 (sup 'geiser-chicken)
