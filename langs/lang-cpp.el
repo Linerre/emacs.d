@@ -30,12 +30,14 @@
   (c-set-offset 'brace-list-open '+)   ; all "opens" should be indented by the c-indent-level
   (c-set-offset 'case-label '+))
 
+(setq ccls-executable "/usr/bin/ccls")
 (add-hook 'c++-mode-hook (lambda ()
                            (modify-syntax-entry ?> "." c++-mode-syntax-table)
                            (modify-syntax-entry ?< "." c++-mode-syntax-table)
                            (setq-local c-basic-offset 2
                                        tab-width 2
-                                       indent-tabs-mode t)))
+                                       indent-tabs-mode t)
+                           (require 'ccls)))
 
 (add-hook 'java-mode-hook (lambda ()
                             ;; (setq c-default-style "java")
@@ -45,9 +47,11 @@
                             (c-set-offset 'arglist-close '0)
                             (c-set-offset 'case-label '+)))
 
+;; there is no cc-mode entry but c-mode
 (with-eval-after-load "cc-mode"
   (define-key c-mode-base-map [f9] #'+code-compile)
-  (add-hook 'c-mode-hook #'+my-c-indent))
+  (add-hook 'c-mode-hook #'+my-c-indent)
+  (add-hook 'c-mode-hook #'flycheck-mode))
 
 (provide 'lang-cpp)
 
