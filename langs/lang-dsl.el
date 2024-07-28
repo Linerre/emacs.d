@@ -163,16 +163,27 @@
   (add-hook 'bibtex-mode-hook #'yas-minor-mode)
   (add-hook 'bibtex-mode-hook #'electric-pair-local-mode))
 
+;;; -- zk -----------------------------------
+(setq zk-directory "~/projects/zknotes")
+(setq zk-file-extension "md")
+(setq zk-file-name-separator "-")
+(zk-setup-auto-link-buttons)
+(zk-setup-embark)
+;; (require 'zk-consult)
+;; (setq zk-tag-grep-function #'zk-consult-grep-tag-search
+;;       zk-grep-function #'zk-consult-grep)
+
 ;;; -- Markdown -----------------------------
 (autoload #'markdown-mode "markdown-mode"
-   "Major mode for editing Markdown files" t)
+  "Major mode for editing Markdown files" t)
 (autoload #'gfm-mode "markdown-mode"
    "Major mode for editing GitHub Flavored Markdown files" t)
 
 (add-to-list 'auto-mode-alist '("README\\.md\\'" . gfm-mode))
 
 (with-eval-after-load "markdown-mode"
-  (add-hook 'markdown-mode-hook #'flyspell-mode))
+  (add-hook 'markdown-mode-hook #'flyspell-mode)
+  (add-hook 'markdown-mode-hook #'electric-pair-local-mode))
 
 (autoload #'typst-ts-mode "typst-ts-mode" "Major mode for typst using treesit" t)
 (add-to-list 'auto-mode-alist '("\\.typ\\'" . typst-ts-mode))
