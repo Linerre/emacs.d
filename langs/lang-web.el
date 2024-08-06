@@ -5,7 +5,9 @@
 (dolist (hook
          '(mhtml-mode-hook
            json-mode-hook
-           svelte-mode-hook))
+           svelte-mode-hook
+           tsx-ts-mode-hook
+           typescript-ts-mode-hook))
   (add-hook hook #'yas-minor-mode)
   (add-hook hook #'emmet-mode))
 

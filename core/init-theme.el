@@ -8,14 +8,15 @@
 (defvar sans-font "Liberation Sans-16")
 (defvar serif-font "Liberation Serif-16")
 (defvar mono-font-liberation "Liberation Mono-13")
+(defvar mono-dejavu "DejaVu Sans Mono-14")
 (defvar mono-font-inconsolata "Inconsolata-14")
 (defvar mono-font-consolas "Consolas-14")
 ;; (defvar mono-font "Monospace-13")
 
-(add-to-list 'default-frame-alist `(font . ,mono-font-consolas))
+(add-to-list 'default-frame-alist `(font . ,mono-dejavu))
 (set-fontset-font t 'han (font-spec :family +chinese-font-family))
 (set-face-attribute 'variable-pitch nil :family "Sans" :font sans-font)
-(set-face-attribute 'fixed-pitch nil :font mono-font-consolas)
+(set-face-attribute 'fixed-pitch nil :font mono-dejavu)
 
 ;; Themes
 (defvar my-themes
@@ -39,8 +40,8 @@
 
 (blink-cursor-mode -1)
 (tool-bar-mode -1)
-(menu-bar-mode -1)
 (scroll-bar-mode -1)
+;; (menu-bar-mode -1)
 
 (if (display-graphic-p)
     (load-theme 'chacha t nil)
