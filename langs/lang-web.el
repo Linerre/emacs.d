@@ -12,8 +12,7 @@
   (add-hook hook #'emmet-mode))
 
 (with-eval-after-load "css-mode"
-  (setq css-indent-offset 2)
-  )
+  (setq css-indent-offset 2))
 
 (setq-default js-indent-level 2)
 
@@ -22,8 +21,17 @@
 
 (autoload #'svelte-mode "svelte-mode" nil t)
 
-(add-to-list 'auto-mode-alist '("\\.tsx\\'" . tsx-ts-mode))
+(add-to-list 'auto-mode-alist '("\\.tsx\\'" . jtsx-tsx-mode))
+(add-to-list 'auto-mode-alist '("\\.jsx?\\'" . jtsx-jsx-mode))
 (add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-ts-mode))
+
+(add-hook 'jtsx-jsx-mode #'hs-minor-mode)
+(add-hook 'jtsx-tsx-mode #'hs-minor-mode)
+
+(with-eval-after-load "jtsx"
+  (define-key jtsx-tsx-mode-map (kbd "C-c C-l") #'lsp)
+  (define-key jtsx-tsx-mode-map (kbd "C-c j o") #'jtsx-jump-jsx-opening-tag)
+  (define-key jtsx-tsx-mode-map (kbd "C-c j c") #'jtsx-jump-jsx-closing-tag))
 
 (with-eval-after-load "typescript-ts-mode"
   (add-hook 'typescript-ts-mode-hook
