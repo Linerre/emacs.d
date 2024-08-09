@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: insert-tsx-comp
+# key: tcp
+# --
+<${1:comp-name} />
