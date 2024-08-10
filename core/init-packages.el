@@ -19,6 +19,7 @@
 (sup '(go-mode.el :type git :host github :repo "dominikh/go-mode.el"))
 (sup 'geiser-chicken)
 (sup 'geiser-guile)
+(sup 'geiser-chez)
 (sup 'geiser-mit)
 (sup 'json-mode)
 (sup 'lsp-mode)
@@ -38,7 +39,7 @@
 ;; (alist-get "\\.v\\'" auto-mode-alist nil t) ; t means to remove the key (pattern)
 ;; (add-to-list 'auto-mode-alist '("\\.coq\\'" . coq-mode))
 ;; that is, let coq-mode treat *.coq files as its majore filetype.
-;; For now, I'm working on verilog only.
+;; For now, I'm working on coq only.
 (sup 'proof-general)
 (sup 'company-coq)
 (sup 'paredit)
@@ -55,36 +56,25 @@
 ;; (sup '(fpga :type git :host github :repo "gmlarumbe/fpga"))
 (sup 'vundo)
 (sup '(zk :type git :host github :repo "localauthor/zk"))
-
-;; To drop
-;; (sup '(emacs-sql-indent :type git :host github :repo "alex-hhh/emacs-sql-indent"))
+(sup '(jstx :type git :host github :repo "llemaitre19/jtsx"))
 
 ;;; Managed by pacman (Arch) or portage (Gentoo)
 ;; (sup '(meow :type git :host github :repo "DogLooksGood/meow")) installed via pacman/portage
 ;; (sup 'ebuild-mode)
 (sup 'highlight-defined)
+(sup 'vertico)
 
 ;;; Dropped
 ;; (sup 'cdlatex)
 ;; (sup 'cargo-mode)
 ;; (sup 'corfu)
-;; (sup 'consult)
-;; (sup 'embark)
-;; (sup 'selectrum)
-;; (sup 'kaolin-themes)
-;; (sup '(modus-themes :type git :host gitlab :repo "protesilaos/modus-themes"))
-;; (sup '(cmt :type git :host gitlab :repo "protesilaos/mct"))
 ;; (sup
 ;;  '(zenburn-emacs :type git :host github :repo "bbatsov/zenburn-emacs"))
-;; (sup
-;;  '(ford-this.el :type git :host github :repo "magnars/fold-this.el"))
 ;; (sup
 ;;  '(corfu-terminal
 ;;    :type git
 ;;    :repo "https://codeberg.org/akib/emacs-corfu-terminal.git"))
-;; (sup 'web-mode)
 ;; (sup 'marginalia)
-;; (sup 'vertico)
 
 (provide 'init-packages)
 
