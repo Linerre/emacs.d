@@ -146,12 +146,13 @@
   (define-key company-template-nav-map (kbd "TAB") nil)
   (define-key company-template-nav-map [tab] nil))
 
-;; (require 'vertico)
-;; (vertico-mode)
+(require 'vertico)
+(vertico-mode)
+;; (icomplete-mode t)
+
 ;; (require 'marginalia)
 ;; (marginalia-mode 1)
 
-(icomplete-mode t)
 ;; orderless (suggested by a friend)
 ;; for fuzzy search in minibuffer
 (defun friend/use-orderless-in-minibuffer ()
@@ -162,9 +163,24 @@
 (when (and (fboundp 'treesit-available-p)
            (treesit-available-p))
   (require 'treesit)
-  (add-to-list
-   'treesit-language-source-alist
-   '(clojure "https://github.com/sogaiu/tree-sitter-clojure.git")))
+  (add-to-list 'treesit-language-source-alist
+               '(clojure "https://github.com/sogaiu/tree-sitter-clojure.git"))
+  (add-to-list 'treesit-language-source-alist
+               '(typescript "https://github.com/tree-sitter/tree-sitter-typescript"
+                            "v0.20.3"
+                            "typescript/src"))
+  (add-to-list 'treesit-language-source-alist
+               '(tsx "https://github.com/tree-sitter/tree-sitter-typescript"
+                            "v0.20.3"
+                            "tsx/src"))
+  (add-to-list 'treesit-language-source-alist
+               '(javascript "https://github.com/tree-sitter/tree-sitter-javascript"
+                            "v0.21.3"
+                            "src")))
+
+;; (treesit-install-language-grammar 'javascript)
+;; (treesit-install-language-grammar 'typescript)
+;; (treesit-install-language-grammar 'tsx)
 
 (setq major-mode-remap-alist
       '((typescript-mode . typescript-ts-mode)))
