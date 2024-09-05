@@ -60,7 +60,6 @@
 (with-eval-after-load "dired-sidebar"
   (add-hook 'dired-sidebar-mode-hook 'hl-line-mode))
 
-
 (provide 'init-theme)
 
 ;;; init-theme.el ends here

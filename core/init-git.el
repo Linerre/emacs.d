@@ -4,7 +4,8 @@
 (autoload #'magit "magit" nil t)
 
 (with-eval-after-load "magit"
-  (define-key transient-base-map (kbd "<escape>") #'transient-quit-one))
+  (define-key transient-base-map (kbd "<escape>") #'transient-quit-one)
+  (add-hook 'magit-mode-hook (lambda () (magit-delta-mode +1))))
 
 (autoload #'magit-status "magit" nil t)
 (autoload #'magit-diff "magit" nil t)
