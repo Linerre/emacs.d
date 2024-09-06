@@ -31,6 +31,7 @@
 (sup 'flymake-hlint)
 (sup 'hindent)
 (sup 'magit)
+(sup 'magit-delta)
 (sup 'markdown-mode)
 (sup '(move-mode :type git :host github :repo "amnn/move-mode"))
 (sup 'nix-mode)
