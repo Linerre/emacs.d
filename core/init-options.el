@@ -87,13 +87,15 @@
  native-comp-async-report-warnings-errors 'silent
  ;;inhibit-compacting-font-caches t
  ;; custom-file (expand-file-name "custom.el" user-emacs-directory)
- ;; t means in dired `C-s' == `M-s f C-s'
- dired-isearch-filenames t
- ;; show match number in minibuffer
+  ;; show match number in minibuffer
  isearch-lazy-count t
+ list-matching-lines-default-context-lines 1
  font-lock-maximum-decoration 2
  bidi-display-reordering nil
  visible-bell t
+ ;; t means in dired `C-s' == `M-s f C-s'
+ dired-isearch-filenames t
+ dired-listing-switches "-al --group-directories-first"
  default-directory "~/projects")
 
 ;; Use hippie-expand
