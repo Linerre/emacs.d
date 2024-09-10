@@ -167,8 +167,10 @@
 (setq zk-directory "~/projects/zknotes")
 (setq zk-file-extension "md")
 (setq zk-file-name-separator "-")
-(zk-setup-auto-link-buttons)
 (zk-setup-embark)
+(with-eval-after-load "zk"
+(zk-setup-auto-link-buttons))
+
 ;; (require 'zk-consult)
 ;; (setq zk-tag-grep-function #'zk-consult-grep-tag-search
 ;;       zk-grep-function #'zk-consult-grep)
