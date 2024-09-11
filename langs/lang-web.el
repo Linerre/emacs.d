@@ -1,5 +1,6 @@
-;;; web-langs: html/css/javascript -*- lexical-binding: t -*-
-;;; Commentary
+;;; -*- lexical-binding: t -*-
+;;; Commentary:
+;;; For web developement langauges: HTML/CSS/JavaScript/TypeScript/Json
 ;;; Code
 
 (dolist (hook
@@ -29,9 +30,27 @@
 (add-hook 'jtsx-tsx-mode #'hs-minor-mode)
 
 (with-eval-after-load "jtsx"
+  (setq jtsx-enable-jsx-element-tags-auto-sync t)
+  (setq lsp-eslint-server-command '("vscode-eslint-language-server" "--stdio"))
+  (add-hook 'jtsx-tsx-mode-hook #'flycheck-mode)
   (define-key jtsx-tsx-mode-map (kbd "C-c C-l") #'lsp)
   (define-key jtsx-tsx-mode-map (kbd "C-c j o") #'jtsx-jump-jsx-opening-tag)
-  (define-key jtsx-tsx-mode-map (kbd "C-c j c") #'jtsx-jump-jsx-closing-tag))
+  (define-key jtsx-tsx-mode-map (kbd "C-c j c") #'jtsx-jump-jsx-closing-tag)
+  (define-key jtsx-tsx-mode-map (kbd "C-c j r") #'jtsx-rename-jsx-element)
+  (define-key jtsx-tsx-mode-map (kbd "C-c <down>") #'jtsx-move-jsx-element-tag-forward)
+  (define-key jtsx-tsx-mode-map (kbd "C-c <up>") #'jtsx-move-jsx-element-tag-backward)
+  (define-key jtsx-tsx-mode-map (kbd "C-c C-<down>") #'jtsx-move-jsx-element-forward)
+  (define-key jtsx-tsx-mode-map (kbd "C-c C-<up>") #'jtsx-move-jsx-element-backward)
+  (define-key jtsx-tsx-mode-map (kbd "C-c C-S-<down>")
+              #'jtsx-move-jsx-element-step-in-forward)
+  (define-key jtsx-tsx-mode-map (kbd "C-c C-S-<up>")
+              #'jtsx-move-jsx-element-step-in-backward)
+  (define-key jtsx-tsx-mode-map (kbd "C-c j w") #'jtsx-wrap-in-jsx-element)
+  (define-key jtsx-tsx-mode-map (kbd "C-c j u") #'jtsx-unwrap-jsx)
+  (define-key jtsx-tsx-mode-map (kbd "C-c j d") #'jtsx-delete-jsx-node)
+  (define-key jtsx-tsx-mode-map (kbd "C-c j t") #'jtsx-toggle-jsx-attributes-orientation)
+  (define-key jtsx-tsx-mode-map (kbd "C-c j h") #'jtsx-rearrange-jsx-attributes-horizontally)
+  (define-key jtsx-tsx-mode-map (kbd "C-c j v") #'jtsx-rearrange-jsx-attributes-vertically))
 
 (with-eval-after-load "typescript-ts-mode"
   (add-hook 'typescript-ts-mode-hook

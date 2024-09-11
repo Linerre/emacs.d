@@ -48,7 +48,13 @@
     :server-id 'move-analyzer)))
 
 ;;; Flycheck
+;;; for flycheck to work without lsp in tsx-*-mode
+(setq flycheck-javascript-eslint-executable
+      "~/.local/bin/eslint")
+
 (with-eval-after-load "flycheck"
+  (flycheck-add-mode 'javascript-eslint 'jtsx-jsx-mode)
+  (flycheck-add-mode 'javascript-eslint 'jtsx-tsx-mode)
   (define-key flycheck-mode-map (kbd "M-p") #'flycheck-previous-error)
   (define-key flycheck-mode-map (kbd "M-n") #'flycheck-next-error)
   (flycheck-pos-tip-mode))
@@ -183,7 +189,8 @@
 ;; (treesit-install-language-grammar 'tsx)
 
 (setq major-mode-remap-alist
-      '((typescript-mode . typescript-ts-mode)))
+      '((typescript-mode . typescript-ts-mode)
+        (c-mode . c-ts-mode)))
 
 (provide 'init-completion)
 ;;; init-completion.el ends here
