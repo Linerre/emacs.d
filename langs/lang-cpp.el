@@ -10,7 +10,7 @@
     (set (make-local-variable 'compile-command)
      (let ((file (file-name-nondirectory buffer-file-name)))
        ;; latest gcc defaults to -std=gnu17 (c17 + gnu extensions)
-       (format "%s -Wall -o %s.out %s"
+       (format "%s -Wall -Og -g -o %s.out %s"
                (if  (equal (file-name-extension file) "cpp") "g++" "gcc")
                (file-name-sans-extension file)
                file)))
@@ -50,6 +50,25 @@
   (define-key c-mode-base-map [f9] #'+code-compile)
   (add-hook 'c-mode-hook #'+my-c-indent)
   (add-hook 'c-mode-hook #'flycheck-mode))
+
+(defun +c-ts-mode--font-lock-settings ()
+    "Font lock settings to override some defaults in c-ts-mode"
+  (setq treesit-font-lock-settings
+        (append
+         treesit-font-lock-settings
+         (treesit-font-lock-rules
+          :language 'c
+          :feature 'variable
+          :override 'append
+          '(((identifier) @font-lock-constant-face
+             (:match "^[A-Z_][A-Z_\\d]+$" @font-lock-constant-face))))))
+  (treesit-font-lock-recompute-features '(comment preprocessor variable)))
+
+(add-to-list 'auto-mode-alist '("\\.h\\'" . c-ts-mode))
+(with-eval-after-load "c-ts-mode"
+  (define-key c-ts-mode-map [f9] #'+code-compile)
+  (add-hook 'c-ts-mode-hook #'flycheck-mode)
+  (add-hook 'c-ts-mode-hook #'+c-ts-mode--font-lock-settings))
 
 (provide 'lang-cpp)
 
