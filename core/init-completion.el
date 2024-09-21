@@ -48,10 +48,6 @@
     :server-id 'move-analyzer)))
 
 ;;; Flycheck
-;;; for flycheck to work without lsp in tsx-*-mode
-(setq flycheck-javascript-eslint-executable
-      "~/.local/bin/eslint")
-
 (with-eval-after-load "flycheck"
   (flycheck-add-mode 'javascript-eslint 'jtsx-jsx-mode)
   (flycheck-add-mode 'javascript-eslint 'jtsx-tsx-mode)

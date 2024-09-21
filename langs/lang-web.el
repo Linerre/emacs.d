@@ -25,6 +25,7 @@
 (add-to-list 'auto-mode-alist '("\\.tsx\\'" . jtsx-tsx-mode))
 (add-to-list 'auto-mode-alist '("\\.jsx?\\'" . jtsx-jsx-mode))
 (add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-ts-mode))
+(add-to-list 'auto-mode-alist '("\\.[mc]js\\'" . js-mode))
 
 (add-hook 'jtsx-jsx-mode #'hs-minor-mode)
 (add-hook 'jtsx-tsx-mode #'hs-minor-mode)

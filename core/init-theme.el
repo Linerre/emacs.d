@@ -3,7 +3,7 @@
 ;;; Code:
 
 ;;; Fonts
-(defvar +chinese-font-family "SourceHanSans")
+(defvar +chinese-font-family "LXGW Wenkai")
 (defvar bitmap-font "Px437 IBM VGA 8x16-16")
 (defvar sans-font "Liberation Sans-16")
 (defvar serif-font "Liberation Serif-16")
