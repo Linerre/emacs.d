@@ -27,8 +27,8 @@
 (add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-ts-mode))
 (add-to-list 'auto-mode-alist '("\\.[mc]js\\'" . js-mode))
 
-(add-hook 'jtsx-jsx-mode #'hs-minor-mode)
-(add-hook 'jtsx-tsx-mode #'hs-minor-mode)
+(add-hook 'jtsx-jsx-mode-hook #'hs-minor-mode)
+(add-hook 'jtsx-tsx-mode-hook #'hs-minor-mode)
 
 (with-eval-after-load "jtsx"
   (setq jtsx-enable-jsx-element-tags-auto-sync t)
