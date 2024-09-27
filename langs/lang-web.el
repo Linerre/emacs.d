@@ -54,6 +54,7 @@
   (define-key jtsx-tsx-mode-map (kbd "C-c j v") #'jtsx-rearrange-jsx-attributes-vertically))
 
 (with-eval-after-load "typescript-ts-mode"
+  (add-hook 'typescript-ts-mode-hook #'flycheck-mode)
   (add-hook 'typescript-ts-mode-hook
             (lambda ()
               (local-set-key (kbd "C-c C-l") #'lsp)

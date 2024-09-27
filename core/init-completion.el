@@ -51,6 +51,7 @@
 (with-eval-after-load "flycheck"
   (flycheck-add-mode 'javascript-eslint 'jtsx-jsx-mode)
   (flycheck-add-mode 'javascript-eslint 'jtsx-tsx-mode)
+  (flycheck-add-mode 'javascript-eslint 'typescript-ts-mode)
   (define-key flycheck-mode-map (kbd "M-p") #'flycheck-previous-error)
   (define-key flycheck-mode-map (kbd "M-n") #'flycheck-next-error)
   (flycheck-pos-tip-mode))
