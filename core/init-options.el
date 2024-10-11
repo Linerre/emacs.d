@@ -63,6 +63,7 @@
  comment-empty-lines t
  ;; Minimum width before truncate-line occurs
  truncate-partial-width-windows 40
+ read-process-output-max (* 1024 1024)
 
  ;; hilight line only in current/selected window
  hl-line-sticky-flag nil
@@ -90,9 +91,12 @@
   ;; show match number in minibuffer
  isearch-lazy-count t
  list-matching-lines-default-context-lines 1
+ ;; font-lock level
  font-lock-maximum-decoration 2
+ treesit-font-lock-level 2
  bidi-display-reordering nil
  visible-bell t
+ display-line-numbers-type 'relative
  ;; t means in dired `C-s' == `M-s f C-s'
  dired-isearch-filenames t
  dired-listing-switches "-al --group-directories-first"
