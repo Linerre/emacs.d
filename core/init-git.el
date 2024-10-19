@@ -2,14 +2,13 @@
 
 ;;; magit
 (autoload #'magit "magit" nil t)
+(autoload #'magit-status "magit" nil t)
+(autoload #'magit-diff "magit" nil t)
+(autoload #'magit-blame "magit" nil t)
 
 (with-eval-after-load "magit"
   (define-key transient-base-map (kbd "<escape>") #'transient-quit-one)
   (add-hook 'magit-mode-hook (lambda () (magit-delta-mode +1))))
-
-(autoload #'magit-status "magit" nil t)
-(autoload #'magit-diff "magit" nil t)
-(autoload #'magit-blame "magit" nil t)
 
 ;; smerge-mode
 (autoload 'smerge-mode "smerge-mode" nil t)
