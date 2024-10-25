@@ -18,6 +18,14 @@
 (sup 'embark)
 (sup '(eglot-booster :type git :host github :repo "jdtsmith/eglot-booster"))
 (sup '(emacs-ccls :type git :host github :repo "emacs-lsp/emacs-ccls"))
+(sup '(eat :type git
+       :host codeberg
+       :repo "akib/emacs-eat"
+       :files ("*.el" ("term" "term/*.el") "*.texi"
+               "*.ti" ("terminfo/e" "terminfo/e/*")
+               ("terminfo/65" "terminfo/65/*")
+               ("integration" "integration/*")
+               (:exclude ".dir-locals.el" "*-tests.el"))))
 (sup 'direnv)
 (sup '(go-mode.el :type git :host github :repo "dominikh/go-mode.el"))
 (sup 'geiser-chicken)
