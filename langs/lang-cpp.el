@@ -33,14 +33,14 @@
 (add-hook 'c++-mode-hook (lambda ()
                            (modify-syntax-entry ?> "." c++-mode-syntax-table)
                            (modify-syntax-entry ?< "." c++-mode-syntax-table)
-                           (setq-local c-basic-offset 2
-                                       tab-width 2)
+                           (setq-local c-basic-offset 4
+                                       tab-width 4)
                            (require 'ccls)))
 
 (add-hook 'java-mode-hook (lambda ()
                             ;; (setq c-default-style "java")
-                            (setq-local c-basic-offset 2)
-                            (setq-local tab-width 2)
+                            (setq-local c-basic-offset 4)
+                            (setq-local tab-width 4)
                             (c-set-offset 'arglist-intro '+)
                             (c-set-offset 'arglist-close '0)
                             (c-set-offset 'case-label '+)))
@@ -60,8 +60,9 @@
           :language 'c
           :feature 'variable
           :override 'append
-          '(((identifier) @font-lock-constant-face
-             (:match "^[A-Z_][A-Z_\\d]+$" @font-lock-constant-face))))))
+          '(((preproc_def
+              name: (identifier) @font-lock-constant-face
+              (:match "^[A-Z0-9_]+$" @font-lock-constant-face)))))))
   (treesit-font-lock-recompute-features '(comment preprocessor variable)))
 
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c-ts-mode))

@@ -15,7 +15,7 @@
 (with-eval-after-load "css-mode"
   (setq css-indent-offset 2))
 
-(setq-default js-indent-level 2)
+(setq-default js-indent-level 4)
 
 (with-eval-after-load "json-mode"
   (add-hook 'json-mode-hook #'flycheck-mode))
