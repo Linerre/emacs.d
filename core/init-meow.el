@@ -4,40 +4,37 @@
 
 (require 'meow)
 
+(if (display-graphic-p)
+    (setq meow-cursor-type-insert 'box)
+  (setq meow-cursor-type-insert '(bar . 2)))
+
 (setq
  meow-visit-sanitize-completion nil
- meow-esc-delay 0.001
  meow-keypad-describe-delay 0.5
  meow-select-on-change t
- meow-expand-hint-remove-delay 2.0
  meow-cursor-type-normal 'box
- meow-cursor-type-insert '(bar . 2)
+ meow-expand-hint-counts
+ '((word . 10)
+   (line . 10)
+   (block . 2)
+   (find . 10)
+   (till . 10)
+   (symbol . 10)))
 
- meow-selection-command-fallback
- '((meow-replace . meow-page-up)
-   (meow-change . meow-change-char)
-   (meow-save . meow-save-empty)
-   (meow-kill . meow-C-k)
-   (meow-cancel . keyboard-quit)
-   (meow-pop . meow-pop-grab)
-   (meow-delete . meow-C-d)
-   (meow-beacon-change . meow-beacon-change-char)))
-
-(add-to-list 'meow-mode-state-list
-               '(cargo-process-mode . motion))
+(meow-thing-register 'angle
+                     '(pair ("<") (">"))
+                     '(pair ("<") (">")))
+(add-to-list 'meow-char-thing-table
+             '(?h . angle))
 
 (defun meow-setup ()
   (setq meow-cheatsheet-layout meow-cheatsheet-layout-qwerty)
   ;; use C-n/p to move up/down in Motion mode instead
   ;; Otherwise j/k will not be recognized as characters in gdb mode
   (meow-motion-overwrite-define-key
-   '("j" . meow-next)
-   '("k" . meow-prev)
    '("/" . find-file))
   (meow-leader-define-key
    ;; SPC j/k will run the original command in MOTION state.
-   ;;'("j" . meow-motion-origin-command)
-   ;;'("k" . meow-motion-origin-command)
    ;; Use SPC (0-9) for digit arguments.
    '("1" . meow-digit-argument)
    '("2" . meow-digit-argument)
@@ -54,7 +51,7 @@
    ;; high frequency keybindings
    '("." . "M-.")
    '("," . "M-,")
-   '("<escape>" . "C-g")
+   '("<escape>" . ignore)
    ;; window management
    '("w" . windmove-up)
    '("a" . windmove-left)
@@ -68,30 +65,25 @@
    ;; different modes, so use the keybindings
    '("e" . "C-x C-e")
    '(";" . comment-dwim)
-   '("k" . kill-this-buffer)
+   '("k" . kill-current-buffer)
    '("j" . project-switch-to-buffer)
    '("D" . dired)
    '("b" . switch-to-buffer)
    '("p" . project-find-file)
    '("q" . meow-keypad-quit)
    '("i" . imenu)
-   '("n" . "M-x")
-   '("r" . rg)
+   ;; '("n" . "M-x")
+   '("r" . rg-menu)
    '("W" . eww)
    '("z" . meow-pop-selection)
    '("Z" . meow-pop-all-selection)
-
    '("u" . magit-status)
    '("v" . vundo)
    '("y" . yas-insert-snippet)
-   ;; Registors
-   '("R" . jump-to-register)
-   ;; eshell
-   '("S" . eshell)
-   ;; toggles
+   '("R" . consult-git-grep)
+   '("S" . eat)
    '("L" . display-line-numbers-mode)
-   ;; '("P" . pass)
-   ;; org
+   '("P" . pass)
    '("A" . org-agenda)
    '("C" . org-capture)
    '("U" . "C-u C-u")
@@ -124,30 +116,30 @@
    '("e" . meow-next-word)
    '("E" . meow-next-symbol)
    '("f" . meow-find)
-   '("F" . meow-find-expand)
+   '("F" . find-file-other-window)
    '("g" . meow-cancel)
    '("G" . meow-grab)
    '("h" . meow-left)
    '("H" . meow-left-expand)
    '("i" . meow-insert)
    '("I" . meow-open-above)
-   '("j" . meow-next)
+   '("j" . meow-join)
    '("J" . meow-next-expand)
-   '("k" . meow-prev)
+   '("k" . meow-kill)
    '("K" . meow-prev-expand)
    '("l" . meow-right)
    '("L" . meow-right-expand)
-   '("m" . meow-join)
-   '("n" . meow-search)
+   '("m" . meow-save)
+   '("n" . meow-next)
    '("N" . meow-pop-search)
    '("o" . meow-block)
    '("O" . meow-to-block)
-   '("p" . meow-yank)
+   '("p" . meow-prev)
    '("P" . meow-yank-pop)
    '("q" . meow-quit)
    '("Q" . meow-goto-line)
    '("r" . meow-replace)
-   '("s" . meow-kill)
+   '("s" . meow-search)
    '("t" . meow-till)
    '("T" . meow-till-expand)
    '("u" . meow-undo)
@@ -158,7 +150,7 @@
    '("W" . meow-mark-symbol)
    '("x" . meow-line)
    '("X" . meow-kmacro-lines)
-   '("y" . meow-save)
+   '("y" . meow-yank)
    '("Y" . meow-sync-grab)
    '("z" . delete-window)
    '("&" . meow-query-replace)
