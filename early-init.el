@@ -33,15 +33,35 @@
 ;;; envs
 (setenv "LSP_USE_PLISTS" "true")
 
+;; In noninteractive sessions, prioritize non-byte-compiled source files to
+;; prevent the use of stale byte-code. Otherwise, it saves us a little IO time
+;; to skip the mtime checks on every *.elc file.
+(setq load-prefer-newer noninteractive)
+
+;; Explicitly set the prefered coding systems to avoid annoying prompt
+;; from emacs (especially on Microsoft Windows)
+(prefer-coding-system 'utf-8)
+
+;; Inhibit resizing frame
+(setq frame-inhibit-implied-resize t)
+
+;; Faster to disable these here (before they've been initialized)
+(push '(menu-bar-lines . 0) default-frame-alist)
+(push '(tool-bar-lines . 0) default-frame-alist)
+(push '(vertical-scroll-bars) default-frame-alist)
+(when (featurep 'ns)
+  (push '(ns-transparent-titlebar . t) default-frame-alist))
+(setq-default mode-line-format nil)
+
 ;;; disable modes early
 (blink-cursor-mode -1)
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 (window-divider-mode 0)
-;; (menu-bar-mode -1)
+(menu-bar-mode -1)
 
 (require 'init-straight)
-(require 'init-options)
+
 (provide 'early-init)
 
 ;;; early-init.el ends here
