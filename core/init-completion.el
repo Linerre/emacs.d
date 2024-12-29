@@ -89,13 +89,30 @@
   (define-key yas-keymap (kbd "RET") 'yas-next-field-or-maybe-expand)
   (define-key yas-keymap (kbd "S-<return>") 'yas-prev-field))
 
-;; (autoload #'corfu-mode "corfu" nil t)
+(autoload #'corfu-mode "corfu" nil t)
 (autoload #'company-mode "company" nil t)
 
-(add-hook 'prog-mode-hook #'company-mode)
-(add-hook 'conf-mode-hook #'company-mode)
+;;; corfu
+(with-eval-after-load "corfu"
+  (setq corfu-cycle t) ;; Enable cycling
+  (setq corfu-auto t)  ;; Enable auto completion
+  (setq corfu-auto-delay 1)
+  (setq corfu-separator ?\s)            ;; Orderless field separator
+  (setq corfu-quit-no-match 'separator) ;; Quit completion if no match found
+  (setq corfu-preview-current nil) ;; Disable current candidate preview
+  (setq corfu-preselect 'prompt)   ;; Preselect the prompt
+  (setq corfu-on-exact-match 'insert) ;; Configure handling of exact matches
+  (setq corfu-scroll-margin 5)        ;; Use scroll margin
+  (setq tab-always-indent 'complete)
+  (setq corfu-quit-at-boundary 'separator)
+  (setq-local completion-styles '(basic)))
 
-;; company
+;;; cape
+(add-hook 'completion-at-point-functions #'cape-dabbrev)
+(add-hook 'completion-at-point-functions #'cape-file)
+(add-hook 'completion-at-point-functions #'cape-elisp-block)
+
+;;; company
 (setq company-frontends '(company-pseudo-tooltip-frontend
                           company-preview-if-just-one-frontend
                           company-echo-metadata-frontend
@@ -130,6 +147,12 @@
 
 (setq-default company-search-filtering t)
 
+(defun +complete ()
+  "Expand snippet when there is one; otherwise, fall back on company."
+  (interactive)
+  (or (yas/expand)
+      (company-indent-or-complete-common nil)))
+
 (with-eval-after-load "company"
   (require 'company-tng)
   (require 'company-template)
@@ -149,12 +172,23 @@
   (define-key company-template-nav-map (kbd "TAB") nil)
   (define-key company-template-nav-map [tab] nil))
 
+;;; company for TUI and corfu for GUI
+(if (display-graphic-p)
+    (progn
+      (add-hook 'prog-mode-hook #'corfu-mode)
+      (add-hook 'conf-mode-hook #'corfu-mode))
+  (progn
+    (add-hook 'prog-mode-hook #'company-mode)
+    (add-hook 'conf-mode-hook #'company-mode)))
+
 (require 'vertico)
 (vertico-mode)
+(with-eval-after-load "vertico"
+  (setq vertico-count 5
+        read-file-name-completion-ignore-case t
+        read-buffer-completion-ignore-case t
+        completion-ignore-case t))
 ;; (icomplete-mode t)
-
-;; (require 'marginalia)
-;; (marginalia-mode 1)
 
 ;; orderless (suggested by a friend)
 ;; for fuzzy search in minibuffer
