@@ -1,26 +1,44 @@
 ;;; -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
-(defun +complete ()
-  "Expand snippet when there is one; otherwise, fall back on company."
-  (interactive)
-  (or (yas/expand)
-      (company-indent-or-complete-common nil)))
 
-;; ;;; eglot
-;; (autoload 'eglot-ensure "eglot" nil nil)
-;;
-;; (defun +eglot-hook ()
-;;   (setq eldoc-documentation-functions
-;;         (cons #'flymake-eldoc-functions
-;;               (remove #'flymake-eldoc-function eldoc-documentation-functions))))
-;;
-;; (with-eval-after-load "eglot"
-;;   (add-hook 'eglot-managed-mode #'+eglot-hook)
-;;   (setq eldoc-echo-area-use-multiline-p 3
-;;         eldoc-echo-area-display-truncation-message nil)
-;;   (set-face-attribute 'eglot-highlight-symbol-face nil
-;;                       :background "#B3D7FF"))
+;;; eglot
+(autoload 'eglot "eglot" nil t)
+(autoload #'eglot-booster-mode "eglot-booster" nil t)
+
+(setq eglot-booster-io-only t)
+(setq eglot-ignored-server-capabilities
+      '(:hoverProvider
+        :documentHighlightProvider
+        :inlayHintProvider
+        :workspaceSymbolProvider))
+(setq eglot-autoshutdown t)
+(setq eglot-stay-out-of '(yasnippet))
+(setq eglot-send-changes-idle-time 2.0)
+
+(defvar jsonrpc-log-event-p nil)
+
+(defun jsonrpc--log-event-advice (f &rest args)
+  (if jsonrpc-log-event-p (apply f args)))
+
+(advice-add #'jsonrpc--log-event :around #'jsonrpc--log-event-advice)
+
+(defun +eglot-hook ()
+  (setq eldoc-echo-area-use-multiline-p 1
+        eldoc-echo-area-prefer-doc-buffer t)
+  (setq eldoc-documentation-functions
+        (cons #'flymake-eldoc-function
+              (remove #'flymake-eldoc-function eldoc-documentation-functions))))
+
+(with-eval-after-load "eglot"
+  (add-hook 'eglot-managed-mode-hook #'+eglot-hook)
+  (eglot-booster-mode)
+  (define-key eglot-mode-map (kbd "C-c e d") #'eldoc-doc-buffer)
+  (set-face-attribute 'eglot-highlight-symbol-face nil
+                      :background "#B3D7FF")
+  (add-to-list 'eglot-server-programs
+               '((typescript-ts-mode tsx-ts-mode) .
+                 ("typescript-language-server" "--stdio"))))
 
 ;;; LSP
 (autoload 'lsp "lsp-mode" nil t)
@@ -29,12 +47,20 @@
 (setq lsp-keymap-prefix "C-c l"
       lsp-enable-symbol-highlighting nil
       lsp-enable-dap-auto-configure nil
-      ;; lsp-modeline-diagnostics-enable nil ; 5/6/7 <----- a string whose colors default to error/success
+      lsp-enable-snippt nil
+      ;; lsp-modeline-diagnostics-enable nil
       lsp-lens-enable nil
+      lsp-inlay-hint-enable nil
       lsp-headerline-breadcrumb-enable nil
       lsp-completion-show-detail nil
+      lsp-completion-show-label-description nil
       ;; lsp-signature-auto-activate nil
       lsp-signature-render-documentation nil
+      ;; this just turns off company as capf, see the folloiwng two threads
+      ;; https://github.com/emacs-lsp/lsp-mode/issues/3215
+      ;; https://github.com/minad/corfu/issues/71
+      ;; https://www.reddit.com/r/emacs/comments/ql8cyp/corfu_orderless_and_lsp/
+      lsp-completion-provider :none
       lsp-signature-doc-lines 3
       lsp-modeline-code-action-fallback-icon "CA")
 
@@ -46,6 +72,38 @@
     :activation-fn (lsp-activate-on "move")
     :priority -1
     :server-id 'move-analyzer)))
+
+;;; lsp booster for lsp-mode
+(defun lsp-booster--advice-json-parse (old-fn &rest args)
+  "Try to parse bytecode instead of json."
+  (or
+   (when (equal (following-char) ?#)
+     (let ((bytecode (read (current-buffer))))
+       (when (byte-code-function-p bytecode)
+         (funcall bytecode))))
+   (apply old-fn args)))
+(advice-add (if (progn (require 'json)
+                       (fboundp 'json-parse-buffer))
+                'json-parse-buffer
+              'json-read)
+            :around
+            #'lsp-booster--advice-json-parse)
+
+(defun lsp-booster--advice-final-command (old-fn cmd &optional test?)
+  "Prepend emacs-lsp-booster command to lsp CMD."
+  (let ((orig-result (funcall old-fn cmd test?)))
+    (if (and (not test?)                             ;; for check lsp-server-present?
+             (not (file-remote-p default-directory)) ;; see lsp-resolve-final-command, it would add extra shell wrapper
+             lsp-use-plists
+             (not (functionp 'json-rpc-connection))  ;; native json-rpc
+             (executable-find "emacs-lsp-booster"))
+        (progn
+          (when-let ((command-from-exec-path (executable-find (car orig-result))))  ;; resolve command from exec-path (in case not found in $PATH)
+            (setcar orig-result command-from-exec-path))
+          (message "Using emacs-lsp-booster for %s!" orig-result)
+          (cons "emacs-lsp-booster" orig-result))
+      orig-result)))
+(advice-add 'lsp-resolve-final-command :around #'lsp-booster--advice-final-command)
 
 ;;; Flycheck
 (with-eval-after-load "flycheck"
@@ -204,15 +262,15 @@
                '(clojure "https://github.com/sogaiu/tree-sitter-clojure.git"))
   (add-to-list 'treesit-language-source-alist
                '(typescript "https://github.com/tree-sitter/tree-sitter-typescript"
-                            "v0.20.3"
+                            "v0.23.2"
                             "typescript/src"))
   (add-to-list 'treesit-language-source-alist
                '(tsx "https://github.com/tree-sitter/tree-sitter-typescript"
-                            "v0.20.3"
+                            "v0.23.2"
                             "tsx/src"))
   (add-to-list 'treesit-language-source-alist
                '(javascript "https://github.com/tree-sitter/tree-sitter-javascript"
-                            "v0.21.3"
+                            "v0.23.1"
                             "src")))
 
 ;; (treesit-install-language-grammar 'javascript)

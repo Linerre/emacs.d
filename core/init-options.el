@@ -1,8 +1,6 @@
-;;; Various emacs built-in options set for both GUI and TUI
-;;; Author: Errenil
-
-(setq-default
+;; Various emacs built-in options set for both GUI and TUI
  ;; startup config
+(setq-default
  inhibit-startup-message t
  inhibit-startup-screen t
  inhibit-splash-screen t
@@ -16,7 +14,6 @@
  ;; don't create lockfiles
  ;;create-lockfiles nil
  frame-resize-pixelwise t
-
  ;; UTF-8
  ;; There are also a couple of functions used to
  ;; set UTF-8 encoding, such as:
@@ -30,7 +27,6 @@
  default-process-coding-system '(utf-8-unix . utf-8-unix)
  default-sendmail-coding-system 'utf-8-unix
  default-terminal-coding-system 'utf-8-unix
-
  ;; vc-options
  vc-follow-symlinks t
  ;; no auto-saving and backups for now
@@ -64,7 +60,6 @@
  ;; Minimum width before truncate-line occurs
  truncate-partial-width-windows 40
  read-process-output-max (* 1024 1024)
-
  ;; hilight line only in current/selected window
  hl-line-sticky-flag nil
  require-final-newline t
