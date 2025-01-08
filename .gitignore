@@ -17,8 +17,8 @@ recentf
 request/
 rime/
 transient/
-*lsp*
 tree-sitter/
+*lsp-session*
 
 # ignore macOS stuff
 .DS_Store

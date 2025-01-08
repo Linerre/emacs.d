@@ -4,14 +4,13 @@
 ;;; Domain Specific Languages such as Nix, SQL, Tex, Markdown etc.
 
 ;;; -- Org --------------------------------
-;; Use sans font for org mode body
-(add-hook 'org-mode-hook #'variable-pitch-mode)
-(custom-set-faces
-   '(org-table ((t :inherit 'fixed-pitch)))
-   '(org-code ((t :inherit 'fixed-pitch)))
-   '(org-block ((t :inherit 'fixed-pitch)))
-   '(org-checkbox ((t :inherit 'fixed-pitch :background unspecified :box nil)))
-   '(org-latex-and-related ((t (:inherit 'fixed-pitch)))))
+;; (add-hook 'org-mode-hook #'variable-pitch-mode)
+;; (custom-set-faces
+;;    '(org-table ((t :inherit 'fixed-pitch)))
+;;    '(org-code ((t :inherit 'fixed-pitch)))
+;;    '(org-block ((t :inherit 'fixed-pitch)))
+;;    '(org-checkbox ((t :inherit 'fixed-pitch :background unspecified :box unspecified)))
+;;    '(org-latex-and-related ((t (:inherit 'fixed-pitch)))))
 
 (setq
  org-deadline-warning-days 0
@@ -42,28 +41,19 @@
         ("DOING" . org-drawer)))
 
 (setq org-html-doctype "html5")
-
 (add-hook 'org-mode-hook (lambda ()
                              (modify-syntax-entry ?> "." org-mode-syntax-table)
                              (modify-syntax-entry ?< "." org-mode-syntax-table)))
-
+(setq org-confirm-babel-evaluate nil)
 (with-eval-after-load 'org
   (add-to-list 'org-file-apps '("\\.pdf::\\([0-9]+\\)\\'" . "okular -p %1 %s"))
   (define-key org-mode-map (kbd "C-c A") 'org-agenda)
   (define-key org-mode-map (kbd "C-c c") 'org-capture)
-  (add-hook 'org-mode-hook #'yas-minor-mode))
-
-;;; ORG BABEL
-;(require 'org-tempo)
-;(setq org-src-fontify-natively t)
-;(org-babel-do-load-languages
-; 'org-babel-load-languages
-; '((lua . t)
-;   (python . t)
-;   (C . t)
-;   (sqlite . t)
-;   (latex . t)
-;   (emacs-lisp . t)))
+  (add-hook 'org-mode-hook #'yas-minor-mode)
+  (org-babel-do-load-languages
+     'org-babel-load-languages
+     '((shell . t)
+       (clojure . t))))
 
 ;;; Nix
 (autoload #'nix-mode "nix-mode")
@@ -189,6 +179,9 @@
 
 (autoload #'typst-ts-mode "typst-ts-mode" "Major mode for typst using treesit" t)
 (add-to-list 'auto-mode-alist '("\\.typ\\'" . typst-ts-mode))
+(with-eval-after-load "typst-ts-mode"
+  (add-hook 'typst-ts-mode-hook #'electric-pair-local-mode))
+
 
 (provide 'lang-dsl)
 
