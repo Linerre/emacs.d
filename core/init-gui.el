@@ -69,7 +69,9 @@
                 (vc-mode vc-mode)
                 " "
                 mode-name
+                " "
                 mode-line-misc-info
+                " "
                 mode-line-end-spaces))
 
 ;; sidebar
