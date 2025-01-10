@@ -71,11 +71,8 @@
  use-short-answers t
  ;; move cursor to top/bottom before signaling a scroll error
  scroll-error-top-bottom t
- ;; see its explanation in help doc
  epa-pinentry-mode 'loopback
- ;; eldoc idle delay
  eldoc-idle-delay 1
- ispell-program-name "aspell"
  debug-on-error t
  ;; log errors and ingnore warnings
  ;; but not pop up the *Warnings* buffer
@@ -90,17 +87,18 @@
  font-lock-maximum-decoration 2
  treesit-font-lock-level 2
  bidi-display-reordering nil
- visible-bell t
- display-line-numbers-type 'relative
+ enable-local-variables :safe
+ cursor-in-non-selected-windows nil
  ;; t means in dired `C-s' == `M-s f C-s'
  dired-isearch-filenames t
+ ;; disable emacs input method and use the system
+ x-input-method-use-protocol nil
+ default-input-method nil
+ gtk-use-im-context nil
+
  dired-listing-switches "-al --group-directories-first"
  default-directory "~/projects")
 
-;; Use hippie-expand
-(global-set-key [remap dabbrev-expand] 'hippie-expand)
-
-;; (fset 'yes-or-no-p 'y-or-n-p)
 ;; cutome funs to be hooked to various modes
 ;; (defun +add-margins-to-textmode ()
 ;;   "When in text-mode, add margins to both sides of the current buffer."
@@ -115,9 +113,6 @@
 
 (setq after-focus-change-function '+real-auto-save)
 
-;; Rebind a few keys
-(define-key global-map (kbd "C-x C-b") #'ibuffer)
-(add-hook 'ibuffer-mode-hook #'hl-line-mode)
 
 ;; Instead of enabling a minor mode globally
 ;; hook it to several major modes
@@ -154,25 +149,33 @@
 ;;   (setq
 ;;    display-buffer-alist
 ;;    '(
-;;     ;; ("\\*Buffer List\\*" display-buffer-in-side-window
-;;     ;;  (side . top) (slot . 0) (window-height . 0.25)
-;;     ;;  (preserve-size . (nil . t))
-;;     ;;  ;; ,parameters
-;;     ;;  )
-;;     ;; ("\\*Tags List\\*" display-buffer-in-side-window
-;;     ;;  (side . right) (slot . 0) (window-width . fit-window-to-buffer)
-;;     ;;  (preserve-size . (t . nil))
-;;     ;;  ;; ,parameters
-;;     ;;  )
-;;     ;; ("\\*\\(?:help\\|grep\\|Completions\\)\\*"
-;;     ;;  display-buffer-in-side-window
-;;     ;;  (side . bottom) (slot . -1) (preserve-size . (nil . t))
-;;     ;;  ;; ,parameters
-;;     ;;  )
-;;     ("\\*\\(e?shell\\|compilation\\)\\*" display-buffer-in-side-window
-;;      (side . bottom) (slot . 1) (preserve-size . (nil . t))
-;;      ;; ,parameters
-;;      ))))
+    ;; ("\\*Buffer List\\*" display-buffer-in-side-window
+    ;;  (side . top) (slot . 0) (window-height . 0.25)
+    ;;  (preserve-size . (nil . t))
+    ;;  ;; ,parameters
+    ;;  )
+    ;; ("\\*Tags List\\*" display-buffer-in-side-window
+    ;;  (side . right) (slot . 0) (window-width . fit-window-to-buffer)
+    ;;  (preserve-size . (t . nil))
+    ;;  ;; ,parameters
+    ;;  )
+    ;; ("\\*\\(?:help\\|grep\\|Completions\\)\\*"
+    ;;  display-buffer-in-side-window
+    ;;  (side . bottom) (slot . -1) (preserve-size . (nil . t))
+    ;;  ;; ,parameters
+    ;;  )
+    ;; ("\\*\\(e?shell\\|compilation\\)\\*" display-buffer-in-side-window
+    ;;  (side . bottom) (slot . 1) (preserve-size . (nil . t))
+    ;;  ;; ,parameters
+    ;;  ))))
+
+;; Rebind a few keys
+(global-set-key [remap dabbrev-expand] 'hippie-expand)
+(define-key global-map (kbd "C-x C-b") #'ibuffer)
+(add-hook 'ibuffer-mode-hook #'hl-line-mode)
+;; map C-[ to escape key event
+(when (display-graphic-p)
+  (define-key input-decode-map [?\C-\[] [escape]))
 
 (provide 'init-options)
 ;;; init-options.el ends here

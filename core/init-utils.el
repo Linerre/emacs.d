@@ -1,7 +1,6 @@
 ;;; -*- lexical-binding: t -*-;
 ;;; Commentary:
-;;; Interactive commands and con defined here for all modes
-;;; For fns and consts to use in other modules, refer to init-macros.el
+;;; Interactive commands defined here for all modes, plus tools such as eat, gptel, rg, etc.
 ;;; Code:
 
 ;; TIME FUNCS
@@ -39,7 +38,8 @@
     mode-line-buffer-identification))
 
 (defun +project-indicator (fpath)
-  "Enhance +trim-file-path and return a shorter FPATH in the format of `project-root':`current-buffer-name'.  When it is not in ~/projects/, or in one of the special buffers, fall back to `mode-line-buffer-identification'."
+  "Enhance +trim-file-path and return a shorter FPATH in the format of `project-root':`current-buffer-name'.
+When it is not in ~/projects/, or in one of the special buffers, fall back to `mode-line-buffer-identification'."
   (if (stringp fpath)
       ;; For normal user, /home/username/projects
       ;; For root user, /root/projects
@@ -83,10 +83,71 @@
   (transpose-lines 1)
   (forward-line -1))
 
+;; misc
+;; rexim/dotfiles/blob/3011cc1769e769ce4c65d22a46f66ac3e8fc81e1/.emacs.rc/misc-rc.el#L120
+(defun rc/duplicate-line ()
+  "Duplicate current line"
+  (interactive)
+  (let ((column (- (point) (point-at-bol)))
+        (line (let ((s (thing-at-point 'line t)))
+                (if s (string-remove-suffix "\n" s) ""))))
+    (move-end-of-line 1)
+    (newline)
+    (insert line)
+    (move-beginning-of-line 1)
+    (forward-char column)))
+
+(global-set-key (kbd "C-,") 'rc/duplicate-line)
 (global-set-key (kbd "M-<up>") #'+move-line-up)
 (global-set-key (kbd "M-<down>") #'+move-line-down)
 (global-set-key (kbd "C-c C-d") #'duplicate-line)
 
-(provide 'init-utils)
+;;; eat
+(add-hook 'eshell-load-hook #'eat-eshell-mode)
+(add-hook 'eshell-load-hook #'eat-eshell-visual-command-mode)
 
+;;; rg
+(autoload #'rg-menu"rg" nil t)
+
+;;; citre
+(autoload #'citre-mode "citre" nil t)
+
+(with-eval-after-load "citre"
+  (require 'citre-config)
+  (setq citre-default-create-tags-file-location 'global-cache
+        citre-readtags-program "/usr/bin/readtags"
+        citre-ctags-program "/usr/bin/ctags"
+        citre-tags-file-names '("tags")
+        citre-enable-backends '(ctags global eglot)
+        citre-peek-backends '(tags)
+        citre-auto-enable-citre-mode-modes '(c-ts-mode
+                                             jtsx-tsx-mode
+                                             jtsx-jsx-mode
+                                             move-mode
+                                             typescript-ts-mode
+                                             rust-mode
+                                             rust-ts-mode))
+  (define-key citre-mode-map (kbd "C-x c j") #'citre-jump)
+  (define-key citre-mode-map (kbd "C-x c J") #'citre-jump-back)
+  (define-key citre-mode-map (kbd "C-x c p") #'citre-peek)
+  (define-key citre-mode-map (kbd "C-x c a") #'citre-ace-peek)
+  (define-key citre-mode-map (kbd "C-x c u") #'citre-update-this-tag-file))
+
+;;; pass and gptel
+(setq gptel-default-mode 'org-mode
+      gptel-model 'claude-3-5-sonnet-20241022
+      gptel-prompt-prefix-alist '((markdown-mode . "## ") (org-mode . "** ") (text-mode . "#prompt> "))
+      gptel-backend (gptel-make-anthropic "Claude"
+                      :stream t
+                      :key (lambda () (password-store-get "Dev/claude-key1"))))
+
+(setq which-key-idle-delay 2)
+;;; when switching to Emacs 30+, delete this line
+(which-key-mode 1)
+
+;;; ansi color
+(require 'ansi-color)
+(add-hook 'compilation-filter-hook 'ansi-color-compilation-filter)
+
+(provide 'init-utils)
 ;;; init-utils.el ends here

@@ -7,6 +7,7 @@
 (dolist (h '(c-mode-hook
              c++-mode-hook
              css-mode-hook
+             eat-mode-hook
              go-mode-hook
              jinja2-mode-hook
              js-mode-hook

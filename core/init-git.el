@@ -7,6 +7,7 @@
 (autoload #'magit-blame "magit" nil t)
 
 (with-eval-after-load "magit"
+  ;; (require 'forge)
   (define-key transient-base-map (kbd "<escape>") #'transient-quit-one)
   (add-hook 'magit-mode-hook (lambda () (magit-delta-mode +1))))
 
@@ -21,5 +22,7 @@
 
 (add-hook 'find-file-hook 'sm-try-smerge t)
 
+;; github token for forge
+(setq auth-source '("~/.authinfo.gpg"))
 (provide 'init-git)
 ;;; init-git ends here

@@ -43,6 +43,7 @@
 (sup 'flycheck-pos-tip)
 (sup 'haskell-mode)
 (sup 'flymake-hlint)
+(sup 'forge)
 (sup 'hindent)
 (sup 'magit)
 (sup 'magit-delta)
@@ -79,6 +80,7 @@
 ;; (sup '(meow :type git :host github :repo "DogLooksGood/meow")) installed via pacman/portage
 ;; (sup 'ebuild-mode)
 (sup 'highlight-defined)
+(sup 'symbol-overlay)
 (sup 'vertico)
 (sup 'vundo)
 (sup 'which-key)

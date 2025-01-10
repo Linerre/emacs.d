@@ -4,14 +4,14 @@
 ;;; Domain Specific Languages such as Nix, SQL, Tex, Markdown etc.
 
 ;;; -- Org --------------------------------
-;; Use serif font for org mode body
-;; (add-hook 'org-mode-hook #'variable-pitch-mode)
-;; (custom-set-faces
-;;    '(org-table ((t :inherit 'fixed-pitch)))
-;;    '(org-code ((t :inherit 'fixed-pitch)))
-;;    '(org-block ((t :inherit 'fixed-pitch)))
-;;    '(org-checkbox ((t :inherit 'fixed-pitch :background unspecified :box nil)))
-;;    '(org-latex-and-related ((t (:inherit 'fixed-pitch)))))
+;; Use sans font for org mode body
+(add-hook 'org-mode-hook #'variable-pitch-mode)
+(custom-set-faces
+   '(org-table ((t :inherit 'fixed-pitch)))
+   '(org-code ((t :inherit 'fixed-pitch)))
+   '(org-block ((t :inherit 'fixed-pitch)))
+   '(org-checkbox ((t :inherit 'fixed-pitch :background unspecified :box nil)))
+   '(org-latex-and-related ((t (:inherit 'fixed-pitch)))))
 
 (setq
  org-deadline-warning-days 0
