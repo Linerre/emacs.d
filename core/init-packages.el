@@ -32,7 +32,7 @@
 (sup 'geiser-guile)
 (sup 'geiser-chez)
 (sup 'geiser-mit)
-(sup 'gptel)
+(sup '(gptel :type git :host github :repo "karthink/gptel"))
 (sup 'json-mode)
 (sup 'just-mode)
 (sup '(justl.el :type git :host github :repo "psibi/justl.el"))
