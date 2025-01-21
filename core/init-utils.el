@@ -134,12 +134,19 @@ When it is not in ~/projects/, or in one of the special buffers, fall back to `m
   (define-key citre-mode-map (kbd "C-x c u") #'citre-update-this-tag-file))
 
 ;;; pass and gptel
-(setq gptel-default-mode 'org-mode
-      gptel-model 'claude-3-5-sonnet-20241022
-      gptel-prompt-prefix-alist '((markdown-mode . "## ") (org-mode . "** ") (text-mode . "#prompt> "))
-      gptel-backend (gptel-make-anthropic "Claude"
-                      :stream t
-                      :key (lambda () (password-store-get "Dev/claude-key1"))))
+(gptel-make-openai "Deepseek"
+  :host "api.deepseek.com"
+  :endpoint "/chat/completions"
+  :stream t
+  :key (lambda () (password-store-get "Dev/deepseek"))
+  :models '(deepseek-coder deepseek-chat))
+
+(gptel-make-anthropic "Claude"
+  :stream t
+  :key (lambda () (password-store-get "Dev/claude-key1")))
+
+(setq gptel-default-mode 'markdown-mode
+      gptel-prompt-prefix-alist '((markdown-mode . "## ") (org-mode . "** ") (text-mode . "#prompt> ")))
 
 (setq which-key-idle-delay 2)
 ;;; when switching to Emacs 30+, delete this line

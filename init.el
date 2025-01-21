@@ -26,7 +26,5 @@
 (require 'lang-script)
 (require 'lang-web)
 (require 'lang-dsl)
-;; (require 'lang-verilog)
-;; (require 'init-mail)
 
 ;;; init.el ends here
