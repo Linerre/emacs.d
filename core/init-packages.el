@@ -46,7 +46,6 @@
 (sup 'forge)
 (sup 'hindent)
 (sup 'magit)
-(sup 'magit-delta)
 (sup 'markdown-mode)
 (sup '(meow :type git :host github :repo "meow-edit/meow"))
 (sup '(move-mode :type git :host github :repo "amnn/move-mode"))

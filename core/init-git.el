@@ -7,9 +7,10 @@
 (autoload #'magit-blame "magit" nil t)
 
 (with-eval-after-load "magit"
+  (setq magit-display-buffer-function
+        #'magit-display-buffer-same-window-except-diff-v1)
   ;; (require 'forge)
-  (define-key transient-base-map (kbd "<escape>") #'transient-quit-one)
-  (add-hook 'magit-mode-hook (lambda () (magit-delta-mode +1))))
+  (define-key transient-base-map (kbd "<escape>") #'transient-quit-one))
 
 ;; smerge-mode
 (autoload 'smerge-mode "smerge-mode" nil t)
@@ -24,5 +25,7 @@
 
 ;; github token for forge
 (setq auth-source '("~/.authinfo.gpg"))
+
 (provide 'init-git)
+
 ;;; init-git ends here
