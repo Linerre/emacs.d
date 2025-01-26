@@ -139,22 +139,38 @@ When it is not in ~/projects/, or in one of the special buffers, fall back to `m
   :endpoint "/chat/completions"
   :stream t
   :key (lambda () (password-store-get "Dev/deepseek"))
-  :models '(deepseek-coder deepseek-chat))
-
-(gptel-make-anthropic "Claude"
-  :stream t
-  :key (lambda () (password-store-get "Dev/claude-key1")))
+  :models '(deepseek-chat deepseek-reasoner))
 
 (setq gptel-default-mode 'markdown-mode
-      gptel-prompt-prefix-alist '((markdown-mode . "## ") (org-mode . "** ") (text-mode . "#prompt> ")))
+      gptel-prompt-prefix-alist
+      '((markdown-mode . "## ") (org-mode . "** ") (text-mode . "#prompt> "))
+      gptel-backend (gptel-make-anthropic "Claude"
+                      :stream t
+                      :key (lambda () (password-store-get "Dev/claude-key1"))))
 
-(setq which-key-idle-delay 2)
+;;; Email
+;; SMTP configuration
+(setq auth-sources '("~/.authinfo.gpg"))
+(setq user-full-name "Errenil Noel")
+(setq user-mail-address "errelin.aaron@gmail.com")
+(setq gnus-select-method '(nntp "news.gmane.io"))
+(setq send-mail-function 'smtpmail-send-it
+      smtpmail-smtp-server "smtp.gmail.com"
+      smtpmail-smtp-service 587
+      smtpmail-stream-type 'starttls)
+
 ;;; when switching to Emacs 30+, delete this line
+(setq which-key-idle-delay 2)
 (which-key-mode 1)
 
 ;;; ansi color
 (require 'ansi-color)
 (add-hook 'compilation-filter-hook 'ansi-color-compilation-filter)
+
+;;; envrc
+(require 'envrc)
+(setq envrc-show-summary-in-minibuffer nil)
+(add-hook 'after-init-hook 'envrc-global-mode)
 
 (provide 'init-utils)
 ;;; init-utils.el ends here
