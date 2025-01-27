@@ -74,20 +74,15 @@
                 " "
                 mode-line-end-spaces))
 
-;; sidebar
-;; tree sidebar is useful when viewing a project
-(sup 'dired-sidebar)
-(setq dired-sidebar-theme 'ascii
-      dired-sidebar-width 30
-      dired-sidebar-use-custome-font t
-      dired-sidebar-face '(:weight bold))
-
 (autoload
   #'dired-sidebar-toggle-sidebar "dired-sidebar" nil t)
 (global-set-key (kbd "<f8>") #'dired-sidebar-toggle-sidebar)
 (with-eval-after-load "dired-sidebar"
   (add-hook 'dired-sidebar-mode-hook 'hl-line-mode))
 
+;; tab bar
+(setq tab-bar-new-button-show nil)
+;; (setq tab-bar-close-button-show nil)
 
 (provide 'init-gui)
 
