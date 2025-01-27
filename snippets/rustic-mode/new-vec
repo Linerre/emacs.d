@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: new-vec
-# key: vn
-# --
-Vec::new();

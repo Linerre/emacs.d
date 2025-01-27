@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: contract-log
-# key: msg
-# --
-msg!("$1");

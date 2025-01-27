@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: derive-macro
-# key: dr
-# --
-#[derive(${1:1st_macro}$0)]

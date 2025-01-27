@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: attr-templ
-# key: #a
-# --
-#[${1:attr}(${2:stuff})]
