@@ -19,22 +19,19 @@
 (set-face-attribute 'default nil :font mono-dejavu)
 (set-face-attribute 'variable-pitch nil :family "Sans" :font sans-font)
 (set-face-attribute 'fixed-pitch nil :font mono-dejavu)
-;; (custom-set-faces
-;;  '(mode-line ((t :inherit variable-pitch)))
-;;  '(mode-line-inactive ((t :inherit variable-pitch))))
 
 ;; Themes
 (defvar my-themes
-  '(
-    ;; alabaster
-    chacha
+  '(chacha
+    rustdoc-dark
     carbon
-    console
-    gruber-darker
     ft
-    paperlike))
+    ;; alabaster
+    ;; gruber-darker
+    ;; paperlike
+    ;; console
+    ))
 
-;; themes
 (defun +toggle-themes ()
   "Load the new-theme and disable the current one."
   (interactive)
@@ -47,22 +44,16 @@
 
 (if (display-graphic-p)
     (load-theme 'chacha t nil)
-  (load-theme 'gruber-darker t nil))
+  (load-theme 'rustdoc-dark t nil))
 
-;;; Mode line
-(setq mode-line-percent-position '(-3 "%p"))
-(setq mode-line-position-column-line-format '(" %l,%c")) ; Emacs 28
-;; (setq mode-line-defining-kbd-macro
-;;       (propertize " Macro" 'face 'mode-line-emphasis))
-
-(setq mode-line-compact nil)            ; Emacs 28
+;;; Mode line (Emacs > 28)
+(setq mode-line-position-column-line-format '(" %l,%c"))
+(setq mode-line-compact t)
 (setq-default mode-line-format
               '("%Z"
                 "%*"
                 " "
-                ;; mode-line-frame-identification
-                ;; (:eval
-                ;;  (+project-indicator buffer-file-name))
+                mode-line-frame-identification
                 mode-line-buffer-identification
                 " "
                 mode-line-position
@@ -70,15 +61,13 @@
                 " "
                 mode-name
                 " "
+                (:eval (when envrc-mode envrc-lighter))
+                " "
+                (:eval (when flymake-mode flymake-mode-line-format))
+                " "
                 mode-line-misc-info
                 " "
                 mode-line-end-spaces))
-
-(autoload
-  #'dired-sidebar-toggle-sidebar "dired-sidebar" nil t)
-(global-set-key (kbd "<f8>") #'dired-sidebar-toggle-sidebar)
-(with-eval-after-load "dired-sidebar"
-  (add-hook 'dired-sidebar-mode-hook 'hl-line-mode))
 
 ;; tab bar
 (setq tab-bar-new-button-show nil)

@@ -4,15 +4,12 @@
 
 (require 'meow)
 
-(if (display-graphic-p)
-    (setq meow-cursor-type-insert 'box)
-  (setq meow-cursor-type-insert '(bar . 2)))
-
 (setq
  meow-visit-sanitize-completion nil
  meow-keypad-describe-delay 0.5
  meow-select-on-change t
  meow-cursor-type-normal 'box
+ meow-cursor-type-insert '(bar . 2)
  meow-expand-hint-counts
  '((word . 10)
    (line . 10)
@@ -34,7 +31,6 @@
   (meow-motion-overwrite-define-key
    '("/" . find-file))
   (meow-leader-define-key
-   ;; SPC j/k will run the original command in MOTION state.
    ;; Use SPC (0-9) for digit arguments.
    '("1" . meow-digit-argument)
    '("2" . meow-digit-argument)
