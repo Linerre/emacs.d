@@ -30,7 +30,7 @@
 (let ((default-directory  "/usr/local/share/emacs/site-lisp/"))
   (normal-top-level-add-subdirs-to-load-path))
 
-;;; envs
+;;; for lsp-mode to work with emacs-lsp-booster
 (setenv "LSP_USE_PLISTS" "true")
 
 ;; In noninteractive sessions, prioritize non-byte-compiled source files to
