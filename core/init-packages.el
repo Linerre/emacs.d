@@ -16,9 +16,9 @@
 (sup 'company-auctex)
 (sup 'consult)
 (sup 'embark)
-(sup '(eglot-booster :type git :host github :repo "jdtsmith/eglot-booster"))
-(sup '(emacs-ccls :type git :host github :repo "emacs-lsp/emacs-ccls"))
-(sup '(eat :type git
+(sup '(emacs-ccls :host github :repo "emacs-lsp/emacs-ccls"))
+(sup '(eglot-booster :host github :repo "jdtsmith/eglot-booster"))
+(sup '(eat
        :host codeberg
        :repo "akib/emacs-eat"
        :files ("*.el" ("term" "term/*.el") "*.texi"
@@ -26,7 +26,6 @@
                ("terminfo/65" "terminfo/65/*")
                ("integration" "integration/*")
                (:exclude ".dir-locals.el" "*-tests.el"))))
-(sup 'direnv)
 (sup '(go-mode.el :type git :host github :repo "dominikh/go-mode.el"))
 (sup 'geiser-chicken)
 (sup 'geiser-guile)
@@ -70,20 +69,23 @@
 (sup 'cargo)
 (sup 'rust-mode)
 (sup '(typst-ts-mode :type git :host sourcehut :repo "meow_king/typst-ts-mode"))
-;; (sup '(verilog-mode :type git :host github :repo "veripool/verilog-mode"))
-;; (sup '(verilog-ts-mode :type git :host github :repo "gmlarumbe/verilog-ts-mode"))
-;; (sup '(fpga :type git :host github :repo "gmlarumbe/fpga"))
 (sup '(zk :type git :host github :repo "localauthor/zk"))
 (sup '(jstx :type git :host github :repo "llemaitre19/jtsx"))
-;;; Managed by pacman (Arch) or portage (Gentoo)
-;; (sup '(meow :type git :host github :repo "DogLooksGood/meow")) installed via pacman/portage
-;; (sup 'ebuild-mode)
 (sup 'highlight-defined)
 (sup 'symbol-overlay)
 (sup 'vertico)
 (sup 'vundo)
-(sup 'which-key)
+(sup 'envrc)
 
+(when (version< "30" emacs-version)
+  (sup 'which-key))
+;;; Managed by pacman (Arch) or portage (Gentoo)
+;; (sup '(meow :type git :host github :repo "DogLooksGood/meow")) installed via pacman/portage
+;; (sup 'ebuild-mode)
+;; (sup '(fpga :type git :host github :repo "gmlarumbe/fpga"))
+;; (sup '(verilog-ts-mode :type git :host github :repo "gmlarumbe/verilog-ts-mode"))
+;; (sup '(verilog-mode :type git :host github :repo "veripool/verilog-mode"))
+;; (sup 'direnv)
 ;;; Dropped
 ;; (sup
 ;;  '(zenburn-emacs :type git :host github :repo "bbatsov/zenburn-emacs"))

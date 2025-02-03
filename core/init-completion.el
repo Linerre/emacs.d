@@ -2,109 +2,53 @@
 ;;; Commentary:
 ;;; Code:
 
-;;; eglot
+;;; eglot-booster
 (autoload 'eglot "eglot" nil t)
-(autoload #'eglot-booster-mode "eglot-booster" nil t)
 
-(setq eglot-booster-io-only t)
+;;; eglot
 (setq eglot-ignored-server-capabilities
-      '(:hoverProvider
+      '(:codeLensProvider
         :documentHighlightProvider
+        :hoverProvider
         :inlayHintProvider
         :workspaceSymbolProvider))
 (setq eglot-autoshutdown t)
 (setq eglot-stay-out-of '(yasnippet))
-(setq eglot-send-changes-idle-time 2.0)
+(setq eglot-send-changes-idle-time 1.0)
+(defun eglot-setup-eldoc ()
+  (setq-local eldoc-documentation-functions
+              '(flymake-eldoc-function
+                eglot-signature-eldoc-function
+                eglot-hover-eldoc-function)))
 
-(defvar jsonrpc-log-event-p nil)
+(add-hook 'eglot-mode-hook #'eglot-setup-eldoc)
 
-(defun jsonrpc--log-event-advice (f &rest args)
-  (if jsonrpc-log-event-p (apply f args)))
-
-(advice-add #'jsonrpc--log-event :around #'jsonrpc--log-event-advice)
-
-(defun +eglot-hook ()
-  (setq eldoc-echo-area-use-multiline-p 1
-        eldoc-echo-area-prefer-doc-buffer t)
-  (setq eldoc-documentation-functions
-        (cons #'flymake-eldoc-function
-              (remove #'flymake-eldoc-function eldoc-documentation-functions))))
+(with-eval-after-load "jsonrpc"
+  (fset #'jsonrpc--log-event #'ignore)
+  (setq jsonrpc-event-hook nil))
 
 (with-eval-after-load "eglot"
-  (add-hook 'eglot-managed-mode-hook #'+eglot-hook)
-  (eglot-booster-mode)
-  (define-key eglot-mode-map (kbd "C-c e d") #'eldoc-doc-buffer)
-  (set-face-attribute 'eglot-highlight-symbol-face nil
-                      :background "#B3D7FF")
-  (add-to-list 'eglot-server-programs
-               '((typescript-ts-mode tsx-ts-mode) .
-                 ("typescript-language-server" "--stdio"))))
+  (setq eglot-events-buffer-config '(:size 0 :format full))
+  (setq eglot-events-buffer-size 0))
 
-;;; LSP
-(autoload 'lsp "lsp-mode" nil t)
+;; (setq-default eglot-workspace-configuration
+;;               '(:rust-analyzer (:hover (:memoryLayout (:enable :json-false))
+;;                                 :typing (:excludeChars "([{"))))
 
-;; https://emacs-lsp.github.io/lsp-mode/tutorials/how-to-turn-off/
-(setq lsp-keymap-prefix "C-c l"
-      lsp-enable-symbol-highlighting nil
-      lsp-enable-dap-auto-configure nil
-      lsp-enable-snippt nil
-      ;; lsp-modeline-diagnostics-enable nil
-      lsp-lens-enable nil
-      lsp-inlay-hint-enable nil
-      lsp-headerline-breadcrumb-enable nil
-      lsp-completion-show-detail nil
-      lsp-completion-show-label-description nil
-      ;; lsp-signature-auto-activate nil
-      lsp-signature-render-documentation nil
-      ;; this just turns off company as capf, see the folloiwng two threads
-      ;; https://github.com/emacs-lsp/lsp-mode/issues/3215
-      ;; https://github.com/minad/corfu/issues/71
-      ;; https://www.reddit.com/r/emacs/comments/ql8cyp/corfu_orderless_and_lsp/
-      lsp-completion-provider :none
-      lsp-signature-doc-lines 3
-      lsp-modeline-code-action-fallback-icon "CA")
+(setq eglot-booster-io-only t)
+(add-hook 'eglot-mode-hook #'eglot-booster-mode)
 
-(with-eval-after-load "lsp-mode"
-  (add-to-list 'lsp-language-id-configuration '(move-mode . "move"))
-  (lsp-register-client
-   (make-lsp-client
-    :new-connection (lsp-stdio-connection "move-analyzer")
-    :activation-fn (lsp-activate-on "move")
-    :priority -1
-    :server-id 'move-analyzer)))
+;; Or use package-vc-install
+;; (when (executable-find "emacs-lsp-booster")
+;;   (unless (package-installed-p 'eglot-booster)
+;;     (and (fboundp #'package-vc-install)
+;;          (package-vc-install '(eglot-booster :vc-backend Git :url
+;;                     "https://github.com/jdtsmith/eglot-booster")))
+;;     (setq eglot-booster-io-only t)
+;;     (add-hook 'eglot-mode-hook #'elogt-booster-mode)))
 
-;;; lsp booster for lsp-mode
-(defun lsp-booster--advice-json-parse (old-fn &rest args)
-  "Try to parse bytecode instead of json."
-  (or
-   (when (equal (following-char) ?#)
-     (let ((bytecode (read (current-buffer))))
-       (when (byte-code-function-p bytecode)
-         (funcall bytecode))))
-   (apply old-fn args)))
-(advice-add (if (progn (require 'json)
-                       (fboundp 'json-parse-buffer))
-                'json-parse-buffer
-              'json-read)
-            :around
-            #'lsp-booster--advice-json-parse)
 
-(defun lsp-booster--advice-final-command (old-fn cmd &optional test?)
-  "Prepend emacs-lsp-booster command to lsp CMD."
-  (let ((orig-result (funcall old-fn cmd test?)))
-    (if (and (not test?)                             ;; for check lsp-server-present?
-             (not (file-remote-p default-directory)) ;; see lsp-resolve-final-command, it would add extra shell wrapper
-             lsp-use-plists
-             (not (functionp 'json-rpc-connection))  ;; native json-rpc
-             (executable-find "emacs-lsp-booster"))
-        (progn
-          (when-let ((command-from-exec-path (executable-find (car orig-result))))  ;; resolve command from exec-path (in case not found in $PATH)
-            (setcar orig-result command-from-exec-path))
-          (message "Using emacs-lsp-booster for %s!" orig-result)
-          (cons "emacs-lsp-booster" orig-result))
-      orig-result)))
-(advice-add 'lsp-resolve-final-command :around #'lsp-booster--advice-final-command)
-
+;; (require 'init-lsp)
 ;;; Flycheck
 (with-eval-after-load "flycheck"
   (flycheck-add-mode 'javascript-eslint 'jtsx-jsx-mode)
@@ -120,9 +64,9 @@
 (setq flymake-no-changes-timeout 2)
 
 (with-eval-after-load "flymake"
-  (define-key flymake-mode-map (kbd "C-c k") 'flymake-show-diagnostics-buffer)
-  (define-key flymake-mode-map (kbd "M-n") 'flymake-goto-next-error)
-  (define-key flymake-mode-map (kbd "M-p") 'flymake-goto-prev-error))
+  (define-key flymake-mode-map (kbd "C-c l") #'flymake-show-diagnostics-buffer)
+  (define-key flymake-mode-map (kbd "M-n") #'flymake-goto-next-error)
+  (define-key flymake-mode-map (kbd "M-p") #'flymake-goto-prev-error))
 
 ;;; yasnippet
 (setq yas-snippet-dirs
@@ -152,15 +96,14 @@
 
 ;;; corfu
 (with-eval-after-load "corfu"
-  (setq corfu-cycle t) ;; Enable cycling
-  (setq corfu-auto t)  ;; Enable auto completion
+  (setq corfu-cycle t)                  ; Enable cycling
+  (setq corfu-auto t)                   ; Enable auto completion
   (setq corfu-auto-delay 1)
-  (setq corfu-separator ?\s)            ;; Orderless field separator
-  (setq corfu-quit-no-match 'separator) ;; Quit completion if no match found
-  (setq corfu-preview-current nil) ;; Disable current candidate preview
-  (setq corfu-preselect 'prompt)   ;; Preselect the prompt
-  (setq corfu-on-exact-match 'insert) ;; Configure handling of exact matches
-  (setq corfu-scroll-margin 5)        ;; Use scroll margin
+  (setq corfu-preview-current nil) ; Disable current candidate preview
+  (setq corfu-preselect 'prompt)   ; Preselect the prompt
+  (setq corfu-on-exact-match 'insert) ; Configure handling of exact matches
+  (setq corfu-scroll-margin 5)        ; Use scroll margin
+  (setq corfu-max-width 60)           ; make width for popup
   (setq tab-always-indent 'complete)
   (setq corfu-quit-at-boundary 'separator)
   (setq-local completion-styles '(basic)))
@@ -239,7 +182,6 @@
     (add-hook 'prog-mode-hook #'company-mode)
     (add-hook 'conf-mode-hook #'company-mode)))
 
-(require 'vertico)
 (vertico-mode)
 (with-eval-after-load "vertico"
   (setq vertico-count 5
@@ -254,7 +196,7 @@
   (setq-local completion-styles '(orderless flex basic)))
 (add-hook 'minibuffer-setup-hook #'friend/use-orderless-in-minibuffer)
 
-;; tree-sitter Emacs 29
+;; tree-sitter (Emacs >= 29)
 (when (and (fboundp 'treesit-available-p)
            (treesit-available-p))
   (require 'treesit)
@@ -270,12 +212,17 @@
                             "tsx/src"))
   (add-to-list 'treesit-language-source-alist
                '(javascript "https://github.com/tree-sitter/tree-sitter-javascript"
-                            "v0.23.1"
+                            "v0.23.2"
+                            "src"))
+  (add-to-list 'treesit-language-source-alist
+               '(rust "https://github.com/tree-sitter/tree-sitter-rust"
+                            "v0.23.2"
                             "src")))
 
 ;; (treesit-install-language-grammar 'javascript)
 ;; (treesit-install-language-grammar 'typescript)
 ;; (treesit-install-language-grammar 'tsx)
+;; (treesit-install-language-grammar 'rust)
 
 (setq major-mode-remap-alist
       '((typescript-mode . typescript-ts-mode)
