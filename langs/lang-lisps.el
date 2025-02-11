@@ -50,11 +50,7 @@
   (define-key clojure-mode-map (kbd "C-c j") #'cider-jack-in)
   (define-key clojure-mode-map (kbd "C-c c") #'cider-connect)
   (add-hook 'clojure-mode-hook #'cider-mode)
-  (add-hook 'clojure-mode-hook #'clj-refactor-mode)
-  (add-hook 'clojure-mode-hook #'direnv-mode)
-  (add-hook 'clojure-mode-hook #'+hl-cmt-kws)
-  ;; (add-hook 'clojurescript-mode-hook #'+cljs-company-backends)
-  )
+  (add-hook 'clojure-mode-hook #'+hl-cmt-kws))
 
 (setq nrepl-log-messages t
         nrepl-hide-special-buffers t
@@ -63,18 +59,14 @@
         cider-repl-display-help-banner nil
         ;; cider-use-overlays nil
         ;; spill the errors to the error buffer instead of repl
-        cider-show-error-buffer 'except-in-repl
-        cider-print-fn 'zprint)
+        cider-show-error-buffer 'except-in-repl)
 
 (with-eval-after-load "cider"
   ;; Make RET break a line and C-j to trigger eval
   (define-key cider-repl-mode-map (kbd "RET") #'cider-repl-newline-and-indent)
   (define-key cider-repl-mode-map (kbd "<return>") #'cider-repl-newline-and-indent)
   (define-key cider-repl-mode-map (kbd "M-<return>") #'cider-repl-return)
-  (define-key cider-repl-mode-map (kbd "M-RET") #'cider-repl-return)
-  (cider-add-to-alist 'cider-jack-in-dependencies
-                      "zprint/zprint" "1.2.3"))
-
+  (define-key cider-repl-mode-map (kbd "M-RET") #'cider-repl-return))
 
 ;; scheme
 ;; (setq scheme-program-name "mit-scheme")

@@ -10,7 +10,6 @@
 (sup 'cape)
 (sup 'cider)
 (sup 'citre)
-(sup 'clj-refactor)
 (sup 'corfu)
 (sup 'company)
 (sup 'company-auctex)
@@ -53,7 +52,7 @@
 ;; coq-mode recognizes *.v files which conflict with verilog-mode, to avoid it:
 ;; (alist-get "\\.v\\'" auto-mode-alist nil t) ; t means to remove the key (pattern)
 ;; (add-to-list 'auto-mode-alist '("\\.coq\\'" . coq-mode))
-;; that is, let coq-mode treat *.coq files as its majore filetype.
+;; that is, let coq-mode treat *.coq files as its major filetype.
 ;; For now, I'm working on coq only.
 (sup 'proof-general)
 (sup 'company-coq)
@@ -67,7 +66,7 @@
 (sup 'emmet-mode)
 (sup 'clojure-mode)
 (sup 'cargo)
-(sup 'rust-mode)
+(sup '(rust-mode :host github :repo "Linerre/rust-mode"))
 (sup '(typst-ts-mode :type git :host sourcehut :repo "meow_king/typst-ts-mode"))
 (sup '(zk :type git :host github :repo "localauthor/zk"))
 (sup '(jstx :type git :host github :repo "llemaitre19/jtsx"))

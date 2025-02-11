@@ -10,15 +10,14 @@
 (defvar mono-dejavu "DejaVu Sans Mono-14")
 (defvar mono-monego "Monego-14")
 (defvar mono-liberation "Liberation Mono-14")
-(defvar mono-inconsolata "Inconsolata Medium-16:style=Regular")
 (defvar mono-consolas "Consolas-14")
-(defvar mono-mono "Monospace-13")
+(defvar mono-mono "Monospace-14")
 
 ;;; frame: monospace font; modeline: sans font
 (set-fontset-font t 'han (font-spec :family +chinese-font-family))
-(set-face-attribute 'default nil :font mono-dejavu)
+(set-face-attribute 'default nil :font mono-liberation)
 (set-face-attribute 'variable-pitch nil :family "Sans" :font sans-font)
-(set-face-attribute 'fixed-pitch nil :font mono-dejavu)
+(set-face-attribute 'fixed-pitch nil :font mono-liberation)
 
 ;; Themes
 (defvar my-themes
@@ -59,14 +58,8 @@
                 mode-line-position
                 (vc-mode vc-mode)
                 " "
-                mode-name
-                " "
-                (:eval (when envrc-mode envrc-lighter))
-                " "
-                (:eval (when flymake-mode flymake-mode-line-format))
-                " "
+                mode-line-modes
                 mode-line-misc-info
-                " "
                 mode-line-end-spaces))
 
 ;; tab bar
