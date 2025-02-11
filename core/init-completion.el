@@ -13,9 +13,11 @@
         :inlayHintProvider
         :workspaceSymbolProvider))
 (setq eglot-autoshutdown t)
-(setq eglot-stay-out-of '(yasnippet))
+(setq eglot-stay-out-of '(corfu flymake yasnippet))
 (setq eglot-send-changes-idle-time 1.0)
+
 (defun eglot-setup-eldoc ()
+  (setq-local eldoc-echo-area-use-multiline-p nil) ; always truncate
   (setq-local eldoc-documentation-functions
               '(flymake-eldoc-function
                 eglot-signature-eldoc-function
@@ -31,9 +33,14 @@
   (setq eglot-events-buffer-config '(:size 0 :format full))
   (setq eglot-events-buffer-size 0))
 
-;; (setq-default eglot-workspace-configuration
-;;               '(:rust-analyzer (:hover (:memoryLayout (:enable :json-false))
-;;                                 :typing (:excludeChars "([{"))))
+(setq-default eglot-workspace-configuration
+              '(:rust-analyzer
+                ( :hover (:memoryLayout (:enable :json-false))
+                  :typing (:excludeChars "([{")
+                  :semanticHighlighting (:operator (:enable :json-false)
+                                         :doc (:comment (:inject (:enable :json-false)))
+                                         :string (:enable :json-false)
+                                         ))))
 
 (setq eglot-booster-io-only t)
 (add-hook 'eglot-mode-hook #'eglot-booster-mode)
@@ -112,6 +119,7 @@
 (add-hook 'completion-at-point-functions #'cape-dabbrev)
 (add-hook 'completion-at-point-functions #'cape-file)
 (add-hook 'completion-at-point-functions #'cape-elisp-block)
+(add-hook 'completion-at-point-functions #'cape-elisp-symbol)
 
 ;;; company
 (setq company-frontends '(company-pseudo-tooltip-frontend
