@@ -1,5 +1,5 @@
 ;; Various emacs built-in options set for both GUI and TUI
- ;; startup config
+;; startup config
 (setq-default
  inhibit-startup-message t
  inhibit-startup-screen t
@@ -95,16 +95,9 @@
  x-input-method-use-protocol nil
  default-input-method nil
  gtk-use-im-context nil
-
+ icon-preference '(text symbol)
  dired-listing-switches "-al --group-directories-first"
  default-directory "~/projects")
-
-;; cutome funs to be hooked to various modes
-;; (defun +add-margins-to-textmode ()
-;;   "When in text-mode, add margins to both sides of the current buffer."
-;;   (unless (memq major-mode '(mhtml-mode css-mode))
-;;     (setq left-margin-width 4)
-;;     (setq right-margin-width 4)))
 
 ;; Save buffers on gain/loss of focus
 (defun +real-auto-save ()
@@ -117,24 +110,23 @@
 ;; Instead of enabling a minor mode globally
 ;; hook it to several major modes
 (dolist (hook '(conf-space-mode-hook prog-mode-hook))
-  (add-hook hook 'visual-line-mode)
-  (add-hook hook 'column-number-mode)   ; for col numb on modeline -- Emacs 28
-  (add-hook hook 'line-number-mode)
-  (add-hook hook 'electric-pair-local-mode)
-  (add-hook hook 'show-paren-mode))
+  (add-hook hook #'visual-line-mode)
+  (add-hook hook #'column-number-mode)   ; for col numb on modeline -- Emacs 28
+  (add-hook hook #'line-number-mode)
+  (add-hook hook #'electric-pair-local-mode)
+  (add-hook hook #'show-paren-mode))
 
 ;; In prog-mode or any its deried modes, make isearch case sensitive
 (add-hook 'prog-mode-hook (lambda ()
                             (setq case-fold-search nil)))
 
-(add-hook 'conf-mode-hook 'electric-pair-local-mode)
+(add-hook 'conf-mode-hook #'electric-pair-local-mode)
+(add-hook 'text-mode-hook #'visual-line-mode)
+(add-hook 'text-mode-hook #'column-number-mode)
+(add-hook 'text-mode-hook #'line-number-mode)
 
-(dolist (hook '(text-mode-hook))
-  (add-hook hook 'visual-line-mode)
-  (add-hook hook 'column-number-mode)   ; for col numb on modeline -- Emacs 28
-  (add-hook hook 'line-number-mode)
-  (add-hook hook 'flyspell-mode))
-
+(dolist (hook '(org-mode-hook markdown-mode-hook LaTeX-mode-hook))
+  (add-hook hook #'flyspell-mode))
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 (defvar parameters                      ; cause side buffers to not be closed

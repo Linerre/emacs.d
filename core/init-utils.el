@@ -83,6 +83,32 @@ When it is not in ~/projects/, or in one of the special buffers, fall back to `m
   (transpose-lines 1)
   (forward-line -1))
 
+(defun +move-region-up ()
+  "Move the selected region up by one line, swapping the top line with the line above."
+  (interactive)
+  (when (use-region-p)
+    (let ((start (region-beginning))
+          (end (region-end))
+          (column (- (point) (line-beginning-position))))
+      (save-excursion
+        (goto-char start)
+        (beginning-of-line)
+        (setq start (point))
+        (goto-char end)
+        (end-of-line)
+        (setq end (point))
+        ;; Swap the top line of the region with the line above
+        (transpose-lines 1)
+        ;; Adjust the region boundaries
+        (forward-line -1)
+        (setq start (point))
+        (forward-line (count-lines start end))
+        (setq end (point)))
+      ;; Restore the active selection
+      (set-mark start)
+      (goto-char end)
+      (forward-char column))))
+
 ;; misc
 ;; rexim/dotfiles/blob/3011cc1769e769ce4c65d22a46f66ac3e8fc81e1/.emacs.rc/misc-rc.el#L120
 (defun rc/duplicate-line ()
@@ -97,7 +123,8 @@ When it is not in ~/projects/, or in one of the special buffers, fall back to `m
     (move-beginning-of-line 1)
     (forward-char column)))
 
-(global-set-key (kbd "C-,") 'rc/duplicate-line)
+(global-set-key (kbd "C-,") #'rc/duplicate-line)
+(global-set-key (kbd "C-.") #'+duplicate-region)
 (global-set-key (kbd "M-<up>") #'+move-line-up)
 (global-set-key (kbd "M-<down>") #'+move-line-down)
 (global-set-key (kbd "C-c C-d") #'duplicate-line)
@@ -107,7 +134,7 @@ When it is not in ~/projects/, or in one of the special buffers, fall back to `m
 (add-hook 'eshell-load-hook #'eat-eshell-visual-command-mode)
 
 ;;; rg
-(autoload #'rg-menu"rg" nil t)
+(autoload #'rg "rg" nil t)
 
 ;;; citre
 (autoload #'citre-mode "citre" nil t)
@@ -159,7 +186,7 @@ When it is not in ~/projects/, or in one of the special buffers, fall back to `m
       smtpmail-smtp-service 587
       smtpmail-stream-type 'starttls)
 
-;;; when switching to Emacs 30+, delete this line
+;;; Need Emacs >= 30
 (setq which-key-idle-delay 2)
 (which-key-mode 1)
 

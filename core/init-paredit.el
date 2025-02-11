@@ -26,8 +26,11 @@
              lisp-interaction-mode-hook))
   (add-hook h #'paredit-mode))
 
+;; I don't use these keybindings in paredit but I need them globally
 (with-eval-after-load 'paredit
   (define-key paredit-mode-map (kbd "M-<up>") nil)
-  (define-key paredit-mode-map (kbd "M-<down>") nil))
+  (define-key paredit-mode-map (kbd "M-<down>") nil)
+  (define-key paredit-mode-map (kbd "C-M-d") nil)
+  (define-key paredit-mode-map (kbd "C-M-u") nil))
 
 (provide 'init-paredit)
