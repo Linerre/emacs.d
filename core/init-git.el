@@ -5,10 +5,10 @@
 (autoload #'magit-status "magit" nil t)
 (autoload #'magit-diff "magit" nil t)
 (autoload #'magit-blame "magit" nil t)
+(setq magit-display-buffer-function
+        #'magit-display-buffer-same-window-except-diff-v1)
 
 (with-eval-after-load "magit"
-  (setq magit-display-buffer-function
-        #'magit-display-buffer-same-window-except-diff-v1)
   ;; (require 'forge)
   (define-key transient-base-map (kbd "<escape>") #'transient-quit-one))
 

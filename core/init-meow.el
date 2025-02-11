@@ -24,6 +24,16 @@
 (add-to-list 'meow-char-thing-table
              '(?h . angle))
 
+(defun +split-window-to-right ()
+  (interactive)
+  (split-window-right)
+  (other-window 1))
+
+(defun +split-window-to-below ()
+  (interactive)
+  (split-window-below)
+  (other-window 1))
+
 (defun meow-setup ()
   (setq meow-cheatsheet-layout meow-cheatsheet-layout-qwerty)
   ;; use C-n/p to move up/down in Motion mode instead
@@ -53,10 +63,10 @@
    '("a" . windmove-left)
    '("s" . windmove-down)
    '("d" . windmove-right)
-   ;'("W" . window-swap-states)
+   '("W" . window-swap-states)
    '("o" . delete-other-windows)
-   '("=" . split-window-right)
-   '("-" . split-window-below)
+   '("=" . +split-window-to-right)
+   '("-" . +split-window-to-below)
    ;; C-x C-x could be bound to different fns in
    ;; different modes, so use the keybindings
    '("e" . "C-x C-e")
@@ -69,7 +79,7 @@
    '("q" . meow-keypad-quit)
    '("i" . imenu)
    ;; '("n" . "M-x")
-   '("r" . rg-menu)
+   '("r" . rg-project)
    '("W" . eww)
    '("z" . meow-pop-selection)
    '("Z" . meow-pop-all-selection)
@@ -162,7 +172,8 @@
 
 (meow-global-mode 1)
 (meow-setup)
-(meow-setup-indicator)
+;; can tell from mode line modes or cursor
+;; (meow-setup-indicator)
 
 (with-eval-after-load "meow"
   ;; make Meow usable in TUI Emacs
