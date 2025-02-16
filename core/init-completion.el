@@ -98,63 +98,32 @@
   (define-key yas-keymap (kbd "RET") 'yas-next-field-or-maybe-expand)
   (define-key yas-keymap (kbd "S-<return>") 'yas-prev-field))
 
-(autoload #'corfu-mode "corfu" nil t)
-(autoload #'company-mode "company" nil t)
-
-;;; corfu
-(with-eval-after-load "corfu"
-  (setq corfu-cycle t)                  ; Enable cycling
-  (setq corfu-auto t)                   ; Enable auto completion
-  (setq corfu-auto-delay 1)
-  (setq corfu-preview-current nil) ; Disable current candidate preview
-  (setq corfu-preselect 'prompt)   ; Preselect the prompt
-  (setq corfu-on-exact-match 'insert) ; Configure handling of exact matches
-  (setq corfu-scroll-margin 5)        ; Use scroll margin
-  (setq corfu-max-width 60)           ; make width for popup
-  (setq tab-always-indent 'complete)
-  (setq corfu-quit-at-boundary 'separator)
-  (setq-local completion-styles '(basic)))
-
-;;; cape
-(add-hook 'completion-at-point-functions #'cape-dabbrev)
-(add-hook 'completion-at-point-functions #'cape-file)
-(add-hook 'completion-at-point-functions #'cape-elisp-block)
-(add-hook 'completion-at-point-functions #'cape-elisp-symbol)
-
 ;;; company
-(setq company-frontends '(company-pseudo-tooltip-frontend
-                          company-preview-if-just-one-frontend
-                          company-echo-metadata-frontend
-                          company-tng-frontend)
+(autoload #'company-mode "company" nil t)
+(setq-default company-backends
+      '(company-capf
+        company-files
+        company-dabbrev-code
+        company-keywords
+        company-dabbrev))
+(setq-default company-search-filtering t)
 
-      ;; self insert the first candidate
-      company-begin-commands '(self-insert-command)
-      company-idle-delay 1
+(setq company-idle-delay 0.5
       company-echo-delay 0
       company-dabbrev-ignore-invisible t
       company-dabbrev-downcase nil
+      company-selection-wrap-around t
+      ;; company-async-redisplay-delay 0.5
+      ;; company-async-wait 0.5
+      ;; company-show-quick-access nil
       company-tooltip-idle-delay 0.5
       company-tooltip-limit 10
       ;; annos align to the right
       company-tooltip-align-annotations t
       ;; not allow tooltip width to decrease
       company-tooltip-width-grow-only t
-      ;; delay in secs until tooltip shows
-      company-dabbrev-downcase nil
-      ;; cancel manually-triggered compl when prefix gets too short (<3)
-      company-abort-manual-when-too-short t
-      ;; allow free typing anywhere
-      ;; see https://github.com/company-mode/company-mode/blob/99915c5d509fa0238e00bebb3d75d45dd1eaf5dc/company-tng.el#L65
-      company-require-match nil
-      ;; turn off company mode in dired
-      company-global-modes '(not dired-mode dired-sidebar-mode)
       ;; disable format margin since I use no icons/imgs in compl
       company-format-margin-function nil)
-
-(setq-default company-backends
-              '(company-capf company-files company-dabbrev-code))
-
-(setq-default company-search-filtering t)
 
 (defun +complete ()
   "Expand snippet when there is one; otherwise, fall back on company."
@@ -164,35 +133,34 @@
 
 (with-eval-after-load "company"
   (require 'company-tng)
-  (require 'company-template)
   (add-hook 'company-mode-hook 'company-tng-mode)
-  (define-key company-mode-map [tab] '+complete)
-  (define-key company-mode-map (kbd "TAB") '+complete)
-  (define-key company-active-map [tab] 'company-complete-common-or-cycle)
-  (define-key company-active-map (kbd "TAB") 'company-complete-common-or-cycle)
+
+  (keymap-set company-mode-map "M-n" 'company-complete-common)
+  (keymap-set company-active-map "TAB" nil)
+  (define-key company-active-map [tab] nil)
+  (keymap-set company-active-map "C-n" nil)
+  (keymap-set company-active-map "C-p" nil)
+  (keymap-set company-active-map "M-n" 'company-select-next)
+  (keymap-set company-active-map "M-p" 'company-select-previous)
   (define-key company-active-map [escape] nil)
   (define-key company-active-map [return] nil)
-  (define-key company-active-map (kbd "RET") nil)
-  (define-key company-active-map (kbd "SPC") nil)
-  (define-key company-active-map (kbd "C-p") #'company-select-previous)
-  (define-key company-active-map (kbd "C-n") #'company-select-next)
-  (define-key company-template-nav-map (kbd "RET") 'company-template-forward-field)
-  (define-key company-template-nav-map [return] 'company-template-forward-field)
-  (define-key company-template-nav-map (kbd "TAB") nil)
-  (define-key company-template-nav-map [tab] nil))
+  (keymap-set company-active-map "RET" nil)
+  (keymap-set company-active-map "SPC" nil))
 
 ;;; company for TUI and corfu for GUI
-(if (display-graphic-p)
-    (progn
-      (add-hook 'prog-mode-hook #'corfu-mode)
-      (add-hook 'conf-mode-hook #'corfu-mode))
-  (progn
-    (add-hook 'prog-mode-hook #'company-mode)
-    (add-hook 'conf-mode-hook #'company-mode)))
+;; (if (display-graphic-p)
+;;     (progn
+;;       (add-hook 'prog-mode-hook #'corfu-mode)
+;;       (add-hook 'conf-mode-hook #'corfu-mode))
+;;   (progn
+;;     (add-hook 'prog-mode-hook #'company-mode)
+;;     (add-hook 'conf-mode-hook #'company-mode)))
+(add-hook 'prog-mode-hook #'company-mode)
+(add-hook 'conf-mode-hook #'company-mode)
 
 (vertico-mode)
 (with-eval-after-load "vertico"
-  (setq vertico-count 5
+  (setq vertico-count 6
         read-file-name-completion-ignore-case t
         read-buffer-completion-ignore-case t
         completion-ignore-case t))
@@ -234,7 +202,8 @@
 
 (setq major-mode-remap-alist
       '((typescript-mode . typescript-ts-mode)
-        (c-mode . c-ts-mode)))
+        (c-mode . c-ts-mode)
+        (java-mode . java-ts-mode)))
 
 (provide 'init-completion)
 ;;; init-completion.el ends here
