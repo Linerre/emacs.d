@@ -172,8 +172,7 @@
 
 (meow-global-mode 1)
 (meow-setup)
-;; can tell from mode line modes or cursor
-;; (meow-setup-indicator)
+(meow-setup-indicator)
 
 (with-eval-after-load "meow"
   ;; make Meow usable in TUI Emacs

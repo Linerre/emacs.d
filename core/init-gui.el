@@ -58,7 +58,11 @@
                 mode-line-position
                 (vc-mode vc-mode)
                 " "
-                mode-line-modes
+                mode-name
+                " "
+                (:eval (when (bound-and-true-p envrc-mode)  envrc-lighter))
+                " "
+                (:eval (when (bound-and-true-p flymake-mode) flymake-mode-line-format))
                 mode-line-misc-info
                 mode-line-end-spaces))
 
