@@ -71,6 +71,22 @@
   (add-hook 'c-ts-mode-hook #'flycheck-mode)
   (add-hook 'c-ts-mode-hook #'+c-ts-mode--font-lock-settings))
 
-(provide 'lang-cpp)
+;;; Java
+(defun +java-ts-mode--font-lock-settings ()
+  "Font lock settings to override some defaults in java-ts-mode"
+  (setq treesit-font-lock-settings
+        (append
+         treesit-font-lock-settings
+         (treesit-font-lock-rules
+          :language 'java
+          :feature 'type
+          :override t
+          '((scoped_identifier scope: (identifier) @font-lock-type-face)
+            (scoped_identifier name: (identifier) @font-lock-type-face)))))
+  (treesit-font-lock-recompute-features '(type)))
+
+(add-hook 'java-ts-mode-hook #'+java-ts-mode--font-lock-settings)
+
+(provide 'lang-clike)
 
 ;;; lang-cpp.el ends here

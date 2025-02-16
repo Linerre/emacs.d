@@ -21,7 +21,7 @@
 (require 'lang-lisps)
 (require 'lang-fp)
 (require 'lang-rust)
-(require 'lang-cpp)
+(require 'lang-clike)
 (require 'lang-go)
 (require 'lang-script)
 (require 'lang-web)
