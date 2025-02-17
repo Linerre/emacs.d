@@ -85,6 +85,7 @@
             (scoped_identifier name: (identifier) @font-lock-type-face)))))
   (treesit-font-lock-recompute-features '(type)))
 
+(add-to-list 'auto-mode-alist '("\\.jj\\'" . java-ts-mode))
 (add-hook 'java-ts-mode-hook #'+java-ts-mode--font-lock-settings)
 
 (provide 'lang-clike)
