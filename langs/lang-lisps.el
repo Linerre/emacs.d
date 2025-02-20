@@ -13,7 +13,7 @@
             (lambda () (add-hook 'after-save-hook #'check-parens)))
   (add-hook 'lisp-interaction-mode-hook #'eldoc-mode))
 
-;; clojure
+;;; clojure
 (sup '(clojure-ts-mode :type git :host github :repo "clojure-emacs/clojure-ts-mode"))
 
 ;; (add-to-list 'auto-mode-alist '("\\.clj\\'" . clojure-ts-mode))
@@ -29,8 +29,8 @@
                 company-dabbrev-code
                 company-capf company-gtags)))
 
-(setq clojure-indent-style 'always-indent
-      clojure-align-forms-automatically t
+;; clojure-indent-style defaults to `'always-align'
+(setq clojure-align-forms-automatically t
       clojure-toplevel-inside-comment-form t)
 (setq-local flycheck-checker 'clj-kondo-clj)
 
