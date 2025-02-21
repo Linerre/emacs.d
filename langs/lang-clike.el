@@ -82,8 +82,13 @@
           :feature 'type
           :override t
           '((scoped_identifier scope: (identifier) @font-lock-type-face)
-            (scoped_identifier name: (identifier) @font-lock-type-face)))))
-  (treesit-font-lock-recompute-features '(type)))
+            (scoped_identifier name: (identifier) @font-lock-type-face))
+
+          :language 'java
+          :feature 'annotation
+          :override 'prepend
+          '((modifiers (marker_annotation) @font-lock-preprocessor-face)))))
+  (treesit-font-lock-recompute-features '(type annotation)))
 
 (add-to-list 'auto-mode-alist '("\\.jj\\'" . java-ts-mode))
 (add-hook 'java-ts-mode-hook #'+java-ts-mode--font-lock-settings)
