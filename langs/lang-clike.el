@@ -87,11 +87,20 @@
           :language 'java
           :feature 'annotation
           :override 'prepend
-          '((modifiers (marker_annotation) @font-lock-preprocessor-face)))))
-  (treesit-font-lock-recompute-features '(type annotation)))
+          '((modifiers (marker_annotation) @font-lock-preprocessor-face))
+
+          :language 'java
+          :feature 'constant            ; java-ts-mode puts `null' under `literal'
+          :override 'prepend            ; which requires treesit font lock level 3
+          '((null_literal) @font-lock-constant-face))))
+  (treesit-font-lock-recompute-features '(type annotation literal)
+                                        '()
+                                        'java))
 
 (add-to-list 'auto-mode-alist '("\\.jj\\'" . java-ts-mode))
 (add-hook 'java-ts-mode-hook #'+java-ts-mode--font-lock-settings)
+(with-eval-after-load 'java-ts-mode
+  (setq java-ts-mode-indent-offset 2))
 
 (provide 'lang-clike)
 

@@ -52,8 +52,8 @@
  window-divider-default-right-width 1
  window-divider-default-bottom-width 1
  echo-keystrokes 0.01 ; no overline margin
- overline-margin 0 ; tab-width defaults to 2 globally
- tab-width 2 ; make indent commands use space only
+ overline-margin 0
+ tab-width 4
  indent-tabs-mode nil
  backward-delete-function nil ; DO NOT expand tabs when deleting
  comment-empty-lines t
