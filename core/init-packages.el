@@ -76,8 +76,6 @@
 (sup 'vundo)
 (sup 'envrc)
 
-(when (version< "30" emacs-version)
-  (sup 'which-key))
 ;;; Managed by pacman (Arch) or portage (Gentoo)
 ;; (sup '(meow :type git :host github :repo "DogLooksGood/meow")) installed via pacman/portage
 ;; (sup 'ebuild-mode)
