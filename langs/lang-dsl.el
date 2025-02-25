@@ -136,6 +136,7 @@
 ;; but AUCTeX calls `LaTeX-mode-hook' for any hooks
 (with-eval-after-load 'tex-mode
   ;; (add-hook 'LaTeX-mode-hook #'turn-on-cdlatex)
+  (add-hook 'LaTeX-mode-hook #'company-mode)
   (add-hook 'LaTeX-mode-hook #'company-auctex-init)
   (add-hook 'LaTeX-mode-hook #'electric-pair-local-mode)
   (add-hook 'LaTeX-mode-hook #'yas-minor-mode)
