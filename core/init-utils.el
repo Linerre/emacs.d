@@ -132,6 +132,8 @@ When it is not in ~/projects/, or in one of the special buffers, fall back to `m
 ;;; eat
 (add-hook 'eshell-load-hook #'eat-eshell-mode)
 (add-hook 'eshell-load-hook #'eat-eshell-visual-command-mode)
+(with-eval-after-load 'eat-eshell-mode
+  (meow-mode -1))
 
 ;;; rg
 (autoload #'rg "rg" nil t)
@@ -170,9 +172,11 @@ When it is not in ~/projects/, or in one of the special buffers, fall back to `m
 
 (setq gptel-default-mode 'markdown-mode
       gptel-prompt-prefix-alist
-      '((markdown-mode . "## ") (org-mode . "** ") (text-mode . "#prompt> "))
+      '((markdown-mode . "## ") (org-mode . "** ") (text-mode . ">> "))
       gptel-backend (gptel-make-anthropic "Claude"
                       :stream t
+                      :models '(claude-3-7-sonnet-20250219
+                                claude-3-5-sonnet-20241022)
                       :key (lambda () (password-store-get "Dev/claude-key1"))))
 
 ;;; Email
