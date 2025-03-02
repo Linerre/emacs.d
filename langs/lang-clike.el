@@ -100,7 +100,32 @@
 (add-to-list 'auto-mode-alist '("\\.jj\\'" . java-ts-mode))
 (add-hook 'java-ts-mode-hook #'+java-ts-mode--font-lock-settings)
 (with-eval-after-load 'java-ts-mode
-  (setq java-ts-mode-indent-offset 2))
+  (setq java-ts-mode-indent-offset 2)
+  (setq-local treesit-thing-settings
+        `((java
+           (sexp ,(rx (or "annotation"
+                          "parenthesized_expression"
+                          "formal_parameters"
+                          "argument_list"
+                          "identifier"
+                          "modifiers"
+                          "block"
+                          "body"
+                          "literal"
+                          "access"
+                          "reference"
+                          "_type"
+                          "true"
+                          "false")))
+           (sentence ,(rx (or "statement"
+                              "local_variable_declaration"
+                              "field_declaration"
+                              "module_declaration"
+                              "package_declaration"
+                              "import_declaration")))
+           (text ,(regexp-opt '("line_comment"
+                                "block_comment"
+                                "text_block")))))))
 
 (provide 'lang-clike)
 

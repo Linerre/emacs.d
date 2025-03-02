@@ -30,7 +30,8 @@
                 company-capf company-gtags)))
 
 ;; clojure-indent-style defaults to `'always-align'
-(setq clojure-align-forms-automatically t
+(setq clojure-indent-style 'align-arguments
+      clojure-align-forms-automatically t
       clojure-toplevel-inside-comment-form t)
 (setq-local flycheck-checker 'clj-kondo-clj)
 

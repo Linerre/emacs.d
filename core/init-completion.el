@@ -134,27 +134,18 @@
 (with-eval-after-load "company"
   (require 'company-tng)
   (add-hook 'company-mode-hook 'company-tng-mode)
-
-  (keymap-set company-mode-map "M-n" 'company-complete-common)
   (keymap-set company-active-map "TAB" nil)
   (define-key company-active-map [tab] nil)
-  (keymap-set company-active-map "C-n" nil)
-  (keymap-set company-active-map "C-p" nil)
-  (keymap-set company-active-map "M-n" 'company-select-next)
-  (keymap-set company-active-map "M-p" 'company-select-previous)
+  (keymap-set company-mode-map "M-n" 'company-complete-common)
+  ;; (keymap-set company-active-map "C-n" nil)
+  ;; (keymap-set company-active-map "C-p" nil)
+  ;; (keymap-set company-active-map "M-n" 'company-select-next)
+  ;; (keymap-set company-active-map "M-p" 'company-select-previous)
   (define-key company-active-map [escape] nil)
   (define-key company-active-map [return] nil)
   (keymap-set company-active-map "RET" nil)
   (keymap-set company-active-map "SPC" nil))
 
-;;; company for TUI and corfu for GUI
-;; (if (display-graphic-p)
-;;     (progn
-;;       (add-hook 'prog-mode-hook #'corfu-mode)
-;;       (add-hook 'conf-mode-hook #'corfu-mode))
-;;   (progn
-;;     (add-hook 'prog-mode-hook #'company-mode)
-;;     (add-hook 'conf-mode-hook #'company-mode)))
 (add-hook 'prog-mode-hook #'company-mode)
 (add-hook 'conf-mode-hook #'company-mode)
 
