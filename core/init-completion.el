@@ -120,6 +120,7 @@
       company-tooltip-limit 10
       ;; annos align to the right
       company-tooltip-align-annotations t
+      company-tooltip-maximum-width 60
       ;; not allow tooltip width to decrease
       company-tooltip-width-grow-only t
       ;; disable format margin since I use no icons/imgs in compl
