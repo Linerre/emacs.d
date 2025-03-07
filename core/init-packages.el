@@ -17,6 +17,7 @@
 (sup 'embark)
 (sup '(emacs-ccls :host github :repo "emacs-lsp/emacs-ccls"))
 (sup '(eglot-booster :host github :repo "jdtsmith/eglot-booster"))
+(sup '(eglot-java :host github :repo "yveszoundi/eglot-java"))
 (sup '(eat
        :host codeberg
        :repo "akib/emacs-eat"
@@ -61,7 +62,6 @@
 (sup 'rg)
 (sup '(sqlup-mode :type git :host github :repo "Trevoke/sqlup-mode.el"))
 (sup '(svelte-mode :type git :host github :repo "leafOfTree/svelte-mode"))
-(sup 'tide)
 (sup 'yasnippet)
 (sup 'emmet-mode)
 (sup 'clojure-mode)
@@ -71,10 +71,12 @@
 (sup '(zk :type git :host github :repo "localauthor/zk"))
 (sup '(jstx :type git :host github :repo "llemaitre19/jtsx"))
 (sup 'highlight-defined)
-(sup 'symbol-overlay)
 (sup 'vertico)
 (sup 'vundo)
 (sup 'envrc)
+
+;; (sup 'symbol-overlay)
+;; (sup 'tide)
 
 ;;; Managed by pacman (Arch) or portage (Gentoo)
 ;; (sup '(meow :type git :host github :repo "DogLooksGood/meow")) installed via pacman/portage
