@@ -18,8 +18,14 @@ recentf
 request/
 rime/
 transient/
+share/
 tree-sitter/
 *lsp-session*
+*.sqlite
+.org-id-locations
+abbrev_defs
+network-security.data
+
 
 # ignore macOS stuff
 .DS_Store
