@@ -163,21 +163,28 @@ When it is not in ~/projects/, or in one of the special buffers, fall back to `m
   (define-key citre-mode-map (kbd "C-x c u") #'citre-update-this-tag-file))
 
 ;;; pass and gptel
-(gptel-make-openai "Deepseek"
-  :host "api.deepseek.com"
-  :endpoint "/chat/completions"
+;; (gptel-make-openai "Deepseek"
+;;   :host "api.deepseek.com"
+;;   :endpoint "/chat/completions"
+;;   :stream t
+;;   :key (lambda () (password-store-get "Dev/deepseek"))
+;;   :models 'deepseek-chat)
+;; or '(deepseek-chat deepseek-reasoner)
+
+(gptel-make-deepseek "DeepSeek"
   :stream t
   :key (lambda () (password-store-get "Dev/deepseek"))
   :models '(deepseek-chat deepseek-reasoner))
 
+(gptel-make-anthropic "Claude"
+  :stream t
+  :models '(claude-3-7-sonnet-20250219
+            claude-3-5-sonnet-20241022)
+  :key (lambda () (password-store-get "Dev/claude-key1")))
+
 (setq gptel-default-mode 'markdown-mode
       gptel-prompt-prefix-alist
-      '((markdown-mode . "## ") (org-mode . "** ") (text-mode . ">> "))
-      gptel-backend (gptel-make-anthropic "Claude"
-                      :stream t
-                      :models '(claude-3-7-sonnet-20250219
-                                claude-3-5-sonnet-20241022)
-                      :key (lambda () (password-store-get "Dev/claude-key1"))))
+      '((markdown-mode . "## ") (org-mode . "** ") (text-mode . ">> ")))
 
 ;;; Email
 ;; SMTP configuration
