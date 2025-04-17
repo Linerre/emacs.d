@@ -62,6 +62,7 @@
 (sup 'rg)
 (sup '(sqlup-mode :type git :host github :repo "Trevoke/sqlup-mode.el"))
 (sup '(svelte-mode :type git :host github :repo "leafOfTree/svelte-mode"))
+(sup '(tuareg :host github :repo "ocaml/tuareg"))
 (sup 'yasnippet)
 (sup 'emmet-mode)
 (sup 'clojure-mode)
