@@ -33,7 +33,7 @@
 
 (with-eval-after-load 'jtsx
   (setq jtsx-enable-jsx-element-tags-auto-sync t)
-  (setq lsp-eslint-server-command '("vscode-eslint-language-server" "--stdio"))
+  ;; (setq lsp-eslint-server-command '("vscode-eslint-language-server" "--stdio"))
   (add-hook 'jtsx-tsx-mode-hook #'flycheck-mode)
   (define-key jtsx-tsx-mode-map (kbd "C-c C-l") #'lsp)
   (define-key jtsx-tsx-mode-map (kbd "C-c j o") #'jtsx-jump-jsx-opening-tag)
@@ -55,8 +55,8 @@
   (define-key jtsx-tsx-mode-map (kbd "C-c j v") #'jtsx-rearrange-jsx-attributes-vertically))
 
 ;;; Typescript
-;;; Hopefully Emacs 30.* would fix this by setting a saner value for this variable
 (setq-default typescript-ts-mode-indent-offset 4)
+;;; Hopefully Emacs 30.* would fix this by setting a saner value for this variable
 (defun +typescript-special-puncs ()
   "Hightlight `!' and `?' in a different color"
   (setq treesit-font-lock-settings

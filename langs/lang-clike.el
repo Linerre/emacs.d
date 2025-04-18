@@ -93,6 +93,7 @@
           :feature 'constant            ; java-ts-mode puts `null' under `literal'
           :override 'prepend            ; which requires treesit font lock level 3
           '((null_literal) @font-lock-constant-face))))
+
   (treesit-font-lock-recompute-features '(type annotation literal)
                                         '()
                                         'java))
