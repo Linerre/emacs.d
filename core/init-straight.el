@@ -3,7 +3,7 @@
 ;;; loaded and evaled in `early-init.el'
 (setq package-enable-at-startup nil)
 (setq comp-deferred-compilation-deny-list ())
-(setq straight-vc-git-default-clone-depth 1)
+(setq straight-vc-git-default-clone-depth 4)
 (setq straight-check-for-modifications '(check-on-save))
 
 (defvar bootstrap-version)

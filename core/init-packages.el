@@ -59,6 +59,7 @@
 (sup 'company-coq)
 (sup 'paredit)
 (sup 'pass)
+(sup '(project :host github :repo "emacs-straight/project" :commit "c45d9bf11ef7c375902ceeb217d3373deb85e8f3"))
 (sup 'rg)
 (sup '(sqlup-mode :type git :host github :repo "Trevoke/sqlup-mode.el"))
 (sup '(svelte-mode :type git :host github :repo "leafOfTree/svelte-mode"))
