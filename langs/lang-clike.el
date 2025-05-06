@@ -27,7 +27,7 @@
   (c-set-offset 'inline-open '+)
   (c-set-offset 'block-open '+)
   (c-set-offset 'brace-list-open '+)   ; all "opens" should be indented by the c-indent-level
-  (c-set-offset 'case-label '+))
+  (c-set-offset 'case-label 0))
 
 (setq ccls-executable "/usr/bin/ccls")
 (add-hook 'c++-mode-hook (lambda ()
@@ -37,13 +37,6 @@
                                        tab-width 4)
                            (require 'ccls)))
 
-(add-hook 'java-mode-hook (lambda ()
-                            ;; (setq c-default-style "java")
-                            (setq-local c-basic-offset 4)
-                            (setq-local tab-width 4)
-                            (c-set-offset 'arglist-intro '+)
-                            (c-set-offset 'arglist-close '0)
-                            (c-set-offset 'case-label '+)))
 
 ;; there is no cc-mode entry but c-mode
 (with-eval-after-load "cc-mode"
@@ -72,6 +65,14 @@
   (add-hook 'c-ts-mode-hook #'+c-ts-mode--font-lock-settings))
 
 ;;; Java
+(add-hook 'java-mode-hook (lambda ()
+                            ;; (setq c-default-style "java")
+                            (setq-local c-basic-offset 4)
+                            (setq-local tab-width 4)
+                            (c-set-offset 'arglist-intro '+)
+                            (c-set-offset 'arglist-close '0)
+                            (c-set-offset 'case-label '0)))
+
 (defun +java-ts-mode--font-lock-settings ()
   "Font lock settings to override some defaults in java-ts-mode"
   (setq treesit-font-lock-settings
@@ -107,6 +108,8 @@
   (define-key eglot-java-mode-map (kbd "C-c l N") #'eglot-java-project-new)
   (define-key eglot-java-mode-map (kbd "C-c l T") #'eglot-java-project-build-task)
   (define-key eglot-java-mode-map (kbd "C-c l R") #'eglot-java-project-build-refresh))
+
+
 (provide 'lang-clike)
 
 ;;; lang-cpp.el ends here

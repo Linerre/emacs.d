@@ -200,7 +200,8 @@
 (setq major-mode-remap-alist
       '((typescript-mode . typescript-ts-mode)
         (c-mode . c-ts-mode)
-        (java-mode . java-ts-mode)))
+        ;; (java-mode . java-ts-mode)
+        ))
 
 (provide 'init-completion)
 ;;; init-completion.el ends here
