@@ -96,7 +96,7 @@
  default-input-method nil
  gtk-use-im-context nil
  icon-preference '(text symbol)
- dired-listing-switches "-al --group-directories-first"
+ dired-listing-switches "-alh --group-directories-first"
  default-directory "~/projects")
 
 ;; Save buffers on gain/loss of focus
