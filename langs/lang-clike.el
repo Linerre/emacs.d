@@ -10,7 +10,7 @@
     (set (make-local-variable 'compile-command)
      (let ((file (file-name-nondirectory buffer-file-name)))
        ;; latest gcc defaults to -std=gnu17 (c17 + gnu extensions)
-       (format "%s -Wall -Og -g -o %s.out %s"
+       (format "%s -Wall -Wextra -Og -ggdb -o %s.out %s"
                (if  (equal (file-name-extension file) "cpp") "g++" "gcc")
                (file-name-sans-extension file)
                file)))
