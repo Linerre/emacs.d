@@ -13,7 +13,7 @@
         :inlayHintProvider
         :workspaceSymbolProvider))
 (setq eglot-autoshutdown t)
-(setq eglot-stay-out-of '(corfu flymake yasnippet))
+(setq eglot-stay-out-of '(yasnippet))
 (setq eglot-send-changes-idle-time 1.0)
 
 (defun eglot-setup-eldoc ()
@@ -31,7 +31,11 @@
 
 (with-eval-after-load "eglot"
   (setq eglot-events-buffer-config '(:size 0 :format full))
-  (setq eglot-events-buffer-size 0))
+  (setq eglot-events-buffer-size 0)
+  (define-key eglot-mode-map (kbd "<C-return>") 'eglot-code-actions)
+  (add-to-list 'eglot-server-programs
+               '((rust-ts-mode rust-mode) .
+                 ("rust-analyzer" :initializationOptions (:check (:command "clippy"))))))
 
 (setq-default eglot-workspace-configuration
               '(:rust-analyzer
@@ -43,6 +47,7 @@
                                          ))))
 
 (setq eglot-booster-io-only t)
+(setq eglot-booster-no-remote t)
 (add-hook 'eglot-mode-hook #'eglot-booster-mode)
 
 ;; Or use package-vc-install
