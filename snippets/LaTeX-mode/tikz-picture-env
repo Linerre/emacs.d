@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: tikz-picture-env
+# key: tikz
+# --
+\begin{tikzpicture}
+  $0
+\end{tikzpicture}

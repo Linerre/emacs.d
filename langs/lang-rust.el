@@ -1,6 +1,5 @@
 ;;; -*- lexical-binding: t; -*-
 ;;; Commentary:
-;;; Last Update: 2023-04-21
 ;;; For programming in Rust, choose either of the following bundles:
 ;;; 1. rust-mode + cargo/cargo-mode
 ;;; cargo mode offers keys to run cargo cmds within Emacs
