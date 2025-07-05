@@ -1,4 +1,4 @@
 # key: lg
 # name: js-log
 # --
-js/console.log
+(js/console.log $0)
