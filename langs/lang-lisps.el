@@ -50,7 +50,6 @@
   ;; after entering a clj buffer. REPL is not always necessary however.
   (define-key clojure-mode-map (kbd "C-c j") #'cider-jack-in)
   (define-key clojure-mode-map (kbd "C-c c") #'cider-connect)
-  (add-hook 'clojure-mode-hook #'cider-mode)
   (add-hook 'clojure-mode-hook #'+hl-cmt-kws))
 
 (setq nrepl-log-messages t

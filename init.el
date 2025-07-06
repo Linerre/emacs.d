@@ -16,7 +16,6 @@
 (require 'init-gui)
 (require 'init-meow)
 (require 'init-completion)
-(require 'init-paredit)
 (require 'init-git)
 (require 'lang-lisps)
 (require 'lang-fp)
