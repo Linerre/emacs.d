@@ -8,7 +8,9 @@
 ;;; eglot
 (setq eglot-ignored-server-capabilities
       '(:codeLensProvider
+        :colorProvider
         :documentHighlightProvider
+        :documentLinkProvider
         :hoverProvider
         :inlayHintProvider
         :workspaceSymbolProvider))
@@ -29,7 +31,16 @@
   (fset #'jsonrpc--log-event #'ignore)
   (setq jsonrpc-event-hook nil))
 
+(setq eglot-booster-io-only t)
+(setq eglot-booster-no-remote t)
+;; (add-hook 'elgot-managed-mode-hook
+;;           (lambda ()
+;;             (put 'eglot-note 'flymake-overlay-control nil)
+;;             (put 'eglot-warning 'flymake-overlay-control nil)
+;;             (put 'eglot-error 'flymake-overlay-control nil)))
+(add-hook 'eglot-managed-mode-hook 'eglot-booster-mode)
 (with-eval-after-load "eglot"
+  (setq eglot-code-action-indications '(eldoc-hint))
   (setq eglot-events-buffer-config '(:size 0 :format full))
   (setq eglot-events-buffer-size 0)
   (define-key eglot-mode-map (kbd "<C-return>") 'eglot-code-actions)
@@ -205,8 +216,7 @@
 (setq major-mode-remap-alist
       '((typescript-mode . typescript-ts-mode)
         (c-mode . c-ts-mode)
-        ;; (java-mode . java-ts-mode)
-        ))
+        (java-mode . java-ts-mode)))
 
 (provide 'init-completion)
 ;;; init-completion.el ends here
