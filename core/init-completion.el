@@ -205,6 +205,10 @@
   (add-to-list 'treesit-language-source-alist
                '(java "https://github.com/tree-sitter/tree-sitter-java"
                       "v0.23.5"
+                      "src"))
+  (add-to-list 'treesit-language-source-alist
+               '(c "https://github.com/tree-sitter/tree-sitter-c"
+                      "v0.24.1"
                       "src")))
 
 ;; (treesit-install-language-grammar 'javascript)
@@ -212,6 +216,7 @@
 ;; (treesit-install-language-grammar 'tsx)
 ;; (treesit-install-language-grammar 'rust)
 ;; (treesit-install-language-grammar 'java)
+;; (treesit-install-language-grammar 'c)
 
 (setq major-mode-remap-alist
       '((typescript-mode . typescript-ts-mode)
