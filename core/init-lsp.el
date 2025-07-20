@@ -4,6 +4,8 @@
 
 ;;; LSP
 (autoload 'lsp "lsp-mode" nil t)
+;;; for lsp-mode to use plist
+(setenv "LSP_USE_PLISTS" "true")
 
 ;; https://emacs-lsp.github.io/lsp-mode/tutorials/how-to-turn-off/
 (setq lsp-keymap-prefix "C-c l"
@@ -11,6 +13,7 @@
       lsp-enable-dap-auto-configure nil
       lsp-enable-snippt nil
       ;; lsp-modeline-diagnostics-enable nil
+      lsp-use-plists t
       lsp-lens-enable nil
       lsp-inlay-hint-enable nil
       lsp-headerline-breadcrumb-enable nil

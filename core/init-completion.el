@@ -2,6 +2,10 @@
 ;;; Commentary:
 ;;; Code:
 
+(with-eval-after-load "jsonrpc"
+  (fset #'jsonrpc--log-event #'ignore)
+  (setq jsonrpc-event-hook nil))
+
 ;;; eglot-booster
 (autoload 'eglot "eglot" nil t)
 
@@ -10,35 +14,26 @@
       '(:codeLensProvider
         :colorProvider
         :documentHighlightProvider
+        :documentOnTypeFormattingProvider
+        :documentRangeFormattingProvider
         :documentLinkProvider
-        :hoverProvider
-        :inlayHintProvider
-        :workspaceSymbolProvider))
+        :inlayHintProvider))
 (setq eglot-autoshutdown t)
 (setq eglot-stay-out-of '(yasnippet))
 (setq eglot-send-changes-idle-time 1.0)
+(setq read-process-output-max (* 1024 1024)) ; 1MB
 
 (defun eglot-setup-eldoc ()
   (setq-local eldoc-echo-area-use-multiline-p nil) ; always truncate
   (setq-local eldoc-documentation-functions
-              '(flymake-eldoc-function
-                eglot-signature-eldoc-function
-                eglot-hover-eldoc-function)))
+              '(eglot-hover-eldoc-function
+                flymake-eldoc-function
+                eglot-signature-eldoc-function)))
 
-(add-hook 'eglot-mode-hook #'eglot-setup-eldoc)
-
-(with-eval-after-load "jsonrpc"
-  (fset #'jsonrpc--log-event #'ignore)
-  (setq jsonrpc-event-hook nil))
-
+(add-hook 'eglot-managed-mode-hook #'eglot-setup-eldoc)
 (setq eglot-booster-io-only t)
 (setq eglot-booster-no-remote t)
-;; (add-hook 'elgot-managed-mode-hook
-;;           (lambda ()
-;;             (put 'eglot-note 'flymake-overlay-control nil)
-;;             (put 'eglot-warning 'flymake-overlay-control nil)
-;;             (put 'eglot-error 'flymake-overlay-control nil)))
-(add-hook 'eglot-managed-mode-hook 'eglot-booster-mode)
+(add-hook 'eglot-managed-mode-hook #'eglot-booster-mode)
 (with-eval-after-load "eglot"
   (setq eglot-code-action-indications '(eldoc-hint))
   (setq eglot-events-buffer-config '(:size 0 :format full))
@@ -51,27 +46,14 @@
 (setq-default eglot-workspace-configuration
               '(:rust-analyzer
                 ( :hover (:memoryLayout (:enable :json-false))
-                  :typing (:excludeChars "([{")
-                  :semanticHighlighting (:operator (:enable :json-false)
-                                         :doc (:comment (:inject (:enable :json-false)))
-                                         :string (:enable :json-false)
-                                         ))))
-
-(setq eglot-booster-io-only t)
-(setq eglot-booster-no-remote t)
-(add-hook 'eglot-mode-hook #'eglot-booster-mode)
-
-;; Or use package-vc-install
-;; (when (executable-find "emacs-lsp-booster")
-;;   (unless (package-installed-p 'eglot-booster)
-;;     (and (fboundp #'package-vc-install)
-;;          (package-vc-install '(eglot-booster :vc-backend Git :url
-;;                     "https://github.com/jdtsmith/eglot-booster")))
-;;     (setq eglot-booster-io-only t)
-;;     (add-hook 'eglot-mode-hook #'elogt-booster-mode)))
-
+                  :semanticHighlighting ( :operator (:enable :json-false)
+                                          :doc (:comment (:inject (:enable :json-false)))
+                                          :nonStandardTokens :json-false
+                                          :strings (:enable :json-false))
+                  :completion (:hideDeprecated t))))
 
 ;; (require 'init-lsp)
+
 ;;; Flycheck
 (with-eval-after-load "flycheck"
   (flycheck-add-mode 'javascript-eslint 'jtsx-jsx-mode)
