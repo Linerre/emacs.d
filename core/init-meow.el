@@ -170,6 +170,7 @@
          (motion . "M")
          (beacon . "B")))
 
+(add-to-list 'meow-mode-state-list '(cider-inspector-mode . motion))
 (meow-global-mode 1)
 (meow-setup)
 (meow-setup-indicator)
