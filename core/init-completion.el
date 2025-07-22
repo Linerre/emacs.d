@@ -121,8 +121,8 @@
       company-tooltip-maximum-width 60
       ;; not allow tooltip width to decrease
       company-tooltip-width-grow-only t
-      ;; disable format margin since I use no icons/imgs in compl
-      company-format-margin-function nil)
+      ;; use text icon
+      company-format-margin-function #'company-text-icons-margin)
 
 (defun +complete ()
   "Expand snippet when there is one; otherwise, fall back on company."
