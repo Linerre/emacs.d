@@ -9,7 +9,7 @@
  meow-keypad-describe-delay 0.5
  meow-select-on-change t
  meow-cursor-type-normal 'box
- meow-cursor-type-insert '(bar . 2)
+ meow-cursor-type-insert '(hbar)        ; look up `cursor-type' for more info
  meow-expand-hint-counts
  '((word . 10)
    (line . 10)
