@@ -124,10 +124,13 @@ When it is not in ~/projects/, or in one of the special buffers, fall back to `m
     (forward-char column)))
 
 (global-set-key (kbd "C-,") #'rc/duplicate-line)
-(global-set-key (kbd "C-.") #'+duplicate-region)
 (global-set-key (kbd "M-<up>") #'+move-line-up)
 (global-set-key (kbd "M-<down>") #'+move-line-down)
 (global-set-key (kbd "C-c C-d") #'duplicate-line)
+
+;;; embark
+(global-set-key (kbd "C-'") #'embark-act)
+(global-set-key (kbd "C-;") #'embark-dwim)
 
 ;;; eat
 (add-hook 'eshell-load-hook #'eat-eshell-mode)
