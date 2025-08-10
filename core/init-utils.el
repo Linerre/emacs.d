@@ -221,5 +221,18 @@ When it is not in ~/projects/, or in one of the special buffers, fall back to `m
 (setq envrc-show-summary-in-minibuffer nil)
 (add-hook 'after-init-hook 'envrc-global-mode)
 
+;;; outline-minor-mode
+(defun +set-outline-regexp ()
+  (cond
+   ((eq major-mode 'rust-mode)
+    (setq-local outline-regexp "#\\[\\|//!?"))
+
+   ((or (eq major-mode 'clojure-mode)
+        (eq major-mode 'clojure-ts-mode)
+        (eq major-mode 'emacs-lisp-mode))
+    (setq-local (concat  outline-regexp  "\\|;;--")))))
+
+(add-hook 'outline-minor-mode-hook #'+set-outline-regexp)
+
 (provide 'init-utils)
 ;;; init-utils.el ends here
