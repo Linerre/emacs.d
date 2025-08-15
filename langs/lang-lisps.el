@@ -23,14 +23,14 @@
 
 (defun +cljs-company-backends ()
   (setq-local company-backends
-              '(company-semantic
-                company-keywords
+              '(company-keywords
                 company-files
                 company-dabbrev-code
                 company-capf company-gtags)))
 
 ;; clojure-indent-style defaults to `'always-align'
 (setq clojure-indent-style 'align-arguments
+      clojure-indent-keyword-style 'align-arguments
       clojure-align-forms-automatically t
       clojure-toplevel-inside-comment-form t)
 (setq-local flycheck-checker 'clj-kondo-clj)
@@ -41,10 +41,7 @@
   (eldoc-mode -1)             ; avoid overriding flycheck hints
   (put-clojure-indent 'or 0)
   (put-clojure-indent 'and 0)
-  ;; (put-clojure-indent 'reg-sub 1)
-  ;; (put-clojure-indent 'reg-event-db 1)
-  ;; (put-clojure-indent 'reg-event-fx 1)
-  ;; (put-clojure-indent 'reg-fx 1)
+  (put-clojure-indent '>defn :where)
   ;; cider-jack-in will enable cider-mode so there's no need to hook it to
   ;; clojure-mode. But doing so will allow immediate access to cider-mode
   ;; after entering a clj buffer. REPL is not always necessary however.
@@ -53,13 +50,13 @@
   (add-hook 'clojure-mode-hook #'+hl-cmt-kws))
 
 (setq nrepl-log-messages t
-        nrepl-hide-special-buffers t
-        cider-repl-result-prefix ";;=> "
-        cider-connection-message-fn nil
-        cider-repl-display-help-banner nil
-        ;; cider-use-overlays nil
-        ;; spill the errors to the error buffer instead of repl
-        cider-show-error-buffer 'except-in-repl)
+      nrepl-hide-special-buffers t
+      cider-repl-result-prefix ";;=> "
+      cider-connection-message-fn nil
+      cider-repl-display-help-banner nil
+      ;; cider-use-overlays nil
+      ;; spill the errors to the error buffer instead of repl
+      cider-show-error-buffer 'except-in-repl)
 
 (with-eval-after-load "cider"
   ;; Make RET break a line and C-j to trigger eval

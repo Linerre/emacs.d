@@ -165,15 +165,6 @@ When it is not in ~/projects/, or in one of the special buffers, fall back to `m
   (define-key citre-mode-map (kbd "C-x c a") #'citre-ace-peek)
   (define-key citre-mode-map (kbd "C-x c u") #'citre-update-this-tag-file))
 
-;;; pass and gptel
-;; (gptel-make-openai "Deepseek"
-;;   :host "api.deepseek.com"
-;;   :endpoint "/chat/completions"
-;;   :stream t
-;;   :key (lambda () (password-store-get "Dev/deepseek"))
-;;   :models 'deepseek-chat)
-;; or '(deepseek-chat deepseek-reasoner)
-
 (gptel-make-deepseek "DeepSeek"
   :stream t
   :key (lambda () (password-store-get "Dev/deepseek"))
@@ -230,7 +221,7 @@ When it is not in ~/projects/, or in one of the special buffers, fall back to `m
    ((or (eq major-mode 'clojure-mode)
         (eq major-mode 'clojure-ts-mode)
         (eq major-mode 'emacs-lisp-mode))
-    (setq-local (concat  outline-regexp  "\\|;;--")))))
+    (setq-local outline-regexp (concat  outline-regexp  "\\|;;--")))))
 
 (add-hook 'outline-minor-mode-hook #'+set-outline-regexp)
 
