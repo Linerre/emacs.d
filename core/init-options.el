@@ -96,6 +96,7 @@
  default-input-method nil
  gtk-use-im-context nil
  icon-preference '(text symbol)
+ vc-handled-backends '(Git SVN)
  dired-listing-switches "-alh --group-directories-first"
  default-directory "~/projects")
 
