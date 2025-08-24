@@ -89,9 +89,9 @@
  bidi-display-reordering nil
  enable-local-variables :safe
  cursor-in-non-selected-windows nil
- ;; t means in dired `C-s' == `M-s f C-s'
+ ;; in dired buffers: `C-s' == `M-s f C-s'
  dired-isearch-filenames t
- ;; disable emacs input method and use the system
+ ;; disable emacs input method and use the system one
  x-input-method-use-protocol nil
  default-input-method nil
  gtk-use-im-context nil
@@ -127,7 +127,8 @@
 (add-hook 'text-mode-hook #'line-number-mode)
 
 (dolist (hook '(org-mode-hook markdown-mode-hook LaTeX-mode-hook))
-  (add-hook hook #'flyspell-mode))
+  (add-hook hook #'flyspell-mode)
+  (add-hook hook #'yas-minor-mode))
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 (defvar parameters                      ; cause side buffers to not be closed

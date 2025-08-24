@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: ssg-front-matter
+# key: fm
+# --
+---
+${1:var}: ${2:val}
+---
