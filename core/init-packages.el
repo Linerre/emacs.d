@@ -50,11 +50,6 @@
 (sup '(move-mode :host github :repo "Linerre/move-mode"))
 (sup 'nix-mode)
 (sup 'orderless)
-;; coq-mode recognizes *.v files which conflict with verilog-mode, to avoid it:
-;; (alist-get "\\.v\\'" auto-mode-alist nil t) ; t means to remove the key (pattern)
-;; (add-to-list 'auto-mode-alist '("\\.coq\\'" . coq-mode))
-;; that is, let coq-mode treat *.coq files as its major filetype.
-;; For now, I'm working on coq only.
 (sup 'proof-general)
 (sup 'company-coq)
 (sup 'paredit)
@@ -72,6 +67,7 @@
 (sup '(typst-ts-mode :type git :host sourcehut :repo "meow_king/typst-ts-mode"))
 (sup '(zk :type git :host github :repo "localauthor/zk"))
 (sup '(jstx :type git :host github :repo "llemaitre19/jtsx"))
+(sup '(jinx :type git :host github :repo "minad/jinx")) ; enchant, pkgconf, hunspell
 (sup 'highlight-defined)
 (sup 'vertico)
 (sup 'vundo)
@@ -91,6 +87,11 @@
 ;; (sup
 ;;  '(zenburn-emacs :type git :host github :repo "bbatsov/zenburn-emacs"))
 ;; (sup 'marginalia)
+;; coq-mode recognizes *.v files which conflict with verilog-mode, to avoid it:
+;; (alist-get "\\.v\\'" auto-mode-alist nil t) ; t means to remove the key (pattern)
+;; (add-to-list 'auto-mode-alist '("\\.coq\\'" . coq-mode))
+;; that is, let coq-mode treat *.coq files as its major filetype.
+;; For now, I'm working on coq only.
 
 (provide 'init-packages)
 

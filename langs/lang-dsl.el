@@ -175,7 +175,6 @@
 (add-to-list 'auto-mode-alist '("README\\.md\\'" . gfm-mode))
 
 (with-eval-after-load "markdown-mode"
-  (add-hook 'markdown-mode-hook #'flyspell-mode)
   (add-hook 'markdown-mode-hook #'electric-pair-local-mode))
 
 (autoload #'typst-ts-mode "typst-ts-mode" "Major mode for typst using treesit" t)

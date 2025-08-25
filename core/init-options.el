@@ -125,13 +125,11 @@
 (add-hook 'text-mode-hook #'visual-line-mode)
 (add-hook 'text-mode-hook #'column-number-mode)
 (add-hook 'text-mode-hook #'line-number-mode)
-
-(dolist (hook '(org-mode-hook markdown-mode-hook LaTeX-mode-hook))
-  (add-hook hook #'flyspell-mode)
-  (add-hook hook #'yas-minor-mode))
+(add-hook 'text-mode-hook #'jinx-mode)
+(add-hook 'text-mode-hook #'yas-minor-mode)
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
-(defvar parameters                      ; cause side buffers to not be closed
+(defvar parameters               ; cause side buffers to not be closed
   '(window-parameters . ((no-other-window . t)
                          (no-delete-other-windows . t))))
 
