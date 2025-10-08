@@ -214,6 +214,7 @@ When it is not in ~/projects/, or in one of the special buffers, fall back to `m
 
 ;;; outline-minor-mode
 (defun +set-outline-regexp ()
+  (declare (native-compile t))
   (cond
    ((eq major-mode 'rust-mode)
     (setq-local outline-regexp "#\\[\\|//!?"))
@@ -224,6 +225,61 @@ When it is not in ~/projects/, or in one of the special buffers, fall back to `m
     (setq-local outline-regexp (concat  outline-regexp  "\\|;;--")))))
 
 (add-hook 'outline-minor-mode-hook #'+set-outline-regexp)
+
+;;; jinx and enchant to add a new word to personal dict
+(defun add-word-to-personal-dictionary (&optional word)
+  "Add a word to the personal enchant dictionary.
+If WORD is not provided, prompt the user for input.
+The word at point is used as the default if available."
+  (interactive)
+  (let* ((word-at-point (thing-at-point 'word t))
+         (default-word (when word-at-point (downcase (string-trim word-at-point))))
+         (prompt (if default-word
+                     (format "Add word to dictionary (default: %s): " default-word)
+                   "Add word to dictionary: "))
+         (input-word (or word
+                        (read-string prompt nil nil default-word)))
+         (lang "en_US")
+         (dict-file (expand-file-name (format "~/.config/enchant/%s.dic" lang))))
+
+    ;; Validate input
+    (when (or (null input-word) (string-empty-p (string-trim input-word)))
+      (user-error "No word provided"))
+
+    (let ((clean-word (downcase (string-trim input-word)))
+          (word-exists-p nil))
+
+      ;; Create directory if it doesn't exist
+      (unless (file-directory-p (file-name-directory dict-file))
+        (make-directory (file-name-directory dict-file) t))
+
+      ;; Check if word already exists in dictionary (case-insensitive)
+      (when (file-exists-p dict-file)
+        (with-temp-buffer
+          (insert-file-contents dict-file)
+          (goto-char (point-min))
+          (when (re-search-forward (format "^%s$" (regexp-quote clean-word)) nil t)
+            (setq word-exists-p t))))
+
+      ;; Either add the word or show it already exists
+      (if word-exists-p
+          (message "Word '%s' already exists in personal dictionary" clean-word)
+        ;; Append word to dictionary file
+        (with-temp-buffer
+          (when (file-exists-p dict-file)
+            (insert-file-contents dict-file))
+          (goto-char (point-max))
+          ;; Ensure we're on a new line
+          (unless (or (bobp) (bolp))
+            (insert "\n"))
+          (insert clean-word "\n")
+          (write-region (point-min) (point-max) dict-file nil 'silent))
+
+        (message "Added '%s' to personal dictionary: %s" clean-word dict-file)))))
+
+;; Optional: Add a keybinding for convenience
+;; (global-set-key (kbd "C-c d a") #'add-word-to-personal-dictionary)
+
 
 (provide 'init-utils)
 ;;; init-utils.el ends here
