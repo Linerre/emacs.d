@@ -172,20 +172,18 @@ When it is not in ~/projects/, or in one of the special buffers, fall back to `m
 
 (gptel-make-anthropic "Claude"
   :stream t
-  :models '(claude-sonnet-4-20250514
-            claude-3-7-sonnet-20250219
-            claude-3-5-sonnet-20241022)
+  :models '(claude-sonnet-4-5-20250929
+            claude-sonnet-4-20250514)
   :key (lambda () (password-store-get "Dev/claude-key1")))
 
 (setq gptel-default-mode 'markdown-mode
       gptel-prompt-prefix-alist
       '((markdown-mode . "## ") (org-mode . "** ") (text-mode . ">> "))
-      gptel-model 'claude-sonnet-4-20250514
+      gptel-model 'claude-sonnet-4-5-20250929
       gptel-backend (gptel-make-anthropic "Claude"
                       :stream t
-                      :models '(claude-sonnet-4-20250514
-                                claude-3-7-sonnet-20250219
-                                claude-3-5-sonnet-20241022)
+                      :models '(claude-sonnet-4-5-20250929
+                                claude-sonnet-4-20250514)
                       :key (lambda () (password-store-get "Dev/claude-key1"))))
 
 ;;; Email

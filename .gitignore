@@ -22,6 +22,7 @@ share/
 tree-sitter/
 *lsp-session*
 *.sqlite
+*.elc
 .org-id-locations
 abbrev_defs
 network-security.data
