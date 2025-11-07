@@ -22,4 +22,6 @@
       (eval-print-last-sexp)))
   (load bootstrap-file nil 'nomessage))
 
+(setq straight-cache-autoloads nil)
+
 (provide 'init-straight)
