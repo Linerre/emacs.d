@@ -178,12 +178,12 @@
                             "tsx/src"))
   (add-to-list 'treesit-language-source-alist
                '(javascript "https://github.com/tree-sitter/tree-sitter-javascript"
-                            "v0.23.2"
+                            "v0.25.0"
                             "src"))
   (add-to-list 'treesit-language-source-alist
                '(rust "https://github.com/tree-sitter/tree-sitter-rust"
-                            "v0.23.2"
-                            "src"))
+                      "v0.24.0"
+                      "src"))
   (add-to-list 'treesit-language-source-alist
                '(java "https://github.com/tree-sitter/tree-sitter-java"
                       "v0.23.5"
@@ -193,6 +193,8 @@
                       "v0.24.1"
                       "src")))
 
+;; (dolist (l '(javascript typescript tsx rust java c))
+;;   (treesit-install-language-grammar l))
 ;; (treesit-install-language-grammar 'javascript)
 ;; (treesit-install-language-grammar 'typescript)
 ;; (treesit-install-language-grammar 'tsx)
