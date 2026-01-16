@@ -170,6 +170,12 @@ When it is not in ~/projects/, or in one of the special buffers, fall back to `m
   :key (lambda () (password-store-get "Dev/deepseek"))
   :models '(deepseek-chat deepseek-reasoner))
 
+(gptel-make-openai "Moonshot"
+  :host "api.moonshot.cn"
+  :key (lambda () (password-store-get "Dev/kimik2"))
+  :stream t
+  :models '(kimi-k2-0905-preview kimi-latest kimi-k2-0711-preview))
+
 (gptel-make-anthropic "Claude"
   :stream t
   :models '(claude-sonnet-4-5-20250929
@@ -179,12 +185,12 @@ When it is not in ~/projects/, or in one of the special buffers, fall back to `m
 (setq gptel-default-mode 'markdown-mode
       gptel-prompt-prefix-alist
       '((markdown-mode . "## ") (org-mode . "** ") (text-mode . ">> "))
-      gptel-model 'claude-sonnet-4-5-20250929
-      gptel-backend (gptel-make-anthropic "Claude"
+      gptel-model 'kimi-latest
+      gptel-backend (gptel-make-openai "Moonshot"
+                      :host "api.moonshot.cn"
+                      :key (lambda () (password-store-get "Dev/kimik2"))
                       :stream t
-                      :models '(claude-sonnet-4-5-20250929
-                                claude-sonnet-4-20250514)
-                      :key (lambda () (password-store-get "Dev/claude-key1"))))
+                      :models '(kimi-latest kimi-k2-0905-preview kimi-k2-0711-preview)))
 
 ;;; Email
 ;; SMTP configuration
