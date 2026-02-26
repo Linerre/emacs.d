@@ -35,3 +35,32 @@
 ** minibuffer height
 Most relevant vars are ~resize-mini-windows~ and ~message-truncate-lines~
 [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Minibuffer-Windows.html][Elisp Ref - 21.11 Minibuffer Windows]]
+
+* Native Compile
+## If I have declare a function in my Emacs config to be native compiled, how do I know it is indeed native compiled?
+
+You can check if a function is native compiled in several ways:
+
+1. **Check the function definition directly:**
+   ```elisp
+   (subrp (symbol-function '+move-line-up))
+   ```
+   Returns `t` if native compiled, `nil` if bytecode.
+
+2. **Use `native-comp-function-p`:**
+   ```elisp
+   (native-comp-function-p '+move-line-up)
+   ```
+
+3. **Inspect with `describe-function` (C-h f):**
+   Native compiled functions will show as "native compiled" in the help buffer.
+
+4. **Check the compiled file location:**
+   ```elisp
+   (comp-el-to-eln-filename "/path/to/your/init-utils.el")
+   ```
+   This shows where the `.eln` file should be located.
+
+**Note:** The `(declare (native-compile t))` form only works when the function is defined in a file that gets native compiled. If you're evaluating the function directly in a buffer, it won't be native compiled unless you compile the entire file with `native-compile` or similar functions.
+
+##
