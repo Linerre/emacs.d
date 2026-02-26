@@ -12,6 +12,9 @@
   (add-hook hook #'yas-minor-mode)
   (add-hook hook #'emmet-mode))
 
+;; enable html mode for vento template
+(add-to-list 'auto-mode-alist '("\\.vto\\'" . mhtml-mode))
+
 (with-eval-after-load "css-mode"
   (setq css-indent-offset 4))
 

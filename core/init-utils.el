@@ -185,12 +185,12 @@ When it is not in ~/projects/, or in one of the special buffers, fall back to `m
 (setq gptel-default-mode 'markdown-mode
       gptel-prompt-prefix-alist
       '((markdown-mode . "## ") (org-mode . "** ") (text-mode . ">> "))
-      gptel-model 'kimi-latest
+      gptel-model 'kimi-k2-0711-preview
       gptel-backend (gptel-make-openai "Moonshot"
                       :host "api.moonshot.cn"
                       :key (lambda () (password-store-get "Dev/kimik2"))
                       :stream t
-                      :models '(kimi-latest kimi-k2-0905-preview kimi-k2-0711-preview)))
+                      :models '(kimi-k2-0711-preview kimi-k2-0905-preview kimi-latest)))
 
 ;;; Email
 ;; SMTP configuration
