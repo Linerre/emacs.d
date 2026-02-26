@@ -31,14 +31,15 @@
 
 (setq org-todo-keywords
       '((sequence "TODO(t)" "|" "DOING(n)" "DONE(d)")
-	      (sequence "CANCELLED(c@)" "|" "EVENT(e)" "IDEA(a)" "WATCH(w)")
+	    (sequence "CANCELLED(c@)" "|" "EVENT(e)" "IDEA(a)" "WATCH(w)")
         ;; right arrow: migrate to Futher;
         ;; left arrow: migrate to Other collections
-	      (sequence "✝TODO(i)" "|" ">(f)" "<(o)")))
+	    (sequence "✝TODO(i)" "|" ">(f)" "<(o)")))
+
 (setq org-todo-keyword-faces
-      '(("TODO" . org-warning)
+      '(("TODO" . org-todo)
         ("DONE" . org-done)
-        ("DOING" . org-drawer)))
+        ("DOING" . font-lock-warning-face)))
 
 (setq org-html-doctype "html5")
 (add-hook 'org-mode-hook (lambda ()
@@ -46,6 +47,7 @@
                              (modify-syntax-entry ?< "." org-mode-syntax-table)))
 (setq org-confirm-babel-evaluate nil)
 (with-eval-after-load 'org
+  (require 'ox-md)
   (add-to-list 'org-file-apps '("\\.pdf::\\([0-9]+\\)\\'" . "okular -p %1 %s"))
   (define-key org-mode-map (kbd "C-c A") 'org-agenda)
   (define-key org-mode-map (kbd "C-c c") 'org-capture)
@@ -57,7 +59,7 @@
 
 ;;; Nix
 (autoload #'nix-mode "nix-mode")
-(with-eval-after-load "nix-mode"
+(with-eval-after-load 'nix-mode
   (add-hook 'nix-mode-hook #'electric-pair-mode))
 
 ;;; -- SQL --------------------------------
@@ -179,7 +181,26 @@
 
 (autoload #'typst-ts-mode "typst-ts-mode" "Major mode for typst using treesit" t)
 (add-to-list 'auto-mode-alist '("\\.typ\\'" . typst-ts-mode))
-(with-eval-after-load "typst-ts-mode"
+
+;; (defun typst-close-compilation-no-error (buffer status)
+;;   (when (string-match-p "finished[:blank:]*" status)
+;;     (quit-window nil (get-buffer-window buffer 0))))
+
+(defun typst-ts-compile--show-brief-success-message (msg)
+  "Show a brief success message in minibuffer for COMPILATION-BUFFER."
+  (let* ((typst-file (buffer-file-name))
+         (pdf-file (typst-ts-compile-get-result-pdf-filename nil t)))
+    (if pdf-file
+        (message "%s: %s -> %s"
+                 msg
+                 (file-name-nondirectory typst-file)
+                 (file-name-nondirectory pdf-file))
+      (message "%s: %s"
+               msg
+               (file-name-nondirectory typst-file)))))
+
+(with-eval-after-load 'typst-ts-mode
+  (define-key typst-ts-mode-map (kbd "C-c C-c") #'typst-ts-compile)
   (add-hook 'typst-ts-mode-hook #'electric-pair-local-mode))
 
 
