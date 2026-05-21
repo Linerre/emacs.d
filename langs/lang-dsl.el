@@ -162,8 +162,30 @@
 (setq zk-file-name-separator "-")
 (zk-setup-embark)
 (with-eval-after-load "zk"
-(zk-setup-auto-link-buttons))
-
+  (zk-setup-embark)
+  (zk-setup-auto-link-buttons))
+(with-eval-after-load "zk-index"
+  (zk-index-setup-embark))
+(defvar zk-index-mode-map
+  (let ((map (make-sparse-keymap)))
+    (define-key map (kbd "n") #'zk-index-next-line)
+    (define-key map (kbd "p") #'zk-index-previous-line)
+    (define-key map (kbd "v") #'zk-index-view-note)
+    (define-key map (kbd "o") #'other-window)
+    (define-key map (kbd "f") #'zk-index-focus)
+    (define-key map (kbd "s") #'zk-index-search)
+    (define-key map (kbd "g") #'zk-index-query-refresh)
+    (define-key map (kbd "c") #'zk-index-current-notes)
+    (define-key map (kbd "i") #'zk-index-refresh)
+    (define-key map (kbd "S") #'zk-index-sort-size)
+    (define-key map (kbd "M") #'zk-index-sort-modified)
+    (define-key map (kbd "C") #'zk-index-sort-created)
+    (define-key map (kbd "RET") #'zk-index-open-note)
+    (define-key map (kbd "q") #'delete-window)
+    (make-composed-keymap map tabulated-list-mode-map))
+  "keymap for zk-index buffer.")
+(with-eval-after-load "zk-desktop"
+  (setq zk-desktop-directory "~/projects/zknotes"))
 ;; (require 'zk-consult)
 ;; (setq zk-tag-grep-function #'zk-consult-grep-tag-search
 ;;       zk-grep-function #'zk-consult-grep)

@@ -72,6 +72,8 @@
 (sup '(typst-ts-mode :type git :host codeberg
                      :repo "meow_king/typst-ts-mode" :brach "develop"))
 (sup '(zk :type git :host github :repo "localauthor/zk"))
+(sup 'zk-index)
+(sup 'zk-desktop)
 (sup '(jstx :type git :host github :repo "llemaitre19/jtsx"))
 (sup '(jinx :type git :host github :repo "minad/jinx")) ; enchant, pkgconf, hunspell
 (sup 'highlight-defined)
