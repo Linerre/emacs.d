@@ -16,8 +16,12 @@
 (sup 'consult)
 (sup 'embark)
 (sup '(emacs-ccls :host github :repo "emacs-lsp/emacs-ccls"))
+(sup '(compat :type built-in))
+(sup '(eglot :type built-in))
+(sup '(flymake :type built-in))
+(sup '(jsonrpc :type built-in))
 (sup '(eglot-booster :host github :repo "jdtsmith/eglot-booster"))
-(sup '(eglot-java :host github :repo "yveszoundi/eglot-java"))
+;; (sup '(eglot-java :host github :repo "yveszoundi/eglot-java"))
 (sup '(eat
        :host codeberg
        :repo "akib/emacs-eat"
