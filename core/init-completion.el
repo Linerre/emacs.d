@@ -197,8 +197,6 @@
                           "v0.5.3"
                           "src")))
 
-;; (dolist (l '(javascript typescript tsx rust java c))
-;;   (treesit-install-language-grammar l))
 ;; (treesit-install-language-grammar 'javascript)
 ;; (treesit-install-language-grammar 'typescript)
 ;; (treesit-install-language-grammar 'tsx)

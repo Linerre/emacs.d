@@ -16,10 +16,6 @@
 (sup 'consult)
 (sup 'embark)
 (sup '(emacs-ccls :host github :repo "emacs-lsp/emacs-ccls"))
-(sup '(compat :type built-in))
-(sup '(eglot :type built-in))
-(sup '(flymake :type built-in))
-(sup '(jsonrpc :type built-in))
 (sup '(eglot-booster :host github :repo "jdtsmith/eglot-booster"))
 ;; (sup '(eglot-java :host github :repo "yveszoundi/eglot-java"))
 (sup '(eat
@@ -31,10 +27,8 @@
                ("integration" "integration/*")
                (:exclude ".dir-locals.el" "*-tests.el"))))
 (sup '(go-mode.el :type git :host github :repo "dominikh/go-mode.el"))
-(sup 'geiser-chicken)
 (sup 'geiser-guile)
 (sup 'geiser-chez)
-(sup 'geiser-mit)
 (sup '(gptel :type git :host github :repo "karthink/gptel"))
 (sup 'json-mode)
 (sup 'just-mode)
@@ -46,10 +40,8 @@
 (sup 'flycheck-pos-tip)
 (sup 'haskell-mode)
 (sup 'flymake-hlint)
-(sup 'forge)
 (sup 'hindent)
 (sup 'magit)
-(sup 'markdown-mode)
 (sup '(meow :type git :host github :repo "meow-edit/meow"))
 (sup '(move-mode :host github :repo "Linerre/move-mode"))
 (sup 'nix-mode)
@@ -80,6 +72,9 @@
 (sup 'vertico)
 (sup 'vundo)
 (sup 'envrc)
+
+;; deprecate this after emacs 31 release
+(sup 'markdown-mode)
 
 ;; (sup 'symbol-overlay)
 ;; (sup 'tide)
