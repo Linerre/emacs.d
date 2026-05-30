@@ -115,7 +115,7 @@
   (add-hook hook #'column-number-mode)   ; for col numb on modeline -- Emacs 28
   (add-hook hook #'line-number-mode)
   (add-hook hook #'electric-pair-local-mode)
-  (add-hook hook #'show-paren-mode))
+  (add-hook hook #'show-paren-local-mode))
 
 ;; In prog-mode or any its deried modes, make isearch case sensitive
 (add-hook 'prog-mode-hook (lambda ()
