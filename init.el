@@ -7,8 +7,6 @@
 ;;; Alias
 (defalias 'sup 'straight-use-package "Another alias for straight-use-package.")
 
-;;; Consts
-
 (require 'init-packages)
 ;;; Load the modular configs
 (require 'init-options)
