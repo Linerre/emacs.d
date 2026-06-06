@@ -85,7 +85,6 @@
  list-matching-lines-default-context-lines 1
  ;; font-lock level
  font-lock-maximum-decoration 2
- treesit-font-lock-level 2
  bidi-display-reordering nil
  enable-local-variables :safe
  cursor-in-non-selected-windows nil
