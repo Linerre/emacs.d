@@ -70,7 +70,8 @@
           :feature 'operator
           :override t
           '((unary_expression operator: "!" @font-lock-misc-punctuation-face)
-            (binary_expression operator: "??" @font-lock-misc-punctuation-face))
+            (binary_expression operator: "??" @font-lock-misc-punctuation-face)
+            (non_null_expression "!" @font-lock-preprocessor-face))
 
           :language 'typescript
           :feature 'string
